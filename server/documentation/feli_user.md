@@ -8,7 +8,7 @@ constructor create();
 ```
 Creates an instance
 
-### Create
+### From TJsonObject
 ```pascal
 class function fromTJsonObject(userObject: TJsonObject): FeliUser; static;
 ```

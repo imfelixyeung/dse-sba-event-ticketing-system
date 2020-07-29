@@ -5,6 +5,6 @@
 		"body": [
 			"FeliLogger.log('$1');"
 		],
-		"description": "Log output to console"
+		"description": "Log payload to console"
 	}
 }

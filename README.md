@@ -10,6 +10,7 @@
   - [Database](#database)
   - [User Authentication](#user-authentication)
 - [Documentation](#documentation)
+  - [Server](#server-1)
 
 # Overview
 Event Ticketing System is denoted as `ETS`
@@ -50,4 +51,5 @@ Details and features of ETS
 - This uses concepts in cryptography
 
 # Documentation
+## Server
 A full documentation is available [here](server/documentation)

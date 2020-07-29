@@ -3,8 +3,6 @@
         "**/*.ppu": true,
         "**/*.o": true
     },
-    "pascal.formatter.engine": "ptop",
-    "pascal.formatter.enginePath": "",
     "editor.formatOnSave": false,
     "cSpell.enabledLanguageIds": [
         "asciidoc",
