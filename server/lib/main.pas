@@ -28,13 +28,13 @@ end;
 
 procedure test();
 var 
-    usersArray: TJsonArray;
-    testUser, testUser2: FeliUser;
-    testUserObject: TJsonObject;
+    // usersArray: TJsonArray;
+    // testUser, testUser2: FeliUser;
+    // testUserObject: TJsonObject;
 
 begin
     // Test for FeliUser
-    testUser := FeliUser.create();
+    // testUser := FeliUser.create();
     // with testUser do
     //     begin
     //         username := 'FelixNPL';
@@ -48,13 +48,13 @@ begin
     //         saltedPassword := '91da52fb59d439167de2a21a87243e29';
     //     end;
     
-    testUserObject := testUser.ToTJsonObject();
-    usersArray := FeliStorageAPI.getUsers();
+    // testUserObject := testUser.ToTJsonObject();
+    // usersArray := FeliStorageAPI.getUsers();
     // writeln(usersArray[0].formatJson());
     // writeln(testUser.verify());
-    testUser2 := FeliUser.fromTJsonObject(TJsonObject(usersArray[0]));
-    testUserObject := testUser2.ToTJsonObject();
-    writeln(testUserObject.formatJson());
+    // testUser2 := FeliUser.fromTJsonObject(TJsonObject(usersArray[0]));
+    // testUserObject := testUser2.ToTJsonObject();
+    // writeln(testUserObject.formatJson());
 
     // Test for FeliValidation.emailCheck
     // writeln(FeliValidation.emailCheck('info@example.com'));
