@@ -1,0 +1,10 @@
+{
+	"Print to console": {
+		"scope": "pascal",
+		"prefix": "log",
+		"body": [
+			"FeliLogger.log('$1');"
+		],
+		"description": "Log output to console"
+	}
+}

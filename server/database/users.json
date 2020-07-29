@@ -1,0 +1,17 @@
+[
+    {
+        "username": "FelixNPL",
+        "display_name": "Felix NPL",
+        "salt": "CD5167D267431D269BA0DA40E692F14B",
+        "salted_password": "91da52fb59d439167de2a21a87243e29",
+        "email": "s20151529@home.npl.edu.hk",
+        "first_name": "Felix",
+        "last_name": "Yeung",
+        "access_level": "admin",
+        "data": {
+            "joined_events": [],
+            "created_events": [],
+            "pending_events": []
+        }
+    }
+]
