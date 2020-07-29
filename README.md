@@ -9,6 +9,7 @@
 - [Details](#details)
   - [Database](#database)
   - [User Authentication](#user-authentication)
+- [Documentation](#documentation)
 
 # Overview
 Event Ticketing System is denoted as `ETS`
@@ -26,7 +27,7 @@ This project consists of two main parts
 - Uses flutter `dart` to create a web application
   - Communicates to server api
 - Hosted by an express server `node.js`
-> Note: for developing purposes, all dummy users has a password of '20151529'
+> Note: for developing purposes, all dummy users has a purposefully set password of '20151529'
 
 ### Cli
 - Frontend
@@ -47,3 +48,6 @@ Details and features of ETS
   2. and then **hashed**
 - Server authenticate users by salting and hashing input password and compared to the original salted password
 - This uses concepts in cryptography
+
+# Documentation
+A full documentation is available [here](server/documentation)
