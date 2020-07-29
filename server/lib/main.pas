@@ -29,10 +29,55 @@ end;
 procedure test();
 var 
     // usersArray: TJsonArray;
-    // testUser, testUser2: FeliUser;
+    testUsernameString: ansiString;
+    testUser: FeliUser;
+    // testUser2: FeliUser;
     // testUserObject: TJsonObject;
 
 begin
+
+    // Test for FeliStorageAPI.addUser()
+    testUser := FeliUser.create();
+    with testUser do begin
+        // username := 'FelixNPL';
+        // password := '20151529';
+        // email := 's20151529@home.npl.edu.hk';
+        // firstName := 'Felix';
+        // lastName := 'Yeung';
+        // displayName := 'Felix NPL';
+        // accessLevel := 'admin';
+        // salt := 'CD5167D267431D269BA0DA40E692F14B';
+        // saltedPassword := '91da52fb59d439167de2a21a87243e29';
+        username := 'AddUserTest';
+        password := '20151529';
+        email := 'test@example.com';
+        firstName := 'Test';
+        lastName := 'User';
+        displayName := 'Add User Test';
+        accessLevel := 'organiser';
+    end;
+
+    testUser.generateSaltedPassword();
+    writeln(testUser.verify());
+    try
+        FeliStorageAPI.addUser(testUser);
+    except
+        on e: Exception do
+        writeln(e.message);
+    end;
+    // writeln(testUser.toJson());
+
+    // Test for FeliStorageAPI.getUser()
+    // testUsernameString := 'FelixNPL';
+    // testUser := FeliStorageAPI.getUser(testUsernameString);
+    // if (testUser <> nil) then
+    //     begin
+    //         writeln(format('User with username %s has been found', [testUsernameString]));
+    //         writeln(testUser.ToTJsonObject().formatJson);
+    //     end
+    // else
+    //     writeln(format('User with username %s cannot be found', [testUsernameString]));
+
     // Test for FeliUser
     // testUser := FeliUser.create();
     // with testUser do

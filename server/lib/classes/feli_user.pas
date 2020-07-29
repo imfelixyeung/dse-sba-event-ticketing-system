@@ -8,12 +8,16 @@ uses fpjson;
 type
     FeliUser = class(TObject)
         private
+            salt, saltedPassword: ansiString;
         public
-            username, password, salt, saltedPassword, displayName, email, firstName, lastName, accessLevel: ansiString;
+            username, password, displayName, email, firstName, lastName, accessLevel: ansiString;
             joinedEvents, createdEvents, pendingEvents: TJsonArray;
             constructor create();
             function toTJsonObject(): TJsonObject;
+            function toJson(): ansiString;
             function verify(): boolean;
+            procedure generateSaltedPassword();
+            // Factory Methods
             class function fromTJsonObject(userObject: TJsonObject): FeliUser; static;
         end;
 
@@ -72,10 +76,22 @@ begin
     result := user;
 end;
 
+function FeliUser.toJson(): ansiString;
+begin
+    result := self.toTJsonObject().formatJson;
+end;
+
 function FeliUser.verify(): boolean;
 begin
     result := (saltedPassword = FeliCrypto.hashMD5(salt + password));
 end;
+
+procedure FeliUser.generateSaltedPassword();
+begin
+    salt := FeliCrypto.generateSalt(32);
+    saltedPassword := FeliCrypto.hashMD5(salt + password);
+end;
+
 
 class function FeliUser.fromTJsonObject(userObject: TJsonObject): FeliUser; static;
 var
