@@ -14,19 +14,19 @@ uses
     fpjson;
 
 
-procedure debug;
+procedure debug();
 begin
     FeliStorageAPI.debug;
     FeliFileAPI.debug;
     FeliValidation.debug;
 end;
 
-procedure init;
+procedure init();
 begin
     randomize;
 end;
 
-procedure test;
+procedure test();
 var 
     usersArray: TJsonArray;
     testUser, testUser2: FeliUser;
