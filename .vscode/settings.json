@@ -47,6 +47,7 @@
         "ETS",
         "Str",
         "eof",
+        "fpc",
         "fpjson",
         "jsonparser",
         "npl",
