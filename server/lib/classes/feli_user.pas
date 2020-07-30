@@ -3,7 +3,9 @@ unit feli_user;
 {$mode objfpc}
 
 interface
-uses fpjson;
+uses
+    feli_collection,
+    fpjson;
 
 type
     FeliUserKeys = class
@@ -49,6 +51,7 @@ type
             procedure join(newCollection: FeliUserCollection);
             function length(): int64;
             class function fromTJsonArray(usersArray: TJsonArray): FeliUserCollection; static;
+            class function fromFeliCollection(collection: FeliCollection): FeliUserCollection; static;
         end;
 
 implementation
@@ -254,6 +257,16 @@ var
 begin
     feliUserCollectionInstance := feliUserCollection.create();
     feliUserCollectionInstance.data := usersArray;
+    result := feliUserCollectionInstance;
+end;
+
+
+class function FeliUserCollection.fromFeliCollection(collection: FeliCollection): FeliUserCollection; static;
+var
+    feliUserCollectionInstance: FeliUserCollection;
+begin
+    feliUserCollectionInstance := FeliUserCollection.create();
+    feliUserCollectionInstance.data := collection.data;
     result := feliUserCollectionInstance;
 end;
 

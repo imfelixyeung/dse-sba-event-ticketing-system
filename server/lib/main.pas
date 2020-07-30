@@ -13,6 +13,7 @@ uses
     feli_exceptions,
     feli_operators,
     feli_event,
+    feli_collection,
     sysutils,
     fpjson;
 
@@ -31,7 +32,8 @@ end;
 
 procedure test();
 var 
-    event: FeliEvent;
+    collection: FeliCollection;
+    eventCollection: FeliEventCollection;
 //     usersArray: TJsonArray;
 //     userEnum: TJsonEnum;
 //     testUsernameString: ansiString;
@@ -43,17 +45,26 @@ var
 
 begin
 
-    event := FeliEvent.create();
-    with event do
-        begin
-            organiser := 'PascalGenerated';
-            name := 'Lovely Event';
-            description := 'Everyone should join this event, it will be epic';
-            venue := 'Space';
-            theme := 'Weightless';
-        end;
+    // Test type casting
+    // eventCollection := FeliEventCollection.create();
+    // collection := eventCollection as FeliCollection;
 
-    FeliStorageAPI.addEvent(event);
+    // collection := FeliCollection.create();
+    // eventCollection := collection as FeliEventCollection;
+    // writeln('Success');
+
+    // Test events
+    // event := FeliEvent.create();
+    // with event do
+    //     begin
+    //         organiser := 'PascalGenerated';
+    //         name := 'Lovely Event';
+    //         description := 'Everyone should join this event, it will be epic';
+    //         venue := 'Space';
+    //         theme := 'Weightless';
+    //     end;
+
+    // FeliStorageAPI.addEvent(event);
 
     // event := FeliStorageAPI.getEvent('EB3444FB3A9F183C0');
     // if (event <> nil) then

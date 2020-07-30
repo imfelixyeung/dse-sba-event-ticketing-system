@@ -3,7 +3,9 @@ unit feli_event;
 {$mode objfpc}
 
 interface
-uses fpjson;
+uses
+    feli_collection,
+    fpjson;
 
 type
     FeliEventKeys = class
@@ -43,13 +45,14 @@ type
         private
         public
             data: TJsonArray;
-            constructor create();
+            constructor create(creationData: TJsonArray = nil);
             function where(key: ansiString; operation: ansiString; value: ansiString): FeliEventCollection;
             function toTJsonArray(): TJsonArray;
             function toJson(): ansiString;
             procedure add(event: FeliEvent);
             function length(): int64;
             class function fromTJsonArray(eventsArray: TJsonArray): FeliEventCollection; static;
+            class function fromFeliCollection(collection: FeliCollection): FeliEventCollection; static;
         end;
 
 implementation
@@ -128,9 +131,12 @@ begin
 end;
 
 
-constructor FeliEventCollection.create();
+constructor FeliEventCollection.create(creationData: TJsonArray = nil);
 begin
-    data := TJsonArray.create();
+    if (creationData = nil) then
+        self.data := TJsonArray.create()
+    else
+        self.data := creationData;
 end;
 
 
@@ -207,6 +213,16 @@ var
 begin
     feliEventCollectionInstance := FeliEventCollection.create();
     feliEventCollectionInstance.data := eventsArray;
+    result := feliEventCollectionInstance;
+end;
+
+
+class function FeliEventCollection.fromFeliCollection(collection: FeliCollection): FeliEventCollection; static;
+var
+    feliEventCollectionInstance: FeliEventCollection;
+begin
+    feliEventCollectionInstance := FeliEventCollection.create();
+    feliEventCollectionInstance.data := collection.data;
     result := feliEventCollectionInstance;
 end;
 
