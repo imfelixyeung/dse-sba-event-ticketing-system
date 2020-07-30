@@ -224,3 +224,8 @@
 2020-07-30 15:11:46 [ETS] [Error]    User add.user.test@example.com was not found, ergo unable to remove add.user.test@example.com
 2020-07-30 15:11:46 [ETS] [Info]     [User] Username Felix NPL
 2020-07-30 15:11:46 [ETS] [Debug]    [User] Display name: Felix NPL
+2020-07-30 21:01:02 [ETS] [ETS]      There are multiple entries for event EB3444FB3A9F183C0, fallback to using the first event found
+2020-07-30 21:07:45 [ETS] [ETS]      There are multiple entries for event EB3444FB3A9F183C0, fallback to using the first event found
+2020-07-30 21:11:03 [ETS] [Info]     Event A7H345DFbA9FB3Y9 removed successfully
+2020-07-30 21:11:16 [ETS] [Info]     Event A7H345DFbA9FB3Y9 removed successfully
+2020-07-30 21:14:01 [ETS] [Info]     Event A7H345DFbA9FB3Y9 removed successfully

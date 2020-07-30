@@ -62,7 +62,7 @@ begin
             while not eof(f) do
                 begin
                     readln(f, line);
-                    all_lines := all_lines + line + line_separator;
+                    all_lines := all_lines + line + lineSeparator;
                 end;
             
             close(f);

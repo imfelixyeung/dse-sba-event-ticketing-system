@@ -30,7 +30,8 @@ begin
 end;
 
 procedure test();
-// var 
+var 
+    event: FeliEvent;
 //     usersArray: TJsonArray;
 //     userEnum: TJsonEnum;
 //     testUsernameString: ansiString;
@@ -39,9 +40,30 @@ procedure test();
 //     testUser2: FeliUser;
 //     testUserObject: TJsonObject;
 
-begin
-    
 
+begin
+
+    event := FeliEvent.create();
+    with event do
+        begin
+            organiser := 'PascalGenerated';
+            name := 'Lovely Event';
+            description := 'Everyone should join this event, it will be epic';
+            venue := 'Space';
+            theme := 'Weightless';
+        end;
+
+    FeliStorageAPI.addEvent(event);
+
+    // event := FeliStorageAPI.getEvent('EB3444FB3A9F183C0');
+    // if (event <> nil) then
+    //     begin
+    //         writeln('Event Found!');
+    //     end
+    // else
+    //     begin
+    //         writeln('Oh no, event not found')
+    //     end;
 
     // Test for FeliStorageAPI methods
     // FeliStorageAPI.removeUser('add.user.test@example.com');
@@ -182,14 +204,12 @@ begin
 end;
 
 begin
-
     try
-      
+        init();
+        test();
+        // debug();
     except
       on err: Exception do writeln(err.message);
     end;
-    init();
-    // debug();
-    test();
 end.
 

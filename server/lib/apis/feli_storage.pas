@@ -47,33 +47,30 @@ uses
 
 class function FeliStorageAPI.getUser(usernameOrEmail: ansiString): FeliUser;
 var
-    usersJsonArray: TJsonArray;
     userObject: TJsonObject;
-    users, filteredUsers, tempUsers: FeliUserCollection;
+    users, filteredUsers, filteredUsersTemp: FeliUserCollection;
 begin
-
     result := nil;
     users := FeliStorageAPI.getUsers();
     filteredUsers := users.where(FeliUserKeys.username, FeliOperators.equalsTo, usernameOrEmail);
-    tempUsers := users.where(FeliUserKeys.email, FeliOperators.equalsTo, usernameOrEmail);
-    filteredUsers.join(tempUsers);
-    if (filteredUsers.length() = 0) then 
+    filteredUsersTemp := users.where(FeliUserKeys.email, FeliOperators.equalsTo, usernameOrEmail);
+    filteredUsers.join(filteredUsersTemp);
+    if (filteredUsers.length() <= 0) then 
         result := nil 
     else
         begin
+            if (filteredUsers.length() > 1) then FeliLogger.warn(format('There are multiple entries for user %s, fallback to using the first user found', [usernameOrEmail]));
             userObject := filteredUsers.toTJsonArray()[0] as TJsonObject;
             result := FeliUser.fromTJsonObject(userObject);
         end;
 end;
 
 class function FeliStorageAPI.getUsers(): FeliUserCollection;
-var usersJsonArray: TJsonArray;
-
+var
+    usersJsonArray: TJsonArray;
 begin
-
-    usersJsonArray := FeliFileAPI.getJsonArray(users_file_path);
+    usersJsonArray := FeliFileAPI.getJsonArray(usersFilePath);
     result := FeliUserCollection.fromTJsonArray(usersJsonArray);
-
 end;
 
 class procedure FeliStorageAPI.addUser(user: FeliUser);
@@ -95,7 +92,7 @@ end;
 
 class procedure FeliStorageAPI.setUsers(users: FeliUserCollection);
 begin
-    FeliFileAPI.put(users_file_path, users.toJson());
+    FeliFileAPI.put(usersFilePath, users.toJson());
 end;
 
 class procedure FeliStorageAPI.removeUser(usernameOrEmail: ansiString);
@@ -116,32 +113,70 @@ end;
 
 
 class function FeliStorageAPI.getEvent(eventId: ansiString): FeliEvent;
+var
+    eventObject: TJsonObject;
+    events, filteredEvents: FeliEventCollection;
 begin
-
+    result := nil;
+    events := FeliStorageAPI.getEvents();
+    filteredEvents := events.where(FeliEventKeys.id, FeliOperators.equalsTo, eventId);
+    if (filteredEvents.length() <= 0) then
+        result := nil
+    else
+        begin
+            if (filteredEvents.length() > 1) then FeliLogger.warn(format('There are multiple entries for event %s, fallback to using the first event found', [eventId]));
+            eventObject := filteredEvents.toTJsonArray()[0] as TJsonObject;
+            result := FeliEvent.fromTJsonObject(eventObject);
+        end;
 end;
 
 
 class function FeliStorageAPI.getEvents(): FeliEventCollection;
+var
+    eventsJsonArray: TJsonArray;
 begin
-
+    eventsJsonArray := FeliFileAPI.getJsonArray(eventsFilePath);
+    result := FeliEventCollection.fromTJsonArray(eventsJsonArray);
 end;
 
 
 class procedure FeliStorageAPI.addEvent(event: FeliEvent);
+var
+    events: FeliEventCollection;
 begin
-
+    if (FeliStorageAPI.getEvent(event.id) <> nil) then
+        begin
+            raise FeliExceptions.FeliStorageEventExist.create('Event already exist');
+        end
+    else
+        begin
+            if (event.id = '') then event.generateId();
+            events := FeliStorageAPI.getEvents();
+            events.add(event);
+            FeliStorageAPI.setEvents(events);
+        end;
 end;
 
 
 class procedure FeliStorageAPI.removeEvent(eventId: ansiString);
+var
+    events: FeliEventCollection;
+    oldLength: int64;
 begin
-
+    events := FeliStorageAPI.getEvents();
+    oldLength := events.length();
+    events := events.where(FeliEventKeys.id, FeliOperators.notEqualsTo, eventId);
+    if (events.length() = oldLength) then
+        FeliLogger.error(format('Event %s was not found, ergo unable to remove %s', [eventId, eventId])) 
+    else 
+        FeliLogger.info(format('Event %s removed successfully', [eventId]));
+    FeliStorageAPI.setEvents(events);
 end;
 
 
 class procedure FeliStorageAPI.setEvents(events: FeliEventCollection);
 begin
-
+    FeliFileAPI.put(eventsFilePath, events.ToJson());
 end;
 
 
@@ -150,8 +185,8 @@ end;
 
 class procedure FeliStorageAPI.debug(); static;
 begin
-    FeliLogger.info(format('[FeliStorageAPI.debug] Events file using %s', [events_file_path]));
-    FeliLogger.info(format('[FeliStorageAPI.debug] Users file using %s', [users_file_path]));
+    FeliLogger.info(format('[FeliStorageAPI.debug] Events file using %s', [eventsFilePath]));
+    FeliLogger.info(format('[FeliStorageAPI.debug] Users file using %s', [usersFilePath]));
 end;
 
 end.

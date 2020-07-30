@@ -11,6 +11,7 @@ type
     FeliExceptions = class(TObject)
     public
         type FeliStorageUserExist = class(Exception) end;
+        type FeliStorageEventExist = class(Exception) end;
     end;
 
 

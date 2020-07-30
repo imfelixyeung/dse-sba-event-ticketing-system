@@ -41,10 +41,10 @@ type
         private
         public
             data: TJsonArray;
-            function toJson(): ansiString;
             constructor create();
             function where(key: ansiString; operation: ansiString; value: ansiString): FeliUserCollection;
             function toTJsonArray(): TJsonArray;
+            function toJson(): ansiString;
             procedure add(user: FeliUser);
             procedure join(newCollection: FeliUserCollection);
             function length(): int64;

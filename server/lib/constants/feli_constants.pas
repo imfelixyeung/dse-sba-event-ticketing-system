@@ -5,9 +5,9 @@ const
     configFilePath = 'ets.cfg.json';
     logFilePath = 'ets.log';
     chars = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVQXYZ1234567890_-';
-    line_separator = #13#10;
-    events_file_path = 'database/events.json';
-    users_file_path = 'database/users.json';
+    lineSeparator = #13#10;
+    eventsFilePath = 'database/events.json';
+    usersFilePath = 'database/users.json';
 
 implementation
 end.

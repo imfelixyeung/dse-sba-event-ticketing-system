@@ -49,6 +49,7 @@
         "PLK",
         "Str",
         "eof",
+        "fallback",
         "fpc",
         "fpjson",
         "jsonparser",

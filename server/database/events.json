@@ -1,33 +1,88 @@
 [
-    {
-        "id": "EB3444FB3A9F183C0",
-        "organiser": "FelixYeung",
-        "name": "Very Fun Event",
-        "description": "This is a super cool event!",
-        "start_time": "2020-07-29 15:30",
-        "end_time": "2020-07-29 16:00",
-        "created_at": 1596094047097,
-        "venue": "Hong Kong",
-        "theme": "Very Fun Games",
-        "participant_limit": 100,
-        "tickets": [
-            {
-                "id": 0,
-                "type": "Regular",
-                "fee": 100
-            },
-            {
-                "id": 1,
-                "type": "VIP",
-                "fee": 350
-            },
-            {
-                "id": 2,
-                "type": "MVP",
-                "fee": 500
-            }
-        ],
-        "participants": [],
-        "waiting_list": []
-    }
+  {
+    "id" : "EB3444FB3A9F183C0",
+    "organiser" : "FelixNPL",
+    "name" : "Very Fun Event",
+    "description" : "This is a super cool event!",
+    "start_time" : 1596113358066,
+    "end_time" : 1596113376639,
+    "created_at" : 1596094047097,
+    "venue" : "Hong Kong",
+    "theme" : "Very Fun Games",
+    "participant_limit" : 100,
+    "tickets" : [
+      {
+        "id" : 0,
+        "type" : "Regular",
+        "fee" : 100
+      },
+      {
+        "id" : 1,
+        "type" : "VIP",
+        "fee" : 350
+      },
+      {
+        "id" : 2,
+        "type" : "MVP",
+        "fee" : 500
+      }
+    ],
+    "participants" : [
+      "FelixNPL"
+    ],
+    "waiting_list" : [
+    ]
+  },
+  {
+    "id" : "A7H345DFbA9FB3Y9",
+    "organiser" : "FelixNPL",
+    "name" : "Another Very Fun Event",
+    "description" : "This is yet another super cool event!",
+    "start_time" : 1596114554902,
+    "end_time" : 1596114654902,
+    "created_at" : 1596114454902,
+    "venue" : "Null Island",
+    "theme" : "Games",
+    "participant_limit" : 100,
+    "tickets" : [
+      {
+        "id" : 0,
+        "type" : "Regular",
+        "fee" : 100
+      },
+      {
+        "id" : 1,
+        "type" : "VIP",
+        "fee" : 350
+      },
+      {
+        "id" : 2,
+        "type" : "MVP",
+        "fee" : 500
+      }
+    ],
+    "participants" : [
+      "FelixNPL"
+    ],
+    "waiting_list" : [
+    ]
+  },
+  {
+    "id" : "ijqusjYyJ7Lt08sggnqNa66K8j2GyEh0",
+    "organiser" : "PascalGenerated",
+    "name" : "Lovely Event",
+    "description" : "Everyone should join this event, it will be epic",
+    "start_time" : 0,
+    "end_time" : 0,
+    "created_at" : 0,
+    "venue" : "Space",
+    "theme" : "Weightless",
+    "participant_limit" : 0,
+    "tickets" : [
+    ],
+    "participants" : [
+    ],
+    "waiting_list" : [
+    ]
+  }
 ]

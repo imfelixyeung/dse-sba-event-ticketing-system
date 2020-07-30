@@ -1,1 +1,64 @@
-[]
+[
+    {
+        "id": "EB3444FB3A9F183C0",
+        "organiser": "FelixNPL",
+        "name": "Very Fun Event",
+        "description": "This is a super cool event!",
+        "start_time": 1596113358066,
+        "end_time": 1596113376639,
+        "created_at": 1596094047097,
+        "venue": "Hong Kong",
+        "theme": "Very Fun Games",
+        "participant_limit": 100,
+        "tickets": [
+            {
+                "id": 0,
+                "type": "Regular",
+                "fee": 100
+            },
+            {
+                "id": 1,
+                "type": "VIP",
+                "fee": 350
+            },
+            {
+                "id": 2,
+                "type": "MVP",
+                "fee": 500
+            }
+        ],
+        "participants": ["FelixNPL"],
+        "waiting_list": []
+    },
+    {
+        "id": "A7H345DFbA9FB3Y9",
+        "organiser": "FelixNPL",
+        "name": "Another Very Fun Event",
+        "description": "This is yet another super cool event!",
+        "start_time": 1596114554902,
+        "end_time": 1596114654902,
+        "created_at": 1596114454902,
+        "venue": "Null Island",
+        "theme": "Games",
+        "participant_limit": 100,
+        "tickets": [
+            {
+                "id": 0,
+                "type": "Regular",
+                "fee": 100
+            },
+            {
+                "id": 1,
+                "type": "VIP",
+                "fee": 350
+            },
+            {
+                "id": 2,
+                "type": "MVP",
+                "fee": 500
+            }
+        ],
+        "participants": ["FelixNPL"],
+        "waiting_list": []
+    }
+]
