@@ -44,7 +44,7 @@ end;
 class procedure FeliLogger.debug(payload: ansiString); static;
 var line: ansiString;
 begin
-    line := format('[ETS] %0:-10s %s', ['[Log]', payload]);
+    line := format('[ETS] %0:-10s %s', ['[Debug]', payload]);
     textColor(blue);
     FeliLogger.save(line);
     textColor(mono);

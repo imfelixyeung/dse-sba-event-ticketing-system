@@ -106,19 +106,5 @@
       "pending_events" : [
       ]
     }
-  },
-  {
-    "username" : "AddUserTest",
-    "display_name" : "Add User Test",
-    "salt" : "KsxVoFf2Kttq3oZBaqbu_yxn9Gaytuzp",
-    "salted_password" : "1acd88e0637b60c28770c2d717343b70",
-    "email" : "test@example.com",
-    "first_name" : "Test",
-    "last_name" : "User",
-    "access_level" : "organiser",
-    "data" : {
-      "created_events" : [
-      ]
-    }
   }
 ]

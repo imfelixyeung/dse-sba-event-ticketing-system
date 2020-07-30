@@ -6,11 +6,26 @@ interface
 uses fpjson;
 
 type
+    FeliUserKeys = class
+        public
+            const
+                username = 'username';
+                displayName = 'display_name';
+                salt = 'salt';
+                saltedPassword = 'salted_password';
+                email = 'email';
+                firstName = 'first_name';
+                lastName = 'last_name';
+                accessLevel = 'access_level';
+                data = 'data';
+        end;
+
     FeliUser = class(TObject)
         private
             salt, saltedPassword: ansiString;
         public
             username, password, displayName, email, firstName, lastName, accessLevel: ansiString;
+            createdAt: int64;
             joinedEvents, createdEvents, pendingEvents: TJsonArray;
             constructor create();
             function toTJsonObject(): TJsonObject;
@@ -21,9 +36,24 @@ type
             class function fromTJsonObject(userObject: TJsonObject): FeliUser; static;
         end;
 
+    FeliUserCollection = class(TObject)
+        private
+        public
+            data: TJsonArray;
+            function toJson(): ansiString;
+            constructor create();
+            function where(key: ansiString; operation: ansiString; value: ansiString): FeliUserCollection;
+            function toTJsonArray(): TJsonArray;
+            procedure add(user: FeliUser);
+            procedure join(newCollection: FeliUserCollection);
+            function length(): int64;
+            class function fromTJsonArray(usersArray: TJsonArray): FeliUserCollection; static;
+        end;
+
 implementation
 uses
-    feli_crypto;
+    feli_crypto,
+    feli_operators;
 
 constructor FeliUser.create();
 begin
@@ -130,6 +160,100 @@ begin
         end;
     end;
     result := feliUserInstance;
+end;
+
+
+constructor FeliUserCollection.create();
+begin
+    data := TJsonArray.Create;
+end;
+
+function FeliUserCollection.where(key: ansiString; operation: ansiString; value: ansiString): FeliUserCollection;
+var
+    dataTemp: TJsonArray;
+    dataEnum: TJsonEnum;
+    dataSingle: TJsonObject;
+begin
+    dataTemp := TJsonArray.create();
+
+    for dataEnum in data do
+    begin
+        dataSingle := dataEnum.value as TJsonObject;
+        case operation of
+            FeliOperators.equalsTo: begin
+                if (dataSingle.getPath(key).asString = value) then
+                    dataTemp.add(dataSingle);
+            end;
+            FeliOperators.notEqualsTo: begin
+                if (dataSingle.getPath(key).asString <> value) then
+                    dataTemp.add(dataSingle);
+            end;
+            FeliOperators.largerThanOrEqualTo: begin
+                if (dataSingle.getPath(key).asString >= value) then
+                    dataTemp.add(dataSingle);
+            end;
+            FeliOperators.largerThan: begin
+                if (dataSingle.getPath(key).asString > value) then
+                    dataTemp.add(dataSingle);
+            end;
+            FeliOperators.smallerThanOrEqualTo: begin
+                if (dataSingle.getPath(key).asString <= value) then
+                    dataTemp.add(dataSingle);
+            end;
+            FeliOperators.smallerThan: begin
+                if (dataSingle.getPath(key).asString < value) then
+                    dataTemp.add(dataSingle);
+            end;
+
+        end;
+
+    end;
+
+    result := FeliUserCollection.fromTJsonArray(dataTemp);
+end;
+
+procedure FeliUserCollection.add(user: FeliUser);
+begin
+    data.add(user.toTJsonObject());
+end;
+
+procedure FeliUserCollection.join(newCollection: FeliUserCollection);
+var
+    newArray: TJsonArray;
+    newEnum: TJsonEnum;
+    newDataSingle: TJsonObject;
+begin
+    newArray := newCollection.toTJsonArray();
+    for newEnum in newArray do
+    begin
+        newDataSingle := newEnum.value as TJsonObject;
+        data.add(newDataSingle);
+    end;
+end;
+
+function FeliUserCollection.length(): int64;
+begin
+    result := data.count;
+end;
+
+function FeliUserCollection.toTJsonArray(): TJsonArray;
+begin
+    result := data;
+end;
+
+function FeliUserCollection.toJson(): ansiString;
+begin
+    result := self.toTJsonArray().formatJson;
+end;
+
+
+class function FeliUserCollection.fromTJsonArray(usersArray: TJsonArray): FeliUserCollection; static;
+var 
+    feliUserCollectionInstance: FeliUserCollection;
+begin
+    feliUserCollectionInstance := feliUserCollection.create();
+    feliUserCollectionInstance.data := usersArray;
+    result := feliUserCollectionInstance;
 end;
 
 end.

@@ -39,7 +39,7 @@ This project consists of two main parts
 Details and features of ETS
 
 ## Database
-- Database in ETS is custom made from scratch, using a `NoSQL` data structure
+- Database in ETS is custom made from scratch, using a `NoSQL` document-orientated data structure
 - Database files are stored with a `json` file extension
 
 ## User Authentication

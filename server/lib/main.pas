@@ -1,4 +1,4 @@
-Program event_ticketing_system_server;
+Program main;
 
 {$mode objfpc}
 
@@ -11,6 +11,7 @@ uses
     feli_config,
     feli_user,
     feli_exceptions,
+    feli_operators,
     sysutils,
     fpjson;
 
@@ -29,43 +30,60 @@ end;
 
 procedure test();
 var 
-    // usersArray: TJsonArray;
+    usersArray: TJsonArray;
+    userEnum: TJsonEnum;
     testUsernameString: ansiString;
     testUser: FeliUser;
+    users: FeliUserCollection;
     // testUser2: FeliUser;
     // testUserObject: TJsonObject;
 
 begin
+    FeliStorageAPI.removeUser('add.user.test@example.com');
+    testUsernameString := 'FelixNPL';
+    testUser := FeliStorageAPI.getUser(testUsernameString);
+    FeliLogger.info(format('[User] Username %s', [testUser.username])); 
+    users := FeliStorageAPI.getUsers();
+    users := users.where(FeliUserKeys.username, FeliOperators.equalsTo, testUsernameString);
+    usersArray := users.toTJsonArray();
+    if (users.length = 0) then 
+        FeliLogger.debug('[User] No users found') 
+    else
+        for userEnum in usersArray do
+        begin
+            testUser := FeliUser.fromTJsonObject(TJsonObject(userEnum.value));
+            FeliLogger.debug(format('[User] Display name: %s', [testUSer.username]));
+        end;
 
     // Test for FeliStorageAPI.addUser()
-    testUser := FeliUser.create();
-    with testUser do begin
-        // username := 'FelixNPL';
-        // password := '20151529';
-        // email := 's20151529@home.npl.edu.hk';
-        // firstName := 'Felix';
-        // lastName := 'Yeung';
-        // displayName := 'Felix NPL';
-        // accessLevel := 'admin';
-        // salt := 'CD5167D267431D269BA0DA40E692F14B';
-        // saltedPassword := '91da52fb59d439167de2a21a87243e29';
-        username := 'AddUserTest';
-        password := '20151529';
-        email := 'test@example.com';
-        firstName := 'Test';
-        lastName := 'User';
-        displayName := 'Add User Test';
-        accessLevel := 'organiser';
-    end;
+    // testUser := FeliUser.create();
+    // with testUser do begin
+    //     // username := 'FelixNPL';
+    //     // password := '20151529';
+    //     // email := 's20151529@home.npl.edu.hk';
+    //     // firstName := 'Felix';
+    //     // lastName := 'Yeung';
+    //     // displayName := 'Felix NPL';
+    //     // accessLevel := 'admin';
+    //     // salt := 'CD5167D267431D269BA0DA40E692F14B';
+    //     // saltedPassword := '91da52fb59d439167de2a21a87243e29';
+    //     username := 'AddUserTest';
+    //     password := '20151529';
+    //     email := 'test@example.com';
+    //     firstName := 'Test';
+    //     lastName := 'User';
+    //     displayName := 'Add User Test';
+    //     accessLevel := 'organiser';
+    // end;
 
-    testUser.generateSaltedPassword();
-    writeln(testUser.verify());
-    try
-        FeliStorageAPI.addUser(testUser);
-    except
-        on e: FeliExceptions.FeliStorageUserExist do writeln('EFeliStorageUserExist', e.message);
-        on e: Exception do writeln(e.message);
-    end;
+    // testUser.generateSaltedPassword();
+    // writeln(testUser.verify());
+    // try
+    //     FeliStorageAPI.addUser(testUser);
+    // except
+    //     on e: FeliExceptions.FeliStorageUserExist do writeln('EFeliStorageUserExist', e.message);
+    //     on e: Exception do writeln('oh no', e.message);
+    // end;
     // writeln(testUser.toJson());
 
     // Test for FeliStorageAPI.getUser()
