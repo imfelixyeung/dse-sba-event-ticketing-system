@@ -84,5 +84,23 @@
     ],
     "waiting_list" : [
     ]
+  },
+  {
+    "id" : "j4Vg0da6oyt2tkZ9vC_6n4dg-7krxvZS",
+    "organiser" : "PascalGenerated",
+    "name" : "Lovely Event",
+    "description" : "Everyone should join this event, it will be epic",
+    "start_time" : 0,
+    "end_time" : 0,
+    "created_at" : 0,
+    "venue" : "Space",
+    "theme" : "Weightless",
+    "participant_limit" : 0,
+    "tickets" : [
+    ],
+    "participants" : [
+    ],
+    "waiting_list" : [
+    ]
   }
 ]
