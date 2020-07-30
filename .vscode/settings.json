@@ -45,6 +45,8 @@
         "Crypto",
         "ETS",
         "ISC",
+        "MVP",
+        "PLK",
         "Str",
         "eof",
         "fpc",
@@ -55,5 +57,8 @@
         "readln",
         "sysutils",
         "writeln"
+    ],
+    "cSpell.enableFiletypes": [
+        "objectpascal"
     ]
 }

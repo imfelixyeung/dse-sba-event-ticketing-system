@@ -12,6 +12,7 @@ uses
     feli_user,
     feli_exceptions,
     feli_operators,
+    feli_event,
     sysutils,
     fpjson;
 
@@ -29,31 +30,35 @@ begin
 end;
 
 procedure test();
-var 
-    usersArray: TJsonArray;
-    userEnum: TJsonEnum;
-    testUsernameString: ansiString;
-    testUser: FeliUser;
-    users: FeliUserCollection;
-    // testUser2: FeliUser;
-    // testUserObject: TJsonObject;
+// var 
+//     usersArray: TJsonArray;
+//     userEnum: TJsonEnum;
+//     testUsernameString: ansiString;
+//     testUser: FeliUser;
+//     users: FeliUserCollection;
+//     testUser2: FeliUser;
+//     testUserObject: TJsonObject;
 
 begin
-    FeliStorageAPI.removeUser('add.user.test@example.com');
-    testUsernameString := 'FelixNPL';
-    testUser := FeliStorageAPI.getUser(testUsernameString);
-    FeliLogger.info(format('[User] Username %s', [testUser.username])); 
-    users := FeliStorageAPI.getUsers();
-    users := users.where(FeliUserKeys.username, FeliOperators.equalsTo, testUsernameString);
-    usersArray := users.toTJsonArray();
-    if (users.length = 0) then 
-        FeliLogger.debug('[User] No users found') 
-    else
-        for userEnum in usersArray do
-        begin
-            testUser := FeliUser.fromTJsonObject(TJsonObject(userEnum.value));
-            FeliLogger.debug(format('[User] Display name: %s', [testUSer.username]));
-        end;
+    
+
+
+    // Test for FeliStorageAPI methods
+    // FeliStorageAPI.removeUser('add.user.test@example.com');
+    // testUsernameString := 'FelixNPL';
+    // testUser := FeliStorageAPI.getUser(testUsernameString);
+    // FeliLogger.info(format('[User] Username %s', [testUser.username])); 
+    // users := FeliStorageAPI.getUsers();
+    // users := users.where(FeliUserKeys.username, FeliOperators.equalsTo, testUsernameString);
+    // usersArray := users.toTJsonArray();
+    // if (users.length = 0) then 
+    //     FeliLogger.debug('[User] No users found') 
+    // else
+    //     for userEnum in usersArray do
+    //     begin
+    //         testUser := FeliUser.fromTJsonObject(TJsonObject(userEnum.value));
+    //         FeliLogger.debug(format('[User] Display name: %s', [testUser.username]));
+    //     end;
 
     // Test for FeliStorageAPI.addUser()
     // testUser := FeliUser.create();
@@ -177,6 +182,12 @@ begin
 end;
 
 begin
+
+    try
+      
+    except
+      on err: Exception do writeln(err.message);
+    end;
     init();
     // debug();
     test();

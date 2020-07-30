@@ -221,3 +221,6 @@
 2020-07-30 15:08:08 [ETS] [Error]    User add.user.test@example.com was not found, ergo unable to remove add.user.test@example.com
 2020-07-30 15:08:08 [ETS] [Info]     [User] Username Felix NPL
 2020-07-30 15:08:08 [ETS] [Debug]    [User] Display name: Felix NPL
+2020-07-30 15:11:46 [ETS] [Error]    User add.user.test@example.com was not found, ergo unable to remove add.user.test@example.com
+2020-07-30 15:11:46 [ETS] [Info]     [User] Username Felix NPL
+2020-07-30 15:11:46 [ETS] [Debug]    [User] Display name: Felix NPL

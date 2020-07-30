@@ -1,1 +1,33 @@
-[]
+[
+    {
+        "id": "EB3444FB3A9F183C0",
+        "organiser": "FelixYeung",
+        "name": "Very Fun Event",
+        "description": "This is a super cool event!",
+        "start_time": "2020-07-29 15:30",
+        "end_time": "2020-07-29 16:00",
+        "created_at": 1596094047097,
+        "venue": "Hong Kong",
+        "theme": "Very Fun Games",
+        "participant_limit": 100,
+        "tickets": [
+            {
+                "id": 0,
+                "type": "Regular",
+                "fee": 100
+            },
+            {
+                "id": 1,
+                "type": "VIP",
+                "fee": 350
+            },
+            {
+                "id": 2,
+                "type": "MVP",
+                "fee": 500
+            }
+        ],
+        "participants": [],
+        "waiting_list": []
+    }
+]

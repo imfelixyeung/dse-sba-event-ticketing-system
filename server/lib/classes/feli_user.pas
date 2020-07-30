@@ -27,6 +27,7 @@ type
             username, password, displayName, email, firstName, lastName, accessLevel: ansiString;
             createdAt: int64;
             joinedEvents, createdEvents, pendingEvents: TJsonArray;
+            
             constructor create();
             function toTJsonObject(): TJsonObject;
             function toJson(): ansiString;

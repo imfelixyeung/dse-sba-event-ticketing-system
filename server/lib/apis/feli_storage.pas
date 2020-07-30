@@ -6,18 +6,30 @@ interface
 
 uses
     feli_user,
+    feli_event,
     fpjson;
 
 type
     FeliStorageAPI = class(TObject)
     private
     public
+        // users
         class function getUser(usernameOrEmail: ansiString): FeliUser;
         class function getUsers(): FeliUserCollection;
         class procedure addUser(user: FeliUser);
         class procedure removeUser(usernameOrEmail: ansiString);
         class procedure setUsers(users: FeliUserCollection);
+
+        // event
+        class function getEvent(eventId: ansiString): FeliEvent;
+        class function getEvents(): FeliEventCollection;
+        class procedure addEvent(event: FeliEvent);
+        class procedure removeEvent(eventId: ansiString);
+        class procedure setEvents(events: FeliEventCollection);
+
+        // DEBUG
         class procedure debug(); static;
+
     end;
 
 
@@ -101,6 +113,40 @@ begin
         FeliLogger.info(format('User %s removed successfully', [usernameOrEmail]));
     FeliStorageAPI.setUsers(users);
 end;
+
+
+class function FeliStorageAPI.getEvent(eventId: ansiString): FeliEvent;
+begin
+
+end;
+
+
+class function FeliStorageAPI.getEvents(): FeliEventCollection;
+begin
+
+end;
+
+
+class procedure FeliStorageAPI.addEvent(event: FeliEvent);
+begin
+
+end;
+
+
+class procedure FeliStorageAPI.removeEvent(eventId: ansiString);
+begin
+
+end;
+
+
+class procedure FeliStorageAPI.setEvents(events: FeliEventCollection);
+begin
+
+end;
+
+
+
+
 
 class procedure FeliStorageAPI.debug(); static;
 begin
