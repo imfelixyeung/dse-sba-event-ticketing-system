@@ -86,42 +86,6 @@
     ]
   },
   {
-    "id" : "j4Vg0da6oyt2tkZ9vC_6n4dg-7krxvZS",
-    "organiser" : "PascalGenerated",
-    "name" : "Lovely Event",
-    "description" : "Everyone should join this event, it will be epic",
-    "start_time" : 0,
-    "end_time" : 0,
-    "created_at" : 0,
-    "venue" : "Space",
-    "theme" : "Weightless",
-    "participant_limit" : 0,
-    "tickets" : [
-    ],
-    "participants" : [
-    ],
-    "waiting_list" : [
-    ]
-  },
-  {
-    "id" : "0TnpfpamgFEqb5tRUOTeu_DiffHJJB7c",
-    "organiser" : "PascalGenerated",
-    "name" : "Lovely Event",
-    "description" : "Everyone should join this event, it will be epic",
-    "start_time" : 0,
-    "end_time" : 0,
-    "created_at" : 0,
-    "venue" : "Space",
-    "theme" : "Weightless",
-    "participant_limit" : 0,
-    "tickets" : [
-    ],
-    "participants" : [
-    ],
-    "waiting_list" : [
-    ]
-  },
-  {
     "id" : "y4FhjYegfLsRctE3icEzNa_9_Kh0HbN7",
     "organiser" : "PascalGenerated",
     "name" : "Lovely Event",
@@ -393,42 +357,6 @@
   },
   {
     "id" : "10xumOzotaM33VbQqN4lqaVNUD67Iodi",
-    "organiser" : "PascalGenerated",
-    "name" : "Lovely Event",
-    "description" : "Everyone should join this event, it will be epic",
-    "start_time" : 0,
-    "end_time" : 0,
-    "created_at" : 0,
-    "venue" : "Space",
-    "theme" : "Weightless",
-    "participant_limit" : 0,
-    "tickets" : [
-    ],
-    "participants" : [
-    ],
-    "waiting_list" : [
-    ]
-  },
-  {
-    "id" : "JkV74xTNKUrI_Ser9lIx8qkS6pzLlqgi",
-    "organiser" : "PascalGenerated",
-    "name" : "Lovely Event",
-    "description" : "Everyone should join this event, it will be epic",
-    "start_time" : 0,
-    "end_time" : 0,
-    "created_at" : 0,
-    "venue" : "Space",
-    "theme" : "Weightless",
-    "participant_limit" : 0,
-    "tickets" : [
-    ],
-    "participants" : [
-    ],
-    "waiting_list" : [
-    ]
-  },
-  {
-    "id" : "UZSpK1V2IzeDEK_VP8dRXP1niiuqi1Zq",
     "organiser" : "PascalGenerated",
     "name" : "Lovely Event",
     "description" : "Everyone should join this event, it will be epic",

@@ -41,17 +41,17 @@ type
             class function fromTJsonObject(eventObject: TJsonObject): FeliEvent; static;
         end;
 
-    FeliEventCollection = class(TObject)
+    FeliEventCollection = class(FeliCollection)
         private
         public
-            data: TJsonArray;
-            constructor create(creationData: TJsonArray = nil);
-            function where(key: ansiString; operation: ansiString; value: ansiString): FeliEventCollection;
-            function toTJsonArray(): TJsonArray;
-            function toJson(): ansiString;
+            // data: TJsonArray;
+            constructor create();
+            // function where(key: ansiString; operation: ansiString; value: ansiString): FeliEventCollection;
+            // function toTJsonArray(): TJsonArray;
+            // function toJson(): ansiString;
             procedure add(event: FeliEvent);
-            function length(): int64;
-            class function fromTJsonArray(eventsArray: TJsonArray): FeliEventCollection; static;
+            // function length(): int64;
+            // class function fromTJsonArray(eventsArray: TJsonArray): FeliEventCollection; static;
             class function fromFeliCollection(collection: FeliCollection): FeliEventCollection; static;
         end;
 
@@ -131,69 +131,66 @@ begin
 end;
 
 
-constructor FeliEventCollection.create(creationData: TJsonArray = nil);
+constructor FeliEventCollection.create();
 begin
-    if (creationData = nil) then
-        self.data := TJsonArray.create()
-    else
-        self.data := creationData;
+    self.data := TJsonArray.create()
 end;
 
 
-function FeliEventCollection.where(key: ansiString; operation: ansiString; value: ansiString): FeliEventCollection;
-var
-    dataTemp: TJsonArray;
-    dataEnum: TJsonEnum;
-    dataSingle: TJsonObject;
-begin
-    dataTemp := TJsonArray.create();
+// function FeliEventCollection.where(key: ansiString; operation: ansiString; value: ansiString): FeliEventCollection;
+// var
+//     dataTemp: TJsonArray;
+//     dataEnum: TJsonEnum;
+//     dataSingle: TJsonObject;
+// begin
+//     dataTemp := TJsonArray.create();
 
-    for dataEnum in data do
-    begin
-        dataSingle := dataEnum.value as TJsonObject;
-        case operation of
-            FeliOperators.equalsTo: begin
-                if (dataSingle.getPath(key).asString = value) then
-                    dataTemp.add(dataSingle);
-            end;
-            FeliOperators.notEqualsTo: begin
-                if (dataSingle.getPath(key).asString <> value) then
-                    dataTemp.add(dataSingle);
-            end;
-            FeliOperators.largerThanOrEqualTo: begin
-                if (dataSingle.getPath(key).asString >= value) then
-                    dataTemp.add(dataSingle);
-            end;
-            FeliOperators.largerThan: begin
-                if (dataSingle.getPath(key).asString > value) then
-                    dataTemp.add(dataSingle);
-            end;
-            FeliOperators.smallerThanOrEqualTo: begin
-                if (dataSingle.getPath(key).asString <= value) then
-                    dataTemp.add(dataSingle);
-            end;
-            FeliOperators.smallerThan: begin
-                if (dataSingle.getPath(key).asString < value) then
-                    dataTemp.add(dataSingle);
-            end;
+//     for dataEnum in data do
+//     begin
+//         dataSingle := dataEnum.value as TJsonObject;
+//         case operation of
+//             FeliOperators.equalsTo: begin
+//                 if (dataSingle.getPath(key).asString = value) then
+//                     dataTemp.add(dataSingle);
+//             end;
+//             FeliOperators.notEqualsTo: begin
+//                 if (dataSingle.getPath(key).asString <> value) then
+//                     dataTemp.add(dataSingle);
+//             end;
+//             FeliOperators.largerThanOrEqualTo: begin
+//                 if (dataSingle.getPath(key).asString >= value) then
+//                     dataTemp.add(dataSingle);
+//             end;
+//             FeliOperators.largerThan: begin
+//                 if (dataSingle.getPath(key).asString > value) then
+//                     dataTemp.add(dataSingle);
+//             end;
+//             FeliOperators.smallerThanOrEqualTo: begin
+//                 if (dataSingle.getPath(key).asString <= value) then
+//                     dataTemp.add(dataSingle);
+//             end;
+//             FeliOperators.smallerThan: begin
+//                 if (dataSingle.getPath(key).asString < value) then
+//                     dataTemp.add(dataSingle);
+//             end;
 
-        end;
+//         end;
 
-    end;
+//     end;
 
-    result := FeliEventCollection.fromTJsonArray(dataTemp);
-end;
+//     result := FeliEventCollection.fromTJsonArray(dataTemp);
+// end;
 
 
-function FeliEventCollection.toTJsonArray(): TJsonArray;
-begin
-    result := data;
-end;
+// function FeliEventCollection.toTJsonArray(): TJsonArray;
+// begin
+//     result := data;
+// end;
 
-function FeliEventCollection.toJson(): ansiString;
-begin
-    result := self.toTJsonArray().formatJson;
-end;
+// function FeliEventCollection.toJson(): ansiString;
+// begin
+//     result := self.toTJsonArray().formatJson;
+// end;
 
 procedure FeliEventCollection.add(event: FeliEvent);
 begin
@@ -201,20 +198,20 @@ begin
 end;
 
 
-function FeliEventCollection.length(): int64;
-begin
-    result := data.count;
-end;
+// function FeliEventCollection.length(): int64;
+// begin
+//     result := data.count;
+// end;
 
 
-class function FeliEventCollection.fromTJsonArray(eventsArray: TJsonArray): FeliEventCollection; static;
-var
-    feliEventCollectionInstance: FeliEventCollection;
-begin
-    feliEventCollectionInstance := FeliEventCollection.create();
-    feliEventCollectionInstance.data := eventsArray;
-    result := feliEventCollectionInstance;
-end;
+// class function FeliEventCollection.fromTJsonArray(eventsArray: TJsonArray): FeliEventCollection; static;
+// var
+//     feliEventCollectionInstance: FeliEventCollection;
+// begin
+//     feliEventCollectionInstance := FeliEventCollection.create();
+//     feliEventCollectionInstance.data := eventsArray;
+//     result := feliEventCollectionInstance;
+// end;
 
 
 class function FeliEventCollection.fromFeliCollection(collection: FeliCollection): FeliEventCollection; static;

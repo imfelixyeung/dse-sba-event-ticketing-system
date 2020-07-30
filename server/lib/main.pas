@@ -44,6 +44,12 @@ var
 
 
 begin
+    // Test if code still works (<o/)
+    // FeliStorageAPI.removeUser('test');
+    // FeliStorageAPI.removeEvent('0TnpfpamgFEqb5tRUOTeu_DiffHJJB7c');
+    // FeliStorageAPI.removeEvent('JkV74xTNKUrI_Ser9lIx8qkS6pzLlqgi');
+    // HaHa still works
+
 
     // Test type casting
     // eventCollection := FeliEventCollection.create();

@@ -39,18 +39,18 @@ type
             class function fromTJsonObject(userObject: TJsonObject): FeliUser; static;
         end;
 
-    FeliUserCollection = class(TObject)
+    FeliUserCollection = class(FeliCollection)
         private
         public
-            data: TJsonArray;
+            // data: TJsonArray;
             constructor create();
-            function where(key: ansiString; operation: ansiString; value: ansiString): FeliUserCollection;
-            function toTJsonArray(): TJsonArray;
-            function toJson(): ansiString;
+            // function where(key: ansiString; operation: ansiString; value: ansiString): FeliUserCollection;
+            // function toTJsonArray(): TJsonArray;
+            // function toJson(): ansiString;
             procedure add(user: FeliUser);
             procedure join(newCollection: FeliUserCollection);
-            function length(): int64;
-            class function fromTJsonArray(usersArray: TJsonArray): FeliUserCollection; static;
+            // function length(): int64;
+            // class function fromTJsonArray(usersArray: TJsonArray): FeliUserCollection; static;
             class function fromFeliCollection(collection: FeliCollection): FeliUserCollection; static;
         end;
 
@@ -172,49 +172,49 @@ begin
     data := TJsonArray.Create;
 end;
 
-function FeliUserCollection.where(key: ansiString; operation: ansiString; value: ansiString): FeliUserCollection;
-var
-    dataTemp: TJsonArray;
-    dataEnum: TJsonEnum;
-    dataSingle: TJsonObject;
-begin
-    dataTemp := TJsonArray.create();
+// function FeliUserCollection.where(key: ansiString; operation: ansiString; value: ansiString): FeliUserCollection;
+// var
+//     dataTemp: TJsonArray;
+//     dataEnum: TJsonEnum;
+//     dataSingle: TJsonObject;
+// begin
+//     dataTemp := TJsonArray.create();
 
-    for dataEnum in data do
-    begin
-        dataSingle := dataEnum.value as TJsonObject;
-        case operation of
-            FeliOperators.equalsTo: begin
-                if (dataSingle.getPath(key).asString = value) then
-                    dataTemp.add(dataSingle);
-            end;
-            FeliOperators.notEqualsTo: begin
-                if (dataSingle.getPath(key).asString <> value) then
-                    dataTemp.add(dataSingle);
-            end;
-            FeliOperators.largerThanOrEqualTo: begin
-                if (dataSingle.getPath(key).asString >= value) then
-                    dataTemp.add(dataSingle);
-            end;
-            FeliOperators.largerThan: begin
-                if (dataSingle.getPath(key).asString > value) then
-                    dataTemp.add(dataSingle);
-            end;
-            FeliOperators.smallerThanOrEqualTo: begin
-                if (dataSingle.getPath(key).asString <= value) then
-                    dataTemp.add(dataSingle);
-            end;
-            FeliOperators.smallerThan: begin
-                if (dataSingle.getPath(key).asString < value) then
-                    dataTemp.add(dataSingle);
-            end;
+//     for dataEnum in data do
+//     begin
+//         dataSingle := dataEnum.value as TJsonObject;
+//         case operation of
+//             FeliOperators.equalsTo: begin
+//                 if (dataSingle.getPath(key).asString = value) then
+//                     dataTemp.add(dataSingle);
+//             end;
+//             FeliOperators.notEqualsTo: begin
+//                 if (dataSingle.getPath(key).asString <> value) then
+//                     dataTemp.add(dataSingle);
+//             end;
+//             FeliOperators.largerThanOrEqualTo: begin
+//                 if (dataSingle.getPath(key).asString >= value) then
+//                     dataTemp.add(dataSingle);
+//             end;
+//             FeliOperators.largerThan: begin
+//                 if (dataSingle.getPath(key).asString > value) then
+//                     dataTemp.add(dataSingle);
+//             end;
+//             FeliOperators.smallerThanOrEqualTo: begin
+//                 if (dataSingle.getPath(key).asString <= value) then
+//                     dataTemp.add(dataSingle);
+//             end;
+//             FeliOperators.smallerThan: begin
+//                 if (dataSingle.getPath(key).asString < value) then
+//                     dataTemp.add(dataSingle);
+//             end;
 
-        end;
+//         end;
 
-    end;
+//     end;
 
-    result := FeliUserCollection.fromTJsonArray(dataTemp);
-end;
+//     result := FeliUserCollection.fromTJsonArray(dataTemp);
+// end;
 
 procedure FeliUserCollection.add(user: FeliUser);
 begin
@@ -235,30 +235,30 @@ begin
     end;
 end;
 
-function FeliUserCollection.length(): int64;
-begin
-    result := data.count;
-end;
+// function FeliUserCollection.length(): int64;
+// begin
+//     result := data.count;
+// end;
 
-function FeliUserCollection.toTJsonArray(): TJsonArray;
-begin
-    result := data;
-end;
+// function FeliUserCollection.toTJsonArray(): TJsonArray;
+// begin
+//     result := data;
+// end;
 
-function FeliUserCollection.toJson(): ansiString;
-begin
-    result := self.toTJsonArray().formatJson;
-end;
+// function FeliUserCollection.toJson(): ansiString;
+// begin
+//     result := self.toTJsonArray().formatJson;
+// end;
 
 
-class function FeliUserCollection.fromTJsonArray(usersArray: TJsonArray): FeliUserCollection; static;
-var 
-    feliUserCollectionInstance: FeliUserCollection;
-begin
-    feliUserCollectionInstance := feliUserCollection.create();
-    feliUserCollectionInstance.data := usersArray;
-    result := feliUserCollectionInstance;
-end;
+// class function FeliUserCollection.fromTJsonArray(usersArray: TJsonArray): FeliUserCollection; static;
+// var 
+//     feliUserCollectionInstance: FeliUserCollection;
+// begin
+//     feliUserCollectionInstance := feliUserCollection.create();
+//     feliUserCollectionInstance.data := usersArray;
+//     result := feliUserCollectionInstance;
+// end;
 
 
 class function FeliUserCollection.fromFeliCollection(collection: FeliCollection): FeliUserCollection; static;

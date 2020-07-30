@@ -10,6 +10,9 @@ type
         public
             data: TJsonArray;
             function where(key: ansiString; operation: ansiString; value: ansiString): FeliCollection;
+            function toTJsonArray(): TJsonArray;
+            function toJson(): ansiString;
+            function length(): int64;
             class function fromTJsonArray(dataArray: TJsonArray): FeliCollection; static;
         end;
 
@@ -59,6 +62,21 @@ begin
     end;
 
     result := FeliCollection.fromTJsonArray(dataTemp);
+end;
+
+function FeliCollection.toTJsonArray(): TJsonArray;
+begin
+    result := data;
+end;
+
+function FeliCollection.toJson(): ansiString;
+begin
+    result := self.toTJsonArray().formatJson;
+end;
+
+function FeliCollection.length(): int64;
+begin
+    result := data.count;
 end;
 
 class function FeliCollection.fromTJsonArray(dataArray: TJsonArray): FeliCollection; static;

@@ -41,6 +41,7 @@ uses
     feli_constants,
     feli_exceptions,
     feli_operators,
+    feli_collection,
     jsonparser,
     sysutils;
 
@@ -49,11 +50,15 @@ class function FeliStorageAPI.getUser(usernameOrEmail: ansiString): FeliUser;
 var
     userObject: TJsonObject;
     users, filteredUsers, filteredUsersTemp: FeliUserCollection;
+    tempCollection: FeliCollection;
 begin
     result := nil;
     users := FeliStorageAPI.getUsers();
-    filteredUsers := users.where(FeliUserKeys.username, FeliOperators.equalsTo, usernameOrEmail);
-    filteredUsersTemp := users.where(FeliUserKeys.email, FeliOperators.equalsTo, usernameOrEmail);
+    tempCollection := users.where(FeliUserKeys.username, FeliOperators.equalsTo, usernameOrEmail);
+    filteredUsers := FeliUserCollection.fromFeliCollection(tempCollection);
+
+    tempCollection := users.where(FeliUserKeys.email, FeliOperators.equalsTo, usernameOrEmail);
+    filteredUsersTemp := FeliUserCollection.fromFeliCollection(tempCollection);
     filteredUsers.join(filteredUsersTemp);
     if (filteredUsers.length() <= 0) then 
         result := nil 
@@ -68,9 +73,11 @@ end;
 class function FeliStorageAPI.getUsers(): FeliUserCollection;
 var
     usersJsonArray: TJsonArray;
+    tempCollection: FeliCollection;
 begin
     usersJsonArray := FeliFileAPI.getJsonArray(usersFilePath);
-    result := FeliUserCollection.fromTJsonArray(usersJsonArray);
+    tempCollection := FeliUserCollection.fromTJsonArray(usersJsonArray);
+    result := FeliUserCollection.fromFeliCollection(tempCollection);
 end;
 
 class procedure FeliStorageAPI.addUser(user: FeliUser);
@@ -98,12 +105,17 @@ end;
 class procedure FeliStorageAPI.removeUser(usernameOrEmail: ansiString);
 var
     users: FeliUserCollection;
+    tempCollection: FeliCollection;
     oldLength: int64;
 begin
     users := FeliStorageAPI.getUsers();
     oldLength := users.length();
-    users := users.where(FeliUserKeys.username, FeliOperators.notEqualsTo, usernameOrEmail);
-    users := users.where(FeliUserKeys.email, FeliOperators.notEqualsTo, usernameOrEmail);
+    tempCollection := users.where(FeliUserKeys.username, FeliOperators.notEqualsTo, usernameOrEmail);
+    users := FeliUserCollection.fromFeliCollection(tempCollection);
+    
+    tempCollection := users.where(FeliUserKeys.email, FeliOperators.notEqualsTo, usernameOrEmail);
+    users := FeliUserCollection.fromFeliCollection(tempCollection);
+    
     if (users.length() = oldLength) then
         FeliLogger.error(format('User %s was not found, ergo unable to remove %s', [usernameOrEmail, usernameOrEmail])) 
     else 
@@ -116,10 +128,12 @@ class function FeliStorageAPI.getEvent(eventId: ansiString): FeliEvent;
 var
     eventObject: TJsonObject;
     events, filteredEvents: FeliEventCollection;
+    tempCollection: FeliCollection;
 begin
     result := nil;
     events := FeliStorageAPI.getEvents();
-    filteredEvents := events.where(FeliEventKeys.id, FeliOperators.equalsTo, eventId);
+    tempCollection := events.where(FeliEventKeys.id, FeliOperators.equalsTo, eventId);
+    filteredEvents := FeliEventCollection.fromFeliCollection(tempCollection);
     if (filteredEvents.length() <= 0) then
         result := nil
     else
@@ -134,9 +148,11 @@ end;
 class function FeliStorageAPI.getEvents(): FeliEventCollection;
 var
     eventsJsonArray: TJsonArray;
+    tempCollection: FeliCollection;
 begin
     eventsJsonArray := FeliFileAPI.getJsonArray(eventsFilePath);
-    result := FeliEventCollection.fromTJsonArray(eventsJsonArray);
+    tempCollection := FeliEventCollection.fromTJsonArray(eventsJsonArray);
+    result := FeliEventCollection.fromFeliCollection(tempCollection);
 end;
 
 
@@ -162,10 +178,12 @@ class procedure FeliStorageAPI.removeEvent(eventId: ansiString);
 var
     events: FeliEventCollection;
     oldLength: int64;
+    tempCollection: FeliCollection;
 begin
     events := FeliStorageAPI.getEvents();
     oldLength := events.length();
-    events := events.where(FeliEventKeys.id, FeliOperators.notEqualsTo, eventId);
+    tempCollection := events.where(FeliEventKeys.id, FeliOperators.notEqualsTo, eventId);
+    events := FeliEventCollection.fromFeliCollection(tempCollection);
     if (events.length() = oldLength) then
         FeliLogger.error(format('Event %s was not found, ergo unable to remove %s', [eventId, eventId])) 
     else 
