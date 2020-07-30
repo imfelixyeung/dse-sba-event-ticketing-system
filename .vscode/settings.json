@@ -43,6 +43,7 @@
         "Color",
         "Crypto",
         "ETS",
+        "ISC",
         "Str",
         "eof",
         "fpc",
