@@ -10,6 +10,7 @@ uses
     feli_validation,
     feli_config,
     feli_user,
+    feli_exceptions,
     sysutils,
     fpjson;
 
@@ -62,8 +63,8 @@ begin
     try
         FeliStorageAPI.addUser(testUser);
     except
-        on e: Exception do
-        writeln(e.message);
+        on e: FeliExceptions.FeliStorageUserExist do writeln('EFeliStorageUserExist', e.message);
+        on e: Exception do writeln(e.message);
     end;
     // writeln(testUser.toJson());
 

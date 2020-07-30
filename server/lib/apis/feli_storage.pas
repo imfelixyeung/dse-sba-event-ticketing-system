@@ -28,7 +28,9 @@ uses
     feli_file,
     feli_constants,
     jsonparser,
+    feli_exceptions,
     sysutils;
+
 
 class function FeliStorageAPI.getUser(usernameOrEmail: ansiString): FeliUser;
 var
@@ -59,7 +61,7 @@ var
     users: TJsonArray;
 begin
     if (FeliStorageAPI.getUser(user.username) <> nil) then
-        raise Exception.Create('User already exist')
+        raise FeliExceptions.FeliStorageUserExist.Create('User already exist')
     else
         begin
             users := FeliStorageAPI.getUsers();

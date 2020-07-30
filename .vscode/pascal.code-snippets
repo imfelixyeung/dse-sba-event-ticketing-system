@@ -6,5 +6,46 @@
 			"FeliLogger.log('$1');"
 		],
 		"description": "Log payload to console"
-	}
+	},
+	"Begin End": {
+		"scope": "pascal",
+		"prefix": "begin",
+		"body": [
+			"begin",
+			"    $1",
+			"end;"
+		],
+		"description": "Begin end"
+	},
+	"Write line": {
+		"scope": "pascal",
+		"prefix": "writeln",
+		"body": [
+			"writeln($1);"
+		],
+		"description": "Begin end"
+	},
+	"New Unit": {
+		"scope": "pascal",
+		"prefix": "unit",
+		"body": [
+			"unit $1;",
+			"",
+			"{$mode objfpc}",
+			"",
+			"// uses",
+			"",
+			"// type",
+			"",
+			"",
+			"interface",
+			"",
+			"",
+			"implementation",
+			"",
+			"",
+			"end.",
+		],
+		"description": "Begin end"
+	},
 }
