@@ -1,22 +1,31 @@
-# Feli Ticket
-`class FeliTicket`
+# Feli Document
 - [ ] ToJsonObject
 - [ ] ToJson
 
-# Feli Ticket Collection
-`class FeliTicketCollection`
-- [ ] Where
+# Feli Collection
+- [x] where
+- [x] toTJsonArray
+- [x] toJson
+- [x] length
+- [x] fromTJsonArray
+
+# Feli Event Ticket
+`class FeliEventTicket`
 - [ ] ToJsonObject
-- [ ] ToJson
 
-# Feli Participant
-`class FeliParticipant`
+# Feli Event Ticket Collection
+`class FeliEventTicketCollection`
 
-# Feli Participant Collection
-`class FeliParticipantCollection`
+# Feli Event Participant
+`class FeliEventParticipant`
+- [ ] ToJsonObject
+
+# Feli Event Participant Collection
+`class FeliEventParticipantCollection`
 
 # Feli User Event
 `class FeliUserEvent`
+- [ ] ToJsonObject
 
 # Feli User Event Collection
 `class FeliUserEventCollection`
