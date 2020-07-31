@@ -6,6 +6,8 @@ interface
 uses
     feli_collection,
     feli_document,
+    feli_event_participant,
+    feli_event_ticket,
     fpjson;
 
 type
@@ -32,7 +34,10 @@ type
         public
             id, organiser, name, description, venue, theme: ansiString;
             startTime, endTime, createdAt, participantLimit: int64;
-            tickets, participants, waitingList: TJsonArray;
+            // tickets, participants, waitingList: TJsonArray;
+            tickets: FeliEventTicketCollection;
+            participants: FeliEventParticipantCollection;
+            waitingList: FeliEventParticipantCollection;
 
             constructor create();
             function toTJsonObject(): TJsonObject; override;
@@ -59,7 +64,8 @@ type
 implementation
 uses
     feli_crypto,
-    feli_operators;
+    feli_operators,
+    sysutils;
 
 constructor FeliEvent.create();
 begin
@@ -68,9 +74,9 @@ begin
     endTime := 0;
     createdAt := 0;
     participantLimit := 0;
-    tickets := TJsonArray.create();
-    participants := TJsonArray.create();
-    waitingList := TJsonArray.create();
+    tickets := FeliEventTicketCollection.create();
+    participants := FeliEventParticipantCollection.create();
+    waitingList := FeliEventWaitingCollection.create();
 end;
 
 function FeliEvent.toTJsonObject(): TJsonObject;
@@ -88,9 +94,9 @@ begin
     event.add(FeliEventKeys.venue, venue);
     event.add(FeliEventKeys.theme, theme);
     event.add(FeliEventKeys.participantLimit, participantLimit);
-    event.add(FeliEventKeys.tickets, tickets);
-    event.add(FeliEventKeys.participants, participants);
-    event.add(FeliEventKeys.waitingList, waitingList);
+    event.add(FeliEventKeys.tickets, tickets.toTJsonArray());
+    event.add(FeliEventKeys.participants, participants.toTJsonArray());
+    event.add(FeliEventKeys.waitingList, waitingList.toTJsonArray());
     result := event;
 end;
 
@@ -110,23 +116,48 @@ end;
 class function FeliEvent.fromTJsonObject(eventObject: TJsonObject): FeliEvent; static;
 var
     feliEventInstance: FeliEvent;
+    tempArray: TJsonArray;
+    tempCollection: FeliCollection;
+    tempString: ansiString;
 begin
     feliEventInstance := FeliEvent.create();
     with feliEventInstance do
     begin
-        id := eventObject.getPath('id').asString;
-        organiser := eventObject.getPath('organiser').asString;
-        name := eventObject.getPath('name').asString;
-        description := eventObject.getPath('description').asString;
-        venue := eventObject.getPath('venue').asString;
-        theme := eventObject.getPath('theme').asString;
-        startTime := eventObject.getPath('start_time').asInteger;
-        endTime := eventObject.getPath('end_time').asInteger;
-        createdAt := eventObject.getPath('created_at').asInteger;
-        participantLimit := eventObject.getPath('participant_limit').asInteger;
-        tickets := eventObject.getPath('tickets') as TJsonArray;
-        participants := eventObject.getPath('participants') as TJsonArray;
-        waitingList := eventObject.getPath('waiting_list') as TJsonArray;
+        id := eventObject.getPath(FeliEventKeys.id).asString;
+        organiser := eventObject.getPath(FeliEventKeys.organiser).asString;
+        name := eventObject.getPath(FeliEventKeys.name).asString;
+        description := eventObject.getPath(FeliEventKeys.description).asString;
+        venue := eventObject.getPath(FeliEventKeys.venue).asString;
+        theme := eventObject.getPath(FeliEventKeys.theme).asString;
+
+
+        tempString := eventObject.getPath(FeliEventKeys.startTime).asString;
+        startTime := strToInt64(tempString);
+
+        tempString := eventObject.getPath(FeliEventKeys.endTime).asString;
+        endTime := strToInt64(tempString);
+
+        tempString := eventObject.getPath(FeliEventKeys.createdAt).asString;
+        createdAt := strToInt64(tempString);
+
+        tempString := eventObject.getPath(FeliEventKeys.participantLimit).asString;
+        participantLimit := strToInt64(tempString);
+
+
+        tempArray := eventObject.getPath(FeliEventKeys.tickets) as TJsonArray;
+        tempCollection := FeliCollection.fromTJsonArray(tempArray);
+        tickets := FeliEventTicketCollection.fromFeliCollection(tempCollection);
+
+        tempArray := eventObject.getPath(FeliEventKeys.participants) as TJsonArray;
+        tempCollection := FeliCollection.fromTJsonArray(tempArray);
+        participants := FeliEventParticipantCollection.fromFeliCollection(tempCollection);
+
+        tempArray := eventObject.getPath(FeliEventKeys.waitingList) as TJsonArray;
+        tempCollection := FeliCollection.fromTJsonArray(tempArray);
+        waitingList := FeliEventParticipantCollection.fromFeliCollection(tempCollection);
+
+
+
     end;
     result := feliEventInstance;
 end;

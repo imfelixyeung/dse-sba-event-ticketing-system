@@ -18,9 +18,15 @@ uses
     feli_user_event,
     feli_event_ticket,
     feli_event_participant,
+    feli_response,
     sysutils,
+    fphttpapp,
+    httpdefs,
+    httproute,
     fpjson;
 
+const
+    port = 8081;
 
 procedure debug();
 begin
@@ -29,9 +35,147 @@ begin
     FeliValidation.debug;
 end;
 
+function parseRequestJsonBody(req: TRequest): TJsonObject;
+var
+    bodyContent: ansiString;
+begin
+    bodyContent := req.content;
+    result := TJsonObject(getJson(bodyContent));
+end;
+
+procedure responseWithJsonObject(var res: TResponse; responseTemplate: FeliResponse);
+begin
+    res.content := responseTemplate.toJson();
+    res.code := responseTemplate.resCode;
+    res.contentType := 'application/json;charset=utf-8';
+    res.SetCustomHeader('access-control-allow-origin', '*');
+    res.ContentLength := length(res.Content);
+    res.SendContent;
+end;
+
+(*
+    End points begin
+*)
+
+
+procedure error404(req: TRequest; res: TResponse);
+var
+    responseTemplate: FeliResponse;
+begin
+    try
+        responseTemplate := FeliResponse.create();
+        responseTemplate.resCode := 404;
+        responseTemplate.error := '404 Not Found';
+        responseWithJsonObject(res, responseTemplate);
+    finally
+        responseTemplate.free();  
+    end;
+
+end;
+
+procedure getEventsEndPoint(req: TRequest; res: TResponse);
+var
+    events: FeliEventCollection;
+    responseTemplate: FeliResponseDataArray;
+begin
+    try
+        events := FeliStorageAPI.getEvents();
+        responseTemplate := FeliResponseDataArray.create();
+        responseTemplate.data := events.toTJsonArray();
+        responseTemplate.resCode := 200;
+        responseWithJsonObject(res, responseTemplate);
+    finally
+        responseTemplate.free();  
+    end;
+end;
+
+procedure getEventEndPoint(req: TRequest; res: TResponse);
+var
+    eventId: ansiString;
+    event: FeliEvent;
+    responseTemplate: FeliResponseDataObject;
+begin
+    try
+        eventId := req.routeParams['eventId'];
+        event := FeliStorageAPI.getEvent(eventId);
+        responseTemplate := FeliResponseDataObject.create();
+        responseTemplate.data := event.toTJsonObject();
+        writeln(eventId);
+        if (event <> nil) then
+            responseTemplate.resCode := 200
+        else
+            responseTemplate.resCode := 404;
+        responseWithJsonObject(res, responseTemplate);
+    finally
+        responseTemplate.free();  
+    end;
+end;
+
+procedure loginEndPoint(req: TRequest; res: TResponse);
+var
+    username, password: ansiString;
+    user: FeliUser;
+    responseTemplate: FeliResponseDataObject;
+    requestJson: TJsonObject;
+
+begin
+    try
+        begin
+            requestJson := parseRequestJsonBody(req);
+            username := requestJson.getPath('auth.username').asString;
+            password := requestJson.getPath('auth.password').asString;
+            responseTemplate := FeliResponseDataObject.create();
+
+            user := FeliStorageAPI.getUser(username);
+
+            if (user <> nil) then
+                begin
+                    user.password := password;
+                    if user.verify() then
+                        begin
+                            responseTemplate.data := user.toTJsonObject();
+                            responseTemplate.resCode := 200;
+                        end
+                    else
+                        begin
+                            responseTemplate.resCode := 401;
+                        end;
+                    responseWithJsonObject(res, responseTemplate);
+                end
+            else
+                begin
+                    responseTemplate.resCode := 401;
+                    responseWithJsonObject(res, responseTemplate);
+                end;
+        end;
+    finally
+        responseTemplate.free();  
+    end;
+end;
+
+procedure serverShutdownEndpoint(req: TRequest; res: TResponse);
+begin
+    application.terminate();
+end;
+
+(*
+    End points End
+*)
+
 procedure init();
 begin
     randomize;
+    application.port := port;
+    FeliLogger.info(format('HTTP Server listening on port %d', [port]));
+    HTTPRouter.RegisterRoute('/api/events/get/', @getEventsEndPoint);
+    HTTPRouter.RegisterRoute('/api/event/:eventId/get/', @getEventEndPoint);
+    HTTPRouter.RegisterRoute('/api/login/', @loginEndPoint);
+    httpRouter.registerRoute('/api/shutdown', @serverShutdownEndpoint);
+    httpRouter.registerRoute('/*', @error404, true);
+
+    // application.threaded := true;
+    application.initialize();
+    Application.run();
 end;
 
 procedure test();
@@ -39,7 +183,12 @@ var
     // userEvent: FeliUserEvent;
     // collection: FeliCollection;
     eventCollection: FeliEventCollection;
-    document: FeliDocument;
+    eventArray: TJsonArray;
+    eventEnum: TJsonEnum;
+    eventObject: TJsonObject;
+    eventDocument: FeliEvent;
+    ticketDocument: FeliEventTicket;
+    // document: FeliDocument;
     // user: FeliUser;
     // usersArray: TJsonArray;
     // userEnum: TJsonEnum;
@@ -52,6 +201,28 @@ var
 
 
 begin
+    // eventCollection := FeliStorageAPI.getEvents();
+    // writeln(eventCollection.length());
+    // eventArray := eventCollection.toTJsonArray();
+    // for eventEnum in eventArray do
+    // begin
+    //     ticketDocument := FeliEventTicket.create();
+    //     with ticketDocument do
+    //     begin
+    //         id := '25136';
+    //         tType := 'MVP++++++';
+    //         fee := 250;
+    //     end;
+    //     eventObject := eventEnum.value as TJsonObject;
+    //     eventDocument := FeliEvent.fromTJsonObject(eventObject);
+    //     eventDocument.tickets.add(ticketDocument);
+    //     FeliLogger.debug(format('Event name: %s', [eventDocument.name]));
+    //     FeliLogger.debug(format('No. tickets: %d', [eventDocument.tickets.length()]));
+    //     writeln(eventDocument.toJson());
+    // end;
+
+
+
     // eventCollection := FeliEventCollection.create();
     // eventCollection.add()
     // userEvent := FeliUserEvent.create();

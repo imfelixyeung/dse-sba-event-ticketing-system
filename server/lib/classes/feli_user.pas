@@ -137,7 +137,7 @@ begin
     with feliUserInstance do
     begin
         username := userObject.getPath('username').asString;
-        username := userObject.getPath('display_name').asString;
+        displayName := userObject.getPath('display_name').asString;
         salt := userObject.getPath('salt').asString;
         saltedPassword := userObject.getPath('salted_password').asString;
         email := userObject.getPath('email').asString;
