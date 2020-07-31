@@ -1,5 +1,5 @@
 @echo off
-cd .\server\;
-fpc @fpc.cfg lib/main.pas -oserver-win.exe;
+cd server
+fpc @fpc.cfg lib/main.pas
 .\lib\main.exe;
-cd ..;
+cd ..

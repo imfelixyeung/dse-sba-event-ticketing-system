@@ -85,7 +85,7 @@ var
     users: FeliUserCollection;
 begin
 
-    if (FeliStorageAPI.getUser(user.username) <> nil) then
+    if (FeliStorageAPI.getUser(user.username) <> nil) or (FeliStorageAPI.getUser(user.email) <> nil) then
         begin
             raise FeliExceptions.FeliStorageUserExist.Create('User already exist');
         end

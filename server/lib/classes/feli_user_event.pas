@@ -20,7 +20,7 @@ type
         public
             id: ansiString;
             createdAt: int64;
-            function toTJsonObject(): TJsonObject; override;
+            function toTJsonObject(secure: boolean = false): TJsonObject; override;
         end;
 
     FeliUserEventCollection = class(FeliCollection)
@@ -40,7 +40,7 @@ type
 
 implementation
 
-function FeliUserEvent.toTJsonObject(): TJsonObject;
+function FeliUserEvent.toTJsonObject(secure: boolean = false): TJsonObject;
 var
     userEvent: TJsonObject;
 begin

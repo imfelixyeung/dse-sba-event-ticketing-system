@@ -21,7 +21,7 @@ type
         public
             id, tType: ansiString;
             fee: real;
-            function toTJsonObject(): TJsonObject; override;
+            function toTJsonObject(secure: boolean = false): TJsonObject; override;
         end;
 
     FeliEventTicketCollection = class(FeliCollection)
@@ -41,7 +41,7 @@ type
 
 implementation
 
-function FeliEventTicket.toTJsonObject(): TJsonObject;
+function FeliEventTicket.toTJsonObject(secure: boolean = false): TJsonObject;
 var
     userEvent: TJsonObject;
 begin

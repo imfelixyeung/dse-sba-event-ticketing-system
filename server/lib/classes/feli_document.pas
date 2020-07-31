@@ -8,12 +8,12 @@ uses fpjson;
 type
     FeliDocument = class(TObject)
         public
-            function toTJsonObject(): TJsonObject; virtual;
+            function toTJsonObject(secure: boolean = false): TJsonObject; virtual;
             function toJson(): ansiString;
         end;
 
 implementation
-function FeliDocument.toTJsonObject(): TJsonObject;
+function FeliDocument.toTJsonObject(secure: boolean = false): TJsonObject;
 begin
     result := TJsonObject.create();    
 end;

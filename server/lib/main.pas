@@ -133,7 +133,7 @@ begin
                     user.password := password;
                     if user.verify() then
                         begin
-                            responseTemplate.data := user.toTJsonObject();
+                            responseTemplate.data := user.toTJsonObject(true);
                             responseTemplate.resCode := 200;
                         end
                     else
@@ -153,6 +153,43 @@ begin
     end;
 end;
 
+procedure registerEndPoint(req: TRequest; res: TResponse);
+var
+    registerUser: FeliUser;
+    responseTemplate: FeliResponseDataObject;
+    requestJson, registerUserObject: TJsonObject;
+begin
+    try
+        begin
+            requestJson := parseRequestJsonBody(req);
+            responseTemplate := FeliResponseDataObject.create();
+
+            registerUserObject := TJsonObject(requestJson.getPath('register'));
+
+            registerUser := FeliUser.fromTJsonObject(registerUserObject);
+
+            try
+                registerUser.validate();
+                registerUser.generateSaltedPassword();
+                FeliStorageAPI.addUser(registerUser);
+                responseTemplate.data := registerUser.toTJsonObject(true);
+                responseTemplate.resCode := 200;
+            except
+                on E: Exception do
+                begin
+                    responseTemplate.resCode := 405;
+                    responseTemplate.error := e.message;
+                end;
+            end;
+            responseWithJsonObject(res, responseTemplate);
+        end;
+    finally
+        responseTemplate.free();  
+    end;
+end;
+
+
+
 procedure serverShutdownEndpoint(req: TRequest; res: TResponse);
 begin
     application.terminate();
@@ -170,6 +207,7 @@ begin
     HTTPRouter.RegisterRoute('/api/events/get/', @getEventsEndPoint);
     HTTPRouter.RegisterRoute('/api/event/:eventId/get/', @getEventEndPoint);
     HTTPRouter.RegisterRoute('/api/login/', @loginEndPoint);
+    HTTPRouter.RegisterRoute('/api/register/', @registerEndPoint);
     httpRouter.registerRoute('/api/shutdown', @serverShutdownEndpoint);
     httpRouter.registerRoute('/*', @error404, true);
 

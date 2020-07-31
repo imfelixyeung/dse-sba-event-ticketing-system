@@ -7,8 +7,25 @@ content-type: application/json
 
 {
     "auth": {
-        "username": "FelixNPL",
+        "username": "ictsba3",
         "password": "20151529"
+    }
+}
+
+###
+
+POST http://localhost:8081/api/register/
+content-type: application/json
+
+{
+    "register": {
+        "username": "ictsba3",
+        "display_name": "ICT SBA",
+        "email": "ict.sba3@home.npl.edu.hk",
+        "password": "20151529",
+        "first_name": "ICT",
+        "last_name": "SBA",
+        "access_level": "organiser"
     }
 }
 
