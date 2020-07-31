@@ -40,7 +40,7 @@ type
             waitingList: FeliEventParticipantCollection;
 
             constructor create();
-            function toTJsonObject(): TJsonObject; override;
+            function toTJsonObject(secure: boolean = false): TJsonObject; override;
             // function toJson(): ansiString;
             procedure generateId();
             // Factory Methods
@@ -79,7 +79,7 @@ begin
     waitingList := FeliEventWaitingCollection.create();
 end;
 
-function FeliEvent.toTJsonObject(): TJsonObject;
+function FeliEvent.toTJsonObject(secure: boolean = false): TJsonObject;
 var 
     event: TJsonObject;
 begin

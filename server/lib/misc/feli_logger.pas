@@ -72,7 +72,7 @@ end;
 class procedure FeliLogger.warn(payload: ansiString); static;
 var line: ansiString;
 begin
-    line := format('[ETS] %0:-10s %s', ['[ETS]', payload]);
+    line := format('[ETS] %0:-10s %s', ['[Warn]', payload]);
     textColor(yellow);
     FeliLogger.save(line);
     textColor(mono);
