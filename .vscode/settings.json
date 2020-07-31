@@ -57,6 +57,7 @@
         "objfpc",
         "readln",
         "sysutils",
+        "wor",
         "writeln"
     ],
     "cSpell.enableFiletypes": [

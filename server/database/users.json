@@ -1,110 +1,105 @@
 [
-  {
-    "username" : "FelixNPL",
-    "display_name" : "Felix NPL",
-    "salt" : "CD5167D267431D269BA0DA40E692F14B",
-    "salted_password" : "91da52fb59d439167de2a21a87243e29",
-    "email" : "s20151529@home.npl.edu.hk",
-    "first_name" : "Felix",
-    "last_name" : "Yeung",
-    "access_level" : "admin",
-    "data" : {
-      "joined_events" : [
-      ],
-      "created_events" : [
-      ],
-      "pending_events" : [
-      ]
+    {
+        "username": "FelixNPL",
+        "display_name": "Felix NPL",
+        "salt": "CD5167D267431D269BA0DA40E692F14B",
+        "salted_password": "91da52fb59d439167de2a21a87243e29",
+        "email": "s20151529@home.npl.edu.hk",
+        "first_name": "Felix",
+        "last_name": "Yeung",
+        "access_level": "admin",
+        "data": {
+            "joined_events": [],
+            "created_events": [],
+            "pending_events": []
+        }
+    },
+    {
+        "username": "Test0001",
+        "display_name": "Test 1",
+        "salt": "CD5167D267431D269BA0DA40E692F14B",
+        "salted_password": "91da52fb59d439167de2a21a87243e29",
+        "email": "test.0001@home.npl.edu.hk",
+        "first_name": "Test",
+        "last_name": "0001",
+        "access_level": "admin",
+        "data": {
+            "joined_events": [],
+            "created_events": [],
+            "pending_events": []
+        }
+    },
+    {
+        "username": "Test0002",
+        "display_name": "Test 2",
+        "salt": "CD5167D267431D269BA0DA40E692F14B",
+        "salted_password": "91da52fb59d439167de2a21a87243e29",
+        "email": "test.0002@home.npl.edu.hk",
+        "first_name": "Test",
+        "last_name": "0002",
+        "access_level": "admin",
+        "data": {
+            "joined_events": [],
+            "created_events": [],
+            "pending_events": []
+        }
+    },
+    {
+        "username": "Test0003",
+        "display_name": "Test 3",
+        "salt": "CD5167D267431D269BA0DA40E692F14B",
+        "salted_password": "91da52fb59d439167de2a21a87243e29",
+        "email": "test.0003@home.npl.edu.hk",
+        "first_name": "Test",
+        "last_name": "0003",
+        "access_level": "admin",
+        "data": {
+            "joined_events": [],
+            "created_events": [],
+            "pending_events": []
+        }
+    },
+    {
+        "username": "Test0004",
+        "display_name": "Test 4",
+        "salt": "CD5167D267431D269BA0DA40E692F14B",
+        "salted_password": "91da52fb59d439167de2a21a87243e29",
+        "email": "test.0004@home.npl.edu.hk",
+        "first_name": "Test",
+        "last_name": "0004",
+        "access_level": "admin",
+        "data": {
+            "joined_events": [],
+            "created_events": [],
+            "pending_events": []
+        }
+    },
+    {
+        "username": "Test0005",
+        "display_name": "Test 5",
+        "salt": "CD5167D267431D269BA0DA40E692F14B",
+        "salted_password": "91da52fb59d439167de2a21a87243e29",
+        "email": "test.0005@home.npl.edu.hk",
+        "first_name": "Test",
+        "last_name": "0005",
+        "access_level": "admin",
+        "data": {
+            "joined_events": [],
+            "created_events": [],
+            "pending_events": []
+        }
+    },
+    {
+        "username": "AddUserTest",
+        "display_name": "Add User Test",
+        "salt": "KsxVoFf2Kttq3oZBaqbu_yxn9Gaytuzp",
+        "salted_password": "1acd88e0637b60c28770c2d717343b70",
+        "email": "add.user.test@example.com",
+        "first_name": "Test",
+        "last_name": "User",
+        "access_level": "organiser",
+        "data": {
+            "created_events": []
+        }
     }
-  },
-  {
-    "username" : "Test0001",
-    "display_name" : "Test 1",
-    "salt" : "CD5167D267431D269BA0DA40E692F14B",
-    "salted_password" : "91da52fb59d439167de2a21a87243e29",
-    "email" : "test.0001@home.npl.edu.hk",
-    "first_name" : "Test",
-    "last_name" : "0001",
-    "access_level" : "admin",
-    "data" : {
-      "joined_events" : [
-      ],
-      "created_events" : [
-      ],
-      "pending_events" : [
-      ]
-    }
-  },
-  {
-    "username" : "Test0002",
-    "display_name" : "Test 2",
-    "salt" : "CD5167D267431D269BA0DA40E692F14B",
-    "salted_password" : "91da52fb59d439167de2a21a87243e29",
-    "email" : "test.0002@home.npl.edu.hk",
-    "first_name" : "Test",
-    "last_name" : "0002",
-    "access_level" : "admin",
-    "data" : {
-      "joined_events" : [
-      ],
-      "created_events" : [
-      ],
-      "pending_events" : [
-      ]
-    }
-  },
-  {
-    "username" : "Test0003",
-    "display_name" : "Test 3",
-    "salt" : "CD5167D267431D269BA0DA40E692F14B",
-    "salted_password" : "91da52fb59d439167de2a21a87243e29",
-    "email" : "test.0003@home.npl.edu.hk",
-    "first_name" : "Test",
-    "last_name" : "0003",
-    "access_level" : "admin",
-    "data" : {
-      "joined_events" : [
-      ],
-      "created_events" : [
-      ],
-      "pending_events" : [
-      ]
-    }
-  },
-  {
-    "username" : "Test0004",
-    "display_name" : "Test 4",
-    "salt" : "CD5167D267431D269BA0DA40E692F14B",
-    "salted_password" : "91da52fb59d439167de2a21a87243e29",
-    "email" : "test.0004@home.npl.edu.hk",
-    "first_name" : "Test",
-    "last_name" : "0004",
-    "access_level" : "admin",
-    "data" : {
-      "joined_events" : [
-      ],
-      "created_events" : [
-      ],
-      "pending_events" : [
-      ]
-    }
-  },
-  {
-    "username" : "Test0005",
-    "display_name" : "Test 5",
-    "salt" : "CD5167D267431D269BA0DA40E692F14B",
-    "salted_password" : "91da52fb59d439167de2a21a87243e29",
-    "email" : "test.0005@home.npl.edu.hk",
-    "first_name" : "Test",
-    "last_name" : "0005",
-    "access_level" : "admin",
-    "data" : {
-      "joined_events" : [
-      ],
-      "created_events" : [
-      ],
-      "pending_events" : [
-      ]
-    }
-  }
 ]
