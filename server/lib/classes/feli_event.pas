@@ -5,6 +5,7 @@ unit feli_event;
 interface
 uses
     feli_collection,
+    feli_document,
     fpjson;
 
 type
@@ -27,15 +28,15 @@ type
 
         end;
 
-    FeliEvent = class(TObject)
+    FeliEvent = class(FeliDocument)
         public
             id, organiser, name, description, venue, theme: ansiString;
             startTime, endTime, createdAt, participantLimit: int64;
             tickets, participants, waitingList: TJsonArray;
 
             constructor create();
-            function toTJsonObject(): TJsonObject;
-            function toJson(): ansiString;
+            function toTJsonObject(): TJsonObject; override;
+            // function toJson(): ansiString;
             procedure generateId();
             // Factory Methods
             class function fromTJsonObject(eventObject: TJsonObject): FeliEvent; static;
@@ -45,7 +46,7 @@ type
         private
         public
             // data: TJsonArray;
-            constructor create();
+            // constructor create();
             // function where(key: ansiString; operation: ansiString; value: ansiString): FeliEventCollection;
             // function toTJsonArray(): TJsonArray;
             // function toJson(): ansiString;
@@ -94,10 +95,10 @@ begin
 end;
 
 
-function FeliEvent.toJson(): ansiString;
-begin
-    result := self.toTJsonObject().formatJson;
-end;
+// function FeliEvent.toJson(): ansiString;
+// begin
+//     result := self.toTJsonObject().formatJson;
+// end;
 
 
 procedure FeliEvent.generateId();
@@ -131,10 +132,10 @@ begin
 end;
 
 
-constructor FeliEventCollection.create();
-begin
-    self.data := TJsonArray.create()
-end;
+// constructor FeliEventCollection.create();
+// begin
+//     self.data := TJsonArray.create()
+// end;
 
 
 // function FeliEventCollection.where(key: ansiString; operation: ansiString; value: ansiString): FeliEventCollection;

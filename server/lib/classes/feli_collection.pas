@@ -3,15 +3,17 @@ unit feli_collection;
 {$mode objfpc}
 
 interface
-uses fpjson;
+uses fpjson, feli_document;
 
 type
     FeliCollection = class(TObject)
         public
             data: TJsonArray;
+            constructor create();
             function where(key: ansiString; operation: ansiString; value: ansiString): FeliCollection;
             function toTJsonArray(): TJsonArray;
             function toJson(): ansiString;
+            procedure add(document: FeliDocument);
             function length(): int64;
             class function fromTJsonArray(dataArray: TJsonArray): FeliCollection; static;
         end;
@@ -19,6 +21,11 @@ type
 implementation
 uses
     feli_operators;
+
+constructor FeliCollection.create();
+begin
+    data := TJsonArray.create();
+end;
 
 function FeliCollection.where(key: ansiString; operation: ansiString; value: ansiString): FeliCollection;
 var
@@ -73,6 +80,12 @@ function FeliCollection.toJson(): ansiString;
 begin
     result := self.toTJsonArray().formatJson;
 end;
+
+procedure FeliCollection.add(document: FeliDocument);
+begin
+    data.add(document.toTJsonObject());
+end;
+
 
 function FeliCollection.length(): int64;
 begin

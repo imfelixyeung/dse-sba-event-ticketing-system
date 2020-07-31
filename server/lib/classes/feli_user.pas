@@ -5,6 +5,7 @@ unit feli_user;
 interface
 uses
     feli_collection,
+    feli_document,
     fpjson;
 
 type
@@ -22,7 +23,7 @@ type
                 data = 'data';
         end;
 
-    FeliUser = class(TObject)
+    FeliUser = class(FeliDocument)
         private
             salt, saltedPassword: ansiString;
         public
@@ -31,8 +32,8 @@ type
             joinedEvents, createdEvents, pendingEvents: TJsonArray;
             
             constructor create();
-            function toTJsonObject(): TJsonObject;
-            function toJson(): ansiString;
+            function toTJsonObject(): TJsonObject; override;
+            // function toJson(): ansiString;
             function verify(): boolean;
             procedure generateSaltedPassword();
             // Factory Methods
@@ -43,7 +44,7 @@ type
         private
         public
             // data: TJsonArray;
-            constructor create();
+            // constructor create();
             // function where(key: ansiString; operation: ansiString; value: ansiString): FeliUserCollection;
             // function toTJsonArray(): TJsonArray;
             // function toJson(): ansiString;
@@ -110,10 +111,10 @@ begin
     result := user;
 end;
 
-function FeliUser.toJson(): ansiString;
-begin
-    result := self.toTJsonObject().formatJson;
-end;
+// function FeliUser.toJson(): ansiString;
+// begin
+//     result := self.toTJsonObject().formatJson;
+// end;
 
 function FeliUser.verify(): boolean;
 begin
@@ -167,10 +168,10 @@ begin
 end;
 
 
-constructor FeliUserCollection.create();
-begin
-    data := TJsonArray.Create;
-end;
+// constructor FeliUserCollection.create();
+// begin
+//     data := TJsonArray.Create;
+// end;
 
 // function FeliUserCollection.where(key: ansiString; operation: ansiString; value: ansiString): FeliUserCollection;
 // var

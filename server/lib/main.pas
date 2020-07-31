@@ -14,6 +14,10 @@ uses
     feli_operators,
     feli_event,
     feli_collection,
+    feli_document,
+    feli_user_event,
+    feli_event_ticket,
+    feli_event_participant,
     sysutils,
     fpjson;
 
@@ -32,18 +36,39 @@ end;
 
 procedure test();
 var 
-    collection: FeliCollection;
+    // userEvent: FeliUserEvent;
+    // collection: FeliCollection;
     eventCollection: FeliEventCollection;
-//     usersArray: TJsonArray;
-//     userEnum: TJsonEnum;
-//     testUsernameString: ansiString;
-//     testUser: FeliUser;
-//     users: FeliUserCollection;
-//     testUser2: FeliUser;
-//     testUserObject: TJsonObject;
+    document: FeliDocument;
+    // user: FeliUser;
+    // usersArray: TJsonArray;
+    // userEnum: TJsonEnum;
+    // testUsernameString: ansiString;
+    // testUser: FeliUser;
+    // users: FeliUserCollection;
+    // testUser2: FeliUser;
+    // testUserObject: TJsonObject;
+    tempVar: boolean;
 
 
 begin
+    // eventCollection := FeliEventCollection.create();
+    // eventCollection.add()
+    // userEvent := FeliUserEvent.create();
+    // with userEvent do
+    //     begin
+    //         id := 'event_id';
+    //         createdAt := 1596157198112;
+    //     end;
+    // writeln(userEvent.toJson());
+
+    // document := FeliDocument.create();
+    // writeln(document.toJson());
+    // user := FeliStorageAPI.getUser('FelixNPL');
+    // if (user <> nil) then
+    // writeln(user.toJson()) else
+    // writeln('no this user wor');
+    
     // Test if code still works (<o/)
     // FeliStorageAPI.removeUser('test');
     // FeliStorageAPI.removeEvent('0TnpfpamgFEqb5tRUOTeu_DiffHJJB7c');
@@ -226,7 +251,7 @@ begin
         test();
         // debug();
     except
-      on err: Exception do writeln(err.message);
+      on err: Exception do FeliLogger.error(err.message);
     end;
 end.
 
