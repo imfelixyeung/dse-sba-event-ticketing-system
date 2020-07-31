@@ -1,5 +1,5 @@
 @echo off
-cd client;
+cd .\client\;
 node index.js;
 echo "Client stopped";
-cd ../;
+cd ..;
