@@ -1,0 +1,23 @@
+{
+    "name": "Event Ticketing System",
+    "short_name": "ETS",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#f9a825",
+    "description": "HKDSE SBA Event Ticketing System",
+    "orientation": "any",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "assets/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icons/Icon-384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        }
+    ]
+}
