@@ -1,3 +1,5 @@
+> Note: Ideas are saved to github project
+
 # Feli Document
 - [ ] ToJsonObject
 - [ ] ToJson
