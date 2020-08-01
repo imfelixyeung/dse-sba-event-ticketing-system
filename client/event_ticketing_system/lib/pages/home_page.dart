@@ -34,30 +34,27 @@ class _HomePageState extends State<HomePage> {
           child: Padding(
             padding: EdgeInsets.all(16.0),
             child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Markdown(
-                  styleSheet: MarkdownStyleSheet(
-                      tableCellsDecoration:
-                          BoxDecoration(color: Colors.transparent),
-                      tableBorder: TableBorder.all(color: Colors.transparent),
-                      p: Theme.of(context)
-                          .textTheme
-                          .bodyText2
-                          .copyWith(fontSize: 16),
-                      a: Theme.of(context)
-                          .textTheme
-                          .bodyText2
-                          .copyWith(fontSize: 16, color: feliOrange),
-                      blockquoteDecoration: BoxDecoration(
-                          color: Colors.grey.withAlpha(64),
-                          borderRadius: BorderRadius.circular(8.0))),
-                  styleSheetTheme: MarkdownStyleSheetBaseTheme.material,
-                  data: applicationAboutText(),
-                  onTapLink: (var link) {
-                    launchURL(link);
-                  },
-                ),
+              child: Markdown(
+                styleSheet: MarkdownStyleSheet(
+                    tableCellsDecoration:
+                        BoxDecoration(color: Colors.transparent),
+                    tableBorder: TableBorder.all(color: Colors.transparent),
+                    p: Theme.of(context)
+                        .textTheme
+                        .bodyText2
+                        .copyWith(fontSize: 16),
+                    a: Theme.of(context)
+                        .textTheme
+                        .bodyText2
+                        .copyWith(fontSize: 16, color: feliOrange),
+                    blockquoteDecoration: BoxDecoration(
+                        color: Colors.grey.withAlpha(64),
+                        borderRadius: BorderRadius.circular(8.0))),
+                styleSheetTheme: MarkdownStyleSheetBaseTheme.material,
+                data: applicationAboutText(),
+                onTapLink: (var link) {
+                  launchURL(link);
+                },
               ),
             ),
           ),

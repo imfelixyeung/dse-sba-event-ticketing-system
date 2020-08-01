@@ -13,30 +13,40 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool displayMobileLayout = MediaQuery.of(context).size.width < 600;
-    return Row(
-      children: [
-        !displayMobileLayout
-            ? AppDrawer(
-                permanentlyDisplay: true,
-                key: UniqueKey(),
-              )
-            : Container(),
-        Expanded(
-          child: Scaffold(
-            appBar: AppBar(
-              automaticallyImplyLeading: displayMobileLayout,
-              title: Text(pageTitle),
+    return GestureDetector(
+      onTap: () => unfocus(context),
+      child: Row(
+        children: [
+          !displayMobileLayout
+              ? AppDrawer(
+                  permanentlyDisplay: true,
+                  key: UniqueKey(),
+                )
+              : Container(),
+          Expanded(
+            child: Scaffold(
+              appBar: AppBar(
+                automaticallyImplyLeading: displayMobileLayout,
+                title: Text(pageTitle),
+              ),
+              drawer: displayMobileLayout
+                  ? AppDrawer(
+                      permanentlyDisplay: false,
+                      key: UniqueKey(),
+                    )
+                  : null,
+              body: body,
             ),
-            drawer: displayMobileLayout
-                ? AppDrawer(
-                    permanentlyDisplay: false,
-                    key: UniqueKey(),
-                  )
-                : null,
-            body: body,
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
+  }
+
+  unfocus(BuildContext context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
   }
 }

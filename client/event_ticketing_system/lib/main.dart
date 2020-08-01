@@ -1,3 +1,5 @@
+import 'package:event_ticketing_system/pages/account_page.dart';
+import 'package:event_ticketing_system/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -62,6 +64,8 @@ class MaterialAppWithTheme extends StatelessWidget {
       routes: {
         RouteNames.home: (_) => HomePage(),
         RouteNames.settings: (_) => SettingsPage(),
+        RouteNames.account: (_) => AccountPage(),
+        RouteNames.login: (_) => LoginPage(),
       },
     );
   }

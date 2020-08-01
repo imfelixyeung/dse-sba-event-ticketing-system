@@ -84,6 +84,15 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                 ),
                 Divider(thickness: 2),
                 FeliListTile(
+                  _selectedRoute == RouteNames.account,
+                  () async {
+                    await _navigateTo(context, RouteNames.account);
+                  },
+                  PageTitles.account,
+                  Icon(Icons.account_circle),
+                  widget.permanentlyDisplay,
+                ),
+                FeliListTile(
                   _selectedRoute == RouteNames.settings,
                   () async {
                     await _navigateTo(context, RouteNames.settings);

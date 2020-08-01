@@ -244,15 +244,20 @@ class Translate {
       'zh-hk': "以 %s 成功登錄",
       'zh-cn': "以 %s 成功登录"
     },
-    "sign_in": {
-      'en-gb': "Sign In",
+    "login": {
+      'en-gb': "Login",
       'zh-hk': "登入",
       'zh-cn': "登入",
     },
-    "sign_out": {
-      'en-gb': "Sign Out",
+    "logout": {
+      'en-gb': "Logout",
       'zh-hk': "登出",
       'zh-cn': "登出",
+    },
+    "submit": {
+      'en-gb': "Submit",
+      'zh-hk': "提交",
+      'zh-cn': "提交",
     },
     "register": {
       'en-gb': "Register",
@@ -289,7 +294,7 @@ class Translate {
       'zh-hk': "活動",
       'zh-cn': "活动",
     },
-    "profile": {
+    "account": {
       'en-gb': "My Account",
       'zh-hk': "我的帳戶",
       'zh-cn': "我的帐户",
