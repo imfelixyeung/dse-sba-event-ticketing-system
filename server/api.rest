@@ -8,7 +8,7 @@ content-type: application/json
 
 {
     "auth": {
-        "username": "FelixNPL",
+        "username": "FelixNPLa",
         "password": "20151529"
     }
 }
@@ -24,9 +24,9 @@ content-type: application/json
 
 {
     "register": {
-        "username": "FelixNPL2",
+        "username": "FelixNPL",
         "display_name": "Felix NPL",
-        "email": "user00001@test.com",
+        "email": "user00000@test.com",
         "password": "20151529",
         "first_name": "Felix",
         "last_name": "NPL",

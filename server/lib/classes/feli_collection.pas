@@ -20,7 +20,8 @@ type
 
 implementation
 uses
-    feli_operators;
+    feli_operators,
+    feli_stack_tracer;
 
 constructor FeliCollection.create();
 begin
@@ -73,18 +74,18 @@ end;
 
 function FeliCollection.toTJsonArray(): TJsonArray;
 begin
-    writeln('begin function FeliCollection.toTJsonArray(): TJsonArray;');
+    FeliStackTrace.trace('begin', 'function FeliCollection.toTJsonArray(): TJsonArray;');
     result := self.data;
-    writeln('end function FeliCollection.toTJsonArray(): TJsonArray;');
+    FeliStackTrace.trace('end', 'function FeliCollection.toTJsonArray(): TJsonArray;');
 end;
 
 function FeliCollection.toJson(): ansiString;
 var
     testArray: TJsonArray;
 begin
-    writeln('begin function FeliCollection.toJson(): ansiString;');
+    FeliStackTrace.trace('begin', 'function FeliCollection.toJson(): ansiString;');
     result := self.toTJsonArray().formatJson();
-    writeln('end function FeliCollection.toJson(): ansiString;');
+    FeliStackTrace.trace('end', 'function FeliCollection.toJson(): ansiString;');
 end;
 
 procedure FeliCollection.add(document: FeliDocument);

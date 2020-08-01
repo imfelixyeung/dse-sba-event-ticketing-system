@@ -24,6 +24,7 @@ uses
     feli_file,
     feli_config,
     feli_constants,
+    feli_stack_tracer,
     crt,
     sysutils;
 
@@ -38,7 +39,7 @@ begin
     lines := lines + dateTimeString + ' ' + payload;
     FeliFileAPI.put(logFilePath, lines);
     if forceLog then writeln(payload) else
-    if FeliConfig.getApplicationTerminalLog() then writeln(payload);
+    if FeliConfig.getApplicationTerminalLog() then FeliStackTrace.out(payload);
 end;
 
 class procedure FeliLogger.debug(payload: ansiString); static;

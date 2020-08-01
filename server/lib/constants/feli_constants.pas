@@ -8,6 +8,7 @@ const
     lineSeparator = #13#10;
     eventsFilePath = 'database/events.json';
     usersFilePath = 'database/users.json';
+    stackTraceDepthPath = 'stack_trace.txt';
 
 implementation
 end.

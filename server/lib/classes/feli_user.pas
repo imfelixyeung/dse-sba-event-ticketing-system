@@ -67,6 +67,7 @@ uses
     feli_operators,
     feli_access_level,
     feli_errors,
+    feli_stack_tracer,
     sysutils;
 
 constructor FeliUser.create();
@@ -82,7 +83,7 @@ var
     user, userData: TJsonObject;
 
 begin
-    writeln('begin function FeliUser.toTJsonObject(secure: boolean = false): TJsonObject;');
+    FeliStackTrace.trace('begin', 'function FeliUser.toTJsonObject(secure: boolean = false): TJsonObject;');
     user := TJsonObject.create();
     
     user.add(FeliUserKeys.username, username);
@@ -117,7 +118,7 @@ begin
     end;
 
     result := user;
-    writeln('end function FeliUser.toTJsonObject(secure: boolean = false): TJsonObject;');
+    FeliStackTrace.trace('end', 'function FeliUser.toTJsonObject(secure: boolean = false): TJsonObject;');
 end;
 
 // function FeliUser.toJson(): ansiString;
@@ -249,11 +250,11 @@ end;
 
 procedure FeliUserCollection.add(user: FeliUser);
 begin
-    writeln('begin procedure FeliUserCollection.add(user: FeliUser);');
+    FeliStackTrace.trace('begin', 'procedure FeliUserCollection.add(user: FeliUser);');
     writeln(user.toJson());
     writeln('test again');
     data.add(user.toTJsonObject());
-    writeln('end procedure FeliUserCollection.add(user: FeliUser);');
+    FeliStackTrace.trace('end', 'procedure FeliUserCollection.add(user: FeliUser);');
 end;
 
 procedure FeliUserCollection.join(newCollection: FeliUserCollection);

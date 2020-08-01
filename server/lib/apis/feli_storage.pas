@@ -42,6 +42,7 @@ uses
     feli_exceptions,
     feli_operators,
     feli_collection,
+    feli_stack_tracer,
     jsonparser,
     sysutils;
 
@@ -52,7 +53,7 @@ var
     users, filteredUsers, filteredUsersTemp: FeliUserCollection;
     tempCollection: FeliCollection;
 begin
-    writeln('class function FeliStorageAPI.getUser(usernameOrEmail: ansiString): FeliUser;');
+    FeliStackTrace.trace('begin', 'class function FeliStorageAPI.getUser(usernameOrEmail: ansiString): FeliUser;');
     result := nil;
     users := FeliStorageAPI.getUsers();
     tempCollection := users.where(FeliUserKeys.username, FeliOperators.equalsTo, usernameOrEmail);
@@ -69,6 +70,7 @@ begin
             userObject := filteredUsers.toTJsonArray()[0] as TJsonObject;
             result := FeliUser.fromTJsonObject(userObject);
         end;
+    FeliStackTrace.trace('end', 'class function FeliStorageAPI.getUser(usernameOrEmail: ansiString): FeliUser;');
 end;
 
 class function FeliStorageAPI.getUsers(): FeliUserCollection;
@@ -76,18 +78,18 @@ var
     usersJsonArray: TJsonArray;
     tempCollection: FeliCollection;
 begin
-    writeln('begin class function FeliStorageAPI.getUsers(): FeliUserCollection;');
+    FeliStackTrace.trace('begin', 'class function FeliStorageAPI.getUsers(): FeliUserCollection;');
     usersJsonArray := FeliFileAPI.getJsonArray(usersFilePath);
     tempCollection := FeliUserCollection.fromTJsonArray(usersJsonArray);
     result := FeliUserCollection.fromFeliCollection(tempCollection);
-    writeln('end class function FeliStorageAPI.getUsers(): FeliUserCollection;');
+    FeliStackTrace.trace('end', 'class function FeliStorageAPI.getUsers(): FeliUserCollection;');
 end;
 
 class procedure FeliStorageAPI.addUser(user: FeliUser);
 var
     users: FeliUserCollection;
 begin
-    writeln('begin class procedure FeliStorageAPI.addUser(user: FeliUser);');
+    FeliStackTrace.trace('begin', 'class procedure FeliStorageAPI.addUser(user: FeliUser);');
     if (FeliStorageAPI.getUser(user.username) <> nil) or (FeliStorageAPI.getUser(user.email) <> nil) then
         begin
             raise FeliExceptions.FeliStorageUserExist.Create('User already exist');
@@ -98,14 +100,14 @@ begin
             users.add(user);
             FeliStorageAPI.setUsers(users);
         end;
-    writeln('end class procedure FeliStorageAPI.addUser(user: FeliUser);');
+    FeliStackTrace.trace('end', 'class procedure FeliStorageAPI.addUser(user: FeliUser);');
 end;
 
 class procedure FeliStorageAPI.setUsers(users: FeliUserCollection);
 begin
-    writeln('begin class procedure FeliStorageAPI.setUsers(users: FeliUserCollection);');
+    FeliStackTrace.trace('begin', 'class procedure FeliStorageAPI.setUsers(users: FeliUserCollection);');
     FeliFileAPI.put(usersFilePath, users.toJson()); // Error
-    writeln('end class procedure FeliStorageAPI.setUsers(users: FeliUserCollection);');
+    FeliStackTrace.trace('end', 'class procedure FeliStorageAPI.setUsers(users: FeliUserCollection);');
 end;
 
 class procedure FeliStorageAPI.removeUser(usernameOrEmail: ansiString);

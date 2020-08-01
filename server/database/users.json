@@ -12,5 +12,19 @@
     ],
     "pending_events" : [
     ]
+  },
+  {
+    "username" : "FelixNPL",
+    "display_name" : "Felix NPL",
+    "salt" : "ACQ7oBRP9X2QNfnpq43R3i55MoPkGc_8",
+    "salted_password" : "c6c2ec3c2c6639b9d957d3f9db7ceb41",
+    "email" : "user00000@test.com",
+    "first_name" : "Felix",
+    "last_name" : "NPL",
+    "access_level" : "participator",
+    "joined_events" : [
+    ],
+    "pending_events" : [
+    ]
   }
 ]
