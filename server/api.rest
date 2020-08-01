@@ -2,15 +2,20 @@ GET http://localhost:8081/api/event/EB3444FB3A9F183C0/get/
 
 ###
 
+###
 POST http://localhost:8081/api/login/
 content-type: application/json
 
 {
     "auth": {
-        "username": "ictsba3",
+        "username": "FelixNPL",
         "password": "20151529"
     }
 }
+
+###
+
+GET http://localhost:8081/api/shutdown/
 
 ###
 
@@ -19,16 +24,13 @@ content-type: application/json
 
 {
     "register": {
-        "username": "ictsba3",
-        "display_name": "ICT SBA",
-        "email": "ict.sba3@home.npl.edu.hk",
+        "username": "FelixNPL2",
+        "display_name": "Felix NPL",
+        "email": "user00001@test.com",
         "password": "20151529",
-        "first_name": "ICT",
-        "last_name": "SBA",
-        "access_level": "organiser"
+        "first_name": "Felix",
+        "last_name": "NPL",
+        "access_level": "participator"
     }
 }
 
-###
-
-GET http://localhost:8081/api/shutdown/

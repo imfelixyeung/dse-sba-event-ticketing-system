@@ -73,12 +73,18 @@ end;
 
 function FeliCollection.toTJsonArray(): TJsonArray;
 begin
-    result := data;
+    writeln('begin function FeliCollection.toTJsonArray(): TJsonArray;');
+    result := self.data;
+    writeln('end function FeliCollection.toTJsonArray(): TJsonArray;');
 end;
 
 function FeliCollection.toJson(): ansiString;
+var
+    testArray: TJsonArray;
 begin
-    result := self.toTJsonArray().formatJson;
+    writeln('begin function FeliCollection.toJson(): ansiString;');
+    result := self.toTJsonArray().formatJson();
+    writeln('end function FeliCollection.toJson(): ansiString;');
 end;
 
 procedure FeliCollection.add(document: FeliDocument);

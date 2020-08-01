@@ -19,6 +19,7 @@ uses
     feli_event_ticket,
     feli_event_participant,
     feli_response,
+    feli_middleware,
     sysutils,
     fphttpapp,
     httpdefs,
@@ -39,19 +40,66 @@ function parseRequestJsonBody(req: TRequest): TJsonObject;
 var
     bodyContent: ansiString;
 begin
+    writeln('function parseRequestJsonBody(req: TRequest): TJsonObject;');
     bodyContent := req.content;
     result := TJsonObject(getJson(bodyContent));
 end;
 
-procedure responseWithJsonObject(var res: TResponse; responseTemplate: FeliResponse);
+
+procedure userAuthMiddleware(var middlewareContent: FeliMiddleware; req: TRequest);
+var
+    username, password: ansiString;
+    requestJson: TJsonObject;
 begin
+    writeln('begin procedure userAuthMiddleware(var middlewareContent: FeliMiddleware; req: TRequest);');
+    requestJson := parseRequestJsonBody(req);
+    username := requestJson.getPath('auth.username').asString;
+    password := requestJson.getPath('auth.password').asString;
+    middlewareContent.user := FeliStorageAPI.getUser(username);
+    middlewareContent.user.password := password;
+    if (middlewareContent.user <> nil) then
+        begin
+            middlewareContent.authenticated := middlewareContent.user.verify();
+        end
+    else
+        begin
+            middlewareContent.authenticated := false;
+        end;
+    writeln('end procedure userAuthMiddleware(var middlewareContent: FeliMiddleware; req: TRequest);');
+end;
+
+// procedure responseWithJsonArray(var res: TResponse; responseTemplate: FeliResponseDataArray);
+// begin
+//     res.content := responseTemplate.toJson();
+//     res.code := responseTemplate.resCode;
+//     res.contentType := 'application/json;charset=utf-8';
+//     res.SetCustomHeader('access-control-allow-origin', '*');
+//     res.ContentLength := length(res.Content);
+//     res.SendContent;
+// end;
+
+// procedure responseWithJsonObject(var res: TResponse; responseTemplate: FeliResponseDataObject);
+// begin
+//     res.content := responseTemplate.toJson();
+//     res.code := responseTemplate.resCode;
+//     res.contentType := 'application/json;charset=utf-8';
+//     res.SetCustomHeader('access-control-allow-origin', '*');
+//     res.ContentLength := length(res.Content);
+//     res.SendContent;
+// end;
+
+procedure responseWithJson(var res: TResponse; responseTemplate: FeliResponse);
+begin
+    writeln('begin procedure responseWithJson(var res: TResponse; responseTemplate: FeliResponse);');
     res.content := responseTemplate.toJson();
     res.code := responseTemplate.resCode;
     res.contentType := 'application/json;charset=utf-8';
     res.SetCustomHeader('access-control-allow-origin', '*');
     res.ContentLength := length(res.Content);
     res.SendContent;
+    writeln('end procedure responseWithJson(var res: TResponse; responseTemplate: FeliResponse);');
 end;
+
 
 (*
     End points begin
@@ -62,15 +110,16 @@ procedure error404(req: TRequest; res: TResponse);
 var
     responseTemplate: FeliResponse;
 begin
+    writeln('begin procedure error404(req: TRequest; res: TResponse);');
     try
         responseTemplate := FeliResponse.create();
         responseTemplate.resCode := 404;
         responseTemplate.error := '404 Not Found';
-        responseWithJsonObject(res, responseTemplate);
+        responseWithJson(res, responseTemplate);
     finally
         responseTemplate.free();  
     end;
-
+    writeln('end procedure error404(req: TRequest; res: TResponse);');
 end;
 
 procedure getEventsEndPoint(req: TRequest; res: TResponse);
@@ -78,15 +127,17 @@ var
     events: FeliEventCollection;
     responseTemplate: FeliResponseDataArray;
 begin
+    writeln('begin procedure getEventsEndPoint(req: TRequest; res: TResponse);');
     try
         events := FeliStorageAPI.getEvents();
         responseTemplate := FeliResponseDataArray.create();
         responseTemplate.data := events.toTJsonArray();
         responseTemplate.resCode := 200;
-        responseWithJsonObject(res, responseTemplate);
+        responseWithJson(res, responseTemplate);
     finally
         responseTemplate.free();  
     end;
+    writeln('end procedure getEventsEndPoint(req: TRequest; res: TResponse);');
 end;
 
 procedure getEventEndPoint(req: TRequest; res: TResponse);
@@ -95,6 +146,7 @@ var
     event: FeliEvent;
     responseTemplate: FeliResponseDataObject;
 begin
+    writeln('begin procedure getEventEndPoint(req: TRequest; res: TResponse);');
     try
         eventId := req.routeParams['eventId'];
         event := FeliStorageAPI.getEvent(eventId);
@@ -105,52 +157,41 @@ begin
             responseTemplate.resCode := 200
         else
             responseTemplate.resCode := 404;
-        responseWithJsonObject(res, responseTemplate);
+        responseWithJson(res, responseTemplate);
     finally
         responseTemplate.free();  
     end;
+    writeln('end procedure getEventEndPoint(req: TRequest; res: TResponse);');
 end;
 
 procedure loginEndPoint(req: TRequest; res: TResponse);
 var
-    username, password: ansiString;
-    user: FeliUser;
     responseTemplate: FeliResponseDataObject;
-    requestJson: TJsonObject;
+    middlewareContent: FeliMiddleware;
 
 begin
+    writeln('begin procedure loginEndPoint(req: TRequest; res: TResponse);');
+    responseTemplate := FeliResponseDataObject.create();
+    middlewareContent := FeliMiddleware.create();
     try
         begin
-            requestJson := parseRequestJsonBody(req);
-            username := requestJson.getPath('auth.username').asString;
-            password := requestJson.getPath('auth.password').asString;
-            responseTemplate := FeliResponseDataObject.create();
+            userAuthMiddleware(middlewareContent, req);
 
-            user := FeliStorageAPI.getUser(username);
-
-            if (user <> nil) then
+            if middlewareContent.authenticated then
                 begin
-                    user.password := password;
-                    if user.verify() then
-                        begin
-                            responseTemplate.data := user.toTJsonObject(true);
-                            responseTemplate.resCode := 200;
-                        end
-                    else
-                        begin
-                            responseTemplate.resCode := 401;
-                        end;
-                    responseWithJsonObject(res, responseTemplate);
+                    responseTemplate.data := middlewareContent.user.toTJsonObject(true);
+                    responseTemplate.resCode := 200;
                 end
             else
                 begin
                     responseTemplate.resCode := 401;
-                    responseWithJsonObject(res, responseTemplate);
                 end;
+            responseWithJson(res, responseTemplate);
         end;
     finally
         responseTemplate.free();  
     end;
+    writeln('end procedure loginEndPoint(req: TRequest; res: TResponse);');
 end;
 
 procedure registerEndPoint(req: TRequest; res: TResponse);
@@ -159,6 +200,7 @@ var
     responseTemplate: FeliResponseDataObject;
     requestJson, registerUserObject: TJsonObject;
 begin
+    writeln('begin procedure registerEndPoint(req: TRequest; res: TResponse);');
     try
         begin
             requestJson := parseRequestJsonBody(req);
@@ -171,7 +213,8 @@ begin
             try
                 registerUser.validate();
                 registerUser.generateSaltedPassword();
-                FeliStorageAPI.addUser(registerUser);
+                writeln(registerUser.toJson);
+                FeliStorageAPI.addUser(registerUser); // Error
                 responseTemplate.data := registerUser.toTJsonObject(true);
                 responseTemplate.resCode := 200;
             except
@@ -181,11 +224,12 @@ begin
                     responseTemplate.error := e.message;
                 end;
             end;
-            responseWithJsonObject(res, responseTemplate);
+            responseWithJson(res, responseTemplate);
         end;
     finally
         responseTemplate.free();  
     end;
+    writeln('end procedure registerEndPoint(req: TRequest; res: TResponse);');
 end;
 
 
@@ -194,16 +238,17 @@ procedure serverShutdownEndpoint(req: TRequest; res: TResponse);
 var
     responseTemplate: FeliResponse;
 begin
+    writeln('begin procedure serverShutdownEndpoint(req: TRequest; res: TResponse);');
     try
         responseTemplate := FeliResponse.create();
         responseTemplate.resCode := 202;
-        responseTemplate.error := 'Shutting down server';
-        responseWithJsonObject(res, responseTemplate);
+        responseTemplate.msg := 'Shutting down server';
+        responseWithJson(res, responseTemplate);
     finally
         responseTemplate.free();  
         application.terminate();
     end;
-
+    writeln('end procedure serverShutdownEndpoint(req: TRequest; res: TResponse);');
 end;
 
 (*
@@ -212,6 +257,7 @@ end;
 
 procedure init();
 begin
+    writeln('begin procedure init();');
     randomize;
     application.port := port;
     FeliLogger.info(format('HTTP Server listening on port %d', [port]));
@@ -225,20 +271,21 @@ begin
     // application.threaded := true;
     application.initialize();
     Application.run();
+    writeln('end procedure init();');
 end;
 
 procedure test();
 var 
     // userEvent: FeliUserEvent;
     // collection: FeliCollection;
-    eventCollection: FeliEventCollection;
-    eventArray: TJsonArray;
-    eventEnum: TJsonEnum;
-    eventObject: TJsonObject;
-    eventDocument: FeliEvent;
-    ticketDocument: FeliEventTicket;
+    // eventCollection: FeliEventCollection;
+    // eventArray: TJsonArray;
+    // eventEnum: TJsonEnum;
+    // eventObject: TJsonObject;
+    // eventDocument: FeliEvent;
+    // ticketDocument: FeliEventTicket;
     // document: FeliDocument;
-    // user: FeliUser;
+    user: FeliUser;
     // usersArray: TJsonArray;
     // userEnum: TJsonEnum;
     // testUsernameString: ansiString;
@@ -250,6 +297,8 @@ var
 
 
 begin
+    writeln('begin procedure test();');
+    // FeliStorageAPI.removeUser('FelixNPL');
     // eventCollection := FeliStorageAPI.getEvents();
     // writeln(eventCollection.length());
     // eventArray := eventCollection.toTJsonArray();
@@ -463,15 +512,18 @@ begin
 
     // Test for FeliCrypto.generateSalt salt generation 
     // FeliLogger.log(FeliCrypto.generateSalt(64));
+    writeln('end begin procedure test();');
 end;
 
 begin
+    writeln('begin main');
     try
-        init();
         test();
+        init();
         // debug();
     except
       on err: Exception do FeliLogger.error(err.message);
     end;
+    writeln('end main');
 end.
 

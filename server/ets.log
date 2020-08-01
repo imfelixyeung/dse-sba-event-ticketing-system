@@ -454,3 +454,560 @@
 2020-08-01 04:06:36 [ETS] [Info]     HTTP Server listening on port 8081
 2020-08-01 04:16:07 [ETS] [Info]     HTTP Server listening on port 8081
 2020-08-01 04:17:06 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:15:18 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:17:43 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:22:58 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:23:01 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:23:30 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:23:53 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:24:25 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:25:31 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:25:34 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:27:15 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:27:36 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:27:40 [ETS] [Debug]    DEBUG POINT #a1
+2020-08-01 13:27:40 [ETS] [Debug]    DEBUG POINT #b1
+2020-08-01 13:29:51 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:29:55 [ETS] [Debug]    DEBUG POINT #a1
+2020-08-01 13:29:55 [ETS] [Debug]    DEBUG POINT #b1
+2020-08-01 13:31:45 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:32:09 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:32:11 [ETS] [Debug]    DEBUG POINT #a1
+2020-08-01 13:32:11 [ETS] [Debug]    DEBUG POINT #b1
+2020-08-01 13:32:36 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:32:38 [ETS] [Debug]    DEBUG POINT #aa1
+2020-08-01 13:32:38 [ETS] [Debug]    DEBUG POINT #b1
+2020-08-01 13:33:44 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:33:46 [ETS] [Debug]    DEBUG POINT #aa1
+2020-08-01 13:33:46 [ETS] [Debug]    DEBUG POINT #b1
+2020-08-01 13:34:55 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:34:59 [ETS] [Debug]    DEBUG POINT #ba1
+2020-08-01 13:34:59 [ETS] [Debug]    DEBUG POINT #b1
+2020-08-01 13:34:59 [ETS] [Debug]    DEBUG POINT #d1
+2020-08-01 13:34:59 [ETS] [Debug]    DEBUG POINT #d2
+2020-08-01 13:34:59 [ETS] [Debug]    DEBUG POINT #d3
+2020-08-01 13:34:59 [ETS] [Debug]    DEBUG POINT #d4
+2020-08-01 13:34:59 [ETS] [Debug]    DEBUG POINT #d5
+2020-08-01 13:34:59 [ETS] [Debug]    DEBUG POINT #b2
+2020-08-01 13:34:59 [ETS] [Debug]    DEBUG POINT #ba2
+2020-08-01 13:35:00 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:35:01 [ETS] [Debug]    DEBUG POINT #aa1
+2020-08-01 13:35:01 [ETS] [Debug]    DEBUG POINT #b1
+2020-08-01 13:37:55 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:38:42 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:38:45 [ETS] [Debug]    Debug Point #00001
+2020-08-01 13:39:09 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:39:12 [ETS] [Debug]    Debug Point #00001
+2020-08-01 13:39:52 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:39:54 [ETS] [Debug]    Debug Point #00001
+2020-08-01 13:40:48 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:40:50 [ETS] [Debug]    Debug Point #00001
+2020-08-01 13:41:36 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:41:38 [ETS] [Debug]    Debug Point #00001
+2020-08-01 13:42:06 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:42:08 [ETS] [Debug]    Debug Point #00001
+2020-08-01 13:42:45 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:42:48 [ETS] [Debug]    Debug Point #00001
+2020-08-01 13:43:22 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:43:24 [ETS] [Debug]    Debug Point #00001
+2020-08-01 13:44:13 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 13:44:15 [ETS] [Debug]    Debug Point #00001
+2020-08-01 13:44:15 [ETS] [Debug]    FeliResponseDataObject.toTJsonObject
+2020-08-01 13:44:15 [ETS] [Debug]    Debug Point #00002
+2020-08-01 14:27:25 [ETS] [Debug]    FeliResponse.toTJsonObject
+2020-08-01 14:27:25 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:27:30 [ETS] [Debug]    FeliResponseDataObject.toTJsonObject
+2020-08-01 14:27:52 [ETS] [Debug]    FeliResponseDataObject.toTJsonObject
+2020-08-01 14:36:37 [ETS] [Debug]    FeliResponseDataObject.toTJsonObject
+2020-08-01 14:36:44 [ETS] [Debug]    FeliResponse.toTJsonObject
+2020-08-01 14:36:44 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:36:50 [ETS] [Debug]    FeliResponseDataObject.toTJsonObject
+2020-08-01 14:36:55 [ETS] [Debug]    FeliResponseDataObject.toTJsonObject
+2020-08-01 14:37:00 [ETS] [Debug]    FeliResponseDataObject.toTJsonObject
+2020-08-01 14:43:11 [ETS] [Debug]    FeliResponse.toTJsonObject
+2020-08-01 14:43:12 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:43:43 [ETS] [Debug]    FeliResponse.toTJsonObject
+2020-08-01 14:43:44 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:43:48 [ETS] [Debug]    FeliResponseDataObject.toTJsonObject
+2020-08-01 14:43:52 [ETS] [Debug]    FeliResponse.toTJsonObject
+2020-08-01 14:43:52 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:44:06 [ETS] [Debug]    FeliResponse.toTJsonObject
+2020-08-01 14:44:07 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:45:17 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:48:19 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:51:38 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:51:40 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:51:40 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:51:40 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:51:40 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:53:25 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:53:27 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:53:27 [ETS] [Debug]    RegisterUser not null
+2020-08-01 14:53:27 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:53:27 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:53:27 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:54:31 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:54:34 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:54:34 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:54:34 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:54:34 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:54:34 [ETS] [Debug]    Debug Point #a00001
+2020-08-01 14:54:34 [ETS] [Debug]    Debug Point #a00003
+2020-08-01 14:54:34 [ETS] [Debug]    Debug Point #a00004
+2020-08-01 14:54:34 [ETS] [Debug]    Debug Point #a00005
+2020-08-01 14:54:34 [ETS] [Debug]    Debug Point #a00006
+2020-08-01 14:54:34 [ETS] [Debug]    Debug point #0004
+2020-08-01 14:54:34 [ETS] [Debug]    Debug point #0005
+2020-08-01 14:55:14 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:55:15 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:55:15 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:55:15 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:55:15 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:55:26 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:55:28 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:55:28 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:55:28 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:55:28 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:55:28 [ETS] [Debug]    Debug Point #a00001
+2020-08-01 14:55:28 [ETS] [Debug]    Debug Point #a00002
+2020-08-01 14:55:45 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:55:46 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:55:46 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:55:46 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:55:46 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:55:47 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:55:47 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:55:47 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:55:47 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:55:48 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:55:48 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:55:48 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:55:48 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:56:08 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:56:08 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:56:08 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:56:08 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:56:10 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:56:10 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:56:10 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:56:10 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:56:11 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:56:11 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:56:11 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:56:11 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:56:12 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:56:12 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:56:12 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:56:12 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:56:13 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:56:13 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:56:13 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:56:13 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:56:13 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:56:13 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:56:13 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:56:13 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:56:14 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:56:14 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:56:14 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:56:14 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:56:15 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:56:15 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:56:15 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:56:15 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:56:16 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:56:16 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:56:16 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:56:16 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:56:16 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:56:16 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:56:16 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:56:16 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:56:17 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:56:17 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:56:17 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:56:17 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:56:18 [ETS] [Debug]    function parseRequestJsonBody(req: TRequest): TJsonObject;
+2020-08-01 14:56:18 [ETS] [Debug]    Debug point #0001
+2020-08-01 14:56:18 [ETS] [Debug]    Debug point #0002
+2020-08-01 14:56:18 [ETS] [Debug]    Debug point #0003
+2020-08-01 14:58:40 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:59:08 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:59:22 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 14:59:58 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:00:01 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:00:01 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:00:01 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:01:19 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:01:34 [ETS] [Log]      User not null
+2020-08-01 15:01:34 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:01:34 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:01:34 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:02:13 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:02:15 [ETS] [Log]      User not null
+2020-08-01 15:02:15 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:02:15 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:02:15 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:02:49 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:02:51 [ETS] [Log]      User not null
+2020-08-01 15:02:51 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:02:51 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:02:51 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:03:22 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:03:24 [ETS] [Log]      User not null
+2020-08-01 15:03:24 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:03:24 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:03:24 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:04:16 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:04:21 [ETS] [Log]      User not null
+2020-08-01 15:04:21 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:04:21 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:04:21 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:04:44 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:04:46 [ETS] [Log]      User not null
+2020-08-01 15:04:46 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:04:46 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:04:46 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:05:20 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:05:21 [ETS] [Log]      User not null
+2020-08-01 15:05:21 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:05:21 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:05:21 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:06:00 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:06:02 [ETS] [Log]      User not null
+2020-08-01 15:06:02 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:06:02 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:06:02 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:07:44 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:07:47 [ETS] [Log]      User not null
+2020-08-01 15:07:47 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:07:47 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:07:47 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:08:10 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:08:12 [ETS] [Log]      User not null
+2020-08-01 15:08:12 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:08:12 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:08:12 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:08:40 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:08:42 [ETS] [Log]      User not null
+2020-08-01 15:08:42 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:08:42 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:08:42 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:10:14 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:10:16 [ETS] [Log]      User not null
+2020-08-01 15:10:16 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:10:16 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:10:16 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:11:35 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:11:38 [ETS] [Log]      User not null
+2020-08-01 15:11:38 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:11:38 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:11:38 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:12:34 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:12:35 [ETS] [Log]      User not null
+2020-08-01 15:12:35 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:12:35 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:12:35 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:13:39 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:13:46 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:13:51 [ETS] [Log]      User not null
+2020-08-01 15:13:51 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:13:51 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:13:51 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:14:04 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:14:05 [ETS] [Log]      User not null
+2020-08-01 15:14:05 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:14:05 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:14:05 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:14:36 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:14:37 [ETS] [Log]      User not null
+2020-08-01 15:14:37 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:14:37 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:14:37 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:15:04 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:15:06 [ETS] [Log]      User not null
+2020-08-01 15:15:06 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:15:06 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:15:06 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:15:52 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:16:32 [ETS] [Log]      User not null
+2020-08-01 15:16:32 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:16:32 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:16:32 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:16:56 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:17:11 [ETS] [Log]      User not null
+2020-08-01 15:17:11 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:17:11 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:17:11 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:18:11 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:18:24 [ETS] [Log]      User not null
+2020-08-01 15:18:24 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:18:24 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:18:24 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:18:25 [ETS] [Log]      User not null
+2020-08-01 15:18:25 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:18:25 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:18:25 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:18:28 [ETS] [Log]      User not null
+2020-08-01 15:18:28 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:18:28 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:18:28 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:20:13 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:20:25 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:20:27 [ETS] [Log]      User not null
+2020-08-01 15:20:27 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:20:27 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:20:27 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:21:20 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:21:21 [ETS] [Log]      User not null
+2020-08-01 15:21:21 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:21:21 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:21:21 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:22:07 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:22:08 [ETS] [Log]      User not null
+2020-08-01 15:22:08 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:22:08 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:22:08 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:22:16 [ETS] [Log]      User not null
+2020-08-01 15:22:16 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:22:16 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:22:16 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:22:37 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:22:39 [ETS] [Log]      User not null
+2020-08-01 15:22:39 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:22:39 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:22:39 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:22:45 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:22:52 [ETS] [Log]      User not null
+2020-08-01 15:22:52 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:22:52 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:22:52 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:23:15 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:23:16 [ETS] [Log]      User not null
+2020-08-01 15:23:16 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:23:16 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:23:16 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:23:25 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:23:27 [ETS] [Log]      User not null
+2020-08-01 15:23:27 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:23:27 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:23:27 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:23:30 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:23:32 [ETS] [Log]      User not null
+2020-08-01 15:23:32 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:23:32 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:23:32 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:24:34 [ETS] [Log]      User not null
+2020-08-01 15:24:34 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:24:34 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:24:34 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:24:37 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:24:39 [ETS] [Log]      User not null
+2020-08-01 15:24:39 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:24:39 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:24:39 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:27:48 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:27:50 [ETS] [Log]      User not null
+2020-08-01 15:27:50 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:27:50 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:27:50 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:28:00 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:28:02 [ETS] [Log]      User not null
+2020-08-01 15:28:02 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:28:02 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:28:02 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:28:06 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:28:07 [ETS] [Log]      User not null
+2020-08-01 15:28:07 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:28:07 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:28:07 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:28:27 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:28:28 [ETS] [Log]      User not null
+2020-08-01 15:28:28 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:28:28 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:28:28 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:28:33 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:28:34 [ETS] [Log]      User not null
+2020-08-01 15:28:34 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:28:34 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:28:34 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:29:20 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:29:22 [ETS] [Log]      User not null
+2020-08-01 15:29:22 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:29:22 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:29:22 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:30:45 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:30:53 [ETS] [Log]      User not null
+2020-08-01 15:30:53 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:30:53 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:30:53 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:31:32 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:31:34 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:31:36 [ETS] [Log]      User not null
+2020-08-01 15:31:36 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:31:36 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:31:36 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:33:22 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:33:25 [ETS] [Log]      User not null
+2020-08-01 15:33:25 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:33:25 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:33:25 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:36:22 [ETS] [Log]      User not null
+2020-08-01 15:36:22 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:36:22 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:36:22 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:36:24 [ETS] [Log]      User not null
+2020-08-01 15:36:24 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:36:24 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:36:24 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:36:35 [ETS] [Log]      User not null
+2020-08-01 15:36:35 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:36:35 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:36:35 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:36:44 [ETS] [Log]      User not null
+2020-08-01 15:36:44 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:36:44 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:36:44 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:36:57 [ETS] [Log]      User not null
+2020-08-01 15:36:57 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:36:57 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:36:57 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:37:20 [ETS] [Log]      User not null
+2020-08-01 15:37:20 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:37:20 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:37:20 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:37:26 [ETS] [Log]      User not null
+2020-08-01 15:37:26 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:37:26 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:37:26 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:39:04 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:39:06 [ETS] [Log]      User not null
+2020-08-01 15:39:06 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:39:06 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:39:06 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:39:12 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:39:13 [ETS] [Log]      User not null
+2020-08-01 15:39:13 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:39:13 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:39:13 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:39:21 [ETS] [Log]      User not null
+2020-08-01 15:39:21 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:39:21 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:39:21 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:39:55 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:39:58 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:40:02 [ETS] [Log]      User not null
+2020-08-01 15:40:02 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:40:02 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:40:02 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:40:02 [ETS] [Debug]    Debug point #0004
+2020-08-01 15:40:02 [ETS] [Debug]    Debug point #0005
+2020-08-01 15:40:48 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:40:50 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:40:52 [ETS] [Log]      User not null
+2020-08-01 15:40:52 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:40:52 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:40:52 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:40:59 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:41:00 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:41:04 [ETS] [Log]      User not null
+2020-08-01 15:41:04 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:41:04 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:41:04 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:41:33 [ETS] [Log]      User not null
+2020-08-01 15:41:33 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:41:33 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:41:33 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:41:41 [ETS] [Log]      User not null
+2020-08-01 15:41:41 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:41:41 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:41:41 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:43:34 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:43:52 [ETS] [Info]     User FelixNPL removed successfully
+2020-08-01 15:43:53 [ETS] [Error]    User FelixNPL was not found, ergo unable to remove FelixNPL
+2020-08-01 15:43:53 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:44:11 [ETS] [Info]     User FelixNPL removed successfully
+2020-08-01 15:44:11 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:45:28 [ETS] [Info]     User FelixNPL removed successfully
+2020-08-01 15:45:28 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:45:30 [ETS] [Log]      User not null
+2020-08-01 15:45:30 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:45:30 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:45:30 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:45:30 [ETS] [Debug]    Debug point #0004
+2020-08-01 15:45:30 [ETS] [Debug]    Debug point #0005
+2020-08-01 15:46:50 [ETS] [Error]    User FelixNPL was not found, ergo unable to remove FelixNPL
+2020-08-01 15:46:50 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:46:51 [ETS] [Log]      User not null
+2020-08-01 15:46:51 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:46:51 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:46:51 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:47:21 [ETS] [Error]    User FelixNPL was not found, ergo unable to remove FelixNPL
+2020-08-01 15:47:21 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:47:22 [ETS] [Log]      User not null
+2020-08-01 15:47:22 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:47:22 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:47:22 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:47:22 [ETS] [Debug]    Debug point #0004
+2020-08-01 15:47:22 [ETS] [Debug]    Debug point #0005
+2020-08-01 15:49:04 [ETS] [Error]    User FelixNPL was not found, ergo unable to remove FelixNPL
+2020-08-01 15:49:04 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:49:05 [ETS] [Log]      User not null
+2020-08-01 15:49:05 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:49:05 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:49:05 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:49:05 [ETS] [Debug]    Debug point #0004
+2020-08-01 15:49:05 [ETS] [Debug]    Debug point #0005
+2020-08-01 15:49:18 [ETS] [Error]    User FelixNPL was not found, ergo unable to remove FelixNPL
+2020-08-01 15:49:18 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:49:19 [ETS] [Log]      User not null
+2020-08-01 15:49:19 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:49:19 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:49:19 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:49:52 [ETS] [Error]    User FelixNPL was not found, ergo unable to remove FelixNPL
+2020-08-01 15:49:52 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:49:53 [ETS] [Log]      User not null
+2020-08-01 15:49:53 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:49:53 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:49:53 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:50:11 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:50:14 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:50:21 [ETS] [Log]      User not null
+2020-08-01 15:50:21 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:50:21 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:50:21 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:51:00 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:51:02 [ETS] [Log]      User not null
+2020-08-01 15:51:02 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:51:02 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:51:02 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:51:02 [ETS] [Debug]    Debug point #0004
+2020-08-01 15:51:02 [ETS] [Debug]    Debug point #0005
+2020-08-01 15:52:04 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:52:06 [ETS] [Log]      User not null
+2020-08-01 15:52:06 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:52:06 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:52:06 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:52:17 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:52:19 [ETS] [Log]      User not null
+2020-08-01 15:52:19 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:52:19 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:52:19 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:54:03 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:54:05 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:54:09 [ETS] [Log]      User not null
+2020-08-01 15:54:09 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:54:09 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:54:09 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:54:37 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:54:39 [ETS] [Log]      User not null
+2020-08-01 15:54:39 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:54:39 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:54:39 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:56:04 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-01 15:56:06 [ETS] [Log]      User not null
+2020-08-01 15:56:06 [ETS] [Debug]    Debug point #0001
+2020-08-01 15:56:06 [ETS] [Debug]    Debug point #0002
+2020-08-01 15:56:06 [ETS] [Debug]    Debug point #0003
+2020-08-01 15:56:06 [ETS] [Debug]    Debug point #0004
+2020-08-01 15:56:06 [ETS] [Debug]    Debug point #0005

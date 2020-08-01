@@ -16,11 +16,14 @@ type
                 displayName = 'display_name';
                 salt = 'salt';
                 saltedPassword = 'salted_password';
+                password = 'password';
                 email = 'email';
                 firstName = 'first_name';
                 lastName = 'last_name';
                 accessLevel = 'access_level';
-                data = 'data';
+                joinedEvents = 'joined_events';
+                createdEvents = 'created_events';
+                pendingEvents = 'pending_events';
         end;
 
     FeliUser = class(FeliDocument)
@@ -62,6 +65,8 @@ uses
     feli_crypto,
     feli_validation,
     feli_operators,
+    feli_access_level,
+    feli_errors,
     sysutils;
 
 constructor FeliUser.create();
@@ -77,42 +82,42 @@ var
     user, userData: TJsonObject;
 
 begin
-    userData := TJsonObject.create();
+    writeln('begin function FeliUser.toTJsonObject(secure: boolean = false): TJsonObject;');
     user := TJsonObject.create();
     
+    user.add(FeliUserKeys.username, username);
+    user.add(FeliUserKeys.displayName, displayName);
+    if not secure then user.add(FeliUserKeys.salt, salt);
+    if not secure then user.add(FeliUserKeys.saltedPassword, saltedPassword);
+    user.add(FeliUserKeys.email, email);
+    user.add(FeliUserKeys.firstName, firstName);
+    user.add(FeliUserKeys.lastName, lastName);
+    user.add(FeliUserKeys.accessLevel, accessLevel);
+
     case accessLevel of
-        'admin': 
+        FeliAccessLevel.admin: 
             begin
-                userData.add('joined_events', joinedEvents);
-                userData.add('created_events', createdEvents);
-                userData.add('pending_events', pendingEvents);
+                user.add(FeliUserKeys.joinedEvents, joinedEvents);
+                user.add(FeliUserKeys.createdEvents, createdEvents);
+                user.add(FeliUserKeys.pendingEvents, pendingEvents);
             end;
-        'organiser':
+        FeliAccessLevel.organiser:
             begin
-                userData.add('created_events', createdEvents);
+                user.add(FeliUserKeys.createdEvents, createdEvents);
             end;
-        'default':
+        FeliAccessLevel.participator:
             begin
-                userData.add('joined_events', TJsonArray.Create);                
-                userData.add('pending_events', TJsonArray.Create);                
+                user.add(FeliUserKeys.joinedEvents, joinedEvents);                
+                user.add(FeliUserKeys.pendingEvents, pendingEvents);                
             end;
-        'anonymous':
+        FeliAccessLevel.anonymous:
             begin
                 
             end;
     end;
 
-    user.add('username', username);
-    user.add('display_name', displayName);
-    if not secure then user.add('salt', salt);
-    if not secure then user.add('salted_password', saltedPassword);
-    user.add('email', email);
-    user.add('first_name', firstName);
-    user.add('last_name', lastName);
-    user.add('access_level', accessLevel);
-    user.add('data', userData);
-
     result := user;
+    writeln('end function FeliUser.toTJsonObject(secure: boolean = false): TJsonObject;');
 end;
 
 // function FeliUser.toJson(): ansiString;
@@ -128,19 +133,19 @@ end;
 function FeliUser.validate(): boolean;
 begin
     if not FeliValidation.emailCheck(email) then
-        raise Exception.Create('Invalid Email');
+        raise Exception.Create(FeliErrors.invalidEmail);
     if not FeliValidation.lengthCheck(username, 4, 16) then
-        raise Exception.Create('Username length should be 4 <= l <= 16');
+        raise Exception.Create(FeliErrors.invalidUsernameLength);
     if not FeliValidation.lengthCheck(password, 8, 32) then
-        raise Exception.Create('Password length should be 8 <= l <= 32');
+        raise Exception.Create(FeliErrors.invalidPasswordLength);
     if not FeliValidation.lengthCheck(firstName, 1, 32) then
-        raise Exception.Create('First name must not be empty');
+        raise Exception.Create(FeliErrors.emptyFirstName);
     if not FeliValidation.lengthCheck(lastName, 1, 32) then
-        raise Exception.Create('Last name must not be empty');
+        raise Exception.Create(FeliErrors.emptyLastName);
     if not FeliValidation.lengthCheck(displayName, 1, 32) then
-        raise Exception.Create('Display name must not be empty');
-    if not FeliValidation.fixedValueCheck(accessLevel, ['organiser', 'participator']) then
-        raise Exception.Create('Access level not allowed');
+        raise Exception.Create(FeliErrors.emptyDisplayName);
+    if not FeliValidation.fixedValueCheck(accessLevel, [FeliAccessLevel.organiser, FeliAccessLevel.participator]) then
+        raise Exception.Create(FeliErrors.accessLevelNotAllowed);
 
 end;
 
@@ -160,30 +165,30 @@ begin
     feliUserInstance := FeliUser.create();
     with feliUserInstance do
     begin
-        try username := userObject.getPath('username').asString; except on e: exception do begin end; end;
-        try displayName := userObject.getPath('display_name').asString; except on e: exception do begin end; end;
-        try salt := userObject.getPath('salt').asString; except on e: exception do begin end; end;
-        try saltedPassword := userObject.getPath('salted_password').asString; except on e: exception do begin end; end;
-        try password := userObject.getPath('password').asString; except on e: exception do begin end; end;
-        try email := userObject.getPath('email').asString; except on e: exception do begin end; end;
-        try firstName := userObject.getPath('first_name').asString; except on e: exception do begin end; end;
-        try lastName := userObject.getPath('last_name').asString; except on e: exception do begin end; end;
-        try accessLevel := userObject.getPath('access_level').asString; except on e: exception do begin end; end;
+        try username := userObject.getPath(FeliUserKeys.username).asString; except on e: exception do begin end; end;
+        try displayName := userObject.getPath(FeliUserKeys.displayName).asString; except on e: exception do begin end; end;
+        try salt := userObject.getPath(FeliUserKeys.salt).asString; except on e: exception do begin end; end;
+        try saltedPassword := userObject.getPath(FeliUserKeys.saltedPassword).asString; except on e: exception do begin end; end;
+        try password := userObject.getPath(FeliUserKeys.password).asString; except on e: exception do begin end; end;
+        try email := userObject.getPath(FeliUserKeys.email).asString; except on e: exception do begin end; end;
+        try firstName := userObject.getPath(FeliUserKeys.firstName).asString; except on e: exception do begin end; end;
+        try lastName := userObject.getPath(FeliUserKeys.lastName).asString; except on e: exception do begin end; end;
+        try accessLevel := userObject.getPath(FeliUserKeys.accessLevel).asString; except on e: exception do begin end; end;
 
         try
-            tempTJsonArray := TJsonArray(userObject.findPath('data.joined_events'));
+            tempTJsonArray := TJsonArray(userObject.findPath(FeliUserKeys.joinedEvents));
             if not tempTJsonArray.isNull then 
             joinedEvents := tempTJsonArray;
         except
         end;
         try
-            tempTJsonArray := TJsonArray(userObject.findPath('data.created_events'));
+            tempTJsonArray := TJsonArray(userObject.findPath(FeliUserKeys.createdEvents));
             if not tempTJsonArray.isNull then 
             createdEvents := tempTJsonArray;
         except
         end;
         try
-            tempTJsonArray := TJsonArray(userObject.findPath('data.pending_events'));
+            tempTJsonArray := TJsonArray(userObject.findPath(FeliUserKeys.pendingEvents));
             if not tempTJsonArray.isNull then 
             pendingEvents := tempTJsonArray;
         except
@@ -244,7 +249,11 @@ end;
 
 procedure FeliUserCollection.add(user: FeliUser);
 begin
+    writeln('begin procedure FeliUserCollection.add(user: FeliUser);');
+    writeln(user.toJson());
+    writeln('test again');
     data.add(user.toTJsonObject());
+    writeln('end procedure FeliUserCollection.add(user: FeliUser);');
 end;
 
 procedure FeliUserCollection.join(newCollection: FeliUserCollection);

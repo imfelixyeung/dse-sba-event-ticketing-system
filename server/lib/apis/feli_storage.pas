@@ -52,6 +52,7 @@ var
     users, filteredUsers, filteredUsersTemp: FeliUserCollection;
     tempCollection: FeliCollection;
 begin
+    writeln('class function FeliStorageAPI.getUser(usernameOrEmail: ansiString): FeliUser;');
     result := nil;
     users := FeliStorageAPI.getUsers();
     tempCollection := users.where(FeliUserKeys.username, FeliOperators.equalsTo, usernameOrEmail);
@@ -75,16 +76,18 @@ var
     usersJsonArray: TJsonArray;
     tempCollection: FeliCollection;
 begin
+    writeln('begin class function FeliStorageAPI.getUsers(): FeliUserCollection;');
     usersJsonArray := FeliFileAPI.getJsonArray(usersFilePath);
     tempCollection := FeliUserCollection.fromTJsonArray(usersJsonArray);
     result := FeliUserCollection.fromFeliCollection(tempCollection);
+    writeln('end class function FeliStorageAPI.getUsers(): FeliUserCollection;');
 end;
 
 class procedure FeliStorageAPI.addUser(user: FeliUser);
 var
     users: FeliUserCollection;
 begin
-
+    writeln('begin class procedure FeliStorageAPI.addUser(user: FeliUser);');
     if (FeliStorageAPI.getUser(user.username) <> nil) or (FeliStorageAPI.getUser(user.email) <> nil) then
         begin
             raise FeliExceptions.FeliStorageUserExist.Create('User already exist');
@@ -95,11 +98,14 @@ begin
             users.add(user);
             FeliStorageAPI.setUsers(users);
         end;
+    writeln('end class procedure FeliStorageAPI.addUser(user: FeliUser);');
 end;
 
 class procedure FeliStorageAPI.setUsers(users: FeliUserCollection);
 begin
-    FeliFileAPI.put(usersFilePath, users.toJson());
+    writeln('begin class procedure FeliStorageAPI.setUsers(users: FeliUserCollection);');
+    FeliFileAPI.put(usersFilePath, users.toJson()); // Error
+    writeln('end class procedure FeliStorageAPI.setUsers(users: FeliUserCollection);');
 end;
 
 class procedure FeliStorageAPI.removeUser(usernameOrEmail: ansiString);

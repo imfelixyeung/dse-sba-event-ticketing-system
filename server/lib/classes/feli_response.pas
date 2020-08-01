@@ -11,7 +11,7 @@ type
             error, msg: ansiString;
             resCode: integer;
             function toTJsonObject(): TJsonObject; virtual;
-            function toJson(): ansiString;
+            function toJson(): ansiString; virtual;
         end;
     
     FeliResponseDataObject = class(FeliResponse)
@@ -27,6 +27,7 @@ type
         end;
 
 implementation
+uses feli_logger;
 function FeliResponse.toTJsonObject(): TJsonObject;
 var
     resObject: TJsonObject;
@@ -39,8 +40,10 @@ begin
 end;
 
 function FeliResponse.toJson(): ansiString;
+var jsonObject: TJsonObject;
 begin
-    result := self.toTJsonObject().formatJson;
+    jsonObject := toTJsonObject();
+    result := jsonObject.formatJson;
 end;
 
 function FeliResponseDataArray.toTJsonObject(): TJsonObject;
