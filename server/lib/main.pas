@@ -191,8 +191,19 @@ end;
 
 
 procedure serverShutdownEndpoint(req: TRequest; res: TResponse);
+var
+    responseTemplate: FeliResponse;
 begin
-    application.terminate();
+    try
+        responseTemplate := FeliResponse.create();
+        responseTemplate.resCode := 202;
+        responseTemplate.error := 'Shutting down server';
+        responseWithJsonObject(res, responseTemplate);
+    finally
+        responseTemplate.free();  
+        application.terminate();
+    end;
+
 end;
 
 (*
