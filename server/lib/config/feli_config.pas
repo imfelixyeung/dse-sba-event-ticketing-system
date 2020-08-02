@@ -18,6 +18,7 @@ uses
     feli_file,
     feli_logger,
     feli_constants,
+    feli_stack_tracer,
     fpjson,
     jsonparser,
     sysutils;

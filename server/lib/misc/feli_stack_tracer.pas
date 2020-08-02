@@ -13,12 +13,32 @@ type
             class procedure out(load: String); static;
         end;
 
+function simpleSpaceReplaceText(str: ansiString): ansiString;
+
 
 implementation
 uses
     feli_file,
     feli_constants,
     sysutils;
+
+function simpleSpaceReplaceText(str: ansiString): ansiString;
+var
+    i: integer;
+    tempStr: ansiString;
+begin
+    tempStr := '';
+    
+    for i := 1 to length(str) do
+        begin
+            if ((i - 1) mod 4) = 0  then
+                tempStr := tempStr + '|'
+            else
+                tempStr := tempStr + ' ';
+        end;
+    
+    result := tempStr;
+end;
 
 class procedure FeliStackTrace.trace(kind, name: ansiString); static;
 var
@@ -33,13 +53,14 @@ begin
         'begin': depth := depth + 1;
         'end': depth := depth - 1;
     end;
-    if ((depth - 3) <> 0) then for i := 0 to (depth - 3) do spaces := spaces + '  ';
+    if ((depth - 3) <> 0) then for i := 0 to (depth - 3) do spaces := spaces + '| ';
     case kind of
         'begin': depth := depth + 1;
         'end': depth := depth - 1;
     end;
     tempString := kind;
     if (tempString = 'end') then tempString := ' end ';
+    spaces := simpleSpaceReplaceText(spaces);
     writeln(format('%s[%s] %s', [spaces, tempString, name]));
     FeliFileAPI.put(stackTraceDepthPath, IntToStr(depth));
 end;
@@ -53,8 +74,9 @@ begin
     spaces := '';
     tempString := FeliFileAPI.get(stackTraceDepthPath);
     depth := StrToInt64(trim(tempString));
-    if ((depth - 4) <> 0) then for i := 0 to (depth - 4) do spaces := spaces + '  ';
+    if ((depth - 4) <> 0) then for i := 0 to (depth - 4) do spaces := spaces + '| ';
     if (tempString = 'end') then tempString := ' end ';
+    spaces := simpleSpaceReplaceText(spaces);
     writeln(format('%s%s', [spaces, load]));
 end;
 

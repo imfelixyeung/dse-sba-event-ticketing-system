@@ -70,25 +70,6 @@ begin
     FeliStackTrace.trace('end', 'procedure userAuthMiddleware(var middlewareContent: FeliMiddleware; req: TRequest);');
 end;
 
-// procedure responseWithJsonArray(var res: TResponse; responseTemplate: FeliResponseDataArray);
-// begin
-//     res.content := responseTemplate.toJson();
-//     res.code := responseTemplate.resCode;
-//     res.contentType := 'application/json;charset=utf-8';
-//     res.SetCustomHeader('access-control-allow-origin', '*');
-//     res.ContentLength := length(res.Content);
-//     res.SendContent;
-// end;
-
-// procedure responseWithJsonObject(var res: TResponse; responseTemplate: FeliResponseDataObject);
-// begin
-//     res.content := responseTemplate.toJson();
-//     res.code := responseTemplate.resCode;
-//     res.contentType := 'application/json;charset=utf-8';
-//     res.SetCustomHeader('access-control-allow-origin', '*');
-//     res.ContentLength := length(res.Content);
-//     res.SendContent;
-// end;
 
 procedure responseWithJson(var res: TResponse; responseTemplate: FeliResponse);
 begin
@@ -113,6 +94,7 @@ var
     responseTemplate: FeliResponse;
 begin
     FeliStackTrace.trace('begin', 'procedure error404(req: TRequest; res: TResponse);');
+    FeliLogger.error(format('Error 404 "%s" not found', [req.URI]));
     try
         responseTemplate := FeliResponse.create();
         responseTemplate.resCode := 404;
@@ -154,7 +136,6 @@ begin
         event := FeliStorageAPI.getEvent(eventId);
         responseTemplate := FeliResponseDataObject.create();
         responseTemplate.data := event.toTJsonObject();
-        writeln(eventId);
         if (event <> nil) then
             responseTemplate.resCode := 200
         else
@@ -215,7 +196,6 @@ begin
             try
                 registerUser.validate();
                 registerUser.generateSaltedPassword();
-                writeln(registerUser.toJson);
                 FeliStorageAPI.addUser(registerUser); // Error
                 responseTemplate.data := registerUser.toTJsonObject(true);
                 responseTemplate.resCode := 200;
@@ -249,6 +229,7 @@ begin
     finally
         responseTemplate.free();  
         application.terminate();
+        FeliLogger.info('Shutting down server');
     end;
     FeliStackTrace.trace('end', 'procedure serverShutdownEndpoint(req: TRequest; res: TResponse);');
 end;
@@ -300,7 +281,7 @@ var
 
 begin
     FeliStackTrace.trace('begin', 'procedure test();');
-    // FeliStorageAPI.removeUser('FelixNPL');
+    // FeliStorageAPI.removeUser('FelixNPL_NotExist');
     // eventCollection := FeliStorageAPI.getEvents();
     // writeln(eventCollection.length());
     // eventArray := eventCollection.toTJsonArray();

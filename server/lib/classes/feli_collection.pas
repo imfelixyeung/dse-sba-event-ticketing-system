@@ -25,7 +25,9 @@ uses
 
 constructor FeliCollection.create();
 begin
+    FeliStackTrace.trace('begin', 'constructor FeliCollection.create();');
     data := TJsonArray.create();
+    FeliStackTrace.trace('end', 'constructor FeliCollection.create();');
 end;
 
 function FeliCollection.where(key: ansiString; operation: ansiString; value: ansiString): FeliCollection;
@@ -34,6 +36,7 @@ var
     dataEnum: TJsonEnum;
     dataSingle: TJsonObject;
 begin
+    FeliStackTrace.trace('begin', 'function FeliCollection.where(key: ansiString; operation: ansiString; value: ansiString): FeliCollection;');
     dataTemp := TJsonArray.create();
 
     for dataEnum in data do
@@ -68,8 +71,8 @@ begin
         end;
 
     end;
-
     result := FeliCollection.fromTJsonArray(dataTemp);
+    FeliStackTrace.trace('end', 'function FeliCollection.where(key: ansiString; operation: ansiString; value: ansiString): FeliCollection;');
 end;
 
 function FeliCollection.toTJsonArray(): TJsonArray;
@@ -90,22 +93,28 @@ end;
 
 procedure FeliCollection.add(document: FeliDocument);
 begin
+    FeliStackTrace.trace('begin', 'procedure FeliCollection.add(document: FeliDocument);');
     data.add(document.toTJsonObject());
+    FeliStackTrace.trace('end', 'procedure FeliCollection.add(document: FeliDocument);');
 end;
 
 
 function FeliCollection.length(): int64;
 begin
+    FeliStackTrace.trace('begin', 'function FeliCollection.length(): int64;');
     result := data.count;
+    FeliStackTrace.trace('end', 'function FeliCollection.length(): int64;');
 end;
 
 class function FeliCollection.fromTJsonArray(dataArray: TJsonArray): FeliCollection; static;
 var
     feliCollectionInstance: FeliCollection;
 begin
+    FeliStackTrace.trace('begin', 'class function FeliCollection.fromTJsonArray(dataArray: TJsonArray): FeliCollection; static;');
     feliCollectionInstance := FeliCollection.create();
     feliCollectionInstance.data := dataArray;
     result := feliCollectionInstance;
+    FeliStackTrace.trace('end', 'class function FeliCollection.fromTJsonArray(dataArray: TJsonArray): FeliCollection; static;');
 end;
 
 

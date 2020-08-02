@@ -133,6 +133,7 @@ end;
 
 function FeliUser.validate(): boolean;
 begin
+    FeliStackTrace.trace('begin', 'function FeliUser.validate(): boolean;');
     if not FeliValidation.emailCheck(email) then
         raise Exception.Create(FeliErrors.invalidEmail);
     if not FeliValidation.lengthCheck(username, 4, 16) then
@@ -148,13 +149,16 @@ begin
     if not FeliValidation.fixedValueCheck(accessLevel, [FeliAccessLevel.organiser, FeliAccessLevel.participator]) then
         raise Exception.Create(FeliErrors.accessLevelNotAllowed);
 
+    FeliStackTrace.trace('end', 'function FeliUser.validate(): boolean;');
 end;
 
 
 procedure FeliUser.generateSaltedPassword();
 begin
+    FeliStackTrace.trace('begin', 'procedure FeliUser.generateSaltedPassword();');
     salt := FeliCrypto.generateSalt(32);
     saltedPassword := FeliCrypto.hashMD5(salt + password);
+    FeliStackTrace.trace('end', 'procedure FeliUser.generateSaltedPassword();');
 end;
 
 
@@ -163,6 +167,7 @@ var
     feliUserInstance: FeliUser;
     tempTJsonArray: TJsonArray;
 begin
+    FeliStackTrace.trace('begin', 'class function FeliUser.fromTJsonObject(userObject: TJsonObject): FeliUser; static;');
     feliUserInstance := FeliUser.create();
     with feliUserInstance do
     begin
@@ -196,6 +201,7 @@ begin
         end;
     end;
     result := feliUserInstance;
+    FeliStackTrace.trace('end', 'class function FeliUser.fromTJsonObject(userObject: TJsonObject): FeliUser; static;');
 end;
 
 
@@ -251,8 +257,6 @@ end;
 procedure FeliUserCollection.add(user: FeliUser);
 begin
     FeliStackTrace.trace('begin', 'procedure FeliUserCollection.add(user: FeliUser);');
-    writeln(user.toJson());
-    writeln('test again');
     data.add(user.toTJsonObject());
     FeliStackTrace.trace('end', 'procedure FeliUserCollection.add(user: FeliUser);');
 end;
@@ -263,12 +267,14 @@ var
     newEnum: TJsonEnum;
     newDataSingle: TJsonObject;
 begin
+    FeliStackTrace.trace('begin', 'procedure FeliUserCollection.join(newCollection: FeliUserCollection);');
     newArray := newCollection.toTJsonArray();
     for newEnum in newArray do
     begin
         newDataSingle := newEnum.value as TJsonObject;
         data.add(newDataSingle);
     end;
+    FeliStackTrace.trace('end', 'procedure FeliUserCollection.join(newCollection: FeliUserCollection);');
 end;
 
 // function FeliUserCollection.length(): int64;
@@ -301,9 +307,11 @@ class function FeliUserCollection.fromFeliCollection(collection: FeliCollection)
 var
     feliUserCollectionInstance: FeliUserCollection;
 begin
+    FeliStackTrace.trace('begin', 'class function FeliUserCollection.fromFeliCollection(collection: FeliCollection): FeliUserCollection; static;');
     feliUserCollectionInstance := FeliUserCollection.create();
     feliUserCollectionInstance.data := collection.data;
     result := feliUserCollectionInstance;
+    FeliStackTrace.trace('end', 'class function FeliUserCollection.fromFeliCollection(collection: FeliCollection): FeliUserCollection; static;');
 end;
 
 end.

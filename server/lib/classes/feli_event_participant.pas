@@ -33,30 +33,37 @@ type
         end;
 
 implementation
+uses feli_stack_tracer;
 
 function FeliEventParticipant.toTJsonObject(secure: boolean = false): TJsonObject;
 var
     eventParticipant: TJsonObject;
 begin
+    FeliStackTrace.trace('begin', 'function FeliEventParticipant.toTJsonObject(secure: boolean = false): TJsonObject;');
     eventParticipant := TJsonObject.create();
     eventParticipant.add(FeliEventParticipantKey.username, username);
     eventParticipant.add(FeliEventParticipantKey.createdAt, createdAt);
     result := eventParticipant;
+    FeliStackTrace.trace('end', 'function FeliEventParticipant.toTJsonObject(secure: boolean = false): TJsonObject;');
 end;
 
 
 procedure FeliEventParticipantCollection.add(eventParticipant: FeliEventParticipant);
 begin
+    FeliStackTrace.trace('begin', 'procedure FeliEventParticipantCollection.add(eventParticipant: FeliEventParticipant);');
     data.add(eventParticipant.toTJsonObject());
+    FeliStackTrace.trace('end', 'procedure FeliEventParticipantCollection.add(eventParticipant: FeliEventParticipant);');
 end;
 
 class function FeliEventParticipantCollection.fromFeliCollection(collection: FeliCollection): FeliEventParticipantCollection; static;
 var
     feliEventParticipantCollectionInstance: FeliEventParticipantCollection;
 begin
+    FeliStackTrace.trace('begin', 'class function FeliEventParticipantCollection.fromFeliCollection(collection: FeliCollection): FeliEventParticipantCollection; static;');
     feliEventParticipantCollectionInstance := FeliEventParticipantCollection.create();
     feliEventParticipantCollectionInstance.data := collection.data;
     result := feliEventParticipantCollectionInstance;
+    FeliStackTrace.trace('end', 'class function FeliEventParticipantCollection.fromFeliCollection(collection: FeliCollection): FeliEventParticipantCollection; static;');
 end;
 
 end.

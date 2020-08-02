@@ -116,6 +116,7 @@ var
     tempCollection: FeliCollection;
     oldLength: int64;
 begin
+    FeliStackTrace.trace('begin', 'class procedure FeliStorageAPI.removeUser(usernameOrEmail: ansiString);');
     users := FeliStorageAPI.getUsers();
     oldLength := users.length();
     tempCollection := users.where(FeliUserKeys.username, FeliOperators.notEqualsTo, usernameOrEmail);
@@ -129,6 +130,7 @@ begin
     else 
         FeliLogger.info(format('User %s removed successfully', [usernameOrEmail]));
     FeliStorageAPI.setUsers(users);
+    FeliStackTrace.trace('end', 'class procedure FeliStorageAPI.removeUser(usernameOrEmail: ansiString);');
 end;
 
 

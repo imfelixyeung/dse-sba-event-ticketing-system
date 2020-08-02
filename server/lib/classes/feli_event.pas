@@ -65,10 +65,12 @@ implementation
 uses
     feli_crypto,
     feli_operators,
+    feli_stack_tracer,
     sysutils;
 
 constructor FeliEvent.create();
 begin
+    FeliStackTrace.trace('begin', 'constructor FeliEvent.create();');
     createdAt := 0;
     startTime := 0;
     endTime := 0;
@@ -77,12 +79,14 @@ begin
     tickets := FeliEventTicketCollection.create();
     participants := FeliEventParticipantCollection.create();
     waitingList := FeliEventWaitingCollection.create();
+    FeliStackTrace.trace('end', 'constructor FeliEvent.create();');
 end;
 
 function FeliEvent.toTJsonObject(secure: boolean = false): TJsonObject;
 var 
     event: TJsonObject;
 begin
+    FeliStackTrace.trace('begin', 'function FeliEvent.toTJsonObject(secure: boolean = false): TJsonObject;');
     event := TJsonObject.create();
     event.add(FeliEventKeys.id, id);
     event.add(FeliEventKeys.organiser, organiser);
@@ -98,6 +102,7 @@ begin
     event.add(FeliEventKeys.participants, participants.toTJsonArray());
     event.add(FeliEventKeys.waitingList, waitingList.toTJsonArray());
     result := event;
+    FeliStackTrace.trace('end', 'function FeliEvent.toTJsonObject(secure: boolean = false): TJsonObject;');
 end;
 
 
@@ -109,7 +114,9 @@ end;
 
 procedure FeliEvent.generateId();
 begin
+    FeliStackTrace.trace('begin', 'procedure FeliEvent.generateId();');
     id := FeliCrypto.generateSalt(32);
+    FeliStackTrace.trace('end', 'procedure FeliEvent.generateId();');
 end;
 
 
@@ -120,6 +127,7 @@ var
     tempCollection: FeliCollection;
     tempString: ansiString;
 begin
+    FeliStackTrace.trace('begin', 'class function FeliEvent.fromTJsonObject(eventObject: TJsonObject): FeliEvent; static;');
     feliEventInstance := FeliEvent.create();
     with feliEventInstance do
     begin
@@ -160,6 +168,7 @@ begin
 
     end;
     result := feliEventInstance;
+    FeliStackTrace.trace('end', 'class function FeliEvent.fromTJsonObject(eventObject: TJsonObject): FeliEvent; static;');
 end;
 
 
@@ -226,7 +235,9 @@ end;
 
 procedure FeliEventCollection.add(event: FeliEvent);
 begin
+    FeliStackTrace.trace('begin', 'procedure FeliEventCollection.add(event: FeliEvent);');
     data.add(event.toTJsonObject());
+    FeliStackTrace.trace('end', 'procedure FeliEventCollection.add(event: FeliEvent);');
 end;
 
 
@@ -250,9 +261,11 @@ class function FeliEventCollection.fromFeliCollection(collection: FeliCollection
 var
     feliEventCollectionInstance: FeliEventCollection;
 begin
+    FeliStackTrace.trace('begin', 'class function FeliEventCollection.fromFeliCollection(collection: FeliCollection): FeliEventCollection; static;');
     feliEventCollectionInstance := FeliEventCollection.create();
     feliEventCollectionInstance.data := collection.data;
     result := feliEventCollectionInstance;
+    FeliStackTrace.trace('end', 'class function FeliEventCollection.fromFeliCollection(collection: FeliCollection): FeliEventCollection; static;');
 end;
 
 
