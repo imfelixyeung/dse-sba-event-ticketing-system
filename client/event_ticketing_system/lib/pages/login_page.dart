@@ -15,6 +15,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController usernameInputController = TextEditingController();
   TextEditingController passwordInputController = TextEditingController();
+  bool loading = false;
 
   Future<bool> showSimpleDialog(String title) async {
     return await showDialog(
@@ -33,16 +34,22 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void handleLogin() async {
-    user.username = usernameInputController.text;
-    user.password = passwordInputController.text;
-    await user.login();
-    if (user.authenticated) {
+    setState(() {
+      loading = true;
+    });
+    appUser.username = usernameInputController.text;
+    appUser.password = passwordInputController.text;
+    await appUser.login();
+    if (appUser.authenticated) {
       await showSimpleDialog(Translate.get('login_success_msg_format')
-          .replaceAll('%s', user.displayName));
+          .replaceAll('%s', appUser.displayName));
       Navigator.of(context).pop();
     } else {
       await showSimpleDialog(Translate.get('login_error_msg'));
     }
+    setState(() {
+      loading = false;
+    });
   }
 
   @override
@@ -75,30 +82,35 @@ class _LoginPageState extends State<LoginPage> {
                       Divider(),
                       Container(height: 16),
                       TextField(
-                          onSubmitted: (str) {},
-                          controller: usernameInputController,
-                          decoration: InputDecoration(
-                              filled: true,
-                              labelText: Translate.get('username'),
-                              suffixIcon: IconButton(
-                                icon: Icon(Icons.clear),
-                                onPressed: () {
-                                  usernameInputController.text = '';
-                                },
-                              ))),
+                        enabled: !loading,
+                        onSubmitted: (str) => handleLogin(),
+                        controller: usernameInputController,
+                        decoration: InputDecoration(
+                            filled: true,
+                            labelText: Translate.get('username'),
+                            suffixIcon: IconButton(
+                              icon: Icon(Icons.clear),
+                              onPressed: () {
+                                usernameInputController.text = '';
+                              },
+                            )),
+                      ),
                       Container(height: 16),
                       TextField(
-                          onSubmitted: (str) {},
-                          controller: passwordInputController,
-                          decoration: InputDecoration(
-                              filled: true,
-                              labelText: Translate.get('password'),
-                              suffixIcon: IconButton(
-                                icon: Icon(Icons.clear),
-                                onPressed: () {
-                                  usernameInputController.text = '';
-                                },
-                              ))),
+                        enabled: !loading,
+                        onSubmitted: (str) => handleLogin(),
+                        controller: passwordInputController,
+                        decoration: InputDecoration(
+                            filled: true,
+                            labelText: Translate.get('password'),
+                            suffixIcon: IconButton(
+                              icon: Icon(Icons.clear),
+                              onPressed: () {
+                                usernameInputController.text = '';
+                              },
+                            )),
+                        obscureText: true,
+                      ),
                       Container(height: 16),
                       RaisedButton(
                         child: Text(Translate.get('submit')),

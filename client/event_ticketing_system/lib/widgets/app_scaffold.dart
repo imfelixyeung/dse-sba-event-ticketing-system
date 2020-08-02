@@ -24,18 +24,26 @@ class AppScaffold extends StatelessWidget {
                 )
               : Container(),
           Expanded(
-            child: Scaffold(
-              appBar: AppBar(
-                automaticallyImplyLeading: displayMobileLayout,
-                title: Text(pageTitle),
+            child: Container(
+              child: Scaffold(
+                appBar: AppBar(
+                  automaticallyImplyLeading: displayMobileLayout,
+                  title: Text(pageTitle),
+                ),
+                drawer: displayMobileLayout
+                    ? AppDrawer(
+                        permanentlyDisplay: false,
+                        key: UniqueKey(),
+                      )
+                    : null,
+                body: Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    constraints: BoxConstraints(maxWidth: 1200),
+                    child: body,
+                  ),
+                ),
               ),
-              drawer: displayMobileLayout
-                  ? AppDrawer(
-                      permanentlyDisplay: false,
-                      key: UniqueKey(),
-                    )
-                  : null,
-              body: body,
             ),
           )
         ],

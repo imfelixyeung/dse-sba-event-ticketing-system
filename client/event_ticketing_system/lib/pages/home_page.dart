@@ -1,5 +1,7 @@
+import 'package:event_ticketing_system/apis/ets.dart';
 import 'package:event_ticketing_system/blocs/theme.dart';
 import 'package:event_ticketing_system/constants/app_info.dart';
+import 'package:event_ticketing_system/constants/route_names.dart';
 import 'package:event_ticketing_system/misc/launch_url.dart';
 import 'package:flutter/material.dart';
 import '../apis/database.dart';
@@ -16,8 +18,68 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Widget> eventWidgets = [];
+
+  getData() async {
+    List events = await EtsAPI.getEvents();
+    for (var e in events) {
+      FeliEvent event = FeliEvent.fromJson(e);
+      setState(() {
+        eventWidgets.add(Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Card(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            child: ExpansionTile(
+              initiallyExpanded: false,
+              title: Text('${event.name}'),
+              children: [
+                ListTile(
+                  title: Text(Translate.get('name')),
+                  subtitle: Text('${event.name}'),
+                ),
+                ListTile(
+                  title: Text(Translate.get('description')),
+                  subtitle: Text('${event.description}'),
+                ),
+                ListTile(
+                  title: Text(Translate.get('organiser')),
+                  subtitle: Text('${event.organiser}'),
+                ),
+                ListTile(
+                  title: Text(Translate.get('venue')),
+                  subtitle: Text('${event.venue}'),
+                ),
+                ListTile(
+                  title: Text(Translate.get('theme')),
+                  subtitle: Text('${event.theme}'),
+                ),
+                ListTile(
+                  title: Text(Translate.get('participant_limit')),
+                  subtitle: Text('${event.participantLimit}'),
+                ),
+                ListTile(
+                  title: Text(Translate.get('id')),
+                  subtitle: Text('${event.id}'),
+                ),
+                RaisedButton(
+                  child: Text(Translate.get('view_details')),
+                  onPressed: () {
+                    print(event.id);
+                    Navigator.of(context)
+                        .pushNamed(RouteNames.eventDetails + '/${event.id}');
+                  },
+                )
+              ],
+            ),
+          ),
+        ));
+      });
+    }
+  }
+
   @override
   void initState() {
+    getData();
     super.initState();
   }
 
@@ -28,33 +90,25 @@ class _HomePageState extends State<HomePage> {
 
     return AppScaffold(
       pageTitle: PageTitles.home,
-      body: Center(
-        child: Container(
-          // constraints: BoxConstraints(maxWidth: 600),
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Card(
-              child: Markdown(
-                styleSheet: MarkdownStyleSheet(
-                    tableCellsDecoration:
-                        BoxDecoration(color: Colors.transparent),
-                    tableBorder: TableBorder.all(color: Colors.transparent),
-                    p: Theme.of(context)
-                        .textTheme
-                        .bodyText2
-                        .copyWith(fontSize: 16),
-                    a: Theme.of(context)
-                        .textTheme
-                        .bodyText2
-                        .copyWith(fontSize: 16, color: feliOrange),
-                    blockquoteDecoration: BoxDecoration(
-                        color: Colors.grey.withAlpha(64),
-                        borderRadius: BorderRadius.circular(8.0))),
-                styleSheetTheme: MarkdownStyleSheetBaseTheme.material,
-                data: applicationAboutText(),
-                onTapLink: (var link) {
-                  launchURL(link);
-                },
+      body: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Card(
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        Translate.get('events'),
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                      ...eventWidgets,
+                    ],
+                  ),
+                ),
               ),
             ),
           ),

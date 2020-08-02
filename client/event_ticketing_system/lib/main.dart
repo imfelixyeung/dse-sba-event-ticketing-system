@@ -1,4 +1,5 @@
 import 'package:event_ticketing_system/pages/account_page.dart';
+import 'package:event_ticketing_system/pages/event_details_page.dart';
 import 'package:event_ticketing_system/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -66,6 +67,15 @@ class MaterialAppWithTheme extends StatelessWidget {
         RouteNames.settings: (_) => SettingsPage(),
         RouteNames.account: (_) => AccountPage(),
         RouteNames.login: (_) => LoginPage(),
+      },
+      onGenerateRoute: (RouteSettings routeSettings) {
+        print(routeSettings.name);
+        if (routeSettings.name.startsWith(RouteNames.eventDetails)) {
+          String eventId = routeSettings.name.split('/')[2];
+          if (eventId != null && eventId != '')
+            return MaterialPageRoute(builder: (_) => EventDetailsPage(eventId));
+        }
+        return MaterialPageRoute(builder: (_) => HomePage());
       },
     );
   }

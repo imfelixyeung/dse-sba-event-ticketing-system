@@ -2,6 +2,22 @@ import 'database.dart';
 
 class Translate {
   static Map<String, Map<String, String>> translate = {
+    'name': {
+      'en-gb': 'Name',
+      'zh-hk': '名稱',
+    },
+    'description': {
+      'en-gb': 'Description',
+      'zh-hk': '簡介',
+    },
+    'id': {
+      'en-gb': 'ID',
+      'zh-hk': 'ID',
+    },
+    'participant_limit': {
+      'en-gb': 'Participant Limit',
+      'zh-hk': '參加人數限制',
+    },
     'home': {
       'en-gb': 'Home',
       'zh-hk': '主頁',

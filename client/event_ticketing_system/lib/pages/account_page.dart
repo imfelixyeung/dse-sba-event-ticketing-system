@@ -37,37 +37,77 @@ class _AccountPageState extends State<AccountPage> {
                   padding: EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: user.authenticated
-                        ? [
-                            Text(
-                              Translate.get('account'),
-                              style: Theme.of(context).textTheme.headline5,
-                            ),
-                            RaisedButton(
-                              child: Text(Translate.get('signout')),
-                              onPressed: () {
-                                Navigator.pushNamed(context, RouteNames.login);
-                              },
-                            ),
-                          ]
-                        : [
-                            Text(
-                              Translate.get('account'),
-                              style: Theme.of(context).textTheme.headline5,
-                            ),
-                            RaisedButton(
-                              child: Text(Translate.get('login')),
-                              onPressed: () {
-                                Navigator.pushNamed(context, RouteNames.login);
-                              },
-                            ),
-                            RaisedButton(
-                              child: Text(Translate.get('register')),
-                              onPressed: () {
-                                Navigator.pushNamed(context, RouteNames.login);
-                              },
-                            ),
-                          ],
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: appUser.authenticated
+                            ? [
+                                Text(
+                                  Translate.get('account'),
+                                  style: Theme.of(context).textTheme.headline5,
+                                ),
+                                ListTile(
+                                  title: Text(Translate.get('username')),
+                                  subtitle: Text(appUser.username),
+                                ),
+                                ListTile(
+                                  title: Text(Translate.get('display_name')),
+                                  subtitle: Text(appUser.displayName),
+                                ),
+                                ListTile(
+                                  title: Text(Translate.get('email')),
+                                  subtitle: Text(appUser.email),
+                                ),
+                                ListTile(
+                                  title: Text(Translate.get('first_name')),
+                                  subtitle: Text(appUser.firstName),
+                                ),
+                                ListTile(
+                                  title: Text(Translate.get('last_name')),
+                                  subtitle: Text(appUser.lastName),
+                                ),
+                                ListTile(
+                                  title: Text(Translate.get('account_type')),
+                                  subtitle: Text(appUser.accessLevel),
+                                ),
+                                RaisedButton(
+                                  child: Text(Translate.get('logout')),
+                                  onPressed: () {
+                                    appUser.logout();
+                                    setState(() {
+                                      appUser = appUser;
+                                    });
+                                  },
+                                ),
+                              ]
+                            : [
+                                Text(
+                                  Translate.get('account'),
+                                  style: Theme.of(context).textTheme.headline5,
+                                ),
+                                RaisedButton(
+                                  child: Text(Translate.get('login')),
+                                  onPressed: () async {
+                                    await Navigator.pushNamed(
+                                        context, RouteNames.login);
+                                    setState(() {
+                                      appUser = appUser;
+                                    });
+                                  },
+                                ),
+                                RaisedButton(
+                                  child: Text(Translate.get('register')),
+                                  onPressed: () async {
+                                    await Navigator.pushNamed(
+                                        context, RouteNames.login);
+                                    setState(() {
+                                      appUser = appUser;
+                                    });
+                                  },
+                                ),
+                              ],
+                      ),
+                    ],
                   ),
                 ),
               ),
