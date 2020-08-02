@@ -13,9 +13,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController usernameInputController = TextEditingController();
-  TextEditingController passwordInputController = TextEditingController();
   bool loading = false;
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Future<bool> showSimpleDialog(String title) async {
     return await showDialog(
@@ -34,11 +34,15 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void handleLogin() async {
+    if (!_formKey.currentState.validate()) {
+      return;
+    }
+
+    _formKey.currentState.save();
+
     setState(() {
       loading = true;
     });
-    appUser.username = usernameInputController.text;
-    appUser.password = passwordInputController.text;
     await appUser.login();
     if (appUser.authenticated) {
       await showSimpleDialog(Translate.get('login_success_msg_format')
@@ -50,6 +54,41 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       loading = false;
     });
+  }
+
+  Widget _buildUsername() {
+    return TextFormField(
+      keyboardType: TextInputType.emailAddress,
+      enabled: !loading,
+      decoration: InputDecoration(
+        filled: true,
+        labelText: Translate.get('username'),
+      ),
+      validator: (String value) {
+        if (value.isEmpty) {
+          return Translate.get('err_is_empty');
+        }
+      },
+      onSaved: (String value) {
+        appUser.username = value;
+      },
+    );
+  }
+
+  Widget _buildPassword() {
+    return TextFormField(
+      obscureText: true,
+      keyboardType: TextInputType.text,
+      enabled: !loading,
+      decoration: InputDecoration(
+        filled: true,
+        labelText: Translate.get('password'),
+      ),
+      // validator: (String value) {},
+      onSaved: (String value) {
+        appUser.password = value;
+      },
+    );
   }
 
   @override
@@ -80,42 +119,21 @@ class _LoginPageState extends State<LoginPage> {
                         style: Theme.of(context).textTheme.headline5,
                       ),
                       Divider(),
-                      Container(height: 16),
-                      TextField(
-                        enabled: !loading,
-                        onSubmitted: (str) => handleLogin(),
-                        controller: usernameInputController,
-                        decoration: InputDecoration(
-                            filled: true,
-                            labelText: Translate.get('username'),
-                            suffixIcon: IconButton(
-                              icon: Icon(Icons.clear),
-                              onPressed: () {
-                                usernameInputController.text = '';
-                              },
-                            )),
-                      ),
-                      Container(height: 16),
-                      TextField(
-                        enabled: !loading,
-                        onSubmitted: (str) => handleLogin(),
-                        controller: passwordInputController,
-                        decoration: InputDecoration(
-                            filled: true,
-                            labelText: Translate.get('password'),
-                            suffixIcon: IconButton(
-                              icon: Icon(Icons.clear),
-                              onPressed: () {
-                                usernameInputController.text = '';
-                              },
-                            )),
-                        obscureText: true,
-                      ),
-                      Container(height: 16),
-                      RaisedButton(
-                        child: Text(Translate.get('submit')),
-                        onPressed: handleLogin,
-                      ),
+                      Form(
+                          key: _formKey,
+                          child: Column(
+                            children: [
+                              Container(height: 16),
+                              _buildUsername(),
+                              Container(height: 16),
+                              _buildPassword(),
+                              Container(height: 16),
+                              RaisedButton(
+                                child: Text(Translate.get('submit')),
+                                onPressed: handleLogin,
+                              ),
+                            ],
+                          ))
                     ],
                   ),
                 ),

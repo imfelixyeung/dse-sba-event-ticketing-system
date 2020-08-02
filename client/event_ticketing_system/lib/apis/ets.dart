@@ -13,6 +13,13 @@ class EtsAPI {
     return json.decode(response.body);
   }
 
+  static Future<Map> register(User user) async {
+    print('$endpoint/api/register/');
+    var response = await http.post('$endpoint/api/register/',
+        body: json.encode({"register": user.toMap()}));
+    return json.decode(response.body);
+  }
+
   static Future<List> getEvents() async {
     var response = await http.get('$endpoint/api/events/get');
     var jsonResponse = json.decode(response.body);
@@ -68,7 +75,6 @@ class User {
       createdEvents = null;
       return;
     }
-    authenticated = true;
     username = userMap['username'];
     displayName = userMap['display_name'];
     email = userMap['email'];
@@ -80,10 +86,25 @@ class User {
     createdEvents = userMap['created_events'];
   }
 
-  Future login() async {
+  Future<Map> login() async {
     var response = await EtsAPI.login(this);
     var userMap = response['data'];
+    if (userMap != null) {
+      importFromMap(userMap);
+      authenticated = true;
+    }
+    return response;
+  }
+
+  Future<Map> register() async {
+    var response = await EtsAPI.register(this);
+    var userMap = response['data'];
     importFromMap(userMap);
+    if (userMap != null) {
+      importFromMap(userMap);
+      authenticated = true;
+    }
+    return response;
   }
 
   logout() {

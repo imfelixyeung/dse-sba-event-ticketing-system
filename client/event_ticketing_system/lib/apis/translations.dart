@@ -2,6 +2,10 @@ import 'database.dart';
 
 class Translate {
   static Map<String, Map<String, String>> translate = {
+    'view_details': {
+      'en-gb': 'View Details',
+      'zh-hk': '查看詳情',
+    },
     'name': {
       'en-gb': 'Name',
       'zh-hk': '名稱',
@@ -405,10 +409,19 @@ class Translate {
       'zh-hk': "輸入電子郵件",
       'zh-cn': "输入电子邮件"
     },
+    "err_too_long_max_format": {
+      'en-gb': "Too long, maximum is %d characters",
+      'zh-hk': "太長 最大為 ％d 個字符",
+    },
     "err_username_format": {
       'en-gb': "Username must have %d - %d characters",
       'zh-hk': "用戶名必須包含 %d - %d 個字符",
       'zh-cn': "用户名必须包含 %d - %d 个字符"
+    },
+    "err_password_format": {
+      'en-gb': "Password must have %d - %d characters",
+      'zh-hk': "密碼必須包含 %d - %d 個字符",
+      'zh-cn': "密码必须包含 %d - %d 个字符"
     },
     "err_username_taken": {
       'en-gb': "That username is taken, try another",
@@ -430,6 +443,11 @@ class Translate {
       'zh-hk': "輸入密碼",
       'zh-cn': "输入密码"
     },
+    "confirm_password": {
+      'en-gb': "Confirm password",
+      'zh-hk': "確認密碼",
+      'zh-cn': "确认密码"
+    },
     "err_confirm_password": {
       'en-gb': "Confirm your password",
       'zh-hk': "確認你的密碼",
@@ -442,6 +460,11 @@ class Translate {
     },
     "account_type": {'en-gb': "Account Type", 'zh-hk': "帳戶類型", 'zh-cn': "帐户类型"},
     "participator": {'en-gb': "Participator", 'zh-hk': "參加者", 'zh-cn': "参加者"},
+    "field_required": {
+      'en-gb': "This field is required",
+      'zh-hk': "此各項均為必填項",
+      'zh-cn': "此各项均为必填项"
+    },
     "register_remark_1": {
       'en-gb': "*All fields are required",
       'zh-hk': "*各項均為必填項",
@@ -453,10 +476,9 @@ class Translate {
       'zh-cn': "*用户名必须包含 %d - %d 个字符"
     },
     "register_success": {
-      'en-gb':
-          "User is added successfully, please go to the welcome page to proceed",
-      'zh-hk': "用戶添加成功，請轉到歡迎頁面繼續",
-      'zh-cn': "用户添加成功，请转到欢迎页面继续"
+      'en-gb': "Registration successfully",
+      'zh-hk': "用戶添加成功",
+      'zh-cn': "用户添加成功"
     },
     "access_level_admin": {'en-gb': "Admin", 'zh-hk': "管理員", 'zh-cn': "管理员"},
     "access_level_organiser": {

@@ -68,7 +68,8 @@ class _AccountPageState extends State<AccountPage> {
                                 ),
                                 ListTile(
                                   title: Text(Translate.get('account_type')),
-                                  subtitle: Text(appUser.accessLevel),
+                                  subtitle:
+                                      Text(Translate.get(appUser.accessLevel)),
                                 ),
                                 RaisedButton(
                                   child: Text(Translate.get('logout')),
@@ -99,7 +100,7 @@ class _AccountPageState extends State<AccountPage> {
                                   child: Text(Translate.get('register')),
                                   onPressed: () async {
                                     await Navigator.pushNamed(
-                                        context, RouteNames.login);
+                                        context, RouteNames.register);
                                     setState(() {
                                       appUser = appUser;
                                     });

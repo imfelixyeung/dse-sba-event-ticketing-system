@@ -9,6 +9,7 @@ ShapeBorder feliCardShape =
 
 class FeliThemeChanger with ChangeNotifier {
   ThemeData get lightTheme => ThemeData(
+        buttonColor: feliOrange,
         platform: TargetPlatform.android,
         appBarTheme: AppBarTheme(elevation: 0),
         popupMenuTheme: PopupMenuThemeData(color: Colors.grey.shade200),
@@ -25,6 +26,7 @@ class FeliThemeChanger with ChangeNotifier {
       );
 
   ThemeData get darkTheme => ThemeData(
+        buttonColor: feliOrange,
         platform: TargetPlatform.android,
         popupMenuTheme: PopupMenuThemeData(color: Colors.grey.shade700),
         appBarTheme: AppBarTheme(elevation: 0),
@@ -42,6 +44,7 @@ class FeliThemeChanger with ChangeNotifier {
       );
 
   ThemeData get blackTheme => ThemeData(
+        buttonColor: feliOrange,
         platform: TargetPlatform.android,
         popupMenuTheme: PopupMenuThemeData(color: Colors.grey.shade900),
         scaffoldBackgroundColor: Colors.black,
