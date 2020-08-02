@@ -1,6 +1,7 @@
 GET http://localhost:8081/api/event/EB3444FB3A9F183C0/get/
 
 ###
+GET http://localhost:8081/api/events/get/
 
 ###
 POST http://localhost:8081/api/login/
@@ -8,7 +9,7 @@ content-type: application/json
 
 {
     "auth": {
-        "username": "FelixNPLa",
+        "username": "FelixNPL",
         "password": "20151529"
     }
 }

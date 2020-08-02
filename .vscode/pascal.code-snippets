@@ -1,51 +1,27 @@
 {
-	"Print to console": {
-		"scope": "pascal",
-		"prefix": "log",
+	"Stack Trace": {
+		"scope": "objectpascal",
+		"prefix": "trace",
 		"body": [
-			"FeliLogger.log('$1');"
+			"FeliStackTrace.trace('begin', '$1');",
+			"FeliStackTrace.trace('end', '$1');"
 		],
-		"description": "Log payload to console"
+		"description": "Feli Stack Tracer"
 	},
-	"Begin End": {
-		"scope": "pascal",
-		"prefix": "begin",
+	"Stack Trace Begin": {
+		"scope": "objectpascal",
+		"prefix": "trace.begin",
 		"body": [
-			"begin",
-			"    $1",
-			"end;"
+			"FeliStackTrace.trace('begin', '$1');"
 		],
-		"description": "Begin end"
+		"description": "Feli Stack Tracer"
 	},
-	"Write line": {
-		"scope": "pascal",
-		"prefix": "writeln",
+	"Stack Trace End": {
+		"scope": "objectpascal",
+		"prefix": "trace.end",
 		"body": [
-			"writeln($1);"
+			"FeliStackTrace.trace('end', '$1');"
 		],
-		"description": "Begin end"
-	},
-	"New Unit": {
-		"scope": "pascal",
-		"prefix": "unit",
-		"body": [
-			"unit $1;",
-			"",
-			"{$mode objfpc}",
-			"",
-			"// uses",
-			"",
-			"// type",
-			"",
-			"",
-			"interface",
-			"",
-			"",
-			"implementation",
-			"",
-			"",
-			"end.",
-		],
-		"description": "Begin end"
-	},
+		"description": "Feli Stack Tracer"
+	}
 }
