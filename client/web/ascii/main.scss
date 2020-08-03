@@ -84,11 +84,34 @@ section:nth-child(2) {
     display: grid;
     place-items: center;
     min-height: 100vh;
-    #ascii {
+    position: relative;
+    
+    div {
         margin: 32px;
+        margin-top: 128px;
+        margin-bottom: 128px;
         padding: 32px;
-        border-radius: 32px;
-        background-color: white;
-        color: black;
+        // background-color: white;
+        
+        #imagePreview {
+            border-radius: 32px;
+            z-index: 50;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.1;
+
+        }
+        #ascii {
+            font-size: 12px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 99;
+            color: black;
+            letter-spacing: 10px;
+        }
     }
 }

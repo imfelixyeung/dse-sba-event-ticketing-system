@@ -95,13 +95,36 @@ section:nth-child(2) {
   display: grid;
   place-items: center;
   min-height: 100vh;
+  position: relative;
 }
 
-section:nth-child(2) #ascii {
+section:nth-child(2) div {
   margin: 32px;
+  margin-top: 128px;
+  margin-bottom: 128px;
   padding: 32px;
+}
+
+section:nth-child(2) div #imagePreview {
   border-radius: 32px;
-  background-color: white;
+  z-index: 50;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0.1;
+}
+
+section:nth-child(2) div #ascii {
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 99;
   color: black;
+  letter-spacing: 10px;
 }
 /*# sourceMappingURL=main.css.map */
