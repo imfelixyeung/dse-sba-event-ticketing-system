@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ascii Art Generator</title>
+        <link rel="stylesheet" href="main.css" />
+    </head>
+    <body>
+        <section>
+            <div class="upload">
+                <h1>Ascii Art Generator</h1>
+                <form class="form" id="uploadForm">
+                    <input type="file" id="inputFile" accept="image/png" />
+                    <label for="inputFile">Select a file</label>
+                    <span id="fileName"></span>
+                    <button id="submitButton">Convert</button>
+                </form>
+            </div>
+        </section>
+        <section>
+            <pre id="ascii">Nothing here yet o.O</pre>
+        </section>
+        <script src="main.js" defer></script>
+    </body>
+</html>

@@ -26,7 +26,8 @@ uses
 class function FeliAsciiArt.getCharFromRGBAverage(average: int64): ansiString; static;
 const 
     // denseChars = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`''. ';
-    denseChars = '$@B%yxz+=-  ';
+    denseChars = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`''.  ';
+    // denseChars = '$@B%yxz+=-  ';
 var 
     denseCharsLength: int64;
     scalingFactor: real;
@@ -35,14 +36,14 @@ var
 begin
     denseCharsLength := length(denseChars) - 1;
     scalingFactor := denseCharsLength/256;
-    selected := '.';
+    selected := ' ';
     try
         selectedIndex := Round(average * scalingFactor);
         selected := denseChars[selectedIndex + 1];
     except
       on E: Exception do
       begin
-        selected := '.';
+        selected := ' ';
       end;
     end;
     result := selected;
@@ -82,9 +83,9 @@ begin
         try
             Canvas.StretchDraw(0, 0, AWidth, AHeight, Image);
             try
-                for i := 0 to (resultImage.height - 1) do
+                for j := 0 to (resultImage.height - 1) do
                 begin
-                    for j := 0 to (resultImage.height - 1) do
+                    for i := 0 to (resultImage.width - 1) do
                     begin
                         colours := resultImage.Colors[i, j];
                         meanRGB := Round((colours.Red + colours.Green + colours.Blue) / 3);
