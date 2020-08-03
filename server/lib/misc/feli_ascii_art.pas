@@ -28,7 +28,7 @@ class function FeliAsciiArt.getCharFromRGBAverage(average: int64): ansiString; s
 const 
     // denseChars = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`''. ';
     // denseChars = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`''.  ';
-    denseChars = '9876543210  ';
+    denseChars = '@B8WMoahkbdZ0OQYXvunxft-_+~.   ';
     // denseChars = '$@B%yxz+=-  ';
 var 
     denseCharsLength: int64;
