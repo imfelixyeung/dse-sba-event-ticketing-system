@@ -26,5 +26,19 @@
     ],
     "pending_events" : [
     ]
+  },
+  {
+    "username" : "eddie911",
+    "display_name" : "Eddie",
+    "salt" : "vZ39LtdGG_Ks8iXLtOyGJo5MQ8SqIlxU",
+    "salted_password" : "83ddb4807ef317c893e1e4fd9302ad67",
+    "email" : "eddieyeung911@gmail.com",
+    "first_name" : "Eddie",
+    "last_name" : "Yeung",
+    "access_level" : "participator",
+    "joined_events" : [
+    ],
+    "pending_events" : [
+    ]
   }
 ]

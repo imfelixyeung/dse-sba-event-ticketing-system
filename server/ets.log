@@ -1630,3 +1630,19 @@
 2020-08-02 12:44:51 [ETS] [Info]     HTTP Server listening on port 8081
 2020-08-02 12:47:38 [ETS] [Info]     Shutting down server
 2020-08-02 12:47:40 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-02 12:50:41 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-02 12:52:40 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-02 12:52:52 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-02 12:52:59 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-02 12:54:33 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-02 14:36:41 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-02 17:04:01 [ETS] [Error]    Error 404 "/jars" not found
+2020-08-02 17:04:01 [ETS] [Error]    Error 404 "/" not found
+2020-08-02 17:04:03 [ETS] [Error]    Error 404 "/service/extdirect" not found
+2020-08-02 22:27:27 [ETS] [Info]     Shutting down server
+2020-08-02 22:27:40 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-03 05:30:59 [ETS] [Error]    Error 404 "/jars" not found
+2020-08-03 05:30:59 [ETS] [Error]    Error 404 "/" not found
+2020-08-03 05:31:21 [ETS] [Error]    Error 404 "/service/extdirect" not found
+2020-08-03 09:14:49 [ETS] [Error]    Error 404 "/" not found
+2020-08-03 11:06:04 [ETS] [Error]    Error 404 "http://112.124.42.80:63435/" not found
