@@ -17,6 +17,13 @@ uploadForm.addEventListener("submit", async (e) => {
 
     formData.append("image", inputFile.files[0]);
 
+    ascii.innerHTML = 'Loading...'
+
+    scrollTo({
+        top: document.body.clientHeight,
+        behavior: "smooth",
+    });
+
     let response = await fetch(endpoint, {
         method: "post",
         body: formData,
@@ -30,8 +37,5 @@ uploadForm.addEventListener("submit", async (e) => {
         ascii.innerHTML = json["message"];
     }
 
-    scrollTo({
-        top: document.body.clientHeight,
-        behavior: "smooth",
-    });
+    
 });
