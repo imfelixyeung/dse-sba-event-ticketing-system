@@ -126,5 +126,6 @@ section:nth-child(2) div #ascii {
   z-index: 99;
   color: black;
   letter-spacing: 10px;
+  font-family: monospace;
 }
 /*# sourceMappingURL=main.css.map */
