@@ -17,7 +17,8 @@ uses
     feli_stack_tracer,
     feli_constants,
     feli_logger,
-    fpreadpng,
+    fpreadpng, 
+    fpreadjpeg,
     fpimage,
     sysutils,
     fpcanvas,
@@ -54,7 +55,7 @@ class function FeliAsciiArt.generate(filepath: ansiString; height: int64 = 64; w
 var
     AWidth, AHeight: integer;
     image, resultImage: TFPCustomImage;
-    reader: TFPCustomImageReader;
+    pngReader, jpegReader: TFPCustomImageReader;
     canvas: TFPImageCanvas;
     i, j: integer;
     colours: TFPColor;
@@ -67,12 +68,24 @@ begin
     AHeight := height;
     try
         image := TFPMemoryImage.create(0 ,0);
-        reader := TFPReaderPNG.create();
         try
-            image.LoadFromFile(filepath, reader);
+            pngReader := TFPReaderPNG.create();
+            jpegReader := TFPReaderJPEG.create();
+            try
+                image.LoadFromFile(filepath, pngReader);
+            except
+                on E: Exception do
+                  begin
+                    FeliLogger.error(e.message);
+                    FeliLogger.info('Trying Jpeg Reader');
+                    image.LoadFromFile(filepath, jpegReader);
+                  end;
+            end;
         finally
-        
+            pngReader.free();
         end;
+
+
         if (Image.Width / Image.Height) > (AWidth / AHeight) then
             AHeight := Round(AWidth / (Image.Width / Image.Height))
         else if (Image.Width / Image.Height) < (AWidth / AHeight) then
@@ -107,7 +120,6 @@ begin
         end;
     finally
         image.free();
-        reader.free();
     end;
     result := asciiArt;
     FeliStackTrace.trace('end', 'function FeliAsciiArt.generate(filepath: ansiString): ansiString;');
