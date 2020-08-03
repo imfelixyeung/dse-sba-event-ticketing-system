@@ -243,10 +243,18 @@ begin
             FeliLogger.debug(format('File size %d', [uploadedFile.Size]));
             FeliLogger.debug(format('Content Type %s', [uploadedFile.ContentType]));
             FeliLogger.debug(format('Local File Path %s', [uploadedFile.LocalFileName]));
-            responseTemplate.msg := FeliAsciiArt.generate(uploadedFile.LocalFileName, height, width);
+            try
+                responseTemplate.msg := FeliAsciiArt.generate(uploadedFile.LocalFileName, height, width);
+            except
+                on E: Exception do
+                begin
+                    FeliLogger.error(e.message);
+                end;
+            end;
         except
           on E: Exception do
           begin
+            FeliLogger.error(e.message);
             responseTemplate.msg := 'error_file_not_found';
           end;
         end;
