@@ -78,10 +78,10 @@ begin
         else if (Image.Width / Image.Height) < (AWidth / AHeight) then
             AWidth := Round(AHeight * (Image.Width / Image.Height));
 
-        resultImage := TFPMemoryImage.create(AWidth, AHeight);
-        canvas := TFPImageCanvas.create(resultImage);
         try
-            Canvas.StretchDraw(0, 0, AWidth, AHeight, Image);
+            resultImage := TFPMemoryImage.create(AWidth, AHeight);
+            canvas := TFPImageCanvas.create(resultImage);
+            canvas.StretchDraw(0, 0, AWidth, AHeight, Image);
             try
                 for j := 0 to (resultImage.height - 1) do
                 begin
@@ -102,10 +102,12 @@ begin
             end;
 
         finally
-            Canvas.Free;
+            resultImage.free();
+            canvas.free();
         end;
     finally
-      
+        image.free();
+        reader.free();
     end;
     result := asciiArt;
     FeliStackTrace.trace('end', 'function FeliAsciiArt.generate(filepath: ansiString): ansiString;');
