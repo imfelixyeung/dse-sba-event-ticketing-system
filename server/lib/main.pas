@@ -21,6 +21,7 @@ uses
     feli_response,
     feli_middleware,
     feli_stack_tracer,
+    feli_ascii_art,
     sysutils,
     fphttpapp,
     httpdefs,
@@ -216,6 +217,47 @@ end;
 
 
 
+procedure asciiEndpoint(req: TRequest; res: TResponse);
+var
+    responseTemplate: FeliResponse;
+    uploadedFile: TUploadedFile;
+    tempString: ansiString;
+    height, width: int64;
+begin
+    FeliStackTrace.trace('begin', 'procedure asciiEndpoint(req: TRequest; res: TResponse);');
+    try
+        responseTemplate := FeliResponse.create();
+        responseTemplate.resCode := 202;
+        tempString := req.QueryFields.ValueFromIndex[0];
+        if (tempString <> '') then height := StrToInt64(tempString);
+        tempString := req.QueryFields.ValueFromIndex[1];
+        if (tempString <> '') then width := StrToInt64(tempString);
+        // if (height <> nil and width <> nil) then
+            FeliLogger.debug(format('Request Ascii Art %dx%d', [height, width]));
+        // req.Query;
+        // req.QueryString;
+        // req.QueryFields;
+        try
+            uploadedFile := req.Files.First;
+            FeliLogger.debug(format('File Name %s', [uploadedFile.FileName]));
+            FeliLogger.debug(format('File size %d', [uploadedFile.Size]));
+            FeliLogger.debug(format('Content Type %s', [uploadedFile.ContentType]));
+            FeliLogger.debug(format('Local File Path %s', [uploadedFile.LocalFileName]));
+            responseTemplate.msg := FeliAsciiArt.generate(uploadedFile.LocalFileName, height, width);
+        except
+          on E: Exception do
+          begin
+            responseTemplate.msg := 'error_file_not_found';
+          end;
+        end;
+        responseWithJson(res, responseTemplate);
+    finally
+        responseTemplate.free();  
+    end;
+    FeliStackTrace.trace('end', 'procedure asciiEndpoint(req: TRequest; res: TResponse);');
+end;
+
+
 procedure serverShutdownEndpoint(req: TRequest; res: TResponse);
 var
     responseTemplate: FeliResponse;
@@ -248,12 +290,13 @@ begin
     HTTPRouter.RegisterRoute('/api/event/:eventId/get/', @getEventEndPoint);
     HTTPRouter.RegisterRoute('/api/login/', @loginEndPoint);
     HTTPRouter.RegisterRoute('/api/register/', @registerEndPoint);
-    httpRouter.registerRoute('/api/shutdown', @serverShutdownEndpoint);
+    httpRouter.registerRoute('/api/shutdown/', @serverShutdownEndpoint);
+    httpRouter.registerRoute('/api/ascii/', @asciiEndpoint);
     httpRouter.registerRoute('/*', @error404, true);
 
     // application.threaded := true;
     application.initialize();
-    Application.run();
+    application.run();
     FeliStackTrace.trace('end', 'procedure init();');
 end;
 
