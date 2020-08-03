@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Fira Code", monospace;
+}
+
+* ::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: #fabc57;
+}
+
+section {
+  width: 100vw;
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+section:nth-child(1) {
+  height: 100vh;
+  background-color: #f9a825;
+}
+
+section:nth-child(1) .upload {
+  background-color: #ffffff20;
+  padding: 32px;
+  min-width: 250px;
+  min-height: 250px;
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 32px;
+}
+
+section:nth-child(1) .upload form input[type="file"] {
+  display: none;
+}
+
+section:nth-child(1) .upload form label {
+  display: -ms-grid;
+  display: grid;
+  color: black;
+  height: 48px;
+  width: 100%;
+  background-color: white;
+  place-items: center;
+  border-radius: 16px;
+  font-size: 18px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out;
+}
+
+section:nth-child(1) .upload form label:hover {
+  background-color: #ddd;
+}
+
+section:nth-child(1) .upload form label:active {
+  background-color: #bbb;
+}
+
+section:nth-child(1) .upload form button {
+  outline: none;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  height: 48px;
+  width: 100%;
+  border-radius: 16px;
+  font-size: 18px;
+  background-color: white;
+  border: none;
+  -webkit-transition: background-color 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+section:nth-child(1) .upload form button:hover {
+  background-color: #ddd;
+}
+
+section:nth-child(1) .upload form button:active {
+  background-color: #bbb;
+}
+
+section:nth-child(2) {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+section:nth-child(2) #ascii {
+  margin: 32px;
+  padding: 32px;
+  border-radius: 32px;
+  background-color: white;
+  color: black;
+}
+/*# sourceMappingURL=main.css.map */

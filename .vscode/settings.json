@@ -70,5 +70,6 @@
     ],
     "cSpell.enableFiletypes": [
         "objectpascal"
-    ]
+    ],
+    "liveServer.settings.port": 8001
 }
