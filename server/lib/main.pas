@@ -22,6 +22,7 @@ uses
     feli_middleware,
     feli_stack_tracer,
     feli_ascii_art,
+    feli_access_level,
     sysutils,
     fphttpapp,
     httpdefs,
@@ -161,6 +162,7 @@ begin
         begin
             userAuthMiddleware(middlewareContent, req);
 
+            responseTemplate.authenticated := middlewareContent.authenticated;
             if middlewareContent.authenticated then
                 begin
                     responseTemplate.data := middlewareContent.user.toTJsonObject(true);
@@ -269,17 +271,30 @@ end;
 procedure serverShutdownEndpoint(req: TRequest; res: TResponse);
 var
     responseTemplate: FeliResponse;
+    middlewareContent: FeliMiddleware;
 begin
     FeliStackTrace.trace('begin', 'procedure serverShutdownEndpoint(req: TRequest; res: TResponse);');
+    middlewareContent := FeliMiddleware.create();
     try
+        userAuthMiddleware(middlewareContent, req);
         responseTemplate := FeliResponse.create();
-        responseTemplate.resCode := 202;
-        responseTemplate.msg := 'Shutting down server';
+        if ((middlewareContent.user <> nil) and (middlewareContent.authenticated) and (FeliValidation.fixedValueCheck(middlewareContent.user.accessLevel, [FeliAccessLevel.admin]))) then
+            begin
+                responseTemplate.authenticated := middlewareContent.authenticated;
+                responseTemplate.resCode := 202;
+                responseTemplate.msg := 'server_shutting_down';
+                FeliLogger.info('Shutting down server');
+                application.terminate();
+            end
+        else
+            begin
+                responseTemplate.resCode := 401;
+                responseTemplate.msg := 'insufficient_permission';
+            end;
         responseWithJson(res, responseTemplate);
     finally
+        middlewareContent.free();
         responseTemplate.free();  
-        application.terminate();
-        FeliLogger.info('Shutting down server');
     end;
     FeliStackTrace.trace('end', 'procedure serverShutdownEndpoint(req: TRequest; res: TResponse);');
 end;
