@@ -8,6 +8,7 @@ uses fpjson;
 type
     FeliResponse = class(TObject)
         public
+            authenticated: boolean;
             error, msg: ansiString;
             resCode: integer;
             function toTJsonObject(): TJsonObject; virtual;
@@ -37,6 +38,7 @@ begin
     FeliStackTrace.trace('begin', 'function FeliResponse.toTJsonObject(): TJsonObject;');
     resObject := TJsonObject.create();
     resObject.add('status', resCode);
+    resObject.add('authenticated', authenticated);
     if (error <> '') then resObject.add('error', error);
     if (msg <> '') then resObject.add('message', msg);
     result := resObject;
@@ -59,6 +61,7 @@ begin
     FeliStackTrace.trace('begin', 'function FeliResponseDataArray.toTJsonObject(): TJsonObject;');
     resObject := TJsonObject.create();
     resObject.add('status', resCode);
+    resObject.add('authenticated', authenticated);
     if (error <> '') then resObject.add('error', error);
     resObject.add('data', data);
     result := resObject;
@@ -72,6 +75,7 @@ begin
     FeliStackTrace.trace('begin', 'function FeliResponseDataObject.toTJsonObject(): TJsonObject;');
     resObject := TJsonObject.create();
     resObject.add('status', resCode);
+    resObject.add('authenticated', authenticated);
     if (error <> '') then resObject.add('error', error);
     resObject.add('data', data);
     result := resObject;

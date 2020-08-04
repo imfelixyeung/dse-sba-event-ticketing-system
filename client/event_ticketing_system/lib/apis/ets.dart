@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
-var endpoint = 'http://dynamic.felixyeung2002.com:8081';
+var endpoint = 'http://dynamic.felixyeung2002.com';
 // var endpoint = 'http://localhost:8081';
 
 class EtsAPI {

@@ -25,12 +25,12 @@ content-type: application/json
 
 {
     "register": {
-        "username": "FelixHaha",
-        "display_name": "Felix Hahahahahahaha",
-        "email": "userhaha@test.com",
+        "username": "admin",
+        "display_name": "Admin",
+        "email": "admin@feli.page",
         "password": "20151529",
-        "first_name": "Felix",
-        "last_name": "Hahaha",
+        "first_name": "Admin",
+        "last_name": "Account",
         "access_level": "participator"
     }
 }
