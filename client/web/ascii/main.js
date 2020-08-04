@@ -13,7 +13,7 @@ uploadForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     var size = 100;
     const endpoint =
-        "http://dynamic.felixyeung2002.com:8081/api/ascii/?size=50&size=50";
+        "http://dynamic.felixyeung2002.com/api/ascii/?size=50&size=50";
     // `http://192.168.1.3:8081/api/ascii/?size=${size}&size=${size}`;
     const formData = new FormData();
 
