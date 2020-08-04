@@ -389,11 +389,31 @@ class Translate {
       'zh-hk': "管理所有用戶",
       'zh-cn': "管理所有用户"
     },
-    "first_name": {'en-gb': "First Name", 'zh-hk': "名字", 'zh-cn': "名字"},
-    "last_name": {'en-gb': "Last Name", 'zh-hk': "姓氏", 'zh-cn': "姓氏"},
-    "email": {'en-gb': "Email", 'zh-hk': "電郵", 'zh-cn': "电邮"},
-    "username": {'en-gb': "Username", 'zh-hk': "用戶名稱", 'zh-cn': "用户名称"},
-    "display_name": {'en-gb': "Display Name", 'zh-hk': "顯示名稱", 'zh-cn': "显示名称"},
+    "first_name": {
+      'en-gb': "First Name",
+      'zh-hk': "名字",
+      'zh-cn': "名字",
+    },
+    "last_name": {
+      'en-gb': "Last Name",
+      'zh-hk': "姓氏",
+      'zh-cn': "姓氏",
+    },
+    "email": {
+      'en-gb': "Email",
+      'zh-hk': "電郵",
+      'zh-cn': "电邮",
+    },
+    "username": {
+      'en-gb': "Username",
+      'zh-hk': "用戶名稱",
+      'zh-cn': "用户名称",
+    },
+    "display_name": {
+      'en-gb': "Display Name",
+      'zh-hk': "顯示名稱",
+      'zh-cn': "显示名称",
+    },
     "err_first_name": {
       'en-gb': "Enter first name",
       'zh-hk': "輸入名字",
@@ -458,8 +478,16 @@ class Translate {
       'zh-hk': "這些密碼不匹配，請重試",
       'zh-cn': "这些密码不匹配，请重试"
     },
-    "account_type": {'en-gb': "Account Type", 'zh-hk': "帳戶類型", 'zh-cn': "帐户类型"},
-    "participator": {'en-gb': "Participator", 'zh-hk': "參加者", 'zh-cn': "参加者"},
+    "account_type": {
+      'en-gb': "Account Type",
+      'zh-hk': "帳戶類型",
+      'zh-cn': "帐户类型",
+    },
+    "participator": {
+      'en-gb': "Participator",
+      'zh-hk': "參加者",
+      'zh-cn': "参加者",
+    },
     "field_required": {
       'en-gb': "This field is required",
       'zh-hk': "此各項均為必填項",
@@ -480,7 +508,16 @@ class Translate {
       'zh-hk': "用戶添加成功",
       'zh-cn': "用户添加成功"
     },
-    "access_level_admin": {'en-gb': "Admin", 'zh-hk': "管理員", 'zh-cn': "管理员"},
+    "access_level_admin": {
+      'en-gb': "Admin",
+      'zh-hk': "管理員",
+      'zh-cn': "管理员",
+    },
+    "admin": {
+      'en-gb': "Admin",
+      'zh-hk': "管理員",
+      'zh-cn': "管理员",
+    },
     "access_level_organiser": {
       'en-gb': "Organiser",
       'zh-hk': "組織者",
@@ -496,8 +533,21 @@ class Translate {
       'zh-hk': "匿名者",
       'zh-cn': "匿名者"
     },
-    "join": {'en-gb': "Join", 'zh-hk': "參加", 'zh-cn': "参加"},
-    "join_now": {'en-gb': "Join Now", 'zh-hk': "立刻參加", 'zh-cn': "立刻参加"},
+    "anonymous": {
+      'en-gb': "Anonymous",
+      'zh-hk': "匿名者",
+      'zh-cn': "匿名者",
+    },
+    "join": {
+      'en-gb': "Join",
+      'zh-hk': "參加",
+      'zh-cn': "参加",
+    },
+    "join_now": {
+      'en-gb': "Join Now",
+      'zh-hk': "立刻參加",
+      'zh-cn': "立刻参加",
+    },
     "join_waiting_list": {
       'en-gb': "Join Waiting List",
       'zh-hk': "加入等候名單",
