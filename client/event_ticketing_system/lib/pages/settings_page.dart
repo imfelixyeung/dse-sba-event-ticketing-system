@@ -10,6 +10,7 @@ import '../misc/show_changelog_dialog.dart';
 import '../widgets/greyed_out.dart';
 import 'package:provider/provider.dart';
 import '../apis/database.dart';
+import '../apis/ets.dart';
 
 import '../constants/page_titles.dart';
 import '../widgets/app_scaffold.dart';
@@ -43,6 +44,22 @@ class _SettingsPageState extends State<SettingsPage> {
 
   List<DropdownMenuItem<String>> colorSchemeDropdownItems;
   List<DropdownMenuItem<String>> languageDropdownItems;
+
+  Future<bool> showSimpleDialog(String title) async {
+    return await showDialog(
+        context: context,
+        builder: (_) => new AlertDialog(
+              title: new Text(title),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text(Translate.get('ok')),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            ));
+  }
 
   final _listTileShape = RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(16)));
@@ -187,6 +204,28 @@ class _SettingsPageState extends State<SettingsPage> {
                             await launchURL(
                                 'https://www.buymeacoffee.com/iWuHsKU');
                           }),
+                      if (appUser.authenticated &&
+                          appUser.accessLevel == 'admin')
+                        Divider(),
+                      if (appUser.authenticated &&
+                          appUser.accessLevel == 'admin')
+                        ListTile(
+                            shape: _listTileShape,
+                            leading: Icon(Icons.replay),
+                            // leading: FaIcon(FontAwesomeIcons.cup),
+                            title: Text(Translate.get('restart_server')),
+                            onTap: () async {
+                              var message = await EtsAPI.shutdownServer();
+                              await showSimpleDialog(Translate.get('$message'));
+                              var ping = false;
+                              while (!ping) {
+                                ping = await EtsAPI.ping();
+                                if (ping) {
+                                  await showSimpleDialog(
+                                      Translate.get('server_back_online'));
+                                }
+                              }
+                            }),
                     ],
                   ),
                 ),

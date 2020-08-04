@@ -2,6 +2,26 @@ import 'database.dart';
 
 class Translate {
   static Map<String, Map<String, String>> translate = {
+    'server_back_online': {
+      'en-gb': 'Server Back Online',
+      'zh-hk': '服務器重新上線',
+    },
+    'server_still_down': {
+      'en-gb': 'Server Still Down',
+      'zh-hk': '服務器仍然停機',
+    },
+    'ok': {
+      'en-gb': 'Okay',
+      'zh-hk': '好',
+    },
+    'restart_server': {
+      'en-gb': 'Restart Server',
+      'zh-hk': '重新啟動服務器',
+    },
+    'server_shutting_down': {
+      'en-gb': 'Server Shutting Down',
+      'zh-hk': '服務器正在關閉',
+    },
     'view_details': {
       'en-gb': 'View Details',
       'zh-hk': '查看詳情',

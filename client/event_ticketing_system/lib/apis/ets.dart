@@ -6,24 +6,38 @@ var endpoint = 'http://dynamic.felixyeung2002.com';
 // var endpoint = 'http://localhost:8081';
 
 class EtsAPI {
+  static Future<bool> ping() async {
+    try {
+      var response = await http.get('$endpoint/api/');
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   static Future<Map> login(User user) async {
-    print('$endpoint/api/login/');
     var response = await http.post('$endpoint/api/login/',
         body: json.encode({"auth": user.toMap()}));
     return json.decode(response.body);
   }
 
   static Future<Map> register(User user) async {
-    print('$endpoint/api/register/');
     var response = await http.post('$endpoint/api/register/',
         body: json.encode({"register": user.toMap()}));
     return json.decode(response.body);
   }
 
   static Future<List> getEvents() async {
-    var response = await http.get('$endpoint/api/events/get');
+    var response = await http.get('$endpoint/api/events/get/');
     var jsonResponse = json.decode(response.body);
     return jsonResponse['data'];
+  }
+
+  static Future shutdownServer() async {
+    var response = await http.post('$endpoint/api/shutdown/',
+        body: json.encode({"auth": appUser.toMap()}));
+    var jsonResponse = json.decode(response.body);
+    return jsonResponse['message'];
   }
 }
 
