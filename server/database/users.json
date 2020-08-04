@@ -26,5 +26,21 @@
     ],
     "pending_events" : [
     ]
+  },
+  {
+    "username" : "admin",
+    "display_name" : "Admin",
+    "salt" : "djH0Su04iY3viDlOIE1Nzpu4mXQCea3E",
+    "salted_password" : "fcb36c0728087bb491429d6ed2103980",
+    "email" : "admin@feli.page",
+    "first_name" : "Admin",
+    "last_name" : "Account",
+    "access_level" : "admin",
+    "joined_events" : [
+    ],
+    "pending_events" : [
+    ],
+    "created_events" : [
+    ]
   }
 ]
