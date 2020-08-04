@@ -1,43 +1,13 @@
-> Note: Ideas are saved to github project
+# Principles of well maintained codes
+- Not about making code as small and fast as possible, but is to make it as easy to understand, read and extend as possible
 
-# Feli Document
-- [ ] ToJsonObject
-- [ ] ToJson
+> Easier to read
+> 
+> Easier to maintain
+> 
+> Easier to extend
 
-# Feli Collection
-- [x] where
-- [x] toTJsonArray
-- [x] toJson
-- [x] length
-- [x] fromTJsonArray
+Always better than
+> A little faster
 
-# Feli Event Ticket
-`class FeliEventTicket`
-- [ ] ToJsonObject
-
-# Feli Event Ticket Collection
-`class FeliEventTicketCollection`
-
-# Feli Event Participant
-`class FeliEventParticipant`
-- [ ] ToJsonObject
-
-# Feli Event Participant Collection
-`class FeliEventParticipantCollection`
-
-# Feli User Event
-`class FeliUserEvent`
-- [ ] ToJsonObject
-
-# Feli User Event Collection
-`class FeliUserEventCollection`
-
-# Feli User Event Joined Collection
-`class FeliUserEventJoinedCollection extends FeliUserEventCollection`
-
-# Feli User Event Created Collection
-`class FeliUserEventCreatedCollection extends FeliUserEventCollection`
-
-# Feli User Event Pending Collection
-`class FeliUserEventPendingCollection extends FeliUserEventCollection`
-
+- Clean and well maintained codes
