@@ -209,6 +209,9 @@ class _SettingsPageState extends State<SettingsPage> {
                                 if (ping) {
                                   await showSimpleDialog(context,
                                       Translate.get('server_back_online'));
+                                } else {
+                                  await new Future.delayed(
+                                      const Duration(seconds: 1));
                                 }
                               }
                             }),

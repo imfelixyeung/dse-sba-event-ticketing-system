@@ -22,14 +22,19 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
   FeliEvent feliEvent;
   List<FeliEventTicket> tickets = [];
   String ticketGroup = '';
+  bool joinLoading = false;
 
   void joinEvent() async {
+    setState(() {
+      joinLoading = true;
+    });
     if (ticketGroup == '') return;
     await appUser.joinEvent(widget.eventId, ticketGroup);
     await appUser.login();
     showSimpleDialog(context, Translate.get('event_joined_successfully'));
     setState(() {
       appUser = appUser;
+      joinLoading = false;
     });
 
     // TODO: Implement Join Event
@@ -162,7 +167,8 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                     ![...appUser.pendingEvents, ...appUser.joinedEvents]
                         .map((e) => e['event_id'])
                         .toList()
-                        .contains(widget.eventId))
+                        .contains(widget.eventId) &&
+                    !joinLoading)
                 ? joinEvent
                 : null,
           )

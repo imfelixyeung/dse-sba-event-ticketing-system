@@ -20,9 +20,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Widget> eventWidgets = [];
+  bool loading = true;
 
   getData() async {
     List events = await EtsAPI.getEvents();
+    setState(() {
+      loading = false;
+    });
     for (var e in events) {
       FeliEvent event = FeliEvent.fromJson(e);
       setState(() {
@@ -125,6 +129,7 @@ class _HomePageState extends State<HomePage> {
                         Translate.get('events'),
                         style: Theme.of(context).textTheme.headline5,
                       ),
+                      if (loading) Text(Translate.get('loading')),
                       ...eventWidgets,
                     ],
                   ),
