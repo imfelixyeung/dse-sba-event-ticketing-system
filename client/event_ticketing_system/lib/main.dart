@@ -1,5 +1,8 @@
+import 'package:event_ticketing_system/apis/ets.dart';
 import 'package:event_ticketing_system/pages/account_page.dart';
+import 'package:event_ticketing_system/pages/created_events.dart';
 import 'package:event_ticketing_system/pages/event_details_page.dart';
+import 'package:event_ticketing_system/pages/joined_events.dart';
 import 'package:event_ticketing_system/pages/login_page.dart';
 import 'package:event_ticketing_system/pages/register_page.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +23,15 @@ void main() async {
   await Hive.openBox(configBoxName);
   await Hive.openBox(userBoxName);
 
+  Map<String, String> userCredentials = FeliStorageAPI.getUserCredentials();
+  if (userCredentials != null) {
+    if ((userCredentials['username'] != null) &&
+        (userCredentials['password'] != null)) {
+      appUser.username = userCredentials['username'];
+      appUser.password = userCredentials['password'];
+      await appUser.login();
+    }
+  }
   runApp(MyApp());
 }
 
@@ -69,6 +81,8 @@ class MaterialAppWithTheme extends StatelessWidget {
         RouteNames.account: (_) => AccountPage(),
         RouteNames.login: (_) => LoginPage(),
         RouteNames.register: (_) => RegisterPage(),
+        RouteNames.joinedEvents: (_) => JoinedEventsPage(),
+        RouteNames.createdEvents: (_) => CreatedEventsPage(),
       },
       onGenerateRoute: (RouteSettings routeSettings) {
         print(routeSettings.name);

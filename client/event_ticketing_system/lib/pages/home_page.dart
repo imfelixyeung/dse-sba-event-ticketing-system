@@ -4,6 +4,7 @@ import 'package:event_ticketing_system/constants/app_info.dart';
 import 'package:event_ticketing_system/constants/route_names.dart';
 import 'package:event_ticketing_system/misc/launch_url.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../apis/database.dart';
 import '../apis/translations.dart';
 import '../constants/page_titles.dart';
@@ -30,6 +31,8 @@ class _HomePageState extends State<HomePage> {
           child: Card(
             color: Theme.of(context).scaffoldBackgroundColor,
             child: ExpansionTile(
+              trailing: Text(
+                  '${event.participants.length}/${event.participantLimit} Joined'),
               initiallyExpanded: false,
               title: Text('${event.name}'),
               children: [
@@ -42,22 +45,39 @@ class _HomePageState extends State<HomePage> {
                   subtitle: Text('${event.description}'),
                 ),
                 ListTile(
+                  dense: true,
                   title: Text(Translate.get('organiser')),
                   subtitle: Text('${event.organiser}'),
                 ),
                 ListTile(
+                  dense: true,
+                  title: Text(Translate.get('start_date_time')),
+                  subtitle: Text(DateFormat().format(
+                      DateTime.fromMillisecondsSinceEpoch(event.startTime))),
+                ),
+                ListTile(
+                  dense: true,
+                  title: Text(Translate.get('end_date_time')),
+                  subtitle: Text(DateFormat().format(
+                      DateTime.fromMillisecondsSinceEpoch(event.endTime))),
+                ),
+                ListTile(
+                  dense: true,
                   title: Text(Translate.get('venue')),
                   subtitle: Text('${event.venue}'),
                 ),
                 ListTile(
+                  dense: true,
                   title: Text(Translate.get('theme')),
                   subtitle: Text('${event.theme}'),
                 ),
                 ListTile(
+                  dense: true,
                   title: Text(Translate.get('participant_limit')),
                   subtitle: Text('${event.participantLimit}'),
                 ),
                 ListTile(
+                  dense: true,
                   title: Text(Translate.get('id')),
                   subtitle: Text('${event.id}'),
                 ),

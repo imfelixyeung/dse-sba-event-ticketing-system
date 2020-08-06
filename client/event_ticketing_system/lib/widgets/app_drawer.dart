@@ -1,3 +1,4 @@
+import 'package:event_ticketing_system/apis/ets.dart';
 import 'package:flutter/material.dart';
 import '../apis/translations.dart';
 import '../blocs/theme.dart';
@@ -82,6 +83,26 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   Icon(Icons.home),
                   widget.permanentlyDisplay,
                 ),
+                if (['admin', 'participator'].contains(appUser.accessLevel))
+                  FeliListTile(
+                    _selectedRoute == RouteNames.joinedEvents,
+                    () async {
+                      await _navigateTo(context, RouteNames.joinedEvents);
+                    },
+                    PageTitles.joinedEvents,
+                    Icon(Icons.event_available),
+                    widget.permanentlyDisplay,
+                  ),
+                if (['admin', 'organiser'].contains(appUser.accessLevel))
+                  FeliListTile(
+                    _selectedRoute == RouteNames.createdEvents,
+                    () async {
+                      await _navigateTo(context, RouteNames.createdEvents);
+                    },
+                    PageTitles.createdEvents,
+                    Icon(Icons.event),
+                    widget.permanentlyDisplay,
+                  ),
                 Divider(thickness: 2),
                 FeliListTile(
                   _selectedRoute == RouteNames.account,

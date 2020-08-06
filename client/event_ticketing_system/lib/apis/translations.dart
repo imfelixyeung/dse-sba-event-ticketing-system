@@ -234,6 +234,11 @@ class Translate {
       'zh-hk': "活動票務系統",
       'zh-cn': "活动票务系统"
     },
+    "tickets": {
+      'en-gb': "Tickets",
+      'zh-hk': "門票",
+      'zh-cn': "门票",
+    },
     "signedIn": {
       'en-gb': "(Signed In)",
       'zh-hk': "已登錄）",
@@ -384,6 +389,11 @@ class Translate {
       'zh-hk': "活動詳情",
       'zh-cn': "活动详情",
     },
+    "event_info": {
+      'en-gb': "Event Information",
+      'zh-hk': "", // TODO: Translate
+      'zh-cn': "", // TODO: Translate
+    },
     "from_date_time_to_date_time_format": {
       'en-gb': "From %s to %s",
       'zh-hk': "由 %s 至 %s",
@@ -394,10 +404,15 @@ class Translate {
       'zh-hk': "在 %s 舉行，主題為 %s",
       'zh-cn': "在 %s 举行，主题为 %s"
     },
-    "enrolled_events": {
-      'en-gb': "Enrolled Events",
+    "joined_events": {
+      'en-gb': "Joined Events",
       'zh-hk': "你已參與的活動",
       'zh-cn': "你已参与的活动"
+    },
+    "pending_events": {
+      'en-gb': "Pending Events",
+      'zh-hk': "Pending Events",
+      'zh-cn': "Pending Events", // TODO
     },
     "created_events": {
       'en-gb': "Created Events",

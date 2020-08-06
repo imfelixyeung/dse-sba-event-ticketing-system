@@ -1,3 +1,4 @@
+import 'package:event_ticketing_system/misc/simple_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../apis/translations.dart';
@@ -44,22 +45,6 @@ class _SettingsPageState extends State<SettingsPage> {
 
   List<DropdownMenuItem<String>> colorSchemeDropdownItems;
   List<DropdownMenuItem<String>> languageDropdownItems;
-
-  Future<bool> showSimpleDialog(String title) async {
-    return await showDialog(
-        context: context,
-        builder: (_) => new AlertDialog(
-              title: new Text(title),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text(Translate.get('ok')),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                )
-              ],
-            ));
-  }
 
   final _listTileShape = RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(16)));
@@ -216,12 +201,13 @@ class _SettingsPageState extends State<SettingsPage> {
                             title: Text(Translate.get('restart_server')),
                             onTap: () async {
                               var message = await EtsAPI.shutdownServer();
-                              await showSimpleDialog(Translate.get('$message'));
+                              await showSimpleDialog(
+                                  context, Translate.get('$message'));
                               var ping = false;
                               while (!ping) {
                                 ping = await EtsAPI.ping();
                                 if (ping) {
-                                  await showSimpleDialog(
+                                  await showSimpleDialog(context,
                                       Translate.get('server_back_online'));
                                 }
                               }

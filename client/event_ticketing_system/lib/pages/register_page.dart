@@ -45,12 +45,12 @@ class _RegisterPageState extends State<RegisterPage> {
     }
 
     _formKey.currentState.save();
+    appUser.accessLevel = accountTypeRadioGroup;
 
     setState(() {
       loading = true;
     });
     var response = await appUser.register();
-    print(json.encode(response));
     if (appUser.authenticated) {
       await showSimpleDialog(Translate.get('register_success'));
       Navigator.of(context).pop();
@@ -328,7 +328,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               Container(height: 16),
                               RaisedButton(
                                 child: Text(Translate.get('submit')),
-                                onPressed: handleRegister,
+                                onPressed: !loading ? handleRegister : null,
                               ),
                             ],
                           ))

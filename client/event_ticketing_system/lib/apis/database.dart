@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:hive/hive.dart';
 // import 'package:hive_flutter/hive_flutter.dart';
 
@@ -7,6 +9,7 @@ const colorScheme = 'colorScheme';
 const languageString = 'language';
 const addressLookup = 'addressLookup';
 const searchHistory = 'searchHistory';
+const credentials = 'credentials';
 
 final userBox = Hive.box(userBoxName);
 final configBox = Hive.box(configBoxName);
@@ -51,5 +54,15 @@ class FeliStorageAPI {
     var history = getSearchHistory();
     history.removeWhere((element) => element == item);
     setSearchHistory(history);
+  }
+
+  static Map<String, String> getUserCredentials() {
+    var result = userBox.get(credentials, defaultValue: null);
+    if (result != null) return new Map.from(result);
+    return null;
+  }
+
+  static setUserCredentials(Map<String, String> cred) {
+    userBox.put(credentials, cred);
   }
 }

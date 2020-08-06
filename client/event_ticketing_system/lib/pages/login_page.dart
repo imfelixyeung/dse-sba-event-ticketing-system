@@ -14,6 +14,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool loading = false;
+  final FocusNode _usernameFocus = FocusNode();
+  final FocusNode _passwordFocus = FocusNode();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -58,6 +60,8 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildUsername() {
     return TextFormField(
+      textInputAction: TextInputAction.next,
+      focusNode: _usernameFocus,
       keyboardType: TextInputType.emailAddress,
       enabled: !loading,
       decoration: InputDecoration(
@@ -72,11 +76,16 @@ class _LoginPageState extends State<LoginPage> {
       onSaved: (String value) {
         appUser.username = value;
       },
+      onFieldSubmitted: (e) {
+        _passwordFocus.requestFocus();
+      },
     );
   }
 
   Widget _buildPassword() {
     return TextFormField(
+      textInputAction: TextInputAction.done,
+      focusNode: _passwordFocus,
       obscureText: true,
       keyboardType: TextInputType.text,
       enabled: !loading,
@@ -88,6 +97,9 @@ class _LoginPageState extends State<LoginPage> {
       onSaved: (String value) {
         appUser.password = value;
       },
+      onFieldSubmitted: (e) {
+        handleLogin();
+      },
     );
   }
 
@@ -98,9 +110,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final double deviceWidth = MediaQuery.of(context).size.width;
-    final bool displayMobileLayout = deviceWidth < 600;
-
     return AppScaffold(
       pageTitle: PageTitles.home,
       body: SingleChildScrollView(

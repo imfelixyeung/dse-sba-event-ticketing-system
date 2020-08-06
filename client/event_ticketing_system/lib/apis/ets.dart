@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:event_ticketing_system/apis/database.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
@@ -8,20 +9,20 @@ var endpoint = 'http://dynamic.felixyeung2002.com';
 class EtsAPI {
   static Future<bool> ping() async {
     try {
-      var response = await http.get('$endpoint/api/');
+      var response = await http.get('$endpoint/api/ping/');
       return true;
     } catch (e) {
       return false;
     }
   }
 
-  static Future<Map> login(User user) async {
+  static Future<Map> login(FeliUser user) async {
     var response = await http.post('$endpoint/api/login/',
         body: json.encode({"auth": user.toMap()}));
     return json.decode(response.body);
   }
 
-  static Future<Map> register(User user) async {
+  static Future<Map> register(FeliUser user) async {
     var response = await http.post('$endpoint/api/register/',
         body: json.encode({"register": user.toMap()}));
     return json.decode(response.body);
@@ -31,6 +32,29 @@ class EtsAPI {
     var response = await http.get('$endpoint/api/events/get/');
     var jsonResponse = json.decode(response.body);
     return jsonResponse['data'];
+  }
+
+  static Future<Map> getEvent(String id) async {
+    var response = await http.get('$endpoint/api/event/$id/get/');
+    var jsonResponse = json.decode(response.body);
+    return jsonResponse['data'];
+  }
+
+  static Future<Map> joinEvent(String eventId, String ticketId) async {
+    var response = await http.post('$endpoint/api/event/$eventId/join/',
+        body: json.encode({
+          "ticket_id": ticketId,
+          "auth": appUser.toMap(),
+        }));
+    var jsonResponse = json.decode(response.body);
+    return jsonResponse;
+  }
+
+  static Future<Map> leaveEvent(String eventId) async {
+    var response = await http.post('$endpoint/api/event/$eventId/leave/',
+        body: json.encode({"auth": appUser.toMap()}));
+    var jsonResponse = json.decode(response.body);
+    return jsonResponse;
   }
 
   static Future shutdownServer() async {
@@ -48,6 +72,8 @@ class FeliEvent {
   int participantLimit;
   List tickets, participants, waitingList;
 
+  FeliEvent();
+
   FeliEvent.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         organiser = json['organiser'],
@@ -64,7 +90,19 @@ class FeliEvent {
         waitingList = json['waiting_list'];
 }
 
-class User {
+class FeliEventTicket {
+  String id, type;
+  int fee;
+
+  FeliEventTicket() {}
+
+  FeliEventTicket.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        type = json['type'],
+        fee = json['fee'];
+}
+
+class FeliUser {
   String username,
       password,
       displayName,
@@ -74,7 +112,11 @@ class User {
       accessLevel;
   List joinedEvents, pendingEvents, createdEvents;
   bool authenticated = false;
-  User();
+  FeliUser() {
+    joinedEvents = [];
+    pendingEvents = [];
+    createdEvents = [];
+  }
 
   importFromMap(Map userMap) {
     if (userMap == null) {
@@ -84,9 +126,9 @@ class User {
       firstName = null;
       lastName = null;
       accessLevel = null;
-      joinedEvents = null;
-      pendingEvents = null;
-      createdEvents = null;
+      joinedEvents = [];
+      pendingEvents = [];
+      createdEvents = [];
       return;
     }
     username = userMap['username'];
@@ -106,6 +148,11 @@ class User {
     if (userMap != null) {
       importFromMap(userMap);
       authenticated = true;
+      Map<String, String> credentials = {
+        "username": username,
+        "password": password,
+      };
+      FeliStorageAPI.setUserCredentials(credentials);
     }
     return response;
   }
@@ -113,7 +160,7 @@ class User {
   Future<Map> register() async {
     var response = await EtsAPI.register(this);
     var userMap = response['data'];
-    importFromMap(userMap);
+    // importFromMap(userMap);
     if (userMap != null) {
       importFromMap(userMap);
       authenticated = true;
@@ -124,6 +171,18 @@ class User {
   logout() {
     importFromMap({});
     authenticated = false;
+    Map<String, String> temp = {};
+    FeliStorageAPI.setUserCredentials(temp);
+  }
+
+  Future joinEvent(String eventId, String ticketId) async {
+    var response = await EtsAPI.joinEvent(eventId, ticketId);
+    return response;
+  }
+
+  Future leaveEvent(String eventId) async {
+    var response = await EtsAPI.leaveEvent(eventId);
+    return response;
   }
 
   Map toMap() {
@@ -143,7 +202,7 @@ class User {
   }
 }
 
-User appUser = User();
+FeliUser appUser = FeliUser();
 
 void main() async {
   appUser.username = 'FelixNPL';
