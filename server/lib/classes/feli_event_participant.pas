@@ -22,6 +22,8 @@ type
             username, ticketId: ansiString;
             createdAt: int64;
             function toTJsonObject(secure: boolean = false): TJsonObject; override;
+            // Factory Methods
+            class function fromTJsonObject(participantObject: TJsonObject): FeliEventParticipant; static;
         end;
 
     FeliEventParticipantCollection = class(FeliCollection)
@@ -34,7 +36,7 @@ type
         end;
 
 implementation
-uses feli_stack_tracer;
+uses feli_stack_tracer, sysutils;
 
 function FeliEventParticipant.toTJsonObject(secure: boolean = false): TJsonObject;
 var
@@ -47,6 +49,28 @@ begin
     eventParticipant.add(FeliEventParticipantKey.createdAt, createdAt);
     result := eventParticipant;
     FeliStackTrace.trace('end', 'function FeliEventParticipant.toTJsonObject(secure: boolean = false): TJsonObject;');
+end;
+
+
+class function FeliEventParticipant.fromTJsonObject(participantObject: TJsonObject): FeliEventParticipant; static;
+var
+    feliEventParticipantInstance: FeliEventParticipant;
+    tempString: ansiString;
+begin
+    feliEventParticipantInstance := FeliEventParticipant.create();
+    with feliEventParticipantInstance do
+    begin
+        try username := participantObject.getPath(FeliEventParticipantKey.username).asString; except on e: exception do begin end; end;
+        try 
+        begin
+          tempString := participantObject.getPath(FeliEventParticipantKey.createdAt).asString;
+          createdAt := StrToInt64(tempString);
+        end;
+        except on e: exception do begin end; end;
+        try ticketId := participantObject.getPath(FeliEventParticipantKey.ticketId).asString; except on e: exception do begin end; end;
+ 
+    end;
+    result := feliEventParticipantInstance;
 end;
 
 

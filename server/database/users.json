@@ -42,26 +42,6 @@
     ]
   },
   {
-    "username" : "admin",
-    "display_name" : "Admin",
-    "salt" : "djH0Su04iY3viDlOIE1Nzpu4mXQCea3E",
-    "salted_password" : "fcb36c0728087bb491429d6ed2103980",
-    "email" : "admin@feli.page",
-    "first_name" : "Admin",
-    "last_name" : "Account",
-    "access_level" : "admin",
-    "joined_events" : [
-      {
-        "event_id" : "EB3444FB3A9F183C0",
-        "created_at" : 1596706648000
-      }
-    ],
-    "created_events" : [
-    ],
-    "pending_events" : [
-    ]
-  },
-  {
     "username" : "testuser",
     "display_name" : "Test User",
     "salt" : "DE1rzdoqFHC7UMA49hi8dPmq8rZ1Xleg",
@@ -73,10 +53,22 @@
     "joined_events" : [
     ],
     "pending_events" : [
-      {
-        "event_id" : "EB3444FB3A9F183C0",
-        "created_at" : 1596706838000
-      }
+    ]
+  },
+  {
+    "username" : "admin",
+    "display_name" : "Admin",
+    "salt" : "djH0Su04iY3viDlOIE1Nzpu4mXQCea3E",
+    "salted_password" : "fcb36c0728087bb491429d6ed2103980",
+    "email" : "admin@feli.page",
+    "first_name" : "Admin",
+    "last_name" : "Account",
+    "access_level" : "admin",
+    "joined_events" : [
+    ],
+    "created_events" : [
+    ],
+    "pending_events" : [
     ]
   }
 ]

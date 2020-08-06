@@ -15,6 +15,7 @@ type
             function toJson(): ansiString;
             procedure add(document: FeliDocument);
             function length(): int64;
+            function shift(): TJsonObject;
             class function fromTJsonArray(dataArray: TJsonArray): FeliCollection; static;
         end;
 
@@ -96,6 +97,22 @@ begin
     FeliStackTrace.trace('begin', 'procedure FeliCollection.add(document: FeliDocument);');
     data.add(document.toTJsonObject());
     FeliStackTrace.trace('end', 'procedure FeliCollection.add(document: FeliDocument);');
+end;
+
+function FeliCollection.shift(): TJsonObject;
+var
+    removed: TJsonObject;
+begin
+    FeliStackTrace.trace('begin', 'function FeliCollection.shift(): TJsonObject;');
+    if (self.length() > 0) then
+        begin
+            result := TJsonObject(data.extract(0));
+        end
+    else
+        begin
+            result := nil;
+        end;
+    FeliStackTrace.trace('end', 'function FeliCollection.shift(): TJsonObject;');
 end;
 
 

@@ -236,6 +236,60 @@ begin
     FeliStackTrace.trace('end', 'procedure joinEventEndPoint(req: TRequest; res: TResponse);');
 end;
 
+
+procedure leaveEventEndPoint(req: TRequest; res: TResponse);
+var
+    eventId: ansiString;
+    event: FeliEvent;
+    responseTemplate: FeliResponseDataObject;
+    middlewareContent: FeliMiddleware;
+    tempCollection: FeliCollection;
+
+begin
+    FeliStackTrace.trace('begin', 'procedure leaveEventEndPoint(req: TRequest; res: TResponse);');
+    try
+        eventId := req.routeParams['eventId'];
+        event := FeliStorageAPI.getEvent(eventId);
+        responseTemplate := FeliResponseDataObject.create();
+        middlewareContent := FeliMiddleware.create();
+        userAuthMiddleware(middlewareContent, req);
+        writeln(middlewareContent.user.username);
+        writeln(eventId);
+        if (event <> nil) then
+            begin
+                if (middlewareContent.authenticated) then
+                    begin
+                        responseTemplate.authenticated := middlewareContent.authenticated;
+                        if (FeliValidation.fixedValueCheck(middlewareContent.user.accessLevel, [FeliAccessLevel.admin, FeliAccessLevel.participator])) then
+                            begin
+                                middlewareContent.user.leaveEvent(eventId);
+                                responseTemplate.resCode := 200;
+
+                            end
+                        else
+                            begin
+                                responseTemplate.resCode := 404;
+                                responseTemplate.error := 'insufficient_permission';
+                            end;
+                    end
+                else
+                    begin
+                        responseTemplate.resCode := 404;
+                        responseTemplate.error := 'not_authenticated';
+                    end;
+            end
+        else
+            begin
+                responseTemplate.resCode := 404;
+                responseTemplate.error := 'event_not_found';
+            end;
+        responseWithJson(res, responseTemplate);
+    finally
+        responseTemplate.free();  
+    end;
+    FeliStackTrace.trace('end', 'procedure leaveEventEndPoint(req: TRequest; res: TResponse);');
+end;
+
 procedure loginEndPoint(req: TRequest; res: TResponse);
 var
     responseTemplate: FeliResponseDataObject;
@@ -395,10 +449,10 @@ begin
     FeliStackTrace.trace('begin', 'procedure init();');
     randomize;
     application.port := port;
-    FeliLogger.info(format('HTTP Server listening on port %d', [port]));
     HTTPRouter.RegisterRoute('/api/events/get/', @getEventsEndPoint);
     HTTPRouter.RegisterRoute('/api/event/:eventId/get/', @getEventEndPoint);
     HTTPRouter.RegisterRoute('/api/event/:eventId/join/', @joinEventEndPoint);
+    HTTPRouter.RegisterRoute('/api/event/:eventId/leave/', @leaveEventEndPoint);
     HTTPRouter.RegisterRoute('/api/login/', @loginEndPoint);
     HTTPRouter.RegisterRoute('/api/register/', @registerEndPoint);
     httpRouter.registerRoute('/api/shutdown/', @serverShutdownEndpoint);
@@ -409,6 +463,7 @@ begin
     // application.threaded := true;
     if (not debugMode) then begin
         application.initialize();
+        FeliLogger.info(format('HTTP Server listening on port %d', [port]));
         application.run();
     end;
     FeliStackTrace.trace('end', 'procedure init();');
@@ -438,8 +493,10 @@ var
 
 begin
     FeliStackTrace.trace('begin', 'procedure test();');
-    // user := FeliStorageAPI.getUser('admin');
-    // user.joinEvent('EB3444FB3A9F183C0');
+    user := FeliStorageAPI.getUser('admin');
+    // user.joinEvent('EB3444FB3A9F183C0', '0');
+    // readln;
+    user.leaveEvent('EB3444FB3A9F183C0');
     // FeliStorageAPI.removeUser('FelixNPL_NotExist');
     // eventCollection := FeliStorageAPI.getEvents();
     // writeln(eventCollection.length());
@@ -665,7 +722,7 @@ begin
     FeliStackTrace.reset();
     FeliStackTrace.trace('begin', 'main');
     try
-        test();
+        if (debugMode) then test();
         init();
         // debug();
     except

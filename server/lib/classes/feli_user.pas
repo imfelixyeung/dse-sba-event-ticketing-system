@@ -43,6 +43,7 @@ type
             function validate(): boolean;
             procedure generateSaltedPassword();
             procedure joinEvent(eventId, ticketId: ansiString);
+            procedure leaveEvent(eventId: ansiString);
             // Factory Methods
             class function fromTJsonObject(userObject: TJsonObject): FeliUser; static;
         end;
@@ -74,6 +75,7 @@ uses
     feli_event,
     feli_event_participant,
     feli_event_ticket,
+    feli_logger,
     dateutils,
     sysutils;
 
@@ -233,6 +235,72 @@ begin
 end;
 
 
+procedure FeliUser.leaveEvent(eventId: ansiString);
+var
+    event: FeliEvent;
+    tempWaitingListCollection, tempParticipantCollection, tempPendingCollection, tempCollection: FeliCollection;
+    lengthBefore, allowQueue: int64;
+    tempData: TJsonObject;
+    tempParticipant: FeliEventParticipant;
+    tempUserEvent: FeliUserEvent;
+    tempUser: FeliUser;
+begin
+    FeliStackTrace.trace('begin', 'procedure FeliUser.leaveEvent(eventId: ansiString);');
+    event := FeliStorageAPI.getEvent(eventId);
+    if (event <> nil) then
+        begin
+            tempWaitingListCollection := event.waitingList.where(FeliEventParticipantKey.username, FeliOperators.notEqualsTo, username);
+            lengthBefore :=  event.participants.length();
+            tempParticipantCollection := event.participants.where(FeliEventParticipantKey.username, FeliOperators.notEqualsTo, username);
+            allowQueue := lengthBefore - tempParticipantCollection.length();
+            
+            tempCollection := joinedEvents.where(FeliUserEventKeys.eventId, FeliOperators.notEqualsTo, eventId);
+            joinedEvents := FeliUserEventCollection.fromFeliCollection(tempCollection);
+            tempCollection := pendingEvents.where(FeliUserEventKeys.eventId, FeliOperators.notEqualsTo, eventId);
+            pendingEvents := FeliUserEventCollection.fromFeliCollection(tempCollection);
+            
+            while (not (allowQueue <= 0)) do
+                begin
+                    tempData := tempWaitingListCollection.shift();
+                    if (tempData <> nil) then
+                        begin
+                            tempParticipant := FeliEventParticipant.fromTJsonObject(tempData);
+                            tempParticipantCollection.data.add(tempData);
+                            tempUser := FeliStorageAPI.getUser(tempParticipant.username);
+                            
+                            
+                            tempPendingCollection := tempUser.pendingEvents.where(FeliUserEventKeys.eventId, FeliOperators.notEqualsTo, eventId);
+                            
+                            tempUserEvent := FeliUserEvent.create();
+                            tempUserEvent.eventId := eventId;
+                            tempUserEvent.createdAt := tempParticipant.createdAt;
+                            
+                            tempUser.joinedEvents.add(tempUserEvent);
+                            tempUser.pendingEvents := FeliUserEventCollection.fromFeliCollection(tempPendingCollection);
+                            FeliStorageAPI.setUser(tempUser);
+                            allowQueue := allowQueue - 1;
+                        end
+                    else 
+                        begin
+                            allowQueue := 0;
+                        end;
+                end;
+
+
+            event.participants := FeliEventParticipantCollection.fromFeliCollection(tempParticipantCollection);
+            event.waitingList := FeliEventWaitingCollection.fromFeliCollection(tempWaitingListCollection);
+            FeliStorageAPI.setEvent(event);
+            FeliStorageAPI.setUser(self);
+        end
+    else
+        begin
+
+        end;
+    
+    FeliStackTrace.trace('end', 'procedure FeliUser.leaveEvent(eventId: ansiString);');
+end;
+
+
 class function FeliUser.fromTJsonObject(userObject: TJsonObject): FeliUser; static;
 var
     feliUserInstance: FeliUser;
@@ -353,7 +421,7 @@ begin
     for newEnum in newArray do
     begin
         newDataSingle := newEnum.value as TJsonObject;
-        data.add(newDataSingle);
+        data.add(newDataSingle); 
     end;
     FeliStackTrace.trace('end', 'procedure FeliUserCollection.join(newCollection: FeliUserCollection);');
 end;
