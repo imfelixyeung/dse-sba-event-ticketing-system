@@ -12,13 +12,13 @@ type
     FeliUserEventKeys = class
         public
             const
-                id = 'id';
+                eventId = 'event_id';
                 createdAt = 'created_at';
         end;
 
     FeliUserEvent = class(FeliDocument)
         public
-            id: ansiString;
+            eventId: ansiString;
             createdAt: int64;
             function toTJsonObject(secure: boolean = false): TJsonObject; override;
         end;
@@ -48,7 +48,7 @@ var
 begin
     FeliStackTrace.trace('begin', 'function FeliUserEvent.toTJsonObject(secure: boolean = false): TJsonObject;');
     userEvent := TJsonObject.create();
-    userEvent.add(FeliUserEventKeys.id, id);
+    userEvent.add(FeliUserEventKeys.eventId, eventId);
     userEvent.add(FeliUserEventKeys.createdAt, createdAt);
     result := userEvent;
     FeliStackTrace.trace('end', 'function FeliUserEvent.toTJsonObject(secure: boolean = false): TJsonObject;');

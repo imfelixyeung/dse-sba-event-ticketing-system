@@ -6,6 +6,7 @@ interface
 uses
     feli_collection,
     feli_document,
+    feli_user_event,
     fpjson;
 
 type
@@ -32,7 +33,8 @@ type
         public
             username, password, displayName, email, firstName, lastName, accessLevel: ansiString;
             createdAt: int64;
-            joinedEvents, createdEvents, pendingEvents: TJsonArray;
+            // joinedEvents, createdEvents, pendingEvents: TJsonArray;
+            joinedEvents, createdEvents, pendingEvents: FeliUserEventCollection;
             
             constructor create();
             function toTJsonObject(secure: boolean = false): TJsonObject; override;
@@ -40,6 +42,7 @@ type
             function verify(): boolean;
             function validate(): boolean;
             procedure generateSaltedPassword();
+            procedure joinEvent(eventId, ticketId: ansiString);
             // Factory Methods
             class function fromTJsonObject(userObject: TJsonObject): FeliUser; static;
         end;
@@ -68,13 +71,17 @@ uses
     feli_access_level,
     feli_errors,
     feli_stack_tracer,
+    feli_event,
+    feli_event_participant,
+    feli_event_ticket,
+    dateutils,
     sysutils;
 
 constructor FeliUser.create();
 begin
-    joinedEvents := TJsonArray.Create;
-    createdEvents := TJsonArray.Create;
-    pendingEvents := TJsonArray.Create;
+    joinedEvents := FeliUserEventCollection.create();
+    createdEvents := FeliUserEventCollection.create();
+    pendingEvents := FeliUserEventCollection.create();
 end;
 
 
@@ -98,18 +105,18 @@ begin
     case accessLevel of
         FeliAccessLevel.admin: 
             begin
-                user.add(FeliUserKeys.joinedEvents, joinedEvents);
-                user.add(FeliUserKeys.createdEvents, createdEvents);
-                user.add(FeliUserKeys.pendingEvents, pendingEvents);
+                user.add(FeliUserKeys.joinedEvents, joinedEvents.toTJsonArray());
+                user.add(FeliUserKeys.createdEvents, createdEvents.toTJsonArray());
+                user.add(FeliUserKeys.pendingEvents, pendingEvents.toTJsonArray());
             end;
         FeliAccessLevel.organiser:
             begin
-                user.add(FeliUserKeys.createdEvents, createdEvents);
+                user.add(FeliUserKeys.createdEvents, createdEvents.toTJsonArray());
             end;
         FeliAccessLevel.participator:
             begin
-                user.add(FeliUserKeys.joinedEvents, joinedEvents);                
-                user.add(FeliUserKeys.pendingEvents, pendingEvents);                
+                user.add(FeliUserKeys.joinedEvents, joinedEvents.toTJsonArray());                
+                user.add(FeliUserKeys.pendingEvents, pendingEvents.toTJsonArray());                
             end;
         FeliAccessLevel.anonymous:
             begin
@@ -161,11 +168,76 @@ begin
     FeliStackTrace.trace('end', 'procedure FeliUser.generateSaltedPassword();');
 end;
 
+procedure FeliUser.joinEvent(eventId, ticketId: ansiString);
+var
+    event: FeliEvent;
+    participant: FeliEventParticipant;
+    tempCollection: FeliCollection;
+    eventFull: boolean;
+    userEvent: FeliUserEvent;
+begin
+    FeliStackTrace.trace('begin', 'procedure FeliUser.joinEvent(eventId: ansistring);');
+
+    event := FeliStorageAPI.getEvent(eventId);
+    if (event <> nil) then
+        begin
+            eventFull := event.participants.length() >= event.participantLimit;
+            tempCollection := event.participants.where(FeliEventParticipantKey.username, FeliOperators.equalsTo, username);
+            if (not eventFull) then
+                begin
+                    if (tempCollection.length() <= 0) then
+                        begin
+                            participant := FeliEventParticipant.create();
+                            participant.username := username;
+                            participant.createdAt := DateTimeToUnix(Now()) * 1000 - 8 * 60 * 60 * 1000;
+                            participant.ticketId := ticketId;
+                            event.participants.add(participant);
+                            FeliStorageAPI.setEvent(event);
+                            
+                            userEvent := FeliUserEvent.create();
+                            userEvent.eventId := eventId;
+                            userEvent.createdAt := participant.createdAt;
+                            joinedEvents.add(userEvent);
+                            FeliStorageAPI.setUser(self)
+                        end;
+                end
+            else 
+                begin
+                    if not (tempCollection.length() >= 1) then
+                    begin
+                        tempCollection := event.waitingList.where(FeliEventParticipantKey.username, FeliOperators.equalsTo, username);
+                        if (tempCollection.length() <= 0) then
+                            begin
+                                participant := FeliEventParticipant.create();
+                                participant.username := username;
+                                participant.createdAt := DateTimeToUnix(Now()) * 1000 - 8 * 60 * 60 * 1000;
+                                participant.ticketId := ticketId;
+                                event.waitingList.add(participant);
+                                FeliStorageAPI.setEvent(event);
+                                
+                                userEvent := FeliUserEvent.create();
+                                userEvent.eventId := eventId;
+                                userEvent.createdAt := participant.createdAt;
+                                pendingEvents.add(userEvent);
+                                FeliStorageAPI.setUser(self);
+                            end;
+                    end;
+                end;
+        end
+    else 
+        begin
+          
+        end;
+
+    FeliStackTrace.trace('end', 'procedure FeliUser.joinEvent(eventId: ansistring);');
+end;
+
 
 class function FeliUser.fromTJsonObject(userObject: TJsonObject): FeliUser; static;
 var
     feliUserInstance: FeliUser;
     tempTJsonArray: TJsonArray;
+    tempCollection: FeliCollection;
 begin
     FeliStackTrace.trace('begin', 'class function FeliUser.fromTJsonObject(userObject: TJsonObject): FeliUser; static;');
     feliUserInstance := FeliUser.create();
@@ -184,19 +256,28 @@ begin
         try
             tempTJsonArray := TJsonArray(userObject.findPath(FeliUserKeys.joinedEvents));
             if not tempTJsonArray.isNull then 
-            joinedEvents := tempTJsonArray;
+            begin
+                tempCollection := FeliCollection.fromTJsonArray(tempTJsonArray);
+                joinedEvents := FeliUserEventCollection.fromFeliCollection(tempCollection);
+            end;
         except
         end;
         try
             tempTJsonArray := TJsonArray(userObject.findPath(FeliUserKeys.createdEvents));
             if not tempTJsonArray.isNull then 
-            createdEvents := tempTJsonArray;
+            begin
+                tempCollection := FeliCollection.fromTJsonArray(tempTJsonArray);
+                createdEvents := FeliUserEventCollection.fromFeliCollection(tempCollection);
+            end;
         except
         end;
         try
             tempTJsonArray := TJsonArray(userObject.findPath(FeliUserKeys.pendingEvents));
-            if not tempTJsonArray.isNull then 
-            pendingEvents := tempTJsonArray;
+            if not tempTJsonArray.isNull then
+            begin
+                tempCollection := FeliCollection.fromTJsonArray(tempTJsonArray);
+                pendingEvents := FeliUserEventCollection.fromFeliCollection(tempCollection);
+            end;
         except
         end;
     end;

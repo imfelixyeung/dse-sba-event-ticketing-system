@@ -19,6 +19,7 @@ type
         class procedure addUser(user: FeliUser);
         class procedure removeUser(usernameOrEmail: ansiString);
         class procedure setUsers(users: FeliUserCollection);
+        class procedure setUser(user: FeliUser);
 
         // event
         class function getEvent(eventId: ansiString): FeliEvent;
@@ -26,6 +27,7 @@ type
         class procedure addEvent(event: FeliEvent);
         class procedure removeEvent(eventId: ansiString);
         class procedure setEvents(events: FeliEventCollection);
+        class procedure setEvent(event: FeliEvent);
 
         // DEBUG
         class procedure debug(); static;
@@ -108,6 +110,12 @@ begin
     FeliStackTrace.trace('begin', 'class procedure FeliStorageAPI.setUsers(users: FeliUserCollection);');
     FeliFileAPI.put(usersFilePath, users.toJson()); // Error
     FeliStackTrace.trace('end', 'class procedure FeliStorageAPI.setUsers(users: FeliUserCollection);');
+end;
+
+class procedure FeliStorageAPI.setUser(user: FeliUser);
+begin
+    FeliStorageAPI.removeUser(user.username);
+    FeliStorageAPI.addUser(user);
 end;
 
 class procedure FeliStorageAPI.removeUser(usernameOrEmail: ansiString);
@@ -207,6 +215,14 @@ begin
     FeliFileAPI.put(eventsFilePath, events.ToJson());
 end;
 
+class procedure FeliStorageAPI.setEvent(event: FeliEvent);
+var
+    events: FeliEventCollection;
+begin
+
+    FeliStorageAPI.removeEvent(event.id);
+    FeliStorageAPI.addEvent(event);
+end;
 
 
 

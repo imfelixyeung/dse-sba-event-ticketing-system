@@ -38,7 +38,10 @@
     "access_level" : "participator",
     "joined_events" : [
     ],
-    "pending_events" : []},{
+    "pending_events" : [
+    ]
+  },
+  {
     "username" : "admin",
     "display_name" : "Admin",
     "salt" : "djH0Su04iY3viDlOIE1Nzpu4mXQCea3E",
@@ -48,10 +51,32 @@
     "last_name" : "Account",
     "access_level" : "admin",
     "joined_events" : [
-    ],
-    "pending_events" : [
+      {
+        "event_id" : "EB3444FB3A9F183C0",
+        "created_at" : 1596706648000
+      }
     ],
     "created_events" : [
+    ],
+    "pending_events" : [
+    ]
+  },
+  {
+    "username" : "testuser",
+    "display_name" : "Test User",
+    "salt" : "DE1rzdoqFHC7UMA49hi8dPmq8rZ1Xleg",
+    "salted_password" : "f844e7c77816fff52afa16a58ba0da9a",
+    "email" : "test@test.com",
+    "first_name" : "test",
+    "last_name" : "user",
+    "access_level" : "participator",
+    "joined_events" : [
+    ],
+    "pending_events" : [
+      {
+        "event_id" : "EB3444FB3A9F183C0",
+        "created_at" : 1596706838000
+      }
     ]
   }
 ]
