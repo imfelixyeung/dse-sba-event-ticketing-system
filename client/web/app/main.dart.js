@@ -32341,7 +32341,7 @@ N.a3W.prototype={
 $0:function(){var s=0,r=P.T(t.P),q=this
 var $async$$0=P.O(function(a,b){if(a===1)return P.Q(b,r)
 while(true)switch(s){case 0:s=2
-return P.L(G.nR("https://wa.me/?text="+H.b(P.NL(C.r4,"http://dynamic.felixyeung2002.com/#/eventDetails/"+q.a.a.c,C.ao,!1))),$async$$0)
+return P.L(G.nR("https://wa.me/?text="+H.b(P.NL(C.r4,"http://dynamic.felixyeung2002.com/app/#/eventDetails/"+q.a.a.c,C.ao,!1))),$async$$0)
 case 2:return P.R(null,r)}})
 return P.S($async$$0,r)},
 $C:"$0",

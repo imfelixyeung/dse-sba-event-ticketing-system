@@ -194,7 +194,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
             onPressed: eventExist
                 ? () async {
                     var link = WhatsAppAPI.generateLink(
-                        'http://dynamic.felixyeung2002.com/#/eventDetails/${widget.eventId}');
+                        'http://dynamic.felixyeung2002.com/app/#/eventDetails/${widget.eventId}');
                     await launchURL(link);
                   }
                 : null)
