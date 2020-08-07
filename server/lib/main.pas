@@ -27,11 +27,13 @@ uses
     fphttpapp,
     httpdefs,
     httproute,
+    dateutils,
     fpjson;
 
 const
     port = 8081;
-    debugMode = false;
+    testMode = false;
+
 
 procedure debug();
 begin
@@ -39,6 +41,7 @@ begin
     FeliFileAPI.debug;
     FeliValidation.debug;
 end;
+
 
 function parseRequestJsonBody(req: TRequest): TJsonObject;
 var
@@ -109,6 +112,7 @@ begin
     FeliStackTrace.trace('end', 'procedure error404(req: TRequest; res: TResponse);');
 end;
 
+
 procedure pingEndpoint(req: TRequest; res: TResponse);
 var
     responseTemplate: FeliResponse;
@@ -124,6 +128,7 @@ begin
     end;
     FeliStackTrace.trace('end', 'procedure pingEndpoint(req: TRequest; res: TResponse);');
 end;
+
 
 procedure getEventsEndPoint(req: TRequest; res: TResponse);
 var
@@ -142,6 +147,7 @@ begin
     end;
     FeliStackTrace.trace('end', 'procedure getEventsEndPoint(req: TRequest; res: TResponse);');
 end;
+
 
 procedure getEventEndPoint(req: TRequest; res: TResponse);
 var
@@ -169,6 +175,7 @@ begin
     end;
     FeliStackTrace.trace('end', 'procedure getEventEndPoint(req: TRequest; res: TResponse);');
 end;
+
 
 procedure joinEventEndPoint(req: TRequest; res: TResponse);
 var
@@ -268,13 +275,13 @@ begin
                             end
                         else
                             begin
-                                responseTemplate.resCode := 404;
+                                responseTemplate.resCode := 401;
                                 responseTemplate.error := 'insufficient_permission';
                             end;
                     end
                 else
                     begin
-                        responseTemplate.resCode := 404;
+                        responseTemplate.resCode := 403;
                         responseTemplate.error := 'not_authenticated';
                     end;
             end
@@ -289,6 +296,116 @@ begin
     end;
     FeliStackTrace.trace('end', 'procedure leaveEventEndPoint(req: TRequest; res: TResponse);');
 end;
+
+
+procedure createEventEndPoint(req: TRequest; res: TResponse);
+var
+    eventId, ticketId: ansiString;
+    event: FeliEvent;
+    responseTemplate: FeliResponseDataObject;
+    middlewareContent: FeliMiddleware;
+    requestJson, eventObject: TJsonObject;
+    tempString, error: ansiString;
+    tempReal: real;
+    ticket: FeliEventTicket;
+    ticketsArray: TJsonArray;
+    ticketI: integer;
+    ticketObject: TJsonObject;
+begin
+    FeliStackTrace.trace('begin', 'procedure createEventEndPoint(req: TRequest; res: TResponse);');
+    try
+        responseTemplate := FeliResponseDataObject.create();
+        middlewareContent := FeliMiddleware.create();
+        requestJson := parseRequestJsonBody(req);
+        try
+            begin
+                userAuthMiddleware(middlewareContent, req);
+                responseTemplate.authenticated := middlewareContent.authenticated;
+                if middlewareContent.authenticated then
+                    begin
+                        try
+                            eventObject := requestJson.getPath('event') as TJsonObject;
+                            event := FeliEvent.create();
+
+                            with event do
+                            begin
+                                organiser := middlewareContent.user.username;
+                                name := eventObject.getPath(FeliEventKeys.name).asString;
+                                description := eventObject.getPath(FeliEventKeys.description).asString;
+                                venue := eventObject.getPath(FeliEventKeys.venue).asString;
+                                theme := eventObject.getPath(FeliEventKeys.theme).asString;
+
+                                begin
+                                    ticketsArray := eventObject.getPath(FeliEventKeys.tickets) as TJsonArray;
+
+                                    for ticketI := 0 to (ticketsArray.count - 1) do
+                                        begin
+                                            ticketObject := ticketsArray[ticketI] as TJsonObject;
+                                            ticket := FeliEventTicket.create();
+                                            ticket.generateId();
+                                            ticket.tType := ticketObject.getPath(FeliEventTicketKeys.tType).asString;
+                                            tempString := ticketObject.getPath(FeliEventTicketKeys.fee).asString;
+                                            ticket.fee := StrToInt64(tempString);
+                                            if (ticket.validate(error)) then
+                                                begin
+                                                    tickets.add(ticket);
+                                                end;
+                                        end;
+
+                                end;
+                                tempString := eventObject.getPath(FeliEventKeys.startTime).asString;
+                                startTime := StrToInt64(tempString);
+                                tempString := eventObject.getPath(FeliEventKeys.endTime).asString;
+                                endTime := StrToInt64(tempString);
+                                tempString := eventObject.getPath(FeliEventKeys.participantLimit).asString;
+                                participantLimit := StrToInt64(tempString);
+
+                                
+                                if (event.validate(error)) then
+                                    begin
+                                        middlewareContent.user.createEvent(event);
+                                        responseTemplate.data := event.toTJsonObject();
+                                        responseTemplate.resCode := 200;
+                                    end
+                                else
+                                    begin
+                                        responseTemplate.error := error;
+                                        responseTemplate.resCode := 400;
+                                    end;
+
+
+                            end;
+
+                        except
+                            on E: Exception do
+                            begin
+                                responseTemplate.error := e.message;
+                                responseTemplate.resCode := 400;
+                            end;
+                        end;
+                      
+                    end
+                else
+                    begin
+                        responseTemplate.resCode := 403;
+                        responseTemplate.error := 'not_authenticated';
+                    end;
+            end;
+        except
+            on E: Exception do
+            begin
+                responseTemplate.error := e.message;
+                responseTemplate.resCode := 500;
+                FeliLogger.error(e.message);
+            end;
+        end;
+        responseWithJson(res, responseTemplate);
+    finally
+        responseTemplate.free();  
+    end;
+    FeliStackTrace.trace('end', 'procedure createEventEndPoint(req: TRequest; res: TResponse);');
+end;
+
 
 procedure loginEndPoint(req: TRequest; res: TResponse);
 var
@@ -320,6 +437,7 @@ begin
     end;
     FeliStackTrace.trace('end', 'procedure loginEndPoint(req: TRequest; res: TResponse);');
 end;
+
 
 procedure registerEndPoint(req: TRequest; res: TResponse);
 var
@@ -357,7 +475,6 @@ begin
     end;
     FeliStackTrace.trace('end', 'procedure registerEndPoint(req: TRequest; res: TResponse);');
 end;
-
 
 
 procedure asciiEndpoint(req: TRequest; res: TResponse);
@@ -440,19 +557,21 @@ begin
     FeliStackTrace.trace('end', 'procedure serverShutdownEndpoint(req: TRequest; res: TResponse);');
 end;
 
+
 (*
     End points End
 *)
 
+
 procedure init();
 begin
     FeliStackTrace.trace('begin', 'procedure init();');
-    randomize;
     application.port := port;
     HTTPRouter.RegisterRoute('/api/events/get/', @getEventsEndPoint);
     HTTPRouter.RegisterRoute('/api/event/:eventId/get/', @getEventEndPoint);
     HTTPRouter.RegisterRoute('/api/event/:eventId/join/', @joinEventEndPoint);
     HTTPRouter.RegisterRoute('/api/event/:eventId/leave/', @leaveEventEndPoint);
+    HTTPRouter.RegisterRoute('/api/event/post/', @createEventEndPoint);
     HTTPRouter.RegisterRoute('/api/login/', @loginEndPoint);
     HTTPRouter.RegisterRoute('/api/register/', @registerEndPoint);
     httpRouter.registerRoute('/api/shutdown/', @serverShutdownEndpoint);
@@ -461,13 +580,14 @@ begin
     httpRouter.registerRoute('/*', @error404, true);
 
     // application.threaded := true;
-    if (not debugMode) then begin
+    if (not testMode) then begin
         application.initialize();
         FeliLogger.info(format('HTTP Server listening on port %d', [port]));
         application.run();
     end;
     FeliStackTrace.trace('end', 'procedure init();');
 end;
+
 
 procedure test();
 var 
@@ -481,6 +601,8 @@ var
     // ticketDocument: FeliEventTicket;
     // document: FeliDocument;
     user: FeliUser;
+    event: FeliEvent;
+    ticket: FeliEventTicket;
     // usersArray: TJsonArray;
     // userEnum: TJsonEnum;
     // testUsernameString: ansiString;
@@ -493,10 +615,34 @@ var
 
 begin
     FeliStackTrace.trace('begin', 'procedure test();');
+
     user := FeliStorageAPI.getUser('admin');
-    // user.joinEvent('EB3444FB3A9F183C0', '0');
-    // readln;
-    user.leaveEvent('EB3444FB3A9F183C0');
+
+    event := FeliEvent.create();
+    with event do
+        begin
+
+            organiser := user.username;
+            name := 'Pascal Generated';
+            description := 'A test event from pascal';
+            venue := 'Hong Kong';
+            theme := 'Fun';
+
+            ticket := FeliEventTicket.create();
+            ticket.generateId();
+            ticket.tType := 'MVP';
+            ticket.fee := 256;
+
+            tickets.add(ticket);
+            
+            startTime := DateTimeToUnix(Now()) * 1000 - 8 * 60 * 60 * 1000 + 10000;
+            endTime := DateTimeToUnix(Now()) * 1000 - 8 * 60 * 60 * 1000 + 20000;
+            participantLimit := 5;
+
+        end;
+
+    user.createEvent(event);        
+
     // FeliStorageAPI.removeUser('FelixNPL_NotExist');
     // eventCollection := FeliStorageAPI.getEvents();
     // writeln(eventCollection.length());
@@ -711,18 +857,21 @@ begin
 
     // Test for FeliCrypto.generateSalt salt generation 
     // FeliLogger.log(FeliCrypto.generateSalt(64));
-    if (debugMode) then begin
+    
+    if (testMode) then begin
         FeliLogger.debug('Press <Enter> to continue');
         readln;
     end;
     FeliStackTrace.trace('end', 'procedure test();');
 end;
 
+
 begin
     FeliStackTrace.reset();
     FeliStackTrace.trace('begin', 'main');
+    randomize();
     try
-        if (debugMode) then test();
+        if (testMode) then test();
         init();
         // debug();
     except

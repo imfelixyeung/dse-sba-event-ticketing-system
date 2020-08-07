@@ -7,6 +7,7 @@ uses
     feli_collection,
     feli_document,
     feli_user_event,
+    feli_event,
     fpjson;
 
 type
@@ -43,6 +44,7 @@ type
             function validate(): boolean;
             procedure generateSaltedPassword();
             procedure joinEvent(eventId, ticketId: ansiString);
+            procedure createEvent(event: FeliEvent);
             procedure leaveEvent(eventId: ansiString);
             // Factory Methods
             class function fromTJsonObject(userObject: TJsonObject): FeliUser; static;
@@ -72,7 +74,6 @@ uses
     feli_access_level,
     feli_errors,
     feli_stack_tracer,
-    feli_event,
     feli_event_participant,
     feli_event_ticket,
     feli_logger,
@@ -134,6 +135,8 @@ end;
 // begin
 //     result := self.toTJsonObject().formatJson;
 // end;
+
+
 
 function FeliUser.verify(): boolean;
 begin
@@ -234,6 +237,19 @@ begin
     FeliStackTrace.trace('end', 'procedure FeliUser.joinEvent(eventId: ansistring);');
 end;
 
+procedure FeliUser.createEvent(event: FeliEvent);
+var
+    userEvent: FeliUserEvent;
+begin
+    event.id := FeliCrypto.generateSalt(32);
+    event.createdAt := DateTimeToUnix(Now()) * 1000 - 8 * 60 * 60 * 1000;
+    FeliStorageAPI.addEvent(event);
+    userEvent := FeliUserEvent.create();
+    userEvent.createdAt := event.createdAt;
+    userEvent.eventId := event.id;
+    createdEvents.add(userEvent);
+    FeliStorageAPI.setUser(self);
+end;
 
 procedure FeliUser.leaveEvent(eventId: ansiString);
 var

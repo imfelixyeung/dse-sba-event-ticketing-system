@@ -28,25 +28,6 @@
       }
     ],
     "participants" : [
-      "FelixNPL"
-    ],
-    "waiting_list" : [
-    ]
-  },
-  {
-    "id" : "ijqusjYyJ7Lt08sggnqNa66K8j2GyEh0",
-    "organiser" : "PascalGenerated",
-    "name" : "Lovely Event",
-    "description" : "Everyone should join this event, it will be epic",
-    "start_time" : 0,
-    "end_time" : 0,
-    "created_at" : 0,
-    "venue" : "Space",
-    "theme" : "Weightless",
-    "participant_limit" : 0,
-    "tickets" : [
-    ],
-    "participants" : [
     ],
     "waiting_list" : [
     ]
@@ -80,6 +61,39 @@
       }
     ],
     "participants" : [
+      {
+        "username" : "admin",
+        "ticket_id" : "2",
+        "created_at" : 1596755714000
+      }
+    ],
+    "waiting_list" : [
+    ]
+  },
+  {
+    "id" : "t783fggzf4aRPzMZ0RxNd7JSdQG41rNZ",
+    "organiser" : "admin",
+    "name" : "Name",
+    "description" : "Description",
+    "start_time" : 1597925040000000,
+    "end_time" : 1598647800000000,
+    "created_at" : 1596801899000,
+    "venue" : "Venue",
+    "theme" : "August 29, 2020 4:50:00 AM",
+    "participant_limit" : 256,
+    "tickets" : [
+      {
+        "id" : "Fv2Nqs_YuS64mqNCzm525nFA1UArK_nx",
+        "type" : "Only Ticket",
+        "fee" : 1.2300000000000000E+002
+      }
+    ],
+    "participants" : [
+      {
+        "username" : "admin",
+        "ticket_id" : "Fv2Nqs_YuS64mqNCzm525nFA1UArK_nx",
+        "created_at" : 1596801958000
+      }
     ],
     "waiting_list" : [
     ]

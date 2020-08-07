@@ -1,33 +1,5 @@
 [
   {
-    "username" : "FelixNPL2",
-    "display_name" : "Felix NPL",
-    "salt" : "YTAhspfG2A7xqm27zqullP63z02_1CIM",
-    "salted_password" : "63d2d7ff7cc530d19e8725a3c5aa62c9",
-    "email" : "user00001@test.com",
-    "first_name" : "Felix",
-    "last_name" : "NPL",
-    "access_level" : "participator",
-    "joined_events" : [
-    ],
-    "pending_events" : [
-    ]
-  },
-  {
-    "username" : "FelixNPL",
-    "display_name" : "Felix NPL",
-    "salt" : "ACQ7oBRP9X2QNfnpq43R3i55MoPkGc_8",
-    "salted_password" : "c6c2ec3c2c6639b9d957d3f9db7ceb41",
-    "email" : "user00000@test.com",
-    "first_name" : "Felix",
-    "last_name" : "NPL",
-    "access_level" : "participator",
-    "joined_events" : [
-    ],
-    "pending_events" : [
-    ]
-  },
-  {
     "username" : "eddie911",
     "display_name" : "Eddie",
     "salt" : "vZ39LtdGG_Ks8iXLtOyGJo5MQ8SqIlxU",
@@ -42,17 +14,23 @@
     ]
   },
   {
-    "username" : "testuser",
-    "display_name" : "Test User",
-    "salt" : "DE1rzdoqFHC7UMA49hi8dPmq8rZ1Xleg",
-    "salted_password" : "f844e7c77816fff52afa16a58ba0da9a",
-    "email" : "test@test.com",
-    "first_name" : "test",
-    "last_name" : "user",
-    "access_level" : "participator",
-    "joined_events" : [
-    ],
-    "pending_events" : [
+    "username" : "FelixNPL",
+    "display_name" : "Felix NPL",
+    "salt" : "MMfDqEnl7x01ZQtMItb5UVXgt2gjhRtb",
+    "salted_password" : "e3bfaa181726c4d746c83bfc26de2123",
+    "email" : "s20151529@home.npl.edu.hk",
+    "first_name" : "Felix",
+    "last_name" : "Yeung",
+    "access_level" : "organiser",
+    "created_events" : [
+      {
+        "event_id" : "A7H345DFbA9FB3Y9",
+        "created_at" : 1596114454902
+      },
+      {
+        "event_id" : "EB3444FB3A9F183C0",
+        "created_at" : 1596094047097
+      }
     ]
   },
   {
@@ -65,8 +43,20 @@
     "last_name" : "Account",
     "access_level" : "admin",
     "joined_events" : [
+      {
+        "event_id" : "EB3444FB3A9F183C0",
+        "created_at" : 1596755714000
+      },
+      {
+        "event_id" : "t783fggzf4aRPzMZ0RxNd7JSdQG41rNZ",
+        "created_at" : 1596801958000
+      }
     ],
     "created_events" : [
+      {
+        "event_id" : "t783fggzf4aRPzMZ0RxNd7JSdQG41rNZ",
+        "created_at" : 1596801899000
+      }
     ],
     "pending_events" : [
     ]

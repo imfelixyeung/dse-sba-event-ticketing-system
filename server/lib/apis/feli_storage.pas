@@ -180,7 +180,7 @@ var
 begin
     if (FeliStorageAPI.getEvent(event.id) <> nil) then
         begin
-            raise FeliExceptions.FeliStorageEventExist.create('Event already exist');
+            raise FeliExceptions.FeliStorageEventExist.create(format('Event already exist %s', [event.id]));
         end
     else
         begin

@@ -43,6 +43,7 @@ type
             function toTJsonObject(secure: boolean = false): TJsonObject; override;
             // function toJson(): ansiString;
             procedure generateId();
+            function validate(var error: ansiString): boolean;
             // Factory Methods
             class function fromTJsonObject(eventObject: TJsonObject): FeliEvent; static;
         end;
@@ -117,6 +118,19 @@ begin
     FeliStackTrace.trace('begin', 'procedure FeliEvent.generateId();');
     id := FeliCrypto.generateSalt(32);
     FeliStackTrace.trace('end', 'procedure FeliEvent.generateId();');
+end;
+
+function FeliEvent.validate(var error: ansiString): boolean;
+begin
+    result := true;
+    if organiser = '' then begin error := 'empty_organiser_error'; result := false end;
+    if name = '' then begin error := 'empty_name_error'; result := false end;
+    if description = '' then begin error := 'empty_name_error'; result := false end;
+    if venue = '' then begin error := 'empty_name_error'; result := false end;
+    if theme = '' then begin error := 'empty_name_error'; result := false end;
+    if tickets.length() <= 0 then begin error := 'empty_tickets_error'; result := false end;
+    if participantLimit <= 0 then begin error := 'participant_limit_too_low'; result := false end;
+    if startTime >= endTime then begin error := 'invalid_time_error'; result := false end;
 end;
 
 

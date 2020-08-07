@@ -35,3 +35,32 @@ content-type: application/json
     }
 }
 
+###
+
+POST http://localhost:8000/api/event/post/
+Content-Type: application/json
+
+{
+    "auth": {
+        "username": "FelixNPL",
+        "password": "20151529"
+    },
+    "event": {
+        "name": "Test From API",
+        "description": "",
+        "venue": "Hong Kong",
+        "theme": "Pascal",
+        "tickets": [
+            {
+                "type": "VIP",
+                "fee": 256
+            }
+        ],
+        "startTime": 123,
+        "endTime": 321,
+        "participantLimit": 5
+    }
+}
+
+
+

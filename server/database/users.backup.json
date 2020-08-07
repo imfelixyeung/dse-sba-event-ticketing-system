@@ -1,105 +1,52 @@
 [
     {
+        "username": "eddie911",
+        "display_name": "Eddie",
+        "salt": "vZ39LtdGG_Ks8iXLtOyGJo5MQ8SqIlxU",
+        "salted_password": "83ddb4807ef317c893e1e4fd9302ad67",
+        "email": "eddieyeung911@gmail.com",
+        "first_name": "Eddie",
+        "last_name": "Yeung",
+        "access_level": "participator",
+        "joined_events": [],
+        "pending_events": []
+    },
+    {
         "username": "FelixNPL",
         "display_name": "Felix NPL",
-        "salt": "CD5167D267431D269BA0DA40E692F14B",
-        "salted_password": "91da52fb59d439167de2a21a87243e29",
+        "salt": "MMfDqEnl7x01ZQtMItb5UVXgt2gjhRtb",
+        "salted_password": "e3bfaa181726c4d746c83bfc26de2123",
         "email": "s20151529@home.npl.edu.hk",
         "first_name": "Felix",
         "last_name": "Yeung",
-        "access_level": "admin",
-        "data": {
-            "joined_events": [],
-            "created_events": [],
-            "pending_events": []
-        }
-    },
-    {
-        "username": "Test0001",
-        "display_name": "Test 1",
-        "salt": "CD5167D267431D269BA0DA40E692F14B",
-        "salted_password": "91da52fb59d439167de2a21a87243e29",
-        "email": "test.0001@home.npl.edu.hk",
-        "first_name": "Test",
-        "last_name": "0001",
-        "access_level": "admin",
-        "data": {
-            "joined_events": [],
-            "created_events": [],
-            "pending_events": []
-        }
-    },
-    {
-        "username": "Test0002",
-        "display_name": "Test 2",
-        "salt": "CD5167D267431D269BA0DA40E692F14B",
-        "salted_password": "91da52fb59d439167de2a21a87243e29",
-        "email": "test.0002@home.npl.edu.hk",
-        "first_name": "Test",
-        "last_name": "0002",
-        "access_level": "admin",
-        "data": {
-            "joined_events": [],
-            "created_events": [],
-            "pending_events": []
-        }
-    },
-    {
-        "username": "Test0003",
-        "display_name": "Test 3",
-        "salt": "CD5167D267431D269BA0DA40E692F14B",
-        "salted_password": "91da52fb59d439167de2a21a87243e29",
-        "email": "test.0003@home.npl.edu.hk",
-        "first_name": "Test",
-        "last_name": "0003",
-        "access_level": "admin",
-        "data": {
-            "joined_events": [],
-            "created_events": [],
-            "pending_events": []
-        }
-    },
-    {
-        "username": "Test0004",
-        "display_name": "Test 4",
-        "salt": "CD5167D267431D269BA0DA40E692F14B",
-        "salted_password": "91da52fb59d439167de2a21a87243e29",
-        "email": "test.0004@home.npl.edu.hk",
-        "first_name": "Test",
-        "last_name": "0004",
-        "access_level": "admin",
-        "data": {
-            "joined_events": [],
-            "created_events": [],
-            "pending_events": []
-        }
-    },
-    {
-        "username": "Test0005",
-        "display_name": "Test 5",
-        "salt": "CD5167D267431D269BA0DA40E692F14B",
-        "salted_password": "91da52fb59d439167de2a21a87243e29",
-        "email": "test.0005@home.npl.edu.hk",
-        "first_name": "Test",
-        "last_name": "0005",
-        "access_level": "admin",
-        "data": {
-            "joined_events": [],
-            "created_events": [],
-            "pending_events": []
-        }
-    },
-    {
-        "username": "AddUserTest",
-        "display_name": "Add User Test",
-        "salt": "KsxVoFf2Kttq3oZBaqbu_yxn9Gaytuzp",
-        "salted_password": "1acd88e0637b60c28770c2d717343b70",
-        "email": "add.user.test@example.com",
-        "first_name": "Test",
-        "last_name": "User",
         "access_level": "organiser",
-        "data": {
-            "created_events": []
-        }
+        "created_events": [
+            {
+                "event_id": "A7H345DFbA9FB3Y9",
+                "created_at": 1596114454902
+            },
+            {
+                "event_id": "EB3444FB3A9F183C0",
+                "created_at": 1596094047097
+            }
+        ]
+    },
+    {
+        "username": "admin",
+        "display_name": "Admin",
+        "salt": "djH0Su04iY3viDlOIE1Nzpu4mXQCea3E",
+        "salted_password": "fcb36c0728087bb491429d6ed2103980",
+        "email": "admin@feli.page",
+        "first_name": "Admin",
+        "last_name": "Account",
+        "access_level": "admin",
+        "joined_events": [
+            {
+                "event_id": "EB3444FB3A9F183C0",
+                "created_at": 1596755714000
+            }
+        ],
+        "created_events": [],
+        "pending_events": []
     }
 ]

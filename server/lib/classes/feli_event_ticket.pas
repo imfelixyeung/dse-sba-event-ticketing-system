@@ -22,6 +22,8 @@ type
             id, tType: ansiString;
             fee: real;
             function toTJsonObject(secure: boolean = false): TJsonObject; override;
+            procedure generateId();
+            function validate(var error: ansiString): boolean;
         end;
 
     FeliEventTicketCollection = class(FeliCollection)
@@ -41,7 +43,11 @@ type
 
 implementation
 uses
+    feli_crypto,
     feli_stack_tracer;
+
+
+
 function FeliEventTicket.toTJsonObject(secure: boolean = false): TJsonObject;
 var
     userEvent: TJsonObject;
@@ -53,6 +59,21 @@ begin
     userEvent.add(FeliEventTicketKeys.fee, fee);
     result := userEvent;
     FeliStackTrace.trace('end', 'function FeliEventTicket.toTJsonObject(secure: boolean = false): TJsonObject;');
+end;
+
+procedure FeliEventTicket.generateId();
+begin
+    id := FeliCrypto.generateSalt(32);
+end;
+
+function FeliEventTicket.validate(var error: ansiString): boolean;
+begin
+    result := true;
+    if (tType = '') then
+        begin
+            result := false;
+            error := 'ticket_type_empty'
+        end;
 end;
 
 
