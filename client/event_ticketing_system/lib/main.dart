@@ -1,8 +1,9 @@
 import 'package:event_ticketing_system/apis/ets.dart';
 import 'package:event_ticketing_system/pages/account_page.dart';
-import 'package:event_ticketing_system/pages/created_events.dart';
+import 'package:event_ticketing_system/pages/create_event_page.dart';
+import 'package:event_ticketing_system/pages/created_events_page.dart';
 import 'package:event_ticketing_system/pages/event_details_page.dart';
-import 'package:event_ticketing_system/pages/joined_events.dart';
+import 'package:event_ticketing_system/pages/joined_events_page.dart';
 import 'package:event_ticketing_system/pages/login_page.dart';
 import 'package:event_ticketing_system/pages/register_page.dart';
 import 'package:flutter/material.dart';
@@ -83,6 +84,7 @@ class MaterialAppWithTheme extends StatelessWidget {
         RouteNames.register: (_) => RegisterPage(),
         RouteNames.joinedEvents: (_) => JoinedEventsPage(),
         RouteNames.createdEvents: (_) => CreatedEventsPage(),
+        RouteNames.createEvent: (_) => CreateEventPage(),
       },
       onGenerateRoute: (RouteSettings routeSettings) {
         print(routeSettings.name);

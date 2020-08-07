@@ -5,6 +5,7 @@ class RouteNames {
   static const String login = '/login';
   static const String register = '/register';
   static const String eventDetails = '/eventDetails';
-  static const String joinedEvents = '/joinedEvents';
   static const String createdEvents = '/createdEvents';
+  static const String joinedEvents = '/joinedEvents';
+  static const String createEvent = '/createEvent';
 }

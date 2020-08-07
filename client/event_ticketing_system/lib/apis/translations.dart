@@ -2,6 +2,26 @@ import 'database.dart';
 
 class Translate {
   static Map<String, Map<String, String>> translate = {
+    'date_time_conflict': {
+      'en-gb': 'Date Time Conflict',
+      'zh-hk': '日期時間衝突',
+    },
+    'type': {
+      'en-gb': 'Type',
+      'zh-hk': '類型',
+    },
+    'add_ticket': {
+      'en-gb': 'Add Ticket',
+      'zh-hk': '加票',
+    },
+    'fee': {
+      'en-gb': 'Fee',
+      'zh-hk': '費用',
+    },
+    'create_event': {
+      'en-gb': 'Create Event',
+      'zh-hk': '創建新活動',
+    },
     'server_back_online': {
       'en-gb': 'Server Back Online',
       'zh-hk': '服務器重新上線',
@@ -9,6 +29,18 @@ class Translate {
     'server_still_down': {
       'en-gb': 'Server Still Down',
       'zh-hk': '服務器仍然停機',
+    },
+    'event_joined_successfully': {
+      'en-gb': 'Joined Event Successfully',
+      'zh-hk': '成功地參與活動',
+    },
+    'event_left_successfully': {
+      'en-gb': 'Left Event Successfully',
+      'zh-hk': '成功地退出活動',
+    },
+    'event_leave': {
+      'en-gb': 'Leave Event',
+      'zh-hk': '退出活動',
     },
     'ok': {
       'en-gb': 'Okay',
@@ -151,7 +183,7 @@ class Translate {
       'zh-cn': '确认',
     },
     'cancel': {
-      'en-gb': 'CANCEL',
+      'en-gb': 'Cancel',
       'zh-hk': '取消',
       'zh-cn': '取消',
     },
@@ -391,8 +423,8 @@ class Translate {
     },
     "event_info": {
       'en-gb': "Event Information",
-      'zh-hk': "", // TODO: Translate
-      'zh-cn': "", // TODO: Translate
+      'zh-hk': "活動資料",
+      'zh-cn': "活动资​​料",
     },
     "from_date_time_to_date_time_format": {
       'en-gb': "From %s to %s",
@@ -409,15 +441,24 @@ class Translate {
       'zh-hk': "你已參與的活動",
       'zh-cn': "你已参与的活动"
     },
+    "joined": {
+      'en-gb': "Joined",
+      'zh-hk': "已參與",
+      'zh-cn': "已参与",
+    },
+    "queued": {
+      'en-gb': "Queued",
+      'zh-hk': "排隊",
+      'zh-cn': "排队",
+    },
     "pending_events": {
       'en-gb': "Pending Events",
-      'zh-hk': "Pending Events",
-      'zh-cn': "Pending Events", // TODO
+      'zh-hk': "待辦活動",
+      'zh-cn': "待办活动",
     },
     "created_events": {
       'en-gb': "Created Events",
-      'zh-hk': "你已創建的事件",
-      'zh-cn': "你已创建的事件"
+      'zh-hk': "你已創建的活動",
     },
     "manage_users": {
       'en-gb': "Manage Users",
@@ -597,7 +638,7 @@ class Translate {
       return translate[name][appLanguage];
     } catch (e) {
       print('$name not found');
-      return '...';
+      return name;
     }
   }
 }

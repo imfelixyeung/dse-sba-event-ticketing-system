@@ -51,6 +51,9 @@ class _RegisterPageState extends State<RegisterPage> {
       loading = true;
     });
     var response = await appUser.register();
+    setState(() {
+      appUser = appUser;
+    });
     if (appUser.authenticated) {
       await showSimpleDialog(Translate.get('register_success'));
       Navigator.of(context).pop();
@@ -231,7 +234,6 @@ class _RegisterPageState extends State<RegisterPage> {
         setState(() {
           accountTypeRadioGroup = t;
         });
-        appUser.accessLevel = t;
       },
     );
   }
@@ -246,7 +248,6 @@ class _RegisterPageState extends State<RegisterPage> {
         setState(() {
           accountTypeRadioGroup = t;
         });
-        appUser.accessLevel = t;
       },
     );
   }
@@ -258,9 +259,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    final double deviceWidth = MediaQuery.of(context).size.width;
-    final bool displayMobileLayout = deviceWidth < 600;
-
     return AppScaffold(
       pageTitle: PageTitles.home,
       body: SingleChildScrollView(

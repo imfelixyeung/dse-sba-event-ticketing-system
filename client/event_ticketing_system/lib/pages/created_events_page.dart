@@ -12,48 +12,58 @@ import '../constants/page_titles.dart';
 import '../widgets/app_scaffold.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
-class JoinedEventsPage extends StatefulWidget {
-  const JoinedEventsPage({Key key}) : super(key: key);
+class CreatedEventsPage extends StatefulWidget {
+  const CreatedEventsPage({Key key}) : super(key: key);
 
   @override
-  _JoinedEventsPageState createState() => _JoinedEventsPageState();
+  _CreatedEventsPageState createState() => _CreatedEventsPageState();
 }
 
-class _JoinedEventsPageState extends State<JoinedEventsPage> {
+class _CreatedEventsPageState extends State<CreatedEventsPage> {
   bool loading = false;
 
-  leaveEvent(event) async {
-    setState(() {
-      loading = true;
-    });
-    String eventId = event['event_id'];
-    await appUser.leaveEvent(eventId);
-    await appUser.login();
-    setState(() {
-      appUser = appUser;
-      loading = false;
-    });
-    showSimpleDialog(context, 'event_left');
+  Map<String, FeliEvent> events = {};
+
+  void getEventDetails(String eventId) async {
+    if (events[eventId] != null) {
+      return;
+    }
+    var response = await EtsAPI.getEvent(eventId);
+    if (response != null) {
+      FeliEvent event = FeliEvent.fromJson(response);
+      setState(() {
+        events[eventId] = event;
+      });
+    }
+  }
+
+  getEventTitle(String eventId) {
+    if (events[eventId] != null) {
+      return events[eventId].name;
+    }
+    return null;
   }
 
   Widget _buildEventListTile(event) {
+    getEventDetails(event['event_id']);
+    var eventName = getEventTitle(event['event_id']);
     return ListTile(
-      title: Text('${event['event_id']}'),
-      trailing: IconButton(
-        icon: Icon(Icons.remove_circle_outline),
-        onPressed: !loading ? () => leaveEvent(event) : null,
-      ),
+      title: Text(eventName != null ? eventName : '${event['event_id']}'),
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed(RouteNames.eventDetails + '/${event['event_id']}');
+      },
     );
   }
 
-  Widget _buildPendingEvents() {
+  Widget _buildCreatedEvents() {
     return Card(
       color: Theme.of(context).scaffoldBackgroundColor,
       child: ExpansionTile(
         leading: ExcludeSemantics(
           child: CircleAvatar(
             backgroundColor: Theme.of(context).accentColor,
-            child: Text('${appUser.pendingEvents.length}',
+            child: Text('${appUser.createdEvents.length}',
                 style: Theme.of(context)
                     .textTheme
                     .bodyText1
@@ -61,34 +71,9 @@ class _JoinedEventsPageState extends State<JoinedEventsPage> {
           ),
         ),
         initiallyExpanded: true,
-        title: Text(Translate.get('pending_events')),
+        title: Text(Translate.get('created_events')),
         children: [
-          ...appUser.pendingEvents.map((event) {
-            _buildEventListTile(event);
-          }).toList()
-        ],
-      ),
-    );
-  }
-
-  Widget _buildJoinedEvents() {
-    return Card(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: ExpansionTile(
-        leading: ExcludeSemantics(
-          child: CircleAvatar(
-            backgroundColor: Theme.of(context).accentColor,
-            child: Text('${appUser.joinedEvents.length}',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .copyWith(color: Colors.black)),
-          ),
-        ),
-        initiallyExpanded: true,
-        title: Text(Translate.get('joined_events')),
-        children: [
-          ...appUser.joinedEvents.map((event) {
+          ...appUser.createdEvents.map((event) {
             return _buildEventListTile(event);
           }).toList()
         ],
@@ -104,7 +89,14 @@ class _JoinedEventsPageState extends State<JoinedEventsPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      pageTitle: PageTitles.home,
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text(Translate.get('create_event')),
+        icon: Icon(Icons.add),
+        onPressed: () {
+          Navigator.of(context).pushNamed(RouteNames.createEvent);
+        },
+      ),
+      pageTitle: PageTitles.createdEvents,
       body: SingleChildScrollView(
         child: Center(
           child: Container(
@@ -116,9 +108,7 @@ class _JoinedEventsPageState extends State<JoinedEventsPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      _buildPendingEvents(),
-                      Container(height: 16),
-                      _buildJoinedEvents(),
+                      _buildCreatedEvents(),
                     ],
                   ),
                 ),

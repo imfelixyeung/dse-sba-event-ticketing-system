@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
             color: Theme.of(context).scaffoldBackgroundColor,
             child: ExpansionTile(
               trailing: Text(
-                  '${event.participants.length}/${event.participantLimit} Joined'),
+                  '${event.participants.length}/${event.participantLimit} ${Translate.get('joined')} ${event.waitingList.length} ${Translate.get('queued')}'),
               initiallyExpanded: false,
               title: Text('${event.name}'),
               children: [
@@ -88,7 +88,6 @@ class _HomePageState extends State<HomePage> {
                 RaisedButton(
                   child: Text(Translate.get('view_details')),
                   onPressed: () {
-                    print(event.id);
                     Navigator.of(context)
                         .pushNamed(RouteNames.eventDetails + '/${event.id}');
                   },

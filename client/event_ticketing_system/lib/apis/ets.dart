@@ -57,6 +57,14 @@ class EtsAPI {
     return jsonResponse;
   }
 
+  static Future<Map> createEvent(FeliEvent event) async {
+    // http://localhost:8081/api/event/post/
+    var response = await http.post('$endpoint/api/event/post/',
+        body: json.encode({"auth": appUser.toMap(), "event": event.toMap()}));
+    var jsonResponse = json.decode(response.body);
+    return jsonResponse;
+  }
+
   static Future shutdownServer() async {
     var response = await http.post('$endpoint/api/shutdown/',
         body: json.encode({"auth": appUser.toMap()}));
@@ -72,7 +80,9 @@ class FeliEvent {
   int participantLimit;
   List tickets, participants, waitingList;
 
-  FeliEvent();
+  FeliEvent() {
+    tickets = [];
+  }
 
   FeliEvent.fromJson(Map<String, dynamic> json)
       : id = json['id'],
@@ -88,6 +98,19 @@ class FeliEvent {
         tickets = json['tickets'],
         participants = json['participants'],
         waitingList = json['waiting_list'];
+
+  Map toMap() {
+    return {
+      "name": name,
+      "description": description,
+      "venue": venue,
+      "theme": theme,
+      "tickets": tickets,
+      "start_time": startTime,
+      "end_time": endTime,
+      "participant_limit": participantLimit
+    };
+  }
 }
 
 class FeliEventTicket {

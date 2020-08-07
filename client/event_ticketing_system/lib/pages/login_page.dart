@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                               Container(height: 16),
                               RaisedButton(
                                 child: Text(Translate.get('submit')),
-                                onPressed: handleLogin,
+                                onPressed: !loading ? handleLogin : null,
                               ),
                             ],
                           ))

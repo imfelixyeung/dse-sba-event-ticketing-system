@@ -1,5 +1,7 @@
 import 'package:event_ticketing_system/apis/ets.dart';
+import 'package:event_ticketing_system/apis/whatsapp.dart';
 import 'package:event_ticketing_system/blocs/theme.dart';
+import 'package:event_ticketing_system/misc/launch_url.dart';
 import 'package:event_ticketing_system/misc/simple_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -131,7 +133,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
           return ListTile(
             dense: true,
             title: Text('${ticket.type}'),
-            subtitle: Text('\$${ticket.fee}'),
+            subtitle: Text('HK\$${ticket.fee}'),
           );
         }).toList(),
       ),
@@ -144,7 +146,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
       value: ticket.id,
       activeColor: feliOrange,
       title: Text('${ticket.type}'),
-      subtitle: Text('\$${ticket.fee}'),
+      subtitle: Text('HK\$${ticket.fee}'),
       onChanged: (t) {
         setState(() {
           ticketGroup = t;
@@ -162,7 +164,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
         children: [
           ...tickets.map((ticket) => _buildRadioTicket(ticket)).toList(),
           RaisedButton(
-            child: Text('join'),
+            child: Text(Translate.get('join')),
             onPressed: (ticketGroup != '' &&
                     ![...appUser.pendingEvents, ...appUser.joinedEvents]
                         .map((e) => e['event_id'])
@@ -186,6 +188,17 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      actions: [
+        IconButton(
+            icon: Icon(Icons.share),
+            onPressed: eventExist
+                ? () async {
+                    var link = WhatsAppAPI.generateLink(
+                        'http://dynamic.felixyeung2002.com/#/eventDetails/${widget.eventId}');
+                    await launchURL(link);
+                  }
+                : null)
+      ],
       pageTitle: PageTitles.eventDetails,
       body: SingleChildScrollView(
         child: Center(

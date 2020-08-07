@@ -3,12 +3,18 @@ import 'package:flutter/material.dart';
 import 'app_drawer.dart';
 
 class AppScaffold extends StatelessWidget {
-  const AppScaffold({@required this.body, @required this.pageTitle, Key key})
+  const AppScaffold(
+      {@required this.body,
+      @required this.pageTitle,
+      this.floatingActionButton,
+      this.actions,
+      Key key})
       : super(key: key);
 
   final Widget body;
-
+  final Widget floatingActionButton;
   final String pageTitle;
+  final List<Widget> actions;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +32,11 @@ class AppScaffold extends StatelessWidget {
           Expanded(
             child: Container(
               child: Scaffold(
+                floatingActionButton: floatingActionButton,
                 appBar: AppBar(
                   automaticallyImplyLeading: displayMobileLayout,
                   title: Text(pageTitle),
+                  actions: actions,
                 ),
                 drawer: displayMobileLayout
                     ? AppDrawer(
