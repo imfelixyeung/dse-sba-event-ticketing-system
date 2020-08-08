@@ -2,7 +2,10 @@ const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 const app = express();
 const port = 8000;
+var morgan = require('morgan');
 const publicWebFolder = __dirname + "/web";
+
+app.use(morgan('dev'));
 
 app.use(
     "/api",
