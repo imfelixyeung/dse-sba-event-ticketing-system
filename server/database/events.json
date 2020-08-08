@@ -97,5 +97,38 @@
     ],
     "waiting_list" : [
     ]
+  },
+  {
+    "id" : "Yr4vTZqmH_TK67fNhV1QNteLpjzcfa2F",
+    "organiser" : "admin",
+    "name" : "Very Cool Event",
+    "description" : "Spend a day in the Arctic, cool event right?",
+    "start_time" : 1598889600000000,
+    "end_time" : 1601481540000000,
+    "created_at" : 1596803999000,
+    "venue" : "Arctic",
+    "theme" : "September 30, 2020 11:59:00 PM",
+    "participant_limit" : 50,
+    "tickets" : [
+      {
+        "id" : "QHHR2PQaCKhqoLzl8a1pU56oIUrPnYsS",
+        "type" : "Normal",
+        "fee" : 1.0000000000000000E+003
+      },
+      {
+        "id" : "AcuKn9bOFYteBOt82JNQZfyvLhUEk2tg",
+        "type" : "VIP",
+        "fee" : 1.5000000000000000E+003
+      },
+      {
+        "id" : "3o6HYpqpXKQQqfZsKF4hn4po1q3YEj8L",
+        "type" : "MVP",
+        "fee" : 2.5000000000000000E+003
+      }
+    ],
+    "participants" : [
+    ],
+    "waiting_list" : [
+    ]
   }
 ]
