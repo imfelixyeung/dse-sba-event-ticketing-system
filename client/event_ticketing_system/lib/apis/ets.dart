@@ -57,6 +57,13 @@ class EtsAPI {
     return jsonResponse;
   }
 
+  static Future<Map> removeEvent(String eventId) async {
+    var response = await http.post('$endpoint/api/event/$eventId/remove/',
+        body: json.encode({"auth": appUser.toMap()}));
+    var jsonResponse = json.decode(response.body);
+    return jsonResponse;
+  }
+
   static Future<Map> createEvent(FeliEvent event) async {
     // http://localhost:8081/api/event/post/
     var response = await http.post('$endpoint/api/event/post/',

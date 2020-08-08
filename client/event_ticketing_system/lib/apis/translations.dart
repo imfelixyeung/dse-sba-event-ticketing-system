@@ -38,6 +38,22 @@ class Translate {
       'en-gb': 'Left Event Successfully',
       'zh-hk': '成功地退出活動',
     },
+    'event_remove_successfully': {
+      'en-gb': 'Removed Event Successfully',
+      'zh-hk': '成功地移除活動',
+    },
+    'event_remove_confirmtion_title': {
+      'en-gb': 'Are you sure you want to remove this event?',
+      'zh-hk': '您確定要刪除此事件嗎？',
+    },
+    'event_remove_confirmtion_subtitle': {
+      'en-gb': 'Note: This action cannot be undone',
+      'zh-hk': '注意：此操作無法撤消',
+    },
+    'event_created_successfully': {
+      'en-gb': 'Created Event Successfully',
+      'zh-hk': '成功地新增活動',
+    },
     'event_leave': {
       'en-gb': 'Leave Event',
       'zh-hk': '退出活動',

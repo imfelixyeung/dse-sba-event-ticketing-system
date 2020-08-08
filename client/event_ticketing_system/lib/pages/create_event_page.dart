@@ -59,7 +59,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
       return;
     } else {
       await showSimpleDialog(context,
-          Translate.get(response['error']) ?? 'An unknown error occured');
+          Translate.get(response['error']) ?? Translate.get('unknown_error'));
     }
 
     setState(() {

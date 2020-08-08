@@ -21,6 +21,14 @@ class _RegisterPageState extends State<RegisterPage> {
   bool loading = false;
   String accountTypeRadioGroup = 'participator';
 
+  final FocusNode _firstNameFocus = FocusNode();
+  final FocusNode _lastNameFocus = FocusNode();
+  final FocusNode _userNameFocus = FocusNode();
+  final FocusNode _displayNameFocus = FocusNode();
+  final FocusNode _emailFocus = FocusNode();
+  final FocusNode _passwordFocus = FocusNode();
+  final FocusNode _passwordConfirmFocus = FocusNode();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Future<bool> showSimpleDialog(String title) async {
@@ -68,7 +76,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _buildFirstName() {
     return TextFormField(
-      onFieldSubmitted: (str) => handleRegister(),
+      focusNode: _firstNameFocus,
+      onFieldSubmitted: (str) => _lastNameFocus.requestFocus(),
       enabled: !loading,
       decoration: InputDecoration(
         filled: true,
@@ -91,6 +100,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _buildLastName() {
     return TextFormField(
+      focusNode: _lastNameFocus,
+      onFieldSubmitted: (str) => _userNameFocus.requestFocus(),
       enabled: !loading,
       decoration: InputDecoration(
         filled: true,
@@ -113,6 +124,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _buildUsername() {
     return TextFormField(
+      focusNode: _userNameFocus,
+      onFieldSubmitted: (str) => _displayNameFocus.requestFocus(),
       enabled: !loading,
       decoration: InputDecoration(
         filled: true,
@@ -137,6 +150,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _buildDisplayName() {
     return TextFormField(
+      focusNode: _displayNameFocus,
+      onFieldSubmitted: (str) => _emailFocus.requestFocus(),
       enabled: !loading,
       decoration: InputDecoration(
         filled: true,
@@ -159,6 +174,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _buildEmail() {
     return TextFormField(
+      focusNode: _emailFocus,
+      onFieldSubmitted: (str) => _passwordFocus.requestFocus(),
       keyboardType: TextInputType.emailAddress,
       enabled: !loading,
       decoration: InputDecoration(
@@ -183,6 +200,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _buildPassword() {
     return TextFormField(
+      focusNode: _passwordFocus,
+      onFieldSubmitted: (str) => _passwordConfirmFocus.requestFocus(),
       controller: passwordTextEditingController,
       obscureText: true,
       keyboardType: TextInputType.text,
@@ -210,6 +229,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _buildConfirmPassword() {
     return TextFormField(
+      focusNode: _passwordConfirmFocus,
+      onFieldSubmitted: (str) => handleRegister(),
       obscureText: true,
       keyboardType: TextInputType.text,
       enabled: !loading,

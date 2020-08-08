@@ -24,6 +24,50 @@ class _CreatedEventsPageState extends State<CreatedEventsPage> {
 
   Map<String, FeliEvent> events = {};
 
+  Future<bool> showEventRemovalConfirmationDialog() async {
+    return await showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(Translate.get('event_remove_confirmtion_title')),
+            content: Text(Translate.get('event_remove_confirmtion_subtitle')),
+            actions: [
+              FlatButton(
+                child: Text(Translate.get('cancel')),
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+              ),
+              FlatButton(
+                child: Text(Translate.get('confirm')),
+                onPressed: () {
+                  Navigator.of(context).pop(true);
+                },
+              ),
+            ],
+          );
+        });
+  }
+
+  void removeEvent(String eventId) async {
+    if (!(await showEventRemovalConfirmationDialog())) return;
+    setState(() {
+      loading = true;
+    });
+    var response = await EtsAPI.removeEvent(eventId);
+    await appUser.login();
+    if (response['status'] == 200) {
+      showSimpleDialog(context, Translate.get('event_remove_successfully'));
+    } else {
+      await showSimpleDialog(context,
+          Translate.get(response['error']) ?? Translate.get('unknown_error'));
+    }
+    setState(() {
+      appUser = appUser;
+      loading = false;
+    });
+  }
+
   void getEventDetails(String eventId) async {
     if (events[eventId] != null) {
       return;
@@ -53,6 +97,10 @@ class _CreatedEventsPageState extends State<CreatedEventsPage> {
         Navigator.of(context)
             .pushNamed(RouteNames.eventDetails + '/${event['event_id']}');
       },
+      trailing: IconButton(
+        icon: Icon(Icons.remove_circle_outline),
+        onPressed: !loading ? () => removeEvent(event['event_id']) : null,
+      ),
     );
   }
 
