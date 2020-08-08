@@ -3,13 +3,22 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
-    "scripts": {},
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "bot-start": "node bot.js",
+        "bot-dev": "nodemon bot.js"
+    },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "dateformat": "^3.0.3",
+        "discord.js": "^12.2.0",
         "express": "4.17.1",
-        "http-proxy-middleware": "^1.0.5"
+        "http-proxy-middleware": "^1.0.5",
+        "morgan": "^1.10.0",
+        "node-fetch": "^2.6.0"
     },
     "devDependencies": {
         "nodemon": "^2.0.4"
