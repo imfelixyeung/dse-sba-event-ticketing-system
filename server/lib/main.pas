@@ -260,8 +260,6 @@ begin
         responseTemplate := FeliResponseDataObject.create();
         middlewareContent := FeliMiddleware.create();
         userAuthMiddleware(middlewareContent, req);
-        writeln(middlewareContent.user.username);
-        writeln(eventId);
         if (event <> nil) then
             begin
                 if (middlewareContent.authenticated) then
@@ -295,6 +293,65 @@ begin
         responseTemplate.free();  
     end;
     FeliStackTrace.trace('end', 'procedure leaveEventEndPoint(req: TRequest; res: TResponse);');
+end;
+
+procedure removeEventEndPoint(req: TRequest; res: TResponse);
+var
+    eventId: ansiString;
+    event: FeliEvent;
+    responseTemplate: FeliResponseDataObject;
+    middlewareContent: FeliMiddleware;
+    tempCollection: FeliCollection;
+
+begin
+    FeliStackTrace.trace('begin', 'procedure removeEventEndPoint(req: TRequest; res: TResponse);');
+    try
+        eventId := req.routeParams['eventId'];
+        event := FeliStorageAPI.getEvent(eventId);
+        responseTemplate := FeliResponseDataObject.create();
+        middlewareContent := FeliMiddleware.create();
+        userAuthMiddleware(middlewareContent, req);
+        if (event <> nil) then
+            begin
+                if (middlewareContent.authenticated) then
+                    begin
+                        responseTemplate.authenticated := middlewareContent.authenticated;
+                        if (FeliValidation.fixedValueCheck(middlewareContent.user.accessLevel, [FeliAccessLevel.admin, FeliAccessLevel.organiser])) then
+                            begin
+                                tempCollection := middlewareContent.user.createdEvents.where(FeliUserEventKeys.eventId, FeliOperators.equalsTo, eventId);
+                                if (tempCollection.length > 0) then
+                                    begin
+                                        middlewareContent.user.removeCreatedEvent(eventId);
+                                        responseTemplate.resCode := 200;
+                                    end
+                                else 
+                                    begin
+                                        responseTemplate.resCode := 401;
+                                        responseTemplate.error := 'insufficient_permission';
+                                    end;
+                            end
+                        else
+                            begin
+                                responseTemplate.resCode := 401;
+                                responseTemplate.error := 'insufficient_permission';
+                            end;
+                    end
+                else
+                    begin
+                        responseTemplate.resCode := 403;
+                        responseTemplate.error := 'not_authenticated';
+                    end;
+            end
+        else
+            begin
+                responseTemplate.resCode := 404;
+                responseTemplate.error := 'event_not_found';
+            end;
+        responseWithJson(res, responseTemplate);
+    finally
+        responseTemplate.free();  
+    end;
+    FeliStackTrace.trace('end', 'procedure removeEventEndPoint(req: TRequest; res: TResponse);');
 end;
 
 
@@ -571,6 +628,7 @@ begin
     HTTPRouter.RegisterRoute('/api/event/:eventId/get/', @getEventEndPoint);
     HTTPRouter.RegisterRoute('/api/event/:eventId/join/', @joinEventEndPoint);
     HTTPRouter.RegisterRoute('/api/event/:eventId/leave/', @leaveEventEndPoint);
+    HTTPRouter.RegisterRoute('/api/event/:eventId/remove/', @removeEventEndPoint);
     HTTPRouter.RegisterRoute('/api/event/post/', @createEventEndPoint);
     HTTPRouter.RegisterRoute('/api/login/', @loginEndPoint);
     HTTPRouter.RegisterRoute('/api/register/', @registerEndPoint);
@@ -617,31 +675,31 @@ begin
     FeliStackTrace.trace('begin', 'procedure test();');
 
     user := FeliStorageAPI.getUser('admin');
+    user.removeCreatedEvent('t783fggzf4aRPzMZ0RxNd7JSdQG41rNZ');
+    // event := FeliEvent.create();
+    // with event do
+    //     begin
 
-    event := FeliEvent.create();
-    with event do
-        begin
+    //         organiser := user.username;
+    //         name := 'Pascal Generated';
+    //         description := 'A test event from pascal';
+    //         venue := 'Hong Kong';
+    //         theme := 'Fun';
 
-            organiser := user.username;
-            name := 'Pascal Generated';
-            description := 'A test event from pascal';
-            venue := 'Hong Kong';
-            theme := 'Fun';
+    //         ticket := FeliEventTicket.create();
+    //         ticket.generateId();
+    //         ticket.tType := 'MVP';
+    //         ticket.fee := 256;
 
-            ticket := FeliEventTicket.create();
-            ticket.generateId();
-            ticket.tType := 'MVP';
-            ticket.fee := 256;
-
-            tickets.add(ticket);
+    //         tickets.add(ticket);
             
-            startTime := DateTimeToUnix(Now()) * 1000 - 8 * 60 * 60 * 1000 + 10000;
-            endTime := DateTimeToUnix(Now()) * 1000 - 8 * 60 * 60 * 1000 + 20000;
-            participantLimit := 5;
+    //         startTime := DateTimeToUnix(Now()) * 1000 - 8 * 60 * 60 * 1000 + 10000;
+    //         endTime := DateTimeToUnix(Now()) * 1000 - 8 * 60 * 60 * 1000 + 20000;
+    //         participantLimit := 5;
 
-        end;
+    //     end;
 
-    user.createEvent(event);        
+    // user.createEvent(event);        
 
     // FeliStorageAPI.removeUser('FelixNPL_NotExist');
     // eventCollection := FeliStorageAPI.getEvents();

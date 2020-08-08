@@ -46,6 +46,7 @@ type
             procedure joinEvent(eventId, ticketId: ansiString);
             procedure createEvent(event: FeliEvent);
             procedure leaveEvent(eventId: ansiString);
+            procedure removeCreatedEvent(eventId: ansiString);
             // Factory Methods
             class function fromTJsonObject(userObject: TJsonObject): FeliUser; static;
         end;
@@ -315,6 +316,61 @@ begin
     
     FeliStackTrace.trace('end', 'procedure FeliUser.leaveEvent(eventId: ansiString);');
 end;
+
+procedure FeliUser.removeCreatedEvent(eventId: ansiString);
+var
+    tempJoinedUser, tempWaitingUser: FeliUser;
+    tempCollection: FeliCollection;
+    targetEvent: FeliEvent;
+    tempEventParticipantArray, tempEventWaitingArray: TJsonArray;
+    tempEventParticipant, tempEventWaitingParticipant: FeliEventParticipant;
+
+    i: integer;
+begin
+    targetEvent := FeliStorageAPI.getEvent(eventId);
+
+    if (targetEvent <> nil) then
+        begin
+            tempCollection := createdEvents.where(FeliUserEventKeys.eventId, FeliOperators.equalsTo, eventId);
+            if (tempCollection.length > 0) then
+                begin
+                    tempEventParticipantArray := targetEvent.participants.toTJsonArray();
+                    for i := 0 to (tempEventParticipantArray.count - 1) do
+                    begin
+                        tempEventParticipant := FeliEventParticipant.fromTJsonObject(tempEventParticipantArray[i] as TJsonObject);
+                        tempJoinedUser := FeliStorageAPI.getUser(tempEventParticipant.username);
+                        tempCollection := tempJoinedUser.joinedEvents.where(FeliUserEventKeys.eventId, FeliOperators.notEqualsTo, eventId);
+                        tempJoinedUser.joinedEvents := FeliUserEventCollection.fromFeliCollection(tempCollection);
+                        FeliStorageAPI.setUser(tempJoinedUser);
+                    end;
+
+                    tempEventWaitingArray := targetEvent.waitingList.toTJsonArray();
+                    for i := 0 to (tempEventWaitingArray.count - 1) do
+                    begin
+                        tempEventWaitingParticipant := FeliEventParticipant.fromTJsonObject(tempEventWaitingArray[i] as TJsonObject);
+                        tempWaitingUser := FeliStorageAPI.getUser(tempEventWaitingParticipant.username);
+                        tempCollection := tempWaitingUser.pendingEvents.where(FeliUserEventKeys.eventId, FeliOperators.notEqualsTo, eventId);
+                        tempWaitingUser.pendingEvents := FeliUserEventCollection.fromFeliCollection(tempCollection);
+                        FeliStorageAPI.setUser(tempWaitingUser);
+                    end;
+
+                    FeliStorageAPI.removeEvent(eventId);
+
+                    tempCollection := createdEvents.where(FeliUserEventKeys.eventId, FeliOperators.notEqualsTo, eventId);
+                    createdEvents := FeliUserEventCollection.fromFeliCollection(tempCollection);
+
+                    tempCollection := pendingEvents.where(FeliUserEventKeys.eventId, FeliOperators.notEqualsTo, eventId);
+                    pendingEvents := FeliUserEventCollection.fromFeliCollection(tempCollection);
+                    
+                    tempCollection := joinedEvents.where(FeliUserEventKeys.eventId, FeliOperators.notEqualsTo, eventId);
+                    joinedEvents := FeliUserEventCollection.fromFeliCollection(tempCollection);
+
+
+                    FeliStorageAPI.setUser(self);
+                end;
+        end;
+end;
+
 
 
 class function FeliUser.fromTJsonObject(userObject: TJsonObject): FeliUser; static;
