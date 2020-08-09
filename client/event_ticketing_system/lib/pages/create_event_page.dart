@@ -200,7 +200,8 @@ class _CreateEventPageState extends State<CreateEventPage> {
           return Translate.get('date_time_conflict');
       },
       onSaved: (String value) {
-        event.startTime = startDateTime.microsecondsSinceEpoch;
+        // event.startTime = startDateTime.microsecondsSinceEpoch;
+        event.startTime = startDateTime.millisecondsSinceEpoch;
       },
     );
   }
@@ -257,7 +258,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
       },
       onSaved: (String value) {
         event.theme = value;
-        event.endTime = endDateTime.microsecondsSinceEpoch;
+        event.endTime = endDateTime.millisecondsSinceEpoch;
       },
     );
   }
