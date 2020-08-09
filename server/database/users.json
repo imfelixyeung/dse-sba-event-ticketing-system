@@ -46,21 +46,9 @@
       {
         "event_id" : "EB3444FB3A9F183C0",
         "created_at" : 1596755714000
-      },
-      {
-        "event_id" : "t783fggzf4aRPzMZ0RxNd7JSdQG41rNZ",
-        "created_at" : 1596801958000
       }
     ],
     "created_events" : [
-      {
-        "event_id" : "t783fggzf4aRPzMZ0RxNd7JSdQG41rNZ",
-        "created_at" : 1596801899000
-      },
-      {
-        "event_id" : "Yr4vTZqmH_TK67fNhV1QNteLpjzcfa2F",
-        "created_at" : 1596803999000
-      }
     ],
     "pending_events" : [
     ]
