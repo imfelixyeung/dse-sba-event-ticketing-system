@@ -3,6 +3,7 @@ import 'package:event_ticketing_system/blocs/theme.dart';
 import 'package:event_ticketing_system/constants/app_info.dart';
 import 'package:event_ticketing_system/constants/route_names.dart';
 import 'package:event_ticketing_system/misc/launch_url.dart';
+import 'package:event_ticketing_system/misc/show_address_selector_dialog.dart';
 import 'package:event_ticketing_system/misc/simple_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
 
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
+  TextEditingController venueController = TextEditingController();
 
   DateTime startDateTime;
   DateTime endDateTime;
@@ -105,10 +107,17 @@ class _CreateEventPageState extends State<CreateEventPage> {
 
   Widget _buildEventVenue() {
     return TextFormField(
+      controller: venueController,
       focusNode: _venueFocus,
       onFieldSubmitted: (str) => {_themeFocus.requestFocus()},
       enabled: !loading,
       decoration: InputDecoration(
+        suffixIcon: IconButton(
+            icon: Icon(Icons.map),
+            onPressed: () async {
+              String address = await showAddressSelectorDialog(context);
+              if (address != null) venueController.text = address;
+            }),
         filled: true,
         labelText: Translate.get('venue'),
       ),

@@ -6,6 +6,14 @@ class Translate {
       'en-gb': '',
       'zh-hk': '',
     },
+    'address_selector': {
+      'en-gb': 'Address Selector',
+      'zh-hk': '地址選擇器',
+    },
+    'address': {
+      'en-gb': 'Address',
+      'zh-hk': '地址',
+    },
     'already_joined': {
       'en-gb': 'Already Joined',
       'zh-hk': '已經加入',
