@@ -1646,3 +1646,18 @@
 2020-08-03 05:31:21 [ETS] [Error]    Error 404 "/service/extdirect" not found
 2020-08-03 09:14:49 [ETS] [Error]    Error 404 "/" not found
 2020-08-03 11:06:04 [ETS] [Error]    Error 404 "http://112.124.42.80:63435/" not found
+2020-08-09 14:06:55 [ETS] [Debug]    Press <Enter> to continue
+2020-08-09 14:07:05 [ETS] [Debug]    Press <Enter> to continue
+2020-08-09 14:07:43 [ETS] [Debug]    Press <Enter> to continue
+2020-08-09 14:10:24 [ETS] [Error]    Access violation
+2020-08-09 14:10:26 [ETS] [Error]    Access violation
+2020-08-09 14:10:28 [ETS] [Error]    Access violation
+2020-08-09 14:10:30 [ETS] [Error]    Access violation
+2020-08-09 14:10:32 [ETS] [Error]    Access violation
+2020-08-09 14:10:34 [ETS] [Error]    Access violation
+2020-08-09 14:10:36 [ETS] [Debug]    Press <Enter> to continue
+2020-08-09 14:12:46 [ETS] [Debug]    Press <Enter> to continue
+2020-08-09 14:12:56 [ETS] [Debug]    Press <Enter> to continue
+2020-08-09 14:13:58 [ETS] [Debug]    Press <Enter> to continue
+2020-08-09 14:14:14 [ETS] [Debug]    Press <Enter> to continue
+2020-08-09 14:16:00 [ETS] [Info]     HTTP Server listening on port 8081

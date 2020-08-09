@@ -195,19 +195,22 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
   @override
   void initState() {
     super.initState();
-    joinedTicketArray = [
-      ...appUser.pendingEvents.map((ticket) {
-        ticket['status'] = 'pending';
-        return ticket;
-      }).toList(),
-      ...appUser.joinedEvents.map((ticket) {
-        ticket['status'] = 'joined';
-        return ticket;
-      }).toList()
-    ].where((ticket) => ticket['event_id'] == widget.eventId).toList();
-    joinedTicket = joinedTicketArray.length > 0 ? joinedTicketArray[0] : null;
+    if (['admin', 'participator'].contains(appUser.accessLevel)) {
+      joinedTicketArray = [
+        ...appUser.pendingEvents.map((ticket) {
+          ticket['status'] = 'pending';
+          return ticket;
+        }).toList(),
+        ...appUser.joinedEvents.map((ticket) {
+          ticket['status'] = 'joined';
+          return ticket;
+        }).toList()
+      ].where((ticket) => ticket['event_id'] == widget.eventId).toList();
+      joinedTicket = joinedTicketArray.length > 0 ? joinedTicketArray[0] : null;
 
-    alreadyJoined = joinedTicket != null;
+      alreadyJoined = joinedTicket != null;
+    }
+    print('test');
     core();
   }
 
