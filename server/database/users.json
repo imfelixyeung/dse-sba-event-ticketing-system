@@ -1,19 +1,5 @@
 [
   {
-    "username" : "eddie911",
-    "display_name" : "Eddie",
-    "salt" : "vZ39LtdGG_Ks8iXLtOyGJo5MQ8SqIlxU",
-    "salted_password" : "83ddb4807ef317c893e1e4fd9302ad67",
-    "email" : "eddieyeung911@gmail.com",
-    "first_name" : "Eddie",
-    "last_name" : "Yeung",
-    "access_level" : "participator",
-    "joined_events" : [
-    ],
-    "pending_events" : [
-    ]
-  },
-  {
     "username" : "FelixNPL",
     "display_name" : "Felix NPL",
     "salt" : "MMfDqEnl7x01ZQtMItb5UVXgt2gjhRtb",
@@ -34,6 +20,38 @@
     ]
   },
   {
+    "username" : "eddie911",
+    "display_name" : "Eddie",
+    "salt" : "vZ39LtdGG_Ks8iXLtOyGJo5MQ8SqIlxU",
+    "salted_password" : "83ddb4807ef317c893e1e4fd9302ad67",
+    "email" : "eddieyeung911@gmail.com",
+    "first_name" : "Eddie",
+    "last_name" : "Yeung",
+    "access_level" : "participator",
+    "joined_events" : [
+      {
+        "event_id" : "A7H345DFbA9FB3Y9",
+        "created_at" : 1596895555000
+      }
+    ],
+    "pending_events" : [
+    ]
+  },
+  {
+    "username" : "test",
+    "display_name" : "test",
+    "salt" : "dqYYuR6RLuN8QPfgy4tjMjIXZ7g2KoQ6",
+    "salted_password" : "71f8021bc2b067a4dd17d0d401251bb7",
+    "email" : "test@test.com",
+    "first_name" : "test",
+    "last_name" : "test",
+    "access_level" : "participator",
+    "joined_events" : [
+    ],
+    "pending_events" : [
+    ]
+  },
+  {
     "username" : "admin",
     "display_name" : "Admin",
     "salt" : "djH0Su04iY3viDlOIE1Nzpu4mXQCea3E",
@@ -45,7 +63,7 @@
     "joined_events" : [
       {
         "event_id" : "EB3444FB3A9F183C0",
-        "created_at" : 1596755714000
+        "created_at" : 1596940924000
       }
     ],
     "created_events" : [
