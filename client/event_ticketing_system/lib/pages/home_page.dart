@@ -22,6 +22,13 @@ class _HomePageState extends State<HomePage> {
   List<Widget> eventWidgets = [];
   bool loading = true;
 
+  @override
+  void setState(fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   getData() async {
     List events = await EtsAPI.getEvents();
     setState(() {
@@ -112,6 +119,7 @@ class _HomePageState extends State<HomePage> {
     final bool displayMobileLayout = deviceWidth < 600;
 
     return AppScaffold(
+      loading: loading,
       pageTitle: PageTitles.home,
       body: SingleChildScrollView(
         child: Center(

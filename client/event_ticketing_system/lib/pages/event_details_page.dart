@@ -25,6 +25,9 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
   List<FeliEventTicket> tickets = [];
   String ticketGroup = '';
   bool joinLoading = false;
+  bool alreadyJoined = true;
+  List joinedTicketArray = [];
+  Map joinedTicket = {};
 
   void joinEvent() async {
     setState(() {
@@ -57,6 +60,13 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
         } catch (e) {}
       }
     }
+    if (!alreadyJoined) return;
+    List tempParticipantsAndWaiting = [
+      ...data['participants'],
+      ...data['waiting_list']
+    ].where((ticket) => ticket['username'] == appUser.username).toList();
+    if (tempParticipantsAndWaiting.length <= 0) return;
+    ticketGroup = tempParticipantsAndWaiting[0]['ticket_id'];
   }
 
   void core() async {
@@ -147,34 +157,37 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
       activeColor: feliOrange,
       title: Text('${ticket.type}'),
       subtitle: Text('HK\$${ticket.fee}'),
-      onChanged: (t) {
-        setState(() {
-          ticketGroup = t;
-        });
-      },
+      onChanged: !alreadyJoined
+          ? (t) {
+              setState(() {
+                ticketGroup = t;
+              });
+            }
+          : null,
     );
   }
 
   Widget _buildJoinForm() {
     return Card(
       color: Theme.of(context).scaffoldBackgroundColor,
-      child: ExpansionTile(
-        initiallyExpanded: true,
-        title: Text(Translate.get('join_now')),
-        children: [
-          ...tickets.map((ticket) => _buildRadioTicket(ticket)).toList(),
-          RaisedButton(
-            child: Text(Translate.get('join')),
-            onPressed: (ticketGroup != '' &&
-                    ![...appUser.pendingEvents, ...appUser.joinedEvents]
-                        .map((e) => e['event_id'])
-                        .toList()
-                        .contains(widget.eventId) &&
-                    !joinLoading)
-                ? joinEvent
-                : null,
-          )
-        ],
+      child: IgnorePointer(
+        ignoring: alreadyJoined,
+        child: ExpansionTile(
+          initiallyExpanded: true,
+          title: Text(
+            '${Translate.get(!alreadyJoined ? 'join_now' : 'already_joined')}' +
+                ' ${(alreadyJoined && joinedTicket['status'] == 'pending' ? Translate.get(joinedTicket['status']) : '')}',
+          ),
+          children: [
+            ...tickets.map((ticket) => _buildRadioTicket(ticket)).toList(),
+            RaisedButton(
+              child: Text(Translate.get('join')),
+              onPressed: (ticketGroup != '' && !alreadyJoined && !joinLoading)
+                  ? joinEvent
+                  : null,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -182,12 +195,26 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
   @override
   void initState() {
     super.initState();
+    joinedTicketArray = [
+      ...appUser.pendingEvents.map((ticket) {
+        ticket['status'] = 'pending';
+        return ticket;
+      }).toList(),
+      ...appUser.joinedEvents.map((ticket) {
+        ticket['status'] = 'joined';
+        return ticket;
+      }).toList()
+    ].where((ticket) => ticket['event_id'] == widget.eventId).toList();
+    joinedTicket = joinedTicketArray.length > 0 ? joinedTicketArray[0] : null;
+
+    alreadyJoined = joinedTicket != null;
     core();
   }
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      loading: loading || joinLoading,
       actions: [
         IconButton(
             icon: Icon(Icons.share),

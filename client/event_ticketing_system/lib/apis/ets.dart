@@ -233,10 +233,3 @@ class FeliUser {
 }
 
 FeliUser appUser = FeliUser();
-
-void main() async {
-  appUser.username = 'FelixNPL';
-  appUser.password = '20151529';
-  await appUser.login();
-  print('Authenticated: ${appUser.authenticated}');
-}

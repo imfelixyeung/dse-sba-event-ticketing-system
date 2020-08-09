@@ -281,6 +281,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      loading: loading,
       pageTitle: PageTitles.home,
       body: SingleChildScrollView(
         child: Center(

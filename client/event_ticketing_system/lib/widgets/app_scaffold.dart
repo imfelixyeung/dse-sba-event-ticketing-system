@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'app_drawer.dart';
 
 class AppScaffold extends StatelessWidget {
-  const AppScaffold(
+  AppScaffold(
       {@required this.body,
       @required this.pageTitle,
       this.floatingActionButton,
       this.actions,
+      this.loading = false,
       Key key})
       : super(key: key);
 
@@ -15,6 +16,7 @@ class AppScaffold extends StatelessWidget {
   final Widget floatingActionButton;
   final String pageTitle;
   final List<Widget> actions;
+  bool loading;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class AppScaffold extends StatelessWidget {
         children: [
           !displayMobileLayout
               ? AppDrawer(
+                  // loading: loading,
                   permanentlyDisplay: true,
                   key: UniqueKey(),
                 )
@@ -40,16 +43,30 @@ class AppScaffold extends StatelessWidget {
                 ),
                 drawer: displayMobileLayout
                     ? AppDrawer(
+                        // loading: loading,
                         permanentlyDisplay: false,
                         key: UniqueKey(),
                       )
                     : null,
-                body: Align(
-                  alignment: Alignment.topCenter,
-                  child: Container(
-                    constraints: BoxConstraints(maxWidth: 1200),
-                    child: body,
-                  ),
+                body: Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        constraints: BoxConstraints(maxWidth: 1200),
+                        child: body,
+                      ),
+                    ),
+                    if (loading)
+                      ClipRRect(
+                        borderRadius:
+                            BorderRadius.vertical(bottom: Radius.circular(4)),
+                        child: SizedBox(
+                          height: 4,
+                          child: LinearProgressIndicator(),
+                        ),
+                      ),
+                  ],
                 ),
               ),
             ),

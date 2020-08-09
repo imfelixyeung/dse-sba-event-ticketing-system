@@ -8,7 +8,7 @@ class GoogleMapsAPI {
 
     var link = generateLink(address);
     launchURL(link);
-    print(link);
+    print('Launching $link');
   }
 
   static String generateLink(String address) {

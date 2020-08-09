@@ -87,7 +87,6 @@ class MaterialAppWithTheme extends StatelessWidget {
         RouteNames.createEvent: (_) => CreateEventPage(),
       },
       onGenerateRoute: (RouteSettings routeSettings) {
-        print(routeSettings.name);
         if (routeSettings.name.startsWith(RouteNames.eventDetails)) {
           String eventId = routeSettings.name.split('/')[2];
           if (eventId != null && eventId != '')

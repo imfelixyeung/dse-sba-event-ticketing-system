@@ -133,6 +133,7 @@ class _JoinedEventsPageState extends State<JoinedEventsPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      loading: loading,
       pageTitle: PageTitles.joinedEvents,
       body: SingleChildScrollView(
         child: Center(

@@ -29,6 +29,8 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  bool loading = false;
+
   List<String> colorSchemes = [
     'automatic',
     'light',
@@ -87,6 +89,7 @@ class _SettingsPageState extends State<SettingsPage> {
     final feliTheme = Provider.of<FeliThemeChanger>(context);
 
     return AppScaffold(
+      loading: loading,
       pageTitle: PageTitles.settings,
       body: SingleChildScrollView(
         child: Center(
@@ -200,6 +203,9 @@ class _SettingsPageState extends State<SettingsPage> {
                             // leading: FaIcon(FontAwesomeIcons.cup),
                             title: Text(Translate.get('restart_server')),
                             onTap: () async {
+                              setState(() {
+                                loading = true;
+                              });
                               var message = await EtsAPI.shutdownServer();
                               await showSimpleDialog(
                                   context, Translate.get('$message'));
@@ -214,6 +220,9 @@ class _SettingsPageState extends State<SettingsPage> {
                                       const Duration(seconds: 1));
                                 }
                               }
+                              setState(() {
+                                loading = false;
+                              });
                             }),
                     ],
                   ),

@@ -6,15 +6,16 @@ import '../blocs/theme.dart';
 import '../constants/page_titles.dart';
 import '../constants/route_names.dart';
 import 'app_route_observer.dart';
+import 'dart:math' as math;
 
 /// The navigation drawer for the app.
 /// This listens to changes in the route to update which page is currently been shown
 class AppDrawer extends StatefulWidget {
-  const AppDrawer({@required this.permanentlyDisplay, Key key})
+  AppDrawer({@required this.permanentlyDisplay, this.loading = false, Key key})
       : super(key: key);
 
   final bool permanentlyDisplay;
-
+  bool loading;
   @override
   _AppDrawerState createState() => _AppDrawerState();
 }
@@ -73,6 +74,13 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                       : null,
                   title: Text(Translate.get('event_ticketing_system')),
                 ),
+                if (widget.loading)
+                  Transform(
+                    alignment: Alignment.center,
+                    transform: Matrix4.rotationY(math.pi),
+                    child: LinearProgressIndicator(),
+                  ),
+                if (!widget.loading) Container(height: 4),
                 Divider(),
                 FeliListTile(
                   _selectedRoute == RouteNames.home,

@@ -137,6 +137,7 @@ class _CreatedEventsPageState extends State<CreatedEventsPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      loading: loading,
       floatingActionButton: FloatingActionButton.extended(
         label: Text(Translate.get('create_event')),
         icon: Icon(Icons.add),

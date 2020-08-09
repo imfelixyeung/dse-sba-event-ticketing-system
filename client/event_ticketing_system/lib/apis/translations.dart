@@ -2,6 +2,26 @@ import 'database.dart';
 
 class Translate {
   static Map<String, Map<String, String>> translate = {
+    '': {
+      'en-gb': '',
+      'zh-hk': '',
+    },
+    'already_joined': {
+      'en-gb': 'Already Joined',
+      'zh-hk': '已經加入',
+    },
+    'pending': {
+      'en-gb': 'Pending',
+      'zh-hk': '待定',
+    },
+    'joined': {
+      'en-gb': 'Joined',
+      'zh-hk': '已加入',
+    },
+    'empty_tickets_error': {
+      'en-gb': 'Empty Tickets Error',
+      'zh-hk': '沒門票錯誤',
+    },
     'date_time_conflict': {
       'en-gb': 'Date Time Conflict',
       'zh-hk': '日期時間衝突',
@@ -653,7 +673,7 @@ class Translate {
       // return '...';
       return translate[name][appLanguage];
     } catch (e) {
-      print('$name not found');
+      print('Translation for "$name" not found');
       return name;
     }
   }

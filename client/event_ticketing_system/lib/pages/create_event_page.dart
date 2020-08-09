@@ -290,7 +290,6 @@ class _CreateEventPageState extends State<CreateEventPage> {
     List<Widget> ticketWidgets = [];
 
     for (var i = 0; i < event.tickets.length; i++) {
-      print(event.tickets[i]);
       ticketWidgets.add(_buildTicket(event.tickets[i], i));
     }
 
@@ -411,6 +410,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      loading: loading,
       pageTitle: PageTitles.createEvent,
       body: SingleChildScrollView(
         child: Center(

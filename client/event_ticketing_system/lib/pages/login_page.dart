@@ -111,6 +111,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      loading: loading,
       pageTitle: PageTitles.home,
       body: SingleChildScrollView(
         child: Center(
