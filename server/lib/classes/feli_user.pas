@@ -61,6 +61,8 @@ type
             // function toJson(): ansiString;
             procedure add(user: FeliUser);
             procedure join(newCollection: FeliUserCollection);
+            function toSecureTJsonArray(): TJsonArray;
+            function toSecureJson(): ansiString;
             // function length(): int64;
             // class function fromTJsonArray(usersArray: TJsonArray): FeliUserCollection; static;
             class function fromFeliCollection(collection: FeliCollection): FeliUserCollection; static;
@@ -497,6 +499,30 @@ begin
     end;
     FeliStackTrace.trace('end', 'procedure FeliUserCollection.join(newCollection: FeliUserCollection);');
 end;
+
+function FeliUserCollection.toSecureTJsonArray(): TJsonArray;
+var
+    user: FeliUser;
+    i: integer;
+    secureArray: TJsonArray;
+begin
+    secureArray := TJsonArray.create();
+    for i := 0 to (data.count - 1) do
+        begin
+            user := FeliUser.fromTJsonObject(data[i] as TJsonObject);
+            user.email := '';
+            user.firstName := '';
+            user.lastName := '';
+            secureArray.add(user.toTJsonObject(true));
+        end;
+    result := secureArray;
+end;
+
+function FeliUserCollection.toSecureJson(): ansiString;
+begin
+    result := toSecureTJsonArray().formatJson;
+end;
+
 
 // function FeliUserCollection.length(): int64;
 // begin

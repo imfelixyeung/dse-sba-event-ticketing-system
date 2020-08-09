@@ -130,6 +130,24 @@ begin
 end;
 
 
+procedure getUsersEndPoint(req: TRequest; res: TResponse);
+var
+    users: FeliUserCollection;
+    responseTemplate: FeliResponseDataArray;
+begin
+    FeliStackTrace.trace('begin', 'procedure getUsersEndPoint(req: TRequest; res: TResponse);');
+    try
+        users := FeliStorageAPI.getUsers();
+        responseTemplate := FeliResponseDataArray.create();
+        responseTemplate.data := users.toSecureTJsonArray();
+        responseTemplate.resCode := 200;
+        responseWithJson(res, responseTemplate);
+    finally
+        responseTemplate.free();  
+    end;
+    FeliStackTrace.trace('end', 'procedure getUsersEndPoint(req: TRequest; res: TResponse);');
+end;
+
 procedure getEventsEndPoint(req: TRequest; res: TResponse);
 var
     events: FeliEventCollection;
@@ -624,6 +642,7 @@ procedure init();
 begin
     FeliStackTrace.trace('begin', 'procedure init();');
     application.port := port;
+    HTTPRouter.RegisterRoute('/api/users/get/', @getUsersEndPoint);
     HTTPRouter.RegisterRoute('/api/events/get/', @getEventsEndPoint);
     HTTPRouter.RegisterRoute('/api/event/:eventId/get/', @getEventEndPoint);
     HTTPRouter.RegisterRoute('/api/event/:eventId/join/', @joinEventEndPoint);
@@ -659,6 +678,7 @@ var
     // ticketDocument: FeliEventTicket;
     // document: FeliDocument;
     user: FeliUser;
+    users: FeliUserCollection;
     event: FeliEvent;
     ticket: FeliEventTicket;
     // usersArray: TJsonArray;
@@ -673,9 +693,10 @@ var
 
 begin
     FeliStackTrace.trace('begin', 'procedure test();');
-
-    user := FeliStorageAPI.getUser('admin');
-    user.removeCreatedEvent('t783fggzf4aRPzMZ0RxNd7JSdQG41rNZ');
+    users := FeliStorageAPI.getUsers();
+    writeln(users.toSecureJson);
+    // user := FeliStorageAPI.getUser('admin');
+    // user.removeCreatedEvent('t783fggzf4aRPzMZ0RxNd7JSdQG41rNZ');
     // event := FeliEvent.create();
     // with event do
     //     begin
