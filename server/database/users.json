@@ -70,5 +70,21 @@
     ],
     "pending_events" : [
     ]
+  },
+  {
+    "username" : "eddie",
+    "display_name" : "Eddie",
+    "salt" : "dzXF7JO1rh42X1MfEPQi4HGM1-E7KH80",
+    "salted_password" : "1ace9340ec4fd7ba085cdf00ebafdec4",
+    "email" : "ey1972a1@gmail.com",
+    "first_name" : "Eddie",
+    "last_name" : "Yeung",
+    "access_level" : "organiser",
+    "created_events" : [
+      {
+        "event_id" : "6SnOXXPQoJYtnvdR76z_x83-T5oLV_c6",
+        "created_at" : 1596987727000
+      }
+    ]
   }
 ]
