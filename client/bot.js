@@ -80,11 +80,9 @@ client.on("message", async (msg) => {
     }
 
     if (action == actions.getUserLength) {
-        msg.reply(`This feature is not supported yet`);
-        return;
-        let events = await EtsAPI.getEvents();
+        let events = await EtsAPI.getUsers();
         if (events) {
-            msg.reply(`There is a total of ${events.length} events`);
+            msg.reply(`There is a total of ${events.length} users`);
         } else {
             msg.reply("An error occurred");
         }

@@ -16,7 +16,6 @@ class EtsAPI {
     }
 
     static async getUsers() {
-        return null;
         try {
             var response = await fetch(`${endpoint}/api/users/get/`);
             var json = await response.json();
