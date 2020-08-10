@@ -703,30 +703,30 @@ var
 begin
     FeliStackTrace.trace('begin', 'procedure test();');
     
-    // users := FeliStorageAPI.getUsers();
-    // users.orderBy(FeliUserKeys.username, FeliDirections.descending);
-    // usersTJsonArray := users.toTJsonArray();
-    // debugString := '';
-    // for i := 0 to (usersTJsonArray.count - 1) do
-    //     begin
-    //         user := FeliUser.fromTJsonObject(usersTJsonArray[i] as TJsonObject);
-    //         debugString := debugString + user.username + lineSeparator;
-    //     end;
-
-    // writeln(debugString);
-    
-    events := FeliStorageAPI.getEvents();
-    events.orderBy(FeliEventKeys.startTime, FeliDirections.ascending);
-    eventsTJsonArray := events.toTJsonArray();
+    users := FeliStorageAPI.getUsers();
+    users.orderBy(FeliUserKeys.username, FeliDirections.descending);
+    usersTJsonArray := users.toTJsonArray();
     debugString := '';
-    for i := 0 to (eventsTJsonArray.count - 1) do
+    for i := 0 to (usersTJsonArray.count - 1) do
         begin
-            event := FeliEvent.fromTJsonObject(eventsTJsonArray[i] as TJsonObject);
-            // debugString := debugString + event.id + lineSeparator;
-            debugString := debugString + IntToStr(event.startTime) + lineSeparator;
+            user := FeliUser.fromTJsonObject(usersTJsonArray[i] as TJsonObject);
+            debugString := debugString + user.username + lineSeparator;
         end;
 
     writeln(debugString);
+    
+    // events := FeliStorageAPI.getEvents();
+    // events.orderBy(FeliEventKeys.startTime, FeliDirections.ascending);
+    // eventsTJsonArray := events.toTJsonArray();
+    // debugString := '';
+    // for i := 0 to (eventsTJsonArray.count - 1) do
+    //     begin
+    //         event := FeliEvent.fromTJsonObject(eventsTJsonArray[i] as TJsonObject);
+    //         // debugString := debugString + event.id + lineSeparator;
+    //         debugString := debugString + IntToStr(event.startTime) + lineSeparator;
+    //     end;
+
+    // writeln(debugString);
 
     // writeln(users.toSecureJson);
     // user := FeliStorageAPI.getUser('admin');

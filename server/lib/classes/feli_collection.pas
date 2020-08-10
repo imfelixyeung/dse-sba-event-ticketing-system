@@ -104,7 +104,7 @@ var left, right: integer;
             if (direction = FeliDirections.descending) then dir := -1 else
             dir := 0;
 
-            if (CompareText(arr[j].getPath(key).asString, pivot) * dir ) < 0 then
+            if (CompareStr(arr[j].getPath(key).asString, pivot) * dir ) < 0 then
                 begin
                     i := i + 1;
                     arr.exchange(i, j);
