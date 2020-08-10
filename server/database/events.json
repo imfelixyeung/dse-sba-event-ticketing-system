@@ -97,5 +97,28 @@
     ],
     "waiting_list" : [
     ]
+  },
+  {
+    "id" : "R6sQiJ5SRNmqztSC0VlehVAoBZac8Eb2",
+    "organiser" : "admin",
+    "name" : "Programming Day",
+    "description" : "Everyone program",
+    "start_time" : 1596988800000,
+    "end_time" : 1597032000000,
+    "created_at" : 1596988930000,
+    "venue" : "PO LEUNG KUK NGAN PO LING COLLEGE",
+    "theme" : "August 10, 2020 12:00:00 PM",
+    "participant_limit" : 5,
+    "tickets" : [
+      {
+        "id" : "71VF-Z7vr9-2i-c_QZf0gk3ItPpXFpfQ",
+        "type" : "Normal",
+        "fee" : 0.0000000000000000E+000
+      }
+    ],
+    "participants" : [
+    ],
+    "waiting_list" : [
+    ]
   }
 ]
