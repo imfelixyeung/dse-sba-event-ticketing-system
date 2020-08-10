@@ -5,7 +5,6 @@
   - [Server](#server)
   - [Client](#client)
     - [Web](#web)
-    - [Cli](#cli)
 - [Details](#details)
   - [Database](#database)
   - [User Authentication](#user-authentication)
@@ -29,11 +28,6 @@ This project consists of two main parts
   - Communicates to server api
 - Hosted by an express server `node.js`
 > Note: for developing purposes, all dummy users has a purposefully set password of '20151529'
-
-### Cli
-- Frontend
-- Uses `pascal` to create a web application
-  - Communicates to server api
 
 # Details
 Details and features of ETS
