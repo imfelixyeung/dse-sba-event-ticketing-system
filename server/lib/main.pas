@@ -23,6 +23,8 @@ uses
     feli_stack_tracer,
     feli_ascii_art,
     feli_access_level,
+    feli_constants,
+    feli_directions,
     sysutils,
     fphttpapp,
     httpdefs,
@@ -138,6 +140,7 @@ begin
     FeliStackTrace.trace('begin', 'procedure getUsersEndPoint(req: TRequest; res: TResponse);');
     try
         users := FeliStorageAPI.getUsers();
+        users.orderBy(FeliUserKeys.username, FeliDirections.ascending);
         responseTemplate := FeliResponseDataArray.create();
         responseTemplate.data := users.toSecureTJsonArray();
         responseTemplate.resCode := 200;
@@ -156,6 +159,7 @@ begin
     FeliStackTrace.trace('begin', 'procedure getEventsEndPoint(req: TRequest; res: TResponse);');
     try
         events := FeliStorageAPI.getEvents();
+        events.orderBy(FeliEventKeys.startTime, FeliDirections.ascending);
         responseTemplate := FeliResponseDataArray.create();
         responseTemplate.data := events.toTJsonArray();
         responseTemplate.resCode := 200;
@@ -680,7 +684,12 @@ var
     user: FeliUser;
     users: FeliUserCollection;
     event: FeliEvent;
+    events: FeliEventCollection;
     ticket: FeliEventTicket;
+    usersTJsonArray: TJsonArray;
+    eventsTJsonArray: TJsonArray;
+    i: integer;
+    debugString: ansiString;
     // usersArray: TJsonArray;
     // userEnum: TJsonEnum;
     // testUsernameString: ansiString;
@@ -693,8 +702,33 @@ var
 
 begin
     FeliStackTrace.trace('begin', 'procedure test();');
-    users := FeliStorageAPI.getUsers();
-    writeln(users.toSecureJson);
+    
+    // users := FeliStorageAPI.getUsers();
+    // users.orderBy(FeliUserKeys.username, FeliDirections.descending);
+    // usersTJsonArray := users.toTJsonArray();
+    // debugString := '';
+    // for i := 0 to (usersTJsonArray.count - 1) do
+    //     begin
+    //         user := FeliUser.fromTJsonObject(usersTJsonArray[i] as TJsonObject);
+    //         debugString := debugString + user.username + lineSeparator;
+    //     end;
+
+    // writeln(debugString);
+    
+    events := FeliStorageAPI.getEvents();
+    events.orderBy(FeliEventKeys.startTime, FeliDirections.ascending);
+    eventsTJsonArray := events.toTJsonArray();
+    debugString := '';
+    for i := 0 to (eventsTJsonArray.count - 1) do
+        begin
+            event := FeliEvent.fromTJsonObject(eventsTJsonArray[i] as TJsonObject);
+            // debugString := debugString + event.id + lineSeparator;
+            debugString := debugString + IntToStr(event.startTime) + lineSeparator;
+        end;
+
+    writeln(debugString);
+
+    // writeln(users.toSecureJson);
     // user := FeliStorageAPI.getUser('admin');
     // user.removeCreatedEvent('t783fggzf4aRPzMZ0RxNd7JSdQG41rNZ');
     // event := FeliEvent.create();
