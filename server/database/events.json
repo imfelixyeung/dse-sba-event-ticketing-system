@@ -76,29 +76,6 @@
     ]
   },
   {
-    "id" : "6SnOXXPQoJYtnvdR76z_x83-T5oLV_c6",
-    "organiser" : "eddie",
-    "name" : "Cat Party",
-    "description" : "To play with kittens",
-    "start_time" : 1596987600000000,
-    "end_time" : 1596988680000000,
-    "created_at" : 1596987727000,
-    "venue" : "CHING WAI HOUSE",
-    "theme" : "August 9, 2020 11:58:00 PM",
-    "participant_limit" : 4,
-    "tickets" : [
-      {
-        "id" : "Mq6emCvhbFKzdEQ6AsqgC1thcQe4fCMY",
-        "type" : "entrance ticket",
-        "fee" : 0.0000000000000000E+000
-      }
-    ],
-    "participants" : [
-    ],
-    "waiting_list" : [
-    ]
-  },
-  {
     "id" : "R6sQiJ5SRNmqztSC0VlehVAoBZac8Eb2",
     "organiser" : "admin",
     "name" : "Programming Day",
@@ -117,6 +94,34 @@
       }
     ],
     "participants" : [
+    ],
+    "waiting_list" : [
+    ]
+  },
+  {
+    "id" : "6SnOXXPQoJYtnvdR76z_x83-T5oLV_c6",
+    "organiser" : "eddie",
+    "name" : "Cat Party",
+    "description" : "To play with kittens",
+    "start_time" : 1596987600000,
+    "end_time" : 1596988680000,
+    "created_at" : 1596987727000,
+    "venue" : "CHING WAI HOUSE",
+    "theme" : "August 9, 2020 11:58:00 PM",
+    "participant_limit" : 4,
+    "tickets" : [
+      {
+        "id" : "Mq6emCvhbFKzdEQ6AsqgC1thcQe4fCMY",
+        "type" : "entrance ticket",
+        "fee" : 0.0000000000000000E+000
+      }
+    ],
+    "participants" : [
+      {
+        "username" : "admin",
+        "ticket_id" : "Mq6emCvhbFKzdEQ6AsqgC1thcQe4fCMY",
+        "created_at" : 1597104366000
+      }
     ],
     "waiting_list" : [
     ]
