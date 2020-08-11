@@ -1,10 +1,10 @@
 # Details
 
-Date : 2020-08-10 21:29:53
+Date : 2020-08-11 20:56:46
 
 Directory /Users/FelixYeung/Projects/event-ticketing-system
 
-Total : 120 files,  78882 codes, 598 comments, 1161 blanks, all 80641 lines
+Total : 122 files,  79823 codes, 595 comments, 1198 blanks, all 81616 lines
 
 [summary](results.md)
 
@@ -14,20 +14,20 @@ Total : 120 files,  78882 codes, 598 comments, 1161 blanks, all 80641 lines
 | [INSTALL.md](/INSTALL.md) | Markdown | 28 | 0 | 7 | 35 |
 | [README.md](/README.md) | Markdown | 40 | 0 | 10 | 50 |
 | [client/.discord.json](/client/.discord.json) | JSON | 1 | 0 | 0 | 1 |
-| [client/bot.js](/client/bot.js) | JavaScript | 94 | 3 | 17 | 114 |
+| [client/bot.js](/client/bot.js) | JavaScript | 93 | 3 | 18 | 114 |
 | [client/event_ticketing_system/README.md](/client/event_ticketing_system/README.md) | Markdown | 4 | 0 | 3 | 7 |
 | [client/event_ticketing_system/lib/apis/address_suggestion.dart](/client/event_ticketing_system/lib/apis/address_suggestion.dart) | Dart | 46 | 2 | 6 | 54 |
 | [client/event_ticketing_system/lib/apis/database.dart](/client/event_ticketing_system/lib/apis/database.dart) | Dart | 54 | 1 | 14 | 69 |
-| [client/event_ticketing_system/lib/apis/ets.dart](/client/event_ticketing_system/lib/apis/ets.dart) | Dart | 205 | 3 | 28 | 236 |
+| [client/event_ticketing_system/lib/apis/ets.dart](/client/event_ticketing_system/lib/apis/ets.dart) | Dart | 211 | 2 | 29 | 242 |
 | [client/event_ticketing_system/lib/apis/google_maps.dart](/client/event_ticketing_system/lib/apis/google_maps.dart) | Dart | 15 | 0 | 4 | 19 |
-| [client/event_ticketing_system/lib/apis/translations.dart](/client/event_ticketing_system/lib/apis/translations.dart) | Dart | 685 | 1 | 3 | 689 |
+| [client/event_ticketing_system/lib/apis/translations.dart](/client/event_ticketing_system/lib/apis/translations.dart) | Dart | 705 | 1 | 3 | 709 |
 | [client/event_ticketing_system/lib/apis/whatsapp.dart](/client/event_ticketing_system/lib/apis/whatsapp.dart) | Dart | 6 | 0 | 1 | 7 |
 | [client/event_ticketing_system/lib/blocs/theme.dart](/client/event_ticketing_system/lib/blocs/theme.dart) | Dart | 83 | 7 | 9 | 99 |
 | [client/event_ticketing_system/lib/constants/app_info.dart](/client/event_ticketing_system/lib/constants/app_info.dart) | Dart | 26 | 0 | 14 | 40 |
-| [client/event_ticketing_system/lib/constants/page_titles.dart](/client/event_ticketing_system/lib/constants/page_titles.dart) | Dart | 12 | 0 | 2 | 14 |
+| [client/event_ticketing_system/lib/constants/page_titles.dart](/client/event_ticketing_system/lib/constants/page_titles.dart) | Dart | 13 | 0 | 2 | 15 |
 | [client/event_ticketing_system/lib/constants/register_requirements.dart](/client/event_ticketing_system/lib/constants/register_requirements.dart) | Dart | 7 | 0 | 1 | 8 |
-| [client/event_ticketing_system/lib/constants/route_names.dart](/client/event_ticketing_system/lib/constants/route_names.dart) | Dart | 11 | 0 | 1 | 12 |
-| [client/event_ticketing_system/lib/main.dart](/client/event_ticketing_system/lib/main.dart) | Dart | 110 | 2 | 10 | 122 |
+| [client/event_ticketing_system/lib/constants/route_names.dart](/client/event_ticketing_system/lib/constants/route_names.dart) | Dart | 12 | 0 | 1 | 13 |
+| [client/event_ticketing_system/lib/main.dart](/client/event_ticketing_system/lib/main.dart) | Dart | 116 | 2 | 12 | 130 |
 | [client/event_ticketing_system/lib/misc/custom_data_source.dart](/client/event_ticketing_system/lib/misc/custom_data_source.dart) | Dart | 26 | 0 | 6 | 32 |
 | [client/event_ticketing_system/lib/misc/hex_colour.dart](/client/event_ticketing_system/lib/misc/hex_colour.dart) | Dart | 11 | 0 | 2 | 13 |
 | [client/event_ticketing_system/lib/misc/language.dart](/client/event_ticketing_system/lib/misc/language.dart) | Dart | 10 | 0 | 2 | 12 |
@@ -36,9 +36,10 @@ Total : 120 files,  78882 codes, 598 comments, 1161 blanks, all 80641 lines
 | [client/event_ticketing_system/lib/misc/show_changelog_dialog.dart](/client/event_ticketing_system/lib/misc/show_changelog_dialog.dart) | Dart | 29 | 0 | 2 | 31 |
 | [client/event_ticketing_system/lib/misc/simple_dialog.dart](/client/event_ticketing_system/lib/misc/simple_dialog.dart) | Dart | 18 | 0 | 2 | 20 |
 | [client/event_ticketing_system/lib/pages/account_page.dart](/client/event_ticketing_system/lib/pages/account_page.dart) | Dart | 116 | 0 | 6 | 122 |
-| [client/event_ticketing_system/lib/pages/create_event_page.dart](/client/event_ticketing_system/lib/pages/create_event_page.dart) | Dart | 457 | 1 | 32 | 490 |
-| [client/event_ticketing_system/lib/pages/created_events_page.dart](/client/event_ticketing_system/lib/pages/created_events_page.dart) | Dart | 159 | 0 | 13 | 172 |
-| [client/event_ticketing_system/lib/pages/event_details_page.dart](/client/event_ticketing_system/lib/pages/event_details_page.dart) | Dart | 257 | 1 | 16 | 274 |
+| [client/event_ticketing_system/lib/pages/create_event_page.dart](/client/event_ticketing_system/lib/pages/create_event_page.dart) | Dart | 456 | 1 | 32 | 489 |
+| [client/event_ticketing_system/lib/pages/created_events_page.dart](/client/event_ticketing_system/lib/pages/created_events_page.dart) | Dart | 173 | 0 | 13 | 186 |
+| [client/event_ticketing_system/lib/pages/edit_event_page.dart](/client/event_ticketing_system/lib/pages/edit_event_page.dart) | Dart | 429 | 1 | 31 | 461 |
+| [client/event_ticketing_system/lib/pages/event_details_page.dart](/client/event_ticketing_system/lib/pages/event_details_page.dart) | Dart | 256 | 1 | 16 | 273 |
 | [client/event_ticketing_system/lib/pages/home_page.dart](/client/event_ticketing_system/lib/pages/home_page.dart) | Dart | 144 | 0 | 9 | 153 |
 | [client/event_ticketing_system/lib/pages/joined_events_page.dart](/client/event_ticketing_system/lib/pages/joined_events_page.dart) | Dart | 150 | 0 | 13 | 163 |
 | [client/event_ticketing_system/lib/pages/login_page.dart](/client/event_ticketing_system/lib/pages/login_page.dart) | Dart | 144 | 1 | 13 | 158 |
@@ -60,6 +61,7 @@ Total : 120 files,  78882 codes, 598 comments, 1161 blanks, all 80641 lines
 | [client/package-lock.json](/client/package-lock.json) | JSON | 2,013 | 0 | 1 | 2,014 |
 | [client/package.json](/client/package.json) | JSON | 27 | 0 | 1 | 28 |
 | [client/src/dialogflow.js](/client/src/dialogflow.js) | JavaScript | 34 | 10 | 10 | 54 |
+| [client/src/ets-bxok-fc31bc4e01b8.json](/client/src/ets-bxok-fc31bc4e01b8.json) | JSON | 12 | 0 | 0 | 12 |
 | [client/src/ets.js](/client/src/ets.js) | JavaScript | 60 | 0 | 10 | 70 |
 | [client/web/404.html](/client/web/404.html) | HTML | 97 | 0 | 2 | 99 |
 | [client/web/app/assets/AssetManifest.json](/client/web/app/assets/AssetManifest.json) | JSON | 1 | 0 | 0 | 1 |
@@ -68,7 +70,7 @@ Total : 120 files,  78882 codes, 598 comments, 1161 blanks, all 80641 lines
 | [client/web/app/assets/images/bmc-new-btn-logo.svg](/client/web/app/assets/images/bmc-new-btn-logo.svg) | XML | 28 | 1 | 0 | 29 |
 | [client/web/app/flutter_service_worker.js](/client/web/app/flutter_service_worker.js) | JavaScript | 128 | 27 | 10 | 165 |
 | [client/web/app/index.html](/client/web/app/index.html) | HTML | 21 | 2 | 4 | 27 |
-| [client/web/app/main.dart.js](/client/web/app/main.dart.js) | JavaScript | 66,127 | 1 | 2 | 66,130 |
+| [client/web/app/main.dart.js](/client/web/app/main.dart.js) | JavaScript | 66,451 | 1 | 2 | 66,454 |
 | [client/web/app/manifest.json](/client/web/app/manifest.json) | JSON | 23 | 0 | 1 | 24 |
 | [client/web/ascii/index.html](/client/web/ascii/index.html) | HTML | 29 | 0 | 1 | 30 |
 | [client/web/ascii/main.css](/client/web/ascii/main.css) | CSS | 114 | 1 | 16 | 131 |
@@ -88,11 +90,11 @@ Total : 120 files,  78882 codes, 598 comments, 1161 blanks, all 80641 lines
 | [run_client.sh](/run_client.sh) | Shell Script | 4 | 0 | 0 | 4 |
 | [run_server.bat](/run_server.bat) | Batch | 7 | 0 | 0 | 7 |
 | [run_server.sh](/run_server.sh) | Shell Script | 8 | 1 | 0 | 9 |
-| [server/api.rest](/server/api.rest) | HTTP | 47 | 5 | 15 | 67 |
+| [server/api.rest](/server/api.rest) | HTTP | 19 | 2 | 5 | 26 |
 | [server/database/events.backup.json](/server/database/events.backup.json) | JSON | 70 | 0 | 1 | 71 |
-| [server/database/events.json](/server/database/events.json) | JSON | 124 | 0 | 1 | 125 |
+| [server/database/events.json](/server/database/events.json) | JSON | 129 | 0 | 1 | 130 |
 | [server/database/users.backup.json](/server/database/users.backup.json) | JSON | 52 | 0 | 1 | 53 |
-| [server/database/users.json](/server/database/users.json) | JSON | 94 | 0 | 1 | 95 |
+| [server/database/users.json](/server/database/users.json) | JSON | 98 | 0 | 1 | 99 |
 | [server/documentation/feli_config.md](/server/documentation/feli_config.md) | Markdown | 8 | 0 | 1 | 9 |
 | [server/documentation/feli_constants.md](/server/documentation/feli_constants.md) | Markdown | 23 | 0 | 2 | 25 |
 | [server/documentation/feli_crypto.md](/server/documentation/feli_crypto.md) | Markdown | 13 | 0 | 2 | 15 |
@@ -103,7 +105,7 @@ Total : 120 files,  78882 codes, 598 comments, 1161 blanks, all 80641 lines
 | [server/documentation/feli_validation.md](/server/documentation/feli_validation.md) | Markdown | 23 | 0 | 5 | 28 |
 | [server/documentation/template.md](/server/documentation/template.md) | Markdown | 7 | 0 | 1 | 8 |
 | [server/ets.cfg.json](/server/ets.cfg.json) | JSON | 5 | 0 | 0 | 5 |
-| [server/ets.log](/server/ets.log) | Log | 2,076 | 0 | 1 | 2,077 |
+| [server/ets.log](/server/ets.log) | Log | 2,118 | 0 | 1 | 2,119 |
 | [server/fpc.cfg](/server/fpc.cfg) | Properties | 41 | 215 | 48 | 304 |
 | [server/fpc.original.cfg](/server/fpc.original.cfg) | Properties | 34 | 216 | 45 | 295 |
 | [server/lib/apis/feli_file.pas](/server/lib/apis/feli_file.pas) | ObjectPascal | 72 | 0 | 19 | 91 |
@@ -120,7 +122,7 @@ Total : 120 files,  78882 codes, 598 comments, 1161 blanks, all 80641 lines
 | [server/lib/config/feli_config.pas](/server/lib/config/feli_config.pas) | ObjectPascal | 33 | 0 | 10 | 43 |
 | [server/lib/constants/feli_constants.pas](/server/lib/constants/feli_constants.pas) | ObjectPascal | 12 | 0 | 2 | 14 |
 | [server/lib/errors/feli_errors.pas](/server/lib/errors/feli_errors.pas) | ObjectPascal | 17 | 0 | 6 | 23 |
-| [server/lib/main.pas](/server/lib/main.pas) | ObjectPascal | 887 | 0 | 109 | 996 |
+| [server/lib/main.pas](/server/lib/main.pas) | ObjectPascal | 995 | 0 | 121 | 1,116 |
 | [server/lib/misc/feli_access_level.pas](/server/lib/misc/feli_access_level.pas) | ObjectPascal | 14 | 0 | 6 | 20 |
 | [server/lib/misc/feli_ascii_art.pas](/server/lib/misc/feli_ascii_art.pas) | ObjectPascal | 117 | 0 | 14 | 131 |
 | [server/lib/misc/feli_crypto.pas](/server/lib/misc/feli_crypto.pas) | ObjectPascal | 36 | 0 | 14 | 50 |

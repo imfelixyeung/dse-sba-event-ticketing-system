@@ -26,7 +26,7 @@ class _AccountPageState extends State<AccountPage> {
     final bool displayMobileLayout = deviceWidth < 600;
 
     return AppScaffold(
-      pageTitle: PageTitles.home,
+      pageTitle: PageTitles.account,
       body: SingleChildScrollView(
         child: Center(
           child: Container(

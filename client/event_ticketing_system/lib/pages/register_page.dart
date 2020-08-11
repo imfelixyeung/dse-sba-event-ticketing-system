@@ -282,7 +282,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return AppScaffold(
       loading: loading,
-      pageTitle: PageTitles.home,
+      pageTitle: PageTitles.register,
       body: SingleChildScrollView(
         child: Center(
           child: Container(

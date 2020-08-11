@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:event_ticketing_system/apis/address_suggestion.dart';
 import 'package:event_ticketing_system/apis/translations.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +18,25 @@ class AddressSelectorDialog extends StatefulWidget {
 
 class _AddressSelectorDialogState extends State<AddressSelectorDialog> {
   final GlobalKey<FormState> _addressFormKey = GlobalKey<FormState>();
+  final TextEditingController addressController = TextEditingController();
   bool loading = false;
   List<String> suggested = [];
+  bool gettingSuggestions = false;
+  Timer timer;
+  String lastUglyAddress = '';
 
   void handleRequest(String uglyAddress) async {
+    if (gettingSuggestions) return;
+    if (lastUglyAddress == uglyAddress) return;
+    gettingSuggestions = true;
+    lastUglyAddress = uglyAddress;
     var tempSuggested = await AddressSuggestion.getSuggestions(uglyAddress);
     setState(() {
       suggested = [
         ...{...tempSuggested}
       ];
     });
+    gettingSuggestions = false;
   }
 
   Widget _buildSuggestions() {
@@ -45,6 +56,7 @@ class _AddressSelectorDialogState extends State<AddressSelectorDialog> {
 
   Widget _buildAddress() {
     return TextFormField(
+      controller: addressController,
       onChanged: (str) => handleRequest(str),
       onFieldSubmitted: (str) => {},
       decoration: InputDecoration(
@@ -56,6 +68,20 @@ class _AddressSelectorDialogState extends State<AddressSelectorDialog> {
       },
       onSaved: (String value) {},
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(new Duration(milliseconds: 250), (timer) {
+      handleRequest(addressController.text);
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer.cancel();
   }
 
   @override

@@ -63,6 +63,7 @@ class _LoginPageState extends State<LoginPage> {
       textInputAction: TextInputAction.next,
       focusNode: _usernameFocus,
       keyboardType: TextInputType.emailAddress,
+      autocorrect: false,
       enabled: !loading,
       decoration: InputDecoration(
         filled: true,
@@ -70,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
       validator: (String value) {
         if (value.isEmpty) {
-          return Translate.get('err_is_empty');
+          return Translate.get('field_required');
         }
       },
       onSaved: (String value) {
@@ -88,6 +89,7 @@ class _LoginPageState extends State<LoginPage> {
       focusNode: _passwordFocus,
       obscureText: true,
       keyboardType: TextInputType.text,
+      autocorrect: false,
       enabled: !loading,
       decoration: InputDecoration(
         filled: true,
@@ -112,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return AppScaffold(
       loading: loading,
-      pageTitle: PageTitles.home,
+      pageTitle: PageTitles.login,
       body: SingleChildScrollView(
         child: Center(
           child: Container(
