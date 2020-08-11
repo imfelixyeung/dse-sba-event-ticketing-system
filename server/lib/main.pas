@@ -51,7 +51,15 @@ var
 begin
     FeliStackTrace.trace('begin', 'function parseRequestJsonBody(req: TRequest): TJsonObject;');
     bodyContent := req.content;
-    result := TJsonObject(getJson(bodyContent));
+    try
+        result := TJsonObject(getJson(bodyContent));
+    except
+        on E: Exception do
+        begin
+            FeliLogger.error(e.message);
+            result := TJsonObject.create();
+        end;
+    end;
     FeliStackTrace.trace('end', 'function parseRequestJsonBody(req: TRequest): TJsonObject;');
 end;
 
@@ -63,18 +71,25 @@ var
 begin
     FeliStackTrace.trace('begin', 'procedure userAuthMiddleware(var middlewareContent: FeliMiddleware; req: TRequest);');
     requestJson := parseRequestJsonBody(req);
-    username := requestJson.getPath('auth.username').asString;
-    password := requestJson.getPath('auth.password').asString;
-    middlewareContent.user := FeliStorageAPI.getUser(username);
-    if (middlewareContent.user <> nil) then
+    try
+        username := requestJson.getPath('auth.username').asString;
+        password := requestJson.getPath('auth.password').asString;
+        middlewareContent.user := FeliStorageAPI.getUser(username);
+        if (middlewareContent.user <> nil) then
+            begin
+                middlewareContent.user.password := password;
+                middlewareContent.authenticated := middlewareContent.user.verify();
+            end
+        else
+            begin
+                middlewareContent.authenticated := false;
+            end;
+    except
+        on E: Exception do
         begin
-            middlewareContent.user.password := password;
-            middlewareContent.authenticated := middlewareContent.user.verify();
-        end
-    else
-        begin
-            middlewareContent.authenticated := false;
+            FeliLogger.error(e.message);
         end;
+    end;
     FeliStackTrace.trace('end', 'procedure userAuthMiddleware(var middlewareContent: FeliMiddleware; req: TRequest);');
 end;
 
@@ -150,6 +165,7 @@ begin
     end;
     FeliStackTrace.trace('end', 'procedure getUsersEndPoint(req: TRequest; res: TResponse);');
 end;
+
 
 procedure getEventsEndPoint(req: TRequest; res: TResponse);
 var
@@ -317,6 +333,7 @@ begin
     FeliStackTrace.trace('end', 'procedure leaveEventEndPoint(req: TRequest; res: TResponse);');
 end;
 
+
 procedure removeEventEndPoint(req: TRequest; res: TResponse);
 var
     eventId: ansiString;
@@ -374,6 +391,108 @@ begin
         responseTemplate.free();  
     end;
     FeliStackTrace.trace('end', 'procedure removeEventEndPoint(req: TRequest; res: TResponse);');
+end;
+
+
+procedure updateEventEndPoint(req: TRequest; res: TResponse);
+var
+    eventId, tempString, error: ansiString;
+    event: FeliEvent;
+    responseTemplate: FeliResponseDataObject;
+    middlewareContent: FeliMiddleware;
+    tempCollection: FeliCollection;
+    eventObject, requestJson: TJsonObject;
+
+begin
+    FeliStackTrace.trace('begin', 'procedure updateEventEndPoint(req: TRequest; res: TResponse);');
+    try
+        eventId := req.routeParams['eventId'];
+        event := FeliStorageAPI.getEvent(eventId);
+        responseTemplate := FeliResponseDataObject.create();
+        middlewareContent := FeliMiddleware.create();
+        userAuthMiddleware(middlewareContent, req);
+        requestJson := parseRequestJsonBody(req);
+
+        if (event <> nil) then
+            begin
+                if (middlewareContent.authenticated) then
+                    begin
+                        responseTemplate.authenticated := middlewareContent.authenticated;
+                        if (FeliValidation.fixedValueCheck(middlewareContent.user.accessLevel, [FeliAccessLevel.admin, FeliAccessLevel.organiser])) then
+                            begin
+                                if (event.organiser = middlewareContent.user.username) then
+                                    begin
+                                        try
+                                            eventObject := requestJson.getPath('event') as TJsonObject;
+                                            
+                                            with event do
+                                            begin
+                                                try name := eventObject.getPath(FeliEventKeys.name).asString; except end;
+                                                try description := eventObject.getPath(FeliEventKeys.description).asString; except end;
+                                                try venue := eventObject.getPath(FeliEventKeys.venue).asString; except end;
+                                                try theme := eventObject.getPath(FeliEventKeys.theme).asString; except end;
+
+                                                try tempString := eventObject.getPath(FeliEventKeys.startTime).asString; except end;
+                                                try startTime := StrToInt64(tempString); except end;
+                                                tempString := 'err';
+                                                try tempString := eventObject.getPath(FeliEventKeys.endTime).asString; except end;
+                                                try endTime := StrToInt64(tempString); except end;
+                                                tempString := 'err';
+                                                try tempString := eventObject.getPath(FeliEventKeys.participantLimit).asString; except end;
+                                                try participantLimit := StrToInt64(tempString); except end;
+
+                                                if (event.validate(error)) then
+                                                    begin
+                                                        FeliStorageAPI.setEvent(event);
+                                                        responseTemplate.data := event.toTJsonObject();
+                                                        responseTemplate.resCode := 200;
+                                                    end
+                                                else
+                                                    begin
+                                                        responseTemplate.error := error;
+                                                        responseTemplate.resCode := 400;
+                                                    end;
+                                            end;                                            
+                                        except
+                                            on E: Exception do
+                                            begin
+                                                
+                                                responseTemplate.resCode := 400;
+                                                responseTemplate.error := 'an_error_occurred';
+
+                                            end;
+                                        end;
+
+                                        // middlewareContent.user.removeCreatedEvent(eventId);
+                                    end
+                                else 
+                                    begin
+                                        responseTemplate.resCode := 401;
+                                        responseTemplate.error := 'insufficient_permission';
+                                    end;
+                            end
+                        else
+                            begin
+                                responseTemplate.resCode := 401;
+                                responseTemplate.error := 'insufficient_permission';
+                            end;
+                    end
+                else
+                    begin
+                        responseTemplate.resCode := 403;
+                        responseTemplate.error := 'not_authenticated';
+                    end;
+            end
+        else
+            begin
+                responseTemplate.resCode := 404;
+                responseTemplate.error := 'event_not_found';
+            end;
+        responseWithJson(res, responseTemplate);
+    finally
+        responseTemplate.free();  
+    end;
+    FeliStackTrace.trace('end', 'procedure updateEventEndPoint(req: TRequest; res: TResponse);');
 end;
 
 
@@ -652,6 +771,7 @@ begin
     HTTPRouter.RegisterRoute('/api/event/:eventId/join/', @joinEventEndPoint);
     HTTPRouter.RegisterRoute('/api/event/:eventId/leave/', @leaveEventEndPoint);
     HTTPRouter.RegisterRoute('/api/event/:eventId/remove/', @removeEventEndPoint);
+    HTTPRouter.RegisterRoute('/api/event/:eventId/update/', @updateEventEndPoint);
     HTTPRouter.RegisterRoute('/api/event/post/', @createEventEndPoint);
     HTTPRouter.RegisterRoute('/api/login/', @loginEndPoint);
     HTTPRouter.RegisterRoute('/api/register/', @registerEndPoint);
