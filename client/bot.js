@@ -18,6 +18,7 @@ const actions = {
     getEvents: "ets.events.get",
     getUserLength: "ets.users.length.get",
     ping: "ets.ping",
+    clearchat: "ets.chat.clear",
 };
 
 client.on("message", async (msg) => {
@@ -29,16 +30,7 @@ client.on("message", async (msg) => {
     const requestUserId = msg.author.id.toString();
     const requestTime = new Date();
 
-    if (requestMessage.startsWith('.')) {
-        if (requestMessage.startsWith(".clearchat")) {
-            msg.delete();
-            const fetched = await msg.channel.messages.fetch({
-                limit: 99,
-            });
-            msg.channel.bulkDelete(fetched);
-
-        } return;
-    }
+  
 
     /* 
         Start of DialogFlowAPI
@@ -57,7 +49,15 @@ client.on("message", async (msg) => {
     console.log({ requestUserId, requestMessage });
     console.log({ reply, action, allRequiredParamsPresent, fields });
 
-    msg.reply(reply);
+    if (reply && reply != '') msg.reply(reply);
+
+    if (action == actions.clearchat) {
+        msg.delete();
+        const fetched = await msg.channel.messages.fetch({
+            limit: 99,
+        });
+        msg.channel.bulkDelete(fetched);
+    }
 
     if (action == actions.getEventLength) {
         let events = await EtsAPI.getEvents();
