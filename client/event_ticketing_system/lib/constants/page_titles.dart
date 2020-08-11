@@ -10,4 +10,5 @@ class PageTitles {
   static String get createdEvents => Translate.get('created_events');
   static String get joinedEvents => Translate.get('joined_events');
   static String get createEvent => Translate.get('create_event');
+  static String get editEvent => Translate.get('edit_event');
 }

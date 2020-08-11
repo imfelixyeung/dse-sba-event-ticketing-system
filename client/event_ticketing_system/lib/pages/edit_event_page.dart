@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:event_ticketing_system/apis/ets.dart';
 import 'package:event_ticketing_system/blocs/theme.dart';
 import 'package:event_ticketing_system/constants/app_info.dart';
@@ -15,15 +18,18 @@ import '../constants/page_titles.dart';
 import '../widgets/app_scaffold.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
-class CreateEventPage extends StatefulWidget {
-  const CreateEventPage({Key key}) : super(key: key);
+class EditEventPage extends StatefulWidget {
+  final String eventId;
+  const EditEventPage(this.eventId, {Key key}) : super(key: key);
 
   @override
-  _CreateEventPageState createState() => _CreateEventPageState();
+  _EditEventPageState createState() => _EditEventPageState();
 }
 
-class _CreateEventPageState extends State<CreateEventPage> {
-  bool loading = false;
+class _EditEventPageState extends State<EditEventPage> {
+  bool initiateLoading = true;
+  bool updateLoading = false;
+  bool eventExist = false;
   final FocusNode _nameFocus = FocusNode();
   final FocusNode _descriptionFocus = FocusNode();
   final FocusNode _venueFocus = FocusNode();
@@ -35,12 +41,26 @@ class _CreateEventPageState extends State<CreateEventPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   var event = FeliEvent();
 
+  TextEditingController nameController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController venueController = TextEditingController();
+  TextEditingController themeController = TextEditingController();
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
-  TextEditingController venueController = TextEditingController();
+  TextEditingController participantLimitController = TextEditingController();
 
   DateTime startDateTime;
   DateTime endDateTime;
+
+  Future fetchResource() async {
+    var data = await EtsAPI.getEvent(widget.eventId);
+    if (data != null) {
+      event = FeliEvent.fromJson(data);
+      setState(() {
+        eventExist = true;
+      });
+    }
+  }
 
   void handleCreation() async {
     if (!_formKey.currentState.validate()) {
@@ -48,15 +68,18 @@ class _CreateEventPageState extends State<CreateEventPage> {
     }
     _formKey.currentState.save();
     setState(() {
-      loading = true;
+      updateLoading = true;
     });
 
-    var response = await EtsAPI.createEvent(event);
+    print(DateTime.now());
+    print(JsonEncoder.withIndent(' ').convert(event.toMap()));
+
+    var response = await EtsAPI.updateEvent(event);
 
     if (response['status'] == 200) {
       await appUser.login();
       await showSimpleDialog(
-          context, Translate.get('event_created_successfully'));
+          context, Translate.get('event_updated_successfully'));
       Navigator.of(context).pop();
       return;
     } else {
@@ -65,15 +88,16 @@ class _CreateEventPageState extends State<CreateEventPage> {
     }
 
     setState(() {
-      loading = false;
+      updateLoading = false;
     });
   }
 
   Widget _buildEventName() {
     return TextFormField(
+      controller: nameController,
       focusNode: _nameFocus,
       onFieldSubmitted: (str) => {_descriptionFocus.requestFocus()},
-      enabled: !loading,
+      enabled: !updateLoading,
       decoration: InputDecoration(
         filled: true,
         labelText: Translate.get('name'),
@@ -89,9 +113,10 @@ class _CreateEventPageState extends State<CreateEventPage> {
 
   Widget _buildEventDescription() {
     return TextFormField(
+      controller: descriptionController,
       focusNode: _descriptionFocus,
       onFieldSubmitted: (str) => {_venueFocus.requestFocus()},
-      enabled: !loading,
+      enabled: !updateLoading,
       decoration: InputDecoration(
         filled: true,
         labelText: Translate.get('description'),
@@ -110,7 +135,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
       controller: venueController,
       focusNode: _venueFocus,
       onFieldSubmitted: (str) => {_themeFocus.requestFocus()},
-      enabled: !loading,
+      enabled: !updateLoading,
       decoration: InputDecoration(
         suffixIcon: IconButton(
             icon: Icon(Icons.map),
@@ -132,9 +157,10 @@ class _CreateEventPageState extends State<CreateEventPage> {
 
   Widget _buildEventTheme() {
     return TextFormField(
+      controller: themeController,
       focusNode: _themeFocus,
       onFieldSubmitted: (str) => {_startTimeFocus.requestFocus()},
-      enabled: !loading,
+      enabled: !updateLoading,
       decoration: InputDecoration(
         filled: true,
         labelText: Translate.get('theme'),
@@ -153,7 +179,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
       controller: startDateController,
       focusNode: _startTimeFocus,
       onFieldSubmitted: (str) => {_endTimeFocus.requestFocus()},
-      enabled: !loading,
+      enabled: !updateLoading,
       decoration: InputDecoration(
         filled: true,
         labelText: Translate.get('start_date_time'),
@@ -164,8 +190,16 @@ class _CreateEventPageState extends State<CreateEventPage> {
               context: context,
               initialDate:
                   startDateTime == null ? DateTime.now() : startDateTime,
-              firstDate: DateTime.now(),
-              lastDate: DateTime(DateTime.now().year + 10),
+              firstDate: DateTime.fromMillisecondsSinceEpoch([
+                endDateTime.millisecondsSinceEpoch,
+                startDateTime.millisecondsSinceEpoch,
+                DateTime.now().millisecondsSinceEpoch
+              ].reduce(min)),
+              lastDate: DateTime.fromMillisecondsSinceEpoch([
+                endDateTime.millisecondsSinceEpoch,
+                startDateTime.millisecondsSinceEpoch,
+                DateTime(DateTime.now().year + 10).millisecondsSinceEpoch
+              ].reduce(max)),
             );
             TimeOfDay tempStartTime;
             if (tempStartDate != null)
@@ -211,7 +245,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
       controller: endDateController,
       focusNode: _endTimeFocus,
       onFieldSubmitted: (str) => {_participantLimitFocus.requestFocus()},
-      enabled: !loading,
+      enabled: !updateLoading,
       decoration: InputDecoration(
         filled: true,
         labelText: Translate.get('end_date_time'),
@@ -221,8 +255,16 @@ class _CreateEventPageState extends State<CreateEventPage> {
             var tempEndDate = await showDatePicker(
               context: context,
               initialDate: endDateTime == null ? DateTime.now() : endDateTime,
-              firstDate: DateTime.now(),
-              lastDate: DateTime(DateTime.now().year + 10),
+              firstDate: DateTime.fromMillisecondsSinceEpoch([
+                endDateTime.millisecondsSinceEpoch,
+                startDateTime.millisecondsSinceEpoch,
+                DateTime.now().millisecondsSinceEpoch
+              ].reduce(min)),
+              lastDate: DateTime.fromMillisecondsSinceEpoch([
+                endDateTime.millisecondsSinceEpoch,
+                startDateTime.millisecondsSinceEpoch,
+                DateTime(DateTime.now().year + 10).millisecondsSinceEpoch
+              ].reduce(max)),
             );
             TimeOfDay tempEndTime;
             if (tempEndDate != null)
@@ -264,9 +306,10 @@ class _CreateEventPageState extends State<CreateEventPage> {
 
   Widget _buildEventParticipantLimit() {
     return TextFormField(
+      controller: participantLimitController,
       focusNode: _participantLimitFocus,
       onFieldSubmitted: (str) => {handleCreation()},
-      enabled: !loading,
+      enabled: !updateLoading,
       decoration: InputDecoration(
         filled: true,
         labelText: Translate.get('participant_limit'),
@@ -285,13 +328,6 @@ class _CreateEventPageState extends State<CreateEventPage> {
     return ListTile(
       title: Text('${ticket['type']}'),
       subtitle: Text('HK\$${ticket['fee']}'),
-      trailing: IconButton(
-          icon: Icon(Icons.remove_circle_outline),
-          onPressed: () {
-            setState(() {
-              event.tickets.removeAt(i);
-            });
-          }),
     );
   }
 
@@ -305,16 +341,6 @@ class _CreateEventPageState extends State<CreateEventPage> {
     return Card(
       color: Theme.of(context).scaffoldBackgroundColor,
       child: ExpansionTile(
-        trailing: IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () async {
-              Map newTicket = await showTicketCreatorDialog();
-              if (newTicket != null) {
-                setState(() {
-                  event.tickets.add(newTicket);
-                });
-              }
-            }),
         initiallyExpanded: true,
         title: Text(Translate.get('tickets')),
         children: [...ticketWidgets],
@@ -322,105 +348,38 @@ class _CreateEventPageState extends State<CreateEventPage> {
     );
   }
 
-  Future<Map> showTicketCreatorDialog() async {
-    Map ticket = {};
+  void core() async {
+    await fetchResource();
+    setState(() {
+      initiateLoading = false;
+    });
+    if (eventExist) {
+      nameController.text = event.name;
+      descriptionController.text = event.description;
+      venueController.text = event.venue;
+      themeController.text = event.theme;
 
-    final FocusNode _typeFocus = FocusNode();
-    final FocusNode _feeFocus = FocusNode();
+      startDateTime = DateTime.fromMillisecondsSinceEpoch(event.startTime);
+      startDateController.text = DateFormat().format(startDateTime);
 
-    final GlobalKey<FormState> _ticketFormKey = GlobalKey<FormState>();
+      endDateTime = DateTime.fromMillisecondsSinceEpoch(event.endTime);
+      endDateController.text = DateFormat().format(endDateTime);
 
-    void handleTicketCreation() {}
-
-    Widget _buildTicketType() {
-      return TextFormField(
-        focusNode: _typeFocus,
-        onFieldSubmitted: (str) => {_feeFocus.requestFocus()},
-        decoration: InputDecoration(
-          filled: true,
-          labelText: Translate.get('type'),
-        ),
-        validator: (String value) {
-          if (value.length <= 0) return Translate.get('field_required');
-        },
-        onSaved: (String value) {
-          ticket['type'] = value;
-        },
-      );
+      participantLimitController.text = '${event.participantLimit}';
     }
-
-    Widget _buildTicketFee() {
-      return TextFormField(
-        focusNode: _feeFocus,
-        onFieldSubmitted: (str) => {handleTicketCreation()},
-        decoration: InputDecoration(
-          prefixText: 'HK\$',
-          filled: true,
-          labelText: Translate.get('fee'),
-        ),
-        inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
-        validator: (String value) {
-          if (value.length <= 0) return Translate.get('field_required');
-        },
-        onSaved: (String value) {
-          ticket['fee'] = int.tryParse(value);
-        },
-      );
-    }
-
-    bool handleSubmit() {
-      if (!_ticketFormKey.currentState.validate()) {
-        return false;
-      }
-      _ticketFormKey.currentState.save();
-      return true;
-    }
-
-    return await showDialog(
-      context: context,
-      builder: (_) => new AlertDialog(
-        title: new Text(Translate.get('add_ticket')),
-        content: Form(
-          key: _ticketFormKey,
-          child: Container(
-            constraints: BoxConstraints(maxHeight: 192),
-            child: Column(
-              children: [
-                _buildTicketType(),
-                Container(height: 16),
-                _buildTicketFee(),
-              ],
-            ),
-          ),
-        ),
-        actions: <Widget>[
-          FlatButton(
-            child: Text(Translate.get('cancel')),
-            onPressed: () {
-              Navigator.of(context).pop(null);
-            },
-          ),
-          FlatButton(
-            child: Text(Translate.get('ok')),
-            onPressed: () {
-              if (handleSubmit()) Navigator.of(context).pop(ticket);
-            },
-          )
-        ],
-      ),
-    );
   }
 
   @override
   void initState() {
+    core();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      loading: loading,
-      pageTitle: PageTitles.createEvent,
+      loading: updateLoading || initiateLoading,
+      pageTitle: PageTitles.editEvent,
       body: SingleChildScrollView(
         child: Center(
           child: Container(
@@ -431,51 +390,64 @@ class _CreateEventPageState extends State<CreateEventPage> {
                   padding: EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        Translate.get('create_event'),
-                        style: Theme.of(context).textTheme.headline5,
-                      ),
-                      Divider(),
-                      Form(
-                          key: _formKey,
-                          child: Column(
-                            children: [
-                              Container(height: 16),
-                              _buildEventName(),
-                              Container(height: 16),
-                              _buildEventDescription(),
-                              Container(height: 16),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Flexible(child: _buildEventVenue(), flex: 1),
-                                  Container(width: 16),
-                                  Flexible(child: _buildEventTheme(), flex: 1)
-                                ],
-                              ),
-                              Container(height: 16),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Flexible(
-                                      child: _buildEventStartTime(), flex: 1),
-                                  Container(width: 16),
-                                  Flexible(child: _buildEventEndTime(), flex: 1)
-                                ],
-                              ),
-                              Container(height: 16),
-                              _buildEventParticipantLimit(),
-                              Container(height: 16),
-                              _buildTicketAdder(),
-                              Container(height: 16),
-                              RaisedButton(
-                                child: Text(Translate.get('submit')),
-                                onPressed: !loading ? handleCreation : null,
-                              ),
-                            ],
-                          ))
-                    ],
+                    children: initiateLoading
+                        ? [
+                            Text('Loading'),
+                          ]
+                        : [
+                            Text(
+                              Translate.get('edit_event'),
+                              style: Theme.of(context).textTheme.headline5,
+                            ),
+                            Divider(),
+                            Form(
+                                key: _formKey,
+                                child: Column(
+                                  children: [
+                                    Container(height: 16),
+                                    _buildEventName(),
+                                    Container(height: 16),
+                                    _buildEventDescription(),
+                                    Container(height: 16),
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Flexible(
+                                            child: _buildEventVenue(), flex: 1),
+                                        Container(width: 16),
+                                        Flexible(
+                                            child: _buildEventTheme(), flex: 1)
+                                      ],
+                                    ),
+                                    Container(height: 16),
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Flexible(
+                                            child: _buildEventStartTime(),
+                                            flex: 1),
+                                        Container(width: 16),
+                                        Flexible(
+                                            child: _buildEventEndTime(),
+                                            flex: 1)
+                                      ],
+                                    ),
+                                    Container(height: 16),
+                                    _buildEventParticipantLimit(),
+                                    Container(height: 16),
+                                    _buildTicketAdder(),
+                                    Container(height: 16),
+                                    RaisedButton(
+                                      child: Text(Translate.get('update')),
+                                      onPressed: !updateLoading
+                                          ? handleCreation
+                                          : null,
+                                    ),
+                                  ],
+                                ))
+                          ],
                   ),
                 ),
               ),

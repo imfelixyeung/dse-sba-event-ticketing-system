@@ -2,6 +2,7 @@ import 'package:event_ticketing_system/apis/ets.dart';
 import 'package:event_ticketing_system/pages/account_page.dart';
 import 'package:event_ticketing_system/pages/create_event_page.dart';
 import 'package:event_ticketing_system/pages/created_events_page.dart';
+import 'package:event_ticketing_system/pages/edit_event_page.dart';
 import 'package:event_ticketing_system/pages/event_details_page.dart';
 import 'package:event_ticketing_system/pages/joined_events_page.dart';
 import 'package:event_ticketing_system/pages/login_page.dart';
@@ -92,6 +93,13 @@ class MaterialAppWithTheme extends StatelessWidget {
           if (eventId != null && eventId != '')
             return MaterialPageRoute(builder: (_) => EventDetailsPage(eventId));
         }
+
+        if (routeSettings.name.startsWith(RouteNames.editEvent)) {
+          String eventId = routeSettings.name.split('/')[2];
+          if (eventId != null && eventId != '')
+            return MaterialPageRoute(builder: (_) => EditEventPage(eventId));
+        }
+
         return MaterialPageRoute(builder: (_) => HomePage());
       },
     );

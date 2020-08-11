@@ -9,7 +9,7 @@ var endpoint = 'http://dynamic.felixyeung2002.com';
 class EtsAPI {
   static Future<bool> ping() async {
     try {
-      var response = await http.get('$endpoint/api/ping/');
+      var response = await http.get('$endpoint/api/ping');
       return true;
     } catch (e) {
       return false;
@@ -17,31 +17,31 @@ class EtsAPI {
   }
 
   static Future<Map> login(FeliUser user) async {
-    var response = await http.post('$endpoint/api/login/',
+    var response = await http.post('$endpoint/api/login',
         body: json.encode({"auth": user.toMap()}));
     return json.decode(response.body);
   }
 
   static Future<Map> register(FeliUser user) async {
-    var response = await http.post('$endpoint/api/register/',
+    var response = await http.post('$endpoint/api/register',
         body: json.encode({"register": user.toMap()}));
     return json.decode(response.body);
   }
 
   static Future<List> getEvents() async {
-    var response = await http.get('$endpoint/api/events/get/');
+    var response = await http.get('$endpoint/api/events/get');
     var jsonResponse = json.decode(response.body);
     return jsonResponse['data'];
   }
 
   static Future<Map> getEvent(String id) async {
-    var response = await http.get('$endpoint/api/event/$id/get/');
+    var response = await http.get('$endpoint/api/event/$id/get');
     var jsonResponse = json.decode(response.body);
     return jsonResponse['data'];
   }
 
   static Future<Map> joinEvent(String eventId, String ticketId) async {
-    var response = await http.post('$endpoint/api/event/$eventId/join/',
+    var response = await http.post('$endpoint/api/event/$eventId/join',
         body: json.encode({
           "ticket_id": ticketId,
           "auth": appUser.toMap(),
@@ -51,7 +51,7 @@ class EtsAPI {
   }
 
   static Future<Map> leaveEvent(String eventId) async {
-    var response = await http.post('$endpoint/api/event/$eventId/leave/',
+    var response = await http.post('$endpoint/api/event/$eventId/leave',
         body: json.encode({"auth": appUser.toMap()}));
     var jsonResponse = json.decode(response.body);
     return jsonResponse;
@@ -65,15 +65,21 @@ class EtsAPI {
   }
 
   static Future<Map> createEvent(FeliEvent event) async {
-    // http://localhost:8081/api/event/post/
-    var response = await http.post('$endpoint/api/event/post/',
+    var response = await http.post('$endpoint/api/event/post',
+        body: json.encode({"auth": appUser.toMap(), "event": event.toMap()}));
+    var jsonResponse = json.decode(response.body);
+    return jsonResponse;
+  }
+
+  static Future<Map> updateEvent(FeliEvent event) async {
+    var response = await http.post('$endpoint/api/event/${event.id}/update',
         body: json.encode({"auth": appUser.toMap(), "event": event.toMap()}));
     var jsonResponse = json.decode(response.body);
     return jsonResponse;
   }
 
   static Future shutdownServer() async {
-    var response = await http.post('$endpoint/api/shutdown/',
+    var response = await http.post('$endpoint/api/shutdown',
         body: json.encode({"auth": appUser.toMap()}));
     var jsonResponse = json.decode(response.body);
     return jsonResponse['message'];

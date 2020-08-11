@@ -6,6 +6,26 @@ class Translate {
       'en-gb': '',
       'zh-hk': '',
     },
+    'not_authenticated': {
+      'en-gb': 'Not Authenticated',
+      'zh-hk': '未認證',
+    },
+    'insufficient_permission': {
+      'en-gb': 'Insufficient Permission',
+      'zh-hk': '權限不足',
+    },
+    'update': {
+      'en-gb': 'Update',
+      'zh-hk': '更新',
+    },
+    'edit_event': {
+      'en-gb': 'Edit Event',
+      'zh-hk': '更改活動',
+    },
+    'remove_event': {
+      'en-gb': 'Remove Event',
+      'zh-hk': '刪除活動',
+    },
     'address_selector': {
       'en-gb': 'Address Selector',
       'zh-hk': '地址選擇器',

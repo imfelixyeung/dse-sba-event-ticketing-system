@@ -210,7 +210,6 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
 
       alreadyJoined = joinedTicket != null;
     }
-    print('test');
     core();
   }
 

@@ -97,9 +97,23 @@ class _CreatedEventsPageState extends State<CreatedEventsPage> {
         Navigator.of(context)
             .pushNamed(RouteNames.eventDetails + '/${event['event_id']}');
       },
-      trailing: IconButton(
-        icon: Icon(Icons.remove_circle_outline),
-        onPressed: !loading ? () => removeEvent(event['event_id']) : null,
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            tooltip: Translate.get('edit_event'),
+            icon: Icon(Icons.edit),
+            onPressed: () {
+              Navigator.of(context)
+                  .pushNamed(RouteNames.editEvent + '/${event['event_id']}');
+            },
+          ),
+          IconButton(
+            tooltip: Translate.get('remove_event'),
+            icon: Icon(Icons.remove_circle_outline),
+            onPressed: !loading ? () => removeEvent(event['event_id']) : null,
+          ),
+        ],
       ),
     );
   }
