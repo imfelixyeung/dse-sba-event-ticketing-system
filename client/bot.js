@@ -16,6 +16,7 @@ const etsBotClientId = "741594110980259841";
 const actions = {
     getEventLength: "ets.events.length.get",
     getEvents: "ets.events.get",
+    getEventsRandom: "ets.events.random",
     getUserLength: "ets.users.length.get",
     ping: "ets.ping",
     clearchat: "ets.chat.clear",
@@ -73,6 +74,23 @@ client.on("message", async (msg) => {
         let events = await EtsAPI.getEvents();
         if (events) {
             msg.reply('\n' + EtsAPI.buildEventListInfo(events));
+        } else {
+            msg.reply("An error occurred");
+        }
+        return;
+    }
+
+    if (action == actions.getEventsRandom) {
+        let events = await EtsAPI.getEvents();
+        if (events) {
+            if (events.length > 0) {
+                let targetEvent =
+                    events[Math.floor(Math.random() * events.length)];
+                console.log(targetEvent)
+                msg.reply("\n" + EtsAPI.buildEventInfo(targetEvent));
+            } else {
+                msg.reply('There are no events..')
+            }
         } else {
             msg.reply("An error occurred");
         }
