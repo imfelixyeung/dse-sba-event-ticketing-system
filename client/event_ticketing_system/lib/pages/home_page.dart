@@ -3,6 +3,7 @@ import 'package:event_ticketing_system/blocs/theme.dart';
 import 'package:event_ticketing_system/constants/app_info.dart';
 import 'package:event_ticketing_system/constants/route_names.dart';
 import 'package:event_ticketing_system/misc/launch_url.dart';
+import 'package:event_ticketing_system/misc/search_delegate.dart';
 import 'package:event_ticketing_system/misc/show_address_selector_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -22,6 +23,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Widget> eventWidgets = [];
   bool loading = true;
+  List rawEvents = [];
 
   @override
   void setState(fn) {
@@ -32,6 +34,9 @@ class _HomePageState extends State<HomePage> {
 
   getData() async {
     List events = await EtsAPI.getEvents();
+    if (events != null) {
+      rawEvents = events;
+    }
     setState(() {
       loading = false;
     });
@@ -122,6 +127,19 @@ class _HomePageState extends State<HomePage> {
     return AppScaffold(
       loading: loading,
       pageTitle: PageTitles.home,
+      actions: [
+        IconButton(
+          icon: Icon(Icons.search),
+          onPressed: !loading
+              ? () {
+                  showSearch(
+                    context: context,
+                    delegate: EventSearch(rawEvents),
+                  );
+                }
+              : null,
+        ),
+      ],
       body: SingleChildScrollView(
         child: Center(
           child: Container(
