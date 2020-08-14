@@ -10,7 +10,7 @@
   1. first **salted**
   2. and then **hashed**
 - Server authenticate users by salting and hashing input password and compared to the original salted password
-- This uses concepts in cryptography
+- This uses various concepts in cryptography
 
 ## Custom Stack Tracer
 Since Pascal doesn't really support runtime stacktrace, the custom stack tracer allows developers to view where went wrong easily
