@@ -230,7 +230,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget _buildConfirmPassword() {
     return TextFormField(
       focusNode: _passwordConfirmFocus,
-      onFieldSubmitted: (str) => handleRegister(),
+      // onFieldSubmitted: (str) => handleRegister(),
       obscureText: true,
       keyboardType: TextInputType.text,
       enabled: !loading,
@@ -334,16 +334,32 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ],
                               ),
                               Container(height: 16),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Flexible(
-                                      child: _buildRadioParticipator(),
-                                      flex: 1),
-                                  Container(width: 16),
-                                  Flexible(
-                                      child: _buildRadioOrganiser(), flex: 1)
-                                ],
+                              // Row(
+                              //   crossAxisAlignment: CrossAxisAlignment.start,
+                              //   children: [
+                              //     Flexible(
+                              //         child: _buildRadioParticipator(),
+                              //         flex: 1),
+                              //     Container(width: 16),
+                              //     Flexible(
+                              //         child: _buildRadioOrganiser(), flex: 1)
+                              //   ],
+                              // ),
+                              Card(
+                                color:
+                                    Theme.of(context).scaffoldBackgroundColor,
+                                child: Theme(
+                                  data: Theme.of(context).copyWith(
+                                      dividerColor: Colors.transparent),
+                                  child: ExpansionTile(
+                                    initiallyExpanded: true,
+                                    title: Text(Translate.get('account_type')),
+                                    children: [
+                                      _buildRadioParticipator(),
+                                      _buildRadioOrganiser(),
+                                    ],
+                                  ),
+                                ),
                               ),
                               Container(height: 16),
                               RaisedButton(

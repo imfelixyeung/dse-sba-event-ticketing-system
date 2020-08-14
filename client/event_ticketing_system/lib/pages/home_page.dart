@@ -52,9 +52,17 @@ class _HomePageState extends State<HomePage> {
                   Theme.of(context).copyWith(dividerColor: Colors.transparent),
               child: ExpansionTile(
                 // backgroundColor: Colors.black,
-                trailing: Text(
-                    '${event.participants.length}/${event.participantLimit} ${Translate.get('joined')} ${event.waitingList.length} ${Translate.get('queued')}'),
+                // trailing: Text(
+                //   '${event.participants.length}/${event.participantLimit} ${Translate.get('joined')} ${event.waitingList.length} ${Translate.get('queued')}',
+                //   style: Theme.of(context)
+                //       .textTheme
+                //       .subtitle2
+                //       .copyWith(fontSize: 12.0),
+                // ),
                 title: Text('${event.name}'),
+                subtitle: Text(
+                  '${event.participants.length}/${event.participantLimit} ${Translate.get('joined')} ${event.waitingList.length} ${Translate.get('queued')}',
+                ),
                 initiallyExpanded: false,
                 children: [
                   ListTile(

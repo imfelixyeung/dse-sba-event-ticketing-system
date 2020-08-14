@@ -84,8 +84,23 @@
                     margin-top: 24px;
                 }
             }
-            .launch {
-                font-size: 28px;
+
+            .launchers {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+
+                gap: 1px 1px;
+                grid-template-areas: ". .";
+            }
+            .launchers .launch {
+                display: grid;
+                justify-items: center;
+                margin: 4px;
+                font-size: 16px;
+                padding: 16px;
+                background-color: black;
+                border-radius: 32px;
+                color: white;
             }
         </style>
     </head>
@@ -93,7 +108,14 @@
         <h1>Event Ticketing System</h1>
         <h2>Site under construction</h2>
         <p>Have a look at the <a href="/docs/">documentation</a></p>
-        <p class="launch">Launch <a href="/app/">app</a></p>
+        <div class="launchers">
+            <div class="launch">
+                <a href="/app/app.apk">Download for Android (APK)</a>
+            </div>
+            <div class="launch">
+                <a href="/app/">Launch ETS in your browser</a>
+            </div>
+        </div>
         <p>
             Visit other sites in the meantime:
         </p>

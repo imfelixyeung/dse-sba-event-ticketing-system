@@ -58,14 +58,16 @@ class AppScaffold extends StatelessWidget {
                       ),
                     ),
                     if (loading)
-                      ClipRRect(
-                        borderRadius:
-                            BorderRadius.vertical(bottom: Radius.circular(4)),
-                        child: SizedBox(
-                          height: 4,
-                          child: LinearProgressIndicator(),
-                        ),
-                      ),
+                      displayMobileLayout
+                          ? LinearProgressIndicator()
+                          : ClipRRect(
+                              borderRadius: BorderRadius.vertical(
+                                  bottom: Radius.circular(4)),
+                              child: SizedBox(
+                                height: 4,
+                                child: LinearProgressIndicator(),
+                              ),
+                            ),
                   ],
                 ),
               ),
