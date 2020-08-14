@@ -79,56 +79,59 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
   Widget _buildEventDetails() {
     return Card(
       color: Theme.of(context).scaffoldBackgroundColor,
-      child: ExpansionTile(
-        initiallyExpanded: true,
-        title: Text(Translate.get('event_info')),
-        children: [
-          ListTile(
-            title: Text(Translate.get('name')),
-            subtitle: Text('${feliEvent.name}'),
-          ),
-          ListTile(
-            title: Text(Translate.get('description')),
-            subtitle: Text('${feliEvent.description}'),
-          ),
-          ListTile(
-            dense: true,
-            title: Text(Translate.get('organiser')),
-            subtitle: Text('${feliEvent.organiser}'),
-          ),
-          ListTile(
-            dense: true,
-            title: Text(Translate.get('start_date_time')),
-            subtitle: Text(DateFormat().format(
-                DateTime.fromMillisecondsSinceEpoch(feliEvent.startTime))),
-          ),
-          ListTile(
-            dense: true,
-            title: Text(Translate.get('end_date_time')),
-            subtitle: Text(DateFormat().format(
-                DateTime.fromMillisecondsSinceEpoch(feliEvent.endTime))),
-          ),
-          ListTile(
-            dense: true,
-            title: Text(Translate.get('venue')),
-            subtitle: Text('${feliEvent.venue}'),
-          ),
-          ListTile(
-            dense: true,
-            title: Text(Translate.get('theme')),
-            subtitle: Text('${feliEvent.theme}'),
-          ),
-          ListTile(
-            dense: true,
-            title: Text(Translate.get('participant_limit')),
-            subtitle: Text('${feliEvent.participantLimit}'),
-          ),
-          ListTile(
-            dense: true,
-            title: Text(Translate.get('id')),
-            subtitle: Text('${feliEvent.id}'),
-          ),
-        ],
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          initiallyExpanded: true,
+          title: Text(Translate.get('event_info')),
+          children: [
+            ListTile(
+              title: Text(Translate.get('name')),
+              subtitle: Text('${feliEvent.name}'),
+            ),
+            ListTile(
+              title: Text(Translate.get('description')),
+              subtitle: Text('${feliEvent.description}'),
+            ),
+            ListTile(
+              // dense: true,
+              title: Text(Translate.get('organiser')),
+              subtitle: Text('${feliEvent.organiser}'),
+            ),
+            ListTile(
+              // dense: true,
+              title: Text(Translate.get('start_date_time')),
+              subtitle: Text(DateFormat().format(
+                  DateTime.fromMillisecondsSinceEpoch(feliEvent.startTime))),
+            ),
+            ListTile(
+              // dense: true,
+              title: Text(Translate.get('end_date_time')),
+              subtitle: Text(DateFormat().format(
+                  DateTime.fromMillisecondsSinceEpoch(feliEvent.endTime))),
+            ),
+            ListTile(
+              // dense: true,
+              title: Text(Translate.get('venue')),
+              subtitle: Text('${feliEvent.venue}'),
+            ),
+            ListTile(
+              // dense: true,
+              title: Text(Translate.get('theme')),
+              subtitle: Text('${feliEvent.theme}'),
+            ),
+            ListTile(
+              // dense: true,
+              title: Text(Translate.get('participant_limit')),
+              subtitle: Text('${feliEvent.participantLimit}'),
+            ),
+            ListTile(
+              dense: true,
+              title: Text(Translate.get('id')),
+              subtitle: Text('${feliEvent.id}'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -136,16 +139,19 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
   Widget _buildEventTickets() {
     return Card(
       color: Theme.of(context).scaffoldBackgroundColor,
-      child: ExpansionTile(
-        initiallyExpanded: true,
-        title: Text(Translate.get('tickets')),
-        children: tickets.map((ticket) {
-          return ListTile(
-            dense: true,
-            title: Text('${ticket.type}'),
-            subtitle: Text('HK\$${ticket.fee}'),
-          );
-        }).toList(),
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          initiallyExpanded: true,
+          title: Text(Translate.get('tickets')),
+          children: tickets.map((ticket) {
+            return ListTile(
+              dense: true,
+              title: Text('${ticket.type}'),
+              subtitle: Text('HK\$${ticket.fee}'),
+            );
+          }).toList(),
+        ),
       ),
     );
   }
@@ -172,21 +178,24 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
       color: Theme.of(context).scaffoldBackgroundColor,
       child: IgnorePointer(
         ignoring: alreadyJoined,
-        child: ExpansionTile(
-          initiallyExpanded: true,
-          title: Text(
-            '${Translate.get(!alreadyJoined ? 'join_now' : 'already_joined')}' +
-                ' ${(alreadyJoined && joinedTicket['status'] == 'pending' ? Translate.get(joinedTicket['status']) : '')}',
+        child: Theme(
+          data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+          child: ExpansionTile(
+            initiallyExpanded: true,
+            title: Text(
+              '${Translate.get(!alreadyJoined ? 'join_now' : 'already_joined')}' +
+                  ' ${(alreadyJoined && joinedTicket['status'] == 'pending' ? Translate.get(joinedTicket['status']) : '')}',
+            ),
+            children: [
+              ...tickets.map((ticket) => _buildRadioTicket(ticket)).toList(),
+              RaisedButton(
+                child: Text(Translate.get('join')),
+                onPressed: (ticketGroup != '' && !alreadyJoined && !joinLoading)
+                    ? joinEvent
+                    : null,
+              )
+            ],
           ),
-          children: [
-            ...tickets.map((ticket) => _buildRadioTicket(ticket)).toList(),
-            RaisedButton(
-              child: Text(Translate.get('join')),
-              onPressed: (ticketGroup != '' && !alreadyJoined && !joinLoading)
-                  ? joinEvent
-                  : null,
-            )
-          ],
         ),
       ),
     );

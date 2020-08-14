@@ -304,20 +304,23 @@ class _CreateEventPageState extends State<CreateEventPage> {
 
     return Card(
       color: Theme.of(context).scaffoldBackgroundColor,
-      child: ExpansionTile(
-        trailing: IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () async {
-              Map newTicket = await showTicketCreatorDialog();
-              if (newTicket != null) {
-                setState(() {
-                  event.tickets.add(newTicket);
-                });
-              }
-            }),
-        initiallyExpanded: true,
-        title: Text(Translate.get('tickets')),
-        children: [...ticketWidgets],
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          trailing: IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () async {
+                Map newTicket = await showTicketCreatorDialog();
+                if (newTicket != null) {
+                  setState(() {
+                    event.tickets.add(newTicket);
+                  });
+                }
+              }),
+          initiallyExpanded: true,
+          title: Text(Translate.get('tickets')),
+          children: [...ticketWidgets],
+        ),
       ),
     );
   }

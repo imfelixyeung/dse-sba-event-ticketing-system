@@ -78,24 +78,27 @@ class _JoinedEventsPageState extends State<JoinedEventsPage> {
   Widget _buildPendingEvents() {
     return Card(
       color: Theme.of(context).scaffoldBackgroundColor,
-      child: ExpansionTile(
-        leading: ExcludeSemantics(
-          child: CircleAvatar(
-            backgroundColor: Theme.of(context).accentColor,
-            child: Text('${appUser.pendingEvents.length}',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .copyWith(color: Colors.black)),
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          leading: ExcludeSemantics(
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).accentColor,
+              child: Text('${appUser.pendingEvents.length}',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      .copyWith(color: Colors.black)),
+            ),
           ),
+          initiallyExpanded: true,
+          title: Text(Translate.get('pending_events')),
+          children: [
+            ...appUser.pendingEvents.map((event) {
+              return _buildEventListTile(event);
+            }).toList()
+          ],
         ),
-        initiallyExpanded: true,
-        title: Text(Translate.get('pending_events')),
-        children: [
-          ...appUser.pendingEvents.map((event) {
-            return _buildEventListTile(event);
-          }).toList()
-        ],
       ),
     );
   }
@@ -103,24 +106,27 @@ class _JoinedEventsPageState extends State<JoinedEventsPage> {
   Widget _buildJoinedEvents() {
     return Card(
       color: Theme.of(context).scaffoldBackgroundColor,
-      child: ExpansionTile(
-        leading: ExcludeSemantics(
-          child: CircleAvatar(
-            backgroundColor: Theme.of(context).accentColor,
-            child: Text('${appUser.joinedEvents.length}',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .copyWith(color: Colors.black)),
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          leading: ExcludeSemantics(
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).accentColor,
+              child: Text('${appUser.joinedEvents.length}',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      .copyWith(color: Colors.black)),
+            ),
           ),
+          initiallyExpanded: true,
+          title: Text(Translate.get('joined_events')),
+          children: [
+            ...appUser.joinedEvents.map((event) {
+              return _buildEventListTile(event);
+            }).toList()
+          ],
         ),
-        initiallyExpanded: true,
-        title: Text(Translate.get('joined_events')),
-        children: [
-          ...appUser.joinedEvents.map((event) {
-            return _buildEventListTile(event);
-          }).toList()
-        ],
       ),
     );
   }

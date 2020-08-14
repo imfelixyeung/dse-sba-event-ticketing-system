@@ -1,3 +1,4 @@
+import 'package:event_ticketing_system/apis/translations.dart';
 import 'package:event_ticketing_system/constants/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:event_ticketing_system/apis/ets.dart';
@@ -8,15 +9,24 @@ class EventSearch extends SearchDelegate<String> {
   EventSearch(this.events);
 
   @override
+  String get searchFieldLabel => Translate.get('search');
+
+  @override
   ThemeData appBarTheme(BuildContext context) {
-    // TODO: implement appBarTheme
-    return Theme.of(context);
+    final theme = Theme.of(context);
+    return theme.copyWith(
+      textTheme: theme.textTheme.copyWith(
+          headline6: theme.textTheme.headline6.copyWith(
+        color: theme.textTheme.bodyText1.color,
+      )),
+    );
   }
 
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
+        tooltip: Translate.get('clear'),
         icon: Icon(Icons.clear),
         onPressed: () {
           query = '';
@@ -28,6 +38,7 @@ class EventSearch extends SearchDelegate<String> {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
+        tooltip: Translate.get('back'),
         icon: AnimatedIcon(
           icon: AnimatedIcons.menu_arrow,
           progress: transitionAnimation,

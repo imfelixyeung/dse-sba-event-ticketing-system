@@ -47,65 +47,70 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Card(
             color: Theme.of(context).scaffoldBackgroundColor,
-            child: ExpansionTile(
-              trailing: Text(
-                  '${event.participants.length}/${event.participantLimit} ${Translate.get('joined')} ${event.waitingList.length} ${Translate.get('queued')}'),
-              initiallyExpanded: false,
-              title: Text('${event.name}'),
-              children: [
-                ListTile(
-                  title: Text(Translate.get('name')),
-                  subtitle: Text('${event.name}'),
-                ),
-                ListTile(
-                  title: Text(Translate.get('description')),
-                  subtitle: Text('${event.description}'),
-                ),
-                ListTile(
-                  dense: true,
-                  title: Text(Translate.get('organiser')),
-                  subtitle: Text('${event.organiser}'),
-                ),
-                ListTile(
-                  dense: true,
-                  title: Text(Translate.get('start_date_time')),
-                  subtitle: Text(DateFormat().format(
-                      DateTime.fromMillisecondsSinceEpoch(event.startTime))),
-                ),
-                ListTile(
-                  dense: true,
-                  title: Text(Translate.get('end_date_time')),
-                  subtitle: Text(DateFormat().format(
-                      DateTime.fromMillisecondsSinceEpoch(event.endTime))),
-                ),
-                ListTile(
-                  dense: true,
-                  title: Text(Translate.get('venue')),
-                  subtitle: Text('${event.venue}'),
-                ),
-                ListTile(
-                  dense: true,
-                  title: Text(Translate.get('theme')),
-                  subtitle: Text('${event.theme}'),
-                ),
-                ListTile(
-                  dense: true,
-                  title: Text(Translate.get('participant_limit')),
-                  subtitle: Text('${event.participantLimit}'),
-                ),
-                ListTile(
-                  dense: true,
-                  title: Text(Translate.get('id')),
-                  subtitle: Text('${event.id}'),
-                ),
-                RaisedButton(
-                  child: Text(Translate.get('view_details')),
-                  onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(RouteNames.eventDetails + '/${event.id}');
-                  },
-                )
-              ],
+            child: Theme(
+              data:
+                  Theme.of(context).copyWith(dividerColor: Colors.transparent),
+              child: ExpansionTile(
+                // backgroundColor: Colors.black,
+                trailing: Text(
+                    '${event.participants.length}/${event.participantLimit} ${Translate.get('joined')} ${event.waitingList.length} ${Translate.get('queued')}'),
+                title: Text('${event.name}'),
+                initiallyExpanded: false,
+                children: [
+                  ListTile(
+                    title: Text(Translate.get('name')),
+                    subtitle: Text('${event.name}'),
+                  ),
+                  ListTile(
+                    title: Text(Translate.get('description')),
+                    subtitle: Text('${event.description}'),
+                  ),
+                  ListTile(
+                    dense: true,
+                    title: Text(Translate.get('organiser')),
+                    subtitle: Text('${event.organiser}'),
+                  ),
+                  ListTile(
+                    dense: true,
+                    title: Text(Translate.get('start_date_time')),
+                    subtitle: Text(DateFormat().format(
+                        DateTime.fromMillisecondsSinceEpoch(event.startTime))),
+                  ),
+                  ListTile(
+                    dense: true,
+                    title: Text(Translate.get('end_date_time')),
+                    subtitle: Text(DateFormat().format(
+                        DateTime.fromMillisecondsSinceEpoch(event.endTime))),
+                  ),
+                  ListTile(
+                    dense: true,
+                    title: Text(Translate.get('venue')),
+                    subtitle: Text('${event.venue}'),
+                  ),
+                  ListTile(
+                    dense: true,
+                    title: Text(Translate.get('theme')),
+                    subtitle: Text('${event.theme}'),
+                  ),
+                  ListTile(
+                    dense: true,
+                    title: Text(Translate.get('participant_limit')),
+                    subtitle: Text('${event.participantLimit}'),
+                  ),
+                  ListTile(
+                    dense: true,
+                    title: Text(Translate.get('id')),
+                    subtitle: Text('${event.id}'),
+                  ),
+                  RaisedButton(
+                    child: Text(Translate.get('view_details')),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushNamed(RouteNames.eventDetails + '/${event.id}');
+                    },
+                  )
+                ],
+              ),
             ),
           ),
         ));
@@ -129,6 +134,7 @@ class _HomePageState extends State<HomePage> {
       pageTitle: PageTitles.home,
       actions: [
         IconButton(
+          tooltip: Translate.get('search'),
           icon: Icon(Icons.search),
           onPressed: !loading
               ? () {

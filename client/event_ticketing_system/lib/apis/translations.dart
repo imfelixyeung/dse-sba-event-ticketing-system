@@ -6,6 +6,14 @@ class Translate {
       'en-gb': '',
       'zh-hk': '',
     },
+    'search': {
+      'en-gb': 'Search',
+      'zh-hk': '搜索',
+    },
+    'clear': {
+      'en-gb': 'Clear',
+      'zh-hk': '清除',
+    },
     'not_authenticated': {
       'en-gb': 'Not Authenticated',
       'zh-hk': '未認證',

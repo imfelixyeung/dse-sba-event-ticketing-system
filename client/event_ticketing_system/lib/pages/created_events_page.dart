@@ -121,24 +121,27 @@ class _CreatedEventsPageState extends State<CreatedEventsPage> {
   Widget _buildCreatedEvents() {
     return Card(
       color: Theme.of(context).scaffoldBackgroundColor,
-      child: ExpansionTile(
-        leading: ExcludeSemantics(
-          child: CircleAvatar(
-            backgroundColor: Theme.of(context).accentColor,
-            child: Text('${appUser.createdEvents.length}',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .copyWith(color: Colors.black)),
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          leading: ExcludeSemantics(
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).accentColor,
+              child: Text('${appUser.createdEvents.length}',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      .copyWith(color: Colors.black)),
+            ),
           ),
+          initiallyExpanded: true,
+          title: Text(Translate.get('created_events')),
+          children: [
+            ...appUser.createdEvents.map((event) {
+              return _buildEventListTile(event);
+            }).toList()
+          ],
         ),
-        initiallyExpanded: true,
-        title: Text(Translate.get('created_events')),
-        children: [
-          ...appUser.createdEvents.map((event) {
-            return _buildEventListTile(event);
-          }).toList()
-        ],
       ),
     );
   }

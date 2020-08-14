@@ -340,10 +340,13 @@ class _EditEventPageState extends State<EditEventPage> {
 
     return Card(
       color: Theme.of(context).scaffoldBackgroundColor,
-      child: ExpansionTile(
-        initiallyExpanded: true,
-        title: Text(Translate.get('tickets')),
-        children: [...ticketWidgets],
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          initiallyExpanded: true,
+          title: Text(Translate.get('tickets')),
+          children: [...ticketWidgets],
+        ),
       ),
     );
   }
