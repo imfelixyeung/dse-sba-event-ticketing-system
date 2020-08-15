@@ -111,6 +111,17 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                     Icon(Icons.event),
                     widget.permanentlyDisplay,
                   ),
+                if (['admin', 'organiser', 'participator']
+                    .contains(appUser.accessLevel))
+                  FeliListTile(
+                    _selectedRoute == RouteNames.analytics,
+                    () async {
+                      await _navigateTo(context, RouteNames.analytics);
+                    },
+                    PageTitles.analytics,
+                    Icon(Icons.insert_chart),
+                    widget.permanentlyDisplay,
+                  ),
                 Divider(thickness: 2),
                 FeliListTile(
                   _selectedRoute == RouteNames.account,

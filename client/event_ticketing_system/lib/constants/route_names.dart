@@ -9,4 +9,5 @@ class RouteNames {
   static const String joinedEvents = '/joinedEvents';
   static const String createEvent = '/createEvent';
   static const String editEvent = '/editEvent';
+  static const String analytics = '/analytics';
 }

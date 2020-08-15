@@ -1,5 +1,6 @@
 import 'package:event_ticketing_system/apis/ets.dart';
 import 'package:event_ticketing_system/pages/account_page.dart';
+import 'package:event_ticketing_system/pages/analytics_page.dart';
 import 'package:event_ticketing_system/pages/create_event_page.dart';
 import 'package:event_ticketing_system/pages/created_events_page.dart';
 import 'package:event_ticketing_system/pages/edit_event_page.dart';
@@ -86,6 +87,7 @@ class MaterialAppWithTheme extends StatelessWidget {
         RouteNames.joinedEvents: (_) => JoinedEventsPage(),
         RouteNames.createdEvents: (_) => CreatedEventsPage(),
         RouteNames.createEvent: (_) => CreateEventPage(),
+        RouteNames.analytics: (_) => AnalyticsPage(),
       },
       onGenerateRoute: (RouteSettings routeSettings) {
         if (routeSettings.name.startsWith(RouteNames.eventDetails)) {

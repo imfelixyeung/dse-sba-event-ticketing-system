@@ -6,6 +6,14 @@ class Translate {
       'en-gb': '',
       'zh-hk': '',
     },
+    'report': {
+      'en-gb': 'Report',
+      'zh-hk': '報告',
+    },
+    'analysis': {
+      'en-gb': 'Analysis',
+      'zh-hk': '分析',
+    },
     'search': {
       'en-gb': 'Search',
       'zh-hk': '搜索',
