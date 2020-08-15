@@ -1,9 +1,19 @@
 const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 const app = express();
-const port = 8000;
 var morgan = require('morgan');
+const http = require('http')
+const https = require('https')
+
+const httpPort = 8000;
+const httpsPort = 443;
 const publicWebFolder = __dirname + "/web";
+const fs = require('fs')
+
+var options = {
+    key: fs.readFileSync("ssl/ets-key.pem"),
+    cert: fs.readFileSync("ssl/ets-cert.pem"),
+};
 
 app.use(morgan('dev'));
 
@@ -12,7 +22,6 @@ app.use(
     createProxyMiddleware({
         target: "http://localhost:8081",
         pathRewrite: (path, req) => {
-            console.log(path);
             return path;
         },
     })
@@ -24,5 +33,12 @@ app.get("/*", (request, response) => {
     response.status(404).sendFile(`${publicWebFolder}/404.html`);
 });
 
+http.createServer(app).listen(httpPort, () =>
+    console.log(`HTTP ETS listening with port ${httpPort}`)
+);
 
-app.listen(port, () => console.log(`ETS listening with port ${port}`));
+https.createServer(options, app).listen(httpsPort, () =>
+    console.log(`HTTPS ETS listening with port ${httpsPort}`)
+);
+
+// app.listen(httpPort, () => console.log(`ETS listening with port ${httpPort}`));
