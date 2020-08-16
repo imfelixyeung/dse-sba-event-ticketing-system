@@ -6,7 +6,7 @@ const http = require('http')
 const https = require('https')
 
 const httpPort = 8000;
-const httpsPort = 443;
+const httpsPort = 8443;
 const publicWebFolder = __dirname + "/web";
 const fs = require('fs')
 
