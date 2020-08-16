@@ -5,8 +5,17 @@ const { EtsAPI } = require("./src/ets");
 
 const token = require("./.discord.json");
 
+const express = require('express');
+const app = express();
+
+
+const port = 8082;
+
+
+
+
 client.once("ready", () => {
-    console.log("ETS Bot Ready");
+    console.log("ETS Discord Bot Ready");
 });
 
 const etsGuildId = "741593546997628970";
@@ -29,9 +38,15 @@ client.on("message", async (msg) => {
 
     const requestMessage = msg.content.toString();
     const requestUserId = msg.author.id.toString();
-    const requestTime = new Date();
 
-  
+    const responses = await getResponses({ requestMessage, requestUserId });
+    responses.forEach(e => msg.reply(e.toString()));
+    
+});
+
+async function getResponses({ requestMessage, requestUserId }) {
+    let responses = [];
+    const requestTime = new Date();
 
     /* 
         Start of DialogFlowAPI
@@ -47,37 +62,37 @@ client.on("message", async (msg) => {
     });
     const responseDialogflowTime = new Date();
 
-    console.log({ requestUserId, requestMessage });
-    console.log({ reply, action, allRequiredParamsPresent, fields });
+    // console.log({ requestUserId, requestMessage });
+    // console.log({ reply, action, allRequiredParamsPresent, fields });
 
-    if (reply && reply != '') msg.reply(reply);
+    if (reply && reply != "") responses.push(reply);
 
-    if (action == actions.clearchat) {
-        msg.delete();
-        const fetched = await msg.channel.messages.fetch({
-            limit: 99,
-        });
-        msg.channel.bulkDelete(fetched);
-    }
+    // if (action == actions.clearchat) {
+    //     msg.delete();
+    //     const fetched = await msg.channel.messages.fetch({
+    //         limit: 99,
+    //     });
+    //     msg.channel.bulkDelete(fetched);
+    // }
 
     if (action == actions.getEventLength) {
         let events = await EtsAPI.getEvents();
         if (events) {
-            msg.reply(`There is a total of ${events.length} events`);
+            responses.push(`There is a total of ${events.length} events`);
         } else {
-            msg.reply("An error occurred");
+            responses.push("An error occurred");
         }
-        return;
+        return responses;
     }
 
     if (action == actions.getEvents) {
         let events = await EtsAPI.getEvents();
         if (events) {
-            msg.reply('\n' + EtsAPI.buildEventListInfo(events));
+            responses.push("\n" + EtsAPI.buildEventListInfo(events));
         } else {
-            msg.reply("An error occurred");
+            responses.push("An error occurred");
         }
-        return;
+        return responses;
     }
 
     if (action == actions.getEventsRandom) {
@@ -86,35 +101,37 @@ client.on("message", async (msg) => {
             if (events.length > 0) {
                 let targetEvent =
                     events[Math.floor(Math.random() * events.length)];
-                console.log(targetEvent)
-                msg.reply("\n" + EtsAPI.buildEventInfo(targetEvent));
+                // console.log(targetEvent);
+                responses.push("\n" + EtsAPI.buildEventInfo(targetEvent));
             } else {
-                msg.reply('There are no events..')
+                responses.push("There are no events..");
             }
         } else {
-            msg.reply("An error occurred");
+            responses.push("An error occurred");
         }
-        return;
+        return responses;
     }
 
     if (action == actions.getUserLength) {
         let events = await EtsAPI.getUsers();
         if (events) {
-            msg.reply(`There is a total of ${events.length} users`);
+            responses.push(`There is a total of ${events.length} users`);
         } else {
-            msg.reply("An error occurred");
+            responses.push("An error occurred");
         }
-        return;
+        return responses;
     }
 
     if (action == actions.ping) {
-        msg.reply(
-            `Pong from Machine Learning Chat Bot! took ${responseDialogflowTime - requestTime}ms`
+        responses.push(
+            `Pong from Machine Learning Chat Bot! took ${
+                responseDialogflowTime - requestTime
+            }ms`
         );
         let events = await EtsAPI.ping();
         if (events) {
             const responseEtsTime = new Date();
-            msg.reply(
+            responses.push(
                 `Pong from Event Ticketing System! took ${
                     responseEtsTime -
                     requestTime -
@@ -122,10 +139,29 @@ client.on("message", async (msg) => {
                 }ms`
             );
         } else {
-            msg.reply("Event Ticketing System is offline");
+            responses.push("Event Ticketing System is offline");
         }
-        return;
+        return responses;
     }
-});
+    return responses
+}
+
+app.get('/api/chatBot',async (req, res) => {
+    let message = req.query.message;
+    if (!message || message.trim() == '') {
+        res.send({
+            "error": "No body"
+        })
+        return;
+    } else {
+        let responses = await getResponses({ requestMessage: message, requestUserId: Math.random().toString() });
+        res.send({
+            request: { message },
+            response: responses
+        })
+    }
+})
+
+app.listen(port, _ => console.log(`Bot Listening on port ${port}`))
 
 client.login(token);
