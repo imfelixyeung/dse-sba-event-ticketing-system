@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0014)about:internet -->
-<html>
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="UTF-8" />
         <title>ETS</title>
         <link
             href="https://fonts.googleapis.com/css?family=Roboto"
@@ -10,124 +9,46 @@
             type="text/css"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <style>
-            body {
-                margin: 0 auto;
-                margin-top: 48px;
-                max-width: 616px;
-                padding: 0 16px;
-                font-family: "Roboto", "Helvetica Neue", sans-serif;
-                font-size: 16px;
-                line-height: 24px;
-                color: rgba(0, 0, 0, 0.87);
+        <script src="history_animate.js" defer></script>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <header>
+            <div class="brand-logo">
+                <img class="logo" src="http://dynamic.felixyeung2002.com/app/assets/icons/icon.svg" alt="" srcset="">
+                <span class="brand">ETS</span>
+            </div>
+        </header>
+        <main>
+            <h1>Tickets made easy</h2>
+                <p>
+                    No matter what event you want to participate or organise,
+                    ETS lets you do that easily
+                </p>
+                <div class="buttons">
+                    <button id="download-android">Download for Android</button>
+                    <button id="launch-web">Open ETS in your browser</button>
+                </div>
+        </main>
+        <footer></footer>
+        <script>
+
+            var links = {
+                "#download-android": "/app/ets.apk",
+                "#launch-web": "/app/"
             }
-            h1,
-            h2,
-            h3 {
-                font-family: "Roboto", "Helvetica Neue", sans-serif;
-                font-weight: 300;
-            }
-            h1 {
-                margin: 24px 0 16px 0;
-                padding: 0 0 16px 0;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-                font-size: 32px;
-                line-height: 36px;
-            }
-            h2 {
-                margin: 24px 0 16px 0;
-                padding: 0;
-                font-size: 20px;
-                line-height: 32px;
-                color: rgba(0, 0, 0, 0.54);
-            }
-            p {
-                margin: 0;
-                margin-bottom: 16px;
-            }
-            ul {
-                margin: 0;
-            }
-            ul li {
-                margin: 0;
-                line-height: 24px;
-                padding-left: 12px;
-            }
-            a {
-                color: #f9a825;
-                text-decoration: underline;
-            }
-            a:hover {
-                text-decoration: underline;
-            }
-            code {
-                display: inline-block;
-                padding: 3px 4px;
-                background-color: #eceff1;
-                border-radius: 3px;
-                font-family: "Roboto Mono", "Liberation Mono", Courier,
-                    monospace;
-                font-size: 14px;
-                line-height: 1;
-            }
-            .logo {
-                display: block;
-                text-align: center;
-                margin-top: 48px;
-                margin-bottom: 24px;
-            }
-            img {
-                width: 160px;
-            }
-            @media screen and (max-width: 600px) {
-                body {
-                    margin-top: 24px;
+
+            for (const key in links) {
+                if (links.hasOwnProperty(key)) {
+                    const href = links[key];
+                    document.querySelector(key).addEventListener('click', () => {
+                        window.location.href = href;
+                    })
+
                 }
             }
 
-            .launchers {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
 
-                gap: 1px 1px;
-                grid-template-areas: ". .";
-            }
-            .launchers .launch {
-                display: grid;
-                justify-items: center;
-                margin: 4px;
-                font-size: 16px;
-                padding: 16px;
-                background-color: black;
-                border-radius: 32px;
-                color: white;
-            }
-        </style>
-        <script src="history_animate.js" defer></script>
-    </head>
-    <body>
-        <h1>Event Ticketing System</h1>
-        <h2>Site under construction</h2>
-        <p>Have a look at the <a href="/docs/">documentation</a></p>
-        <div class="launchers">
-            <div class="launch">
-                <a href="/app/ets.apk">Download for Android (APK)</a>
-            </div>
-            <div class="launch">
-                <a href="/app/">Launch ETS in your browser</a>
-            </div>
-        </div>
-        <p>
-            Visit other sites in the meantime:
-        </p>
-        <ul>
-            <li><a href="ascii/">Ascii Art Generator</a></li>
-            <li><a href="https://covidhk.feli.page/">Covid HK</a></li>
-            <li><a href="https://nexttrain.feli.page/">Next Train</a></li>
-            <li><a href="https://url.feli.page/">URL Shortener</a></li>
-        </ul>
-        <a href="/" class="logo">
-            <img src="/app/assets/icons/icon.svg" />
-        </a>
+        </script>
     </body>
 </html>

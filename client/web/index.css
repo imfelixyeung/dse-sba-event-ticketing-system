@@ -1,0 +1,92 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+header {
+  height: 64px;
+  background-color: black;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+header .brand-logo {
+  margin-left: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .brand-logo .logo {
+  width: 48px;
+}
+
+header .brand-logo .brand {
+  color: white;
+  height: 100%;
+  margin-left: 16px;
+}
+
+main {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+
+main h1 {
+  font-size: 56px;
+  margin: 0 16px;
+  margin-top: 16px;
+}
+
+main p {
+  font-size: 22px;
+  margin: 16px 16px;
+}
+
+main .buttons {
+  margin: 0 8px;
+}
+
+main .buttons button {
+  height: 64px;
+  border: none;
+  border-radius: 500px;
+  background-color: #f9a825;
+  color: black;
+  padding: 20px 60px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 8px;
+  outline: none;
+  cursor: pointer;
+  -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  -webkit-transition: background-color 100ms ease-in-out, -webkit-box-shadow 100ms ease-in-out;
+  transition: background-color 100ms ease-in-out, -webkit-box-shadow 100ms ease-in-out;
+  transition: box-shadow 100ms ease-in-out, background-color 100ms ease-in-out;
+  transition: box-shadow 100ms ease-in-out, background-color 100ms ease-in-out, -webkit-box-shadow 100ms ease-in-out;
+}
+
+main .buttons button:hover {
+  background-color: #fabc57;
+  -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+main .buttons button:active {
+  background-color: #f89e0c;
+  -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+/*# sourceMappingURL=index.css.map */

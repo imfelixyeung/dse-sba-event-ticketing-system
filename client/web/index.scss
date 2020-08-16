@@ -1,0 +1,89 @@
+$feli-orange: #f9a825;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+header {
+    height: 64px;
+    background-color: black;
+    width: 100%;
+
+    display: grid;
+    place-items: center;
+
+    .brand-logo {
+        margin-left: 32px;
+        display: flex;
+        width: 100%;
+        align-items: center;
+
+        .logo {
+            width: 48px;
+        }
+
+        .brand {
+            color: white;
+            height: 100%;
+            margin-left: 16px;
+        }
+    }
+}
+
+main {
+    display: grid;
+    place-items: center;
+    height: 100%;
+
+    h1 {
+        font-size: 56px;
+        margin: 0 16px;
+        margin-top: 16px;
+        
+    }
+    
+    p {
+        font-size: 22px;
+        margin: 16px 16px;
+    }
+
+    .buttons {
+        margin: 0 8px;
+        button {
+            height: 64px;
+            border: none;
+            border-radius: 500px;
+            background-color: $feli-orange;
+            color: black;
+            padding: 20px 60px;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 8px;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+                0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+            transition: box-shadow 100ms ease-in-out,
+                background-color 100ms ease-in-out;
+        }
+    
+        button:hover {
+            background-color: lighten($color: $feli-orange, $amount: 10%);
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+                0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+                0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+                0 1px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+        button:active {
+            background-color: darken($color: $feli-orange, $amount: 5%);
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+                0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+                0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+                0 1px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+    }
+
+}
