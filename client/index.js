@@ -18,6 +18,16 @@ var options = {
 app.use(morgan('dev'));
 
 app.use(
+    "/api/chatBot",
+    createProxyMiddleware({
+        target: "http://localhost:8082",
+        pathRewrite: (path, req) => {
+            return path;
+        },
+    })
+);
+
+app.use(
     "/api",
     createProxyMiddleware({
         target: "http://localhost:8081",
