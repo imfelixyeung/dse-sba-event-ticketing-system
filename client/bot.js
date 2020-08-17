@@ -37,7 +37,7 @@ client.on("message", async (msg) => {
 
     const responses = await getResponses({
         requestMessage: requestMessage,
-        requestUserId: `web-${requestUserId}`,
+        requestUserId: `discord-${requestUserId}`,
     });
     responses.forEach((e) => msg.reply(e.toString()));
 });
