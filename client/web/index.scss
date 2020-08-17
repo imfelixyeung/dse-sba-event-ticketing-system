@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
 $feli-orange: #f9a825;
 
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 header {
@@ -18,7 +20,7 @@ header {
     .brand-logo {
         margin-left: 32px;
         display: flex;
-        width: 100%;
+        width: calc(100% - 32px);
         align-items: center;
 
         .logo {
@@ -29,6 +31,7 @@ header {
             color: white;
             height: 100%;
             margin-left: 16px;
+            font-size: 22px;
         }
     }
 }
@@ -42,9 +45,9 @@ main {
         font-size: 56px;
         margin: 0 16px;
         margin-top: 16px;
-        
+        font-weight: 900;
     }
-    
+
     p {
         font-size: 22px;
         margin: 16px 16px;
@@ -65,25 +68,29 @@ main {
             outline: none;
             cursor: pointer;
             box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
-                0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+                0 4px 5px 0 rgba(0, 0, 0, 0.14),
+                0 1px 10px 0 rgba(0, 0, 0, 0.12);
             transition: box-shadow 100ms ease-in-out,
                 background-color 100ms ease-in-out;
         }
-    
+
         button:hover {
             background-color: lighten($color: $feli-orange, $amount: 10%);
             box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
-                0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
-                0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+                0 4px 5px 0 rgba(0, 0, 0, 0.14),
+                0 1px 10px 0 rgba(0, 0, 0, 0.12),
+                0 2px 4px -1px rgba(0, 0, 0, 0.2),
+                0 4px 5px 0 rgba(0, 0, 0, 0.14),
                 0 1px 10px 0 rgba(0, 0, 0, 0.12);
         }
         button:active {
             background-color: darken($color: $feli-orange, $amount: 5%);
             box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
-                0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
-                0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+                0 4px 5px 0 rgba(0, 0, 0, 0.14),
+                0 1px 10px 0 rgba(0, 0, 0, 0.12),
+                0 2px 4px -1px rgba(0, 0, 0, 0.2),
+                0 4px 5px 0 rgba(0, 0, 0, 0.14),
                 0 1px 10px 0 rgba(0, 0, 0, 0.12);
         }
     }
-
 }
