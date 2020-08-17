@@ -1,4 +1,9 @@
-(async () => {
+(async ({ headerMessage, inputPlaceholder, sendButtonLabel, errorMessage }) => {
+    headerMessage = headerMessage || "How can we help?";
+    inputPlaceholder = inputPlaceholder || "Message...";
+    sendButtonLabel = sendButtonLabel || "Send";
+    errorMessage = errorMessage || "Unable to connect to server";
+
     const endpoint = "/api/chatBot";
     var id = Math.random().toString();
     // const endpoint = 'http://dynamic.felixyeung2002.com/api/chatBot';
@@ -8,18 +13,18 @@
 
     var header = document.createElement("header");
     header.classList.add("chatbot-header");
-    header.textContent = "How can we help?";
+    header.textContent = headerMessage;
 
     var history = document.createElement("div");
     history.classList.add("chatbot-history");
 
     var input = document.createElement("input");
-    input.placeholder = "Message...";
+    input.placeholder = inputPlaceholder;
     input.classList.add("chatbot-box-input");
     input.type = "text";
     var submit = document.createElement("button");
     submit.classList.add("chatbot-box-button");
-    submit.textContent = "Send";
+    submit.textContent = sendButtonLabel;
 
     var inputGrid = document.createElement("div");
     inputGrid.classList.add("chatbot-box-controls");
@@ -47,7 +52,7 @@
 
         var responses = await getResponses(message);
         if (responses.length <= 0) {
-            history.append(createMessage("An Error Occurred"));
+            history.append(createSystemMessage(errorMessage));
         } else {
             responses.forEach((response) => {
                 history.append(createBotMessage(response));
@@ -67,6 +72,12 @@
         return messageDiv;
     }
 
+    function createSystemMessage(message) {
+        let messageDiv = createMessage(message);
+        messageDiv.classList.add("chatbot-message-system");
+        return messageDiv;
+    }
+
     function createUserMessage(message) {
         let messageDiv = createMessage(message);
         messageDiv.classList.add("chatbot-message-user");
@@ -81,7 +92,9 @@
 
     async function getResponses(message) {
         try {
-            var response = await fetch(`${endpoint}?message=${message}&id=${id}`);
+            var response = await fetch(
+                `${endpoint}?message=${message}&id=${id}`
+            );
             var json = await response.json();
             return json.response;
         } catch (error) {
@@ -122,4 +135,9 @@
     document.body.append(toggle);
 
     chatbot.toggle = toggle;
-})();
+})({
+    headerMessage: "How can we help?",
+    inputPlaceholder: "Message...",
+    sendButtonLabel: "Send",
+    errorMessage: "Unable to connect to server",
+});

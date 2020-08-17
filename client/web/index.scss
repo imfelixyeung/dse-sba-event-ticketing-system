@@ -9,18 +9,22 @@ $feli-orange: #f9a825;
     font-family: "Roboto", sans-serif;
 }
 
-header {
+.header {
     height: 64px;
     background-color: black;
     width: 100%;
 
-    display: grid;
-    place-items: center;
+    // display: grid;
+    // place-items: center;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     .brand-logo {
         margin-left: 32px;
         display: flex;
-        width: calc(100% - 32px);
+        // width: calc(100% - 32px);
         align-items: center;
 
         .logo {
@@ -32,6 +36,20 @@ header {
             height: 100%;
             margin-left: 16px;
             font-size: 22px;
+        }
+    }
+
+    .actions{
+        a {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: white;
+            text-decoration: none;
+            margin-left: 16px;
+            margin-right: 16px;
+            height: 48px;
+            // display: block;
         }
     }
 }
