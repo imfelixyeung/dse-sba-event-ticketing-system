@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 $transition-time: 250ms;
 $box-color: #eaeaea;
 $box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
@@ -5,6 +6,13 @@ $box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
 $box-border-radius: 16px;
 $message-border-radius: 14px;
 $message-border-radius-small: 6px;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
 
 .chatbot-toggle {
     z-index: 255;
@@ -21,6 +29,7 @@ $message-border-radius-small: 6px;
     text-orientation: mixed;
     display: grid;
     place-items: center;
+    font-size: 16px;
     
     width: 64px;
     align-items: flex-end;
@@ -70,7 +79,7 @@ $message-border-radius-small: 6px;
     }
 
     .chatbot-history {
-        scroll-behavior: smooth;
+        // scroll-behavior: smooth;
         overflow: scroll;
 
         .chatbot-message {
@@ -79,6 +88,8 @@ $message-border-radius-small: 6px;
             margin: 8px;
             border-radius: $message-border-radius;
             color: black;
+                font-size: 16px;
+
         }
         .chatbot-message-system {
             background-color: lighten($box-color, 10%);
