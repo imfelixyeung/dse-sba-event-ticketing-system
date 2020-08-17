@@ -22,8 +22,8 @@
     header.classList.add("chatbot-header");
     header.textContent = headerMessage;
 
-    var history = document.createElement("div");
-    history.classList.add("chatbot-history");
+    var historyContainer = document.createElement("div");
+    historyContainer.classList.add("chatbot-history");
 
     var input = document.createElement("input");
     input.placeholder = inputPlaceholder;
@@ -38,7 +38,7 @@
     inputGrid.append(input, submit);
 
     box.append(header);
-    box.append(history);
+    box.append(historyContainer);
     box.append(inputGrid);
 
     input.addEventListener("keyup", function (event) {
@@ -54,22 +54,36 @@
         input.disabled = true;
         submit.disabled = true;
         input.value = "";
-        history.append(createUserMessage(message));
-        history.scrollTop = history.scrollHeight;
+        historyContainer.append(createUserMessage(message));
+        saveChatHistory({
+            type: "user",
+            message,
+        });
+        // historyContainer.scrollTop = historyContainer.scrollHeight;
+        scrollToBottom(historyContainer);
 
         var responses = await getResponses(message);
         if (responses.length <= 0) {
-            history.append(createSystemMessage(errorMessage));
+            historyContainer.append(createSystemMessage(errorMessage));
+            saveChatHistory({
+                type: "system",
+                message: errorMessage,
+            });
         } else {
             responses.forEach((response) => {
-                history.append(createBotMessage(response));
+                historyContainer.append(createBotMessage(response));
+            });
+            saveChatHistory({
+                type: "bot",
+                message: response,
             });
         }
 
         input.disabled = false;
         submit.disabled = false;
         input.focus();
-        history.scrollTop = history.scrollHeight;
+        // historyContainer.scrollTop = historyContainer.scrollHeight;
+        scrollToBottom(historyContainer);
     });
 
     function createMessage(message) {
@@ -109,11 +123,57 @@
         }
     }
 
+    const chatBotHistory = "chatBotHistory";
+
+    function saveChatHistory({ type, message }) {
+        let historyMessages = JSON.parse(
+            window.sessionStorage.getItem(chatBotHistory) || "[]"
+        );
+        historyMessages.push({ type, message });
+        window.sessionStorage.setItem(
+            chatBotHistory,
+            JSON.stringify(historyMessages)
+        );
+    }
+
+    function loadChatHistory() {
+        let historyMessages = JSON.parse(
+            window.sessionStorage.getItem(chatBotHistory) || "[]"
+        );
+        for (const historyMessage of historyMessages) {
+            const { type, message } = historyMessage;
+            switch (type) {
+                case "bot":
+                    historyContainer.append(createBotMessage(message));
+                    break;
+                case "user":
+                    historyContainer.append(createUserMessage(message));
+                    break;
+                case "system":
+                    historyContainer.append(createSystemMessage(message));
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        setTimeout(e => scrollToBottom(historyContainer, false));
+        
+    }
+
+    function scrollToBottom(element, smooth = true) {
+        element.scrollTo({
+                 top: element.scrollHeight,
+                 behavior: smooth ? "smooth" : undefined,
+             });
+    }
+
+    loadChatHistory();
+
     document.body.append(box);
 
     chatbot.open = window.localStorage.getItem("chatbot-box-open") || "false";
     chatbot.open = JSON.parse(chatbot.open);
-    console.log(chatbot.open);
     chatbot.box = box;
 
     var toggle = document.createElement("div");
@@ -146,7 +206,7 @@
     headerMessage: "How can we help?",
     inputPlaceholder: "Message...",
     sendButtonLabel: "Send",
-    errorMessage: "Unable to connect to server",
+    errorMessage: "An Error Occurred",
     hideBoxMessage: "Hide",
     showBoxMessage: "Help",
 });

@@ -18,17 +18,6 @@
         "2. Click on the event to expand",
         "3. Click on 'View Details' for more information"
     ],
-    "ets.user.login.how": [
-        "To login:",
-        "1. Navigate to 'My Account'",
-        "2. Click 'Login'"
-    ],
-    "ets.user.register.how": [
-        "To login:",
-        "1. Navigate to 'My Account'",
-        "2. Click 'Register'"
-    ],
-    "ets.users.length.get": [],
     "ets.events.join.how": [
         "To join an event:",
         "1. Login with a participator account",
@@ -56,5 +45,21 @@
         "1. Navigate to 'Settings'",
         "2. Click on dropdown on the right to 'Language'",
         "3. Select desired language"
-    ]
+    ],
+    "ets.user.login.how": [
+        "To login:",
+        "1. Navigate to 'My Account'",
+        "2. Click 'Login'"
+    ],
+    "ets.user.logout.how": [
+        "To logout:",
+        "1. Navigate to 'My Account'",
+        "2. Click 'Logout'"
+    ],
+    "ets.user.register.how": [
+        "To login:",
+        "1. Navigate to 'My Account'",
+        "2. Click 'Register'"
+    ],
+    "ets.users.length.get": []
 }
