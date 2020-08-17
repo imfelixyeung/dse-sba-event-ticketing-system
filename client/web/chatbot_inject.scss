@@ -21,6 +21,14 @@ $message-border-radius-small: 6px;
     text-orientation: mixed;
     display: grid;
     place-items: center;
+    
+    width: 64px;
+    align-items: flex-end;
+    padding-left: 4px;
+    right: calc(16px + 300px - 32px);
+
+    // place-items: ;
+
     transition: box-shadow $transition-time ease-in-out,
         right $transition-time ease-in-out;
     box-shadow: $box-shadow;
@@ -125,6 +133,7 @@ $message-border-radius-small: 6px;
 
 .chatbot-toggle.hide {
     right: 0;
+    right: -32px;
     // display: none;
 }
 .chatbot-box.hide {
