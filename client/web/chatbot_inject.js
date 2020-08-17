@@ -1,5 +1,6 @@
 (async () => {
     const endpoint = "/api/chatBot";
+    var id = Math.random().toString();
     // const endpoint = 'http://dynamic.felixyeung2002.com/api/chatBot';
     var chatbot = {};
     let box = document.createElement("div");
@@ -80,7 +81,7 @@
 
     async function getResponses(message) {
         try {
-            var response = await fetch(`${endpoint}?message=${message}`);
+            var response = await fetch(`${endpoint}?message=${message}&id=${id}`);
             var json = await response.json();
             return json.response;
         } catch (error) {

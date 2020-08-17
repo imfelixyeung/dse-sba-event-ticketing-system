@@ -5,14 +5,10 @@ const { EtsAPI } = require("./src/ets");
 
 const token = require("./.discord.json");
 
-const express = require('express');
+const express = require("express");
 const app = express();
 
-
 const port = 8082;
-
-
-
 
 client.once("ready", () => {
     console.log("ETS Discord Bot Ready");
@@ -39,12 +35,17 @@ client.on("message", async (msg) => {
     const requestMessage = msg.content.toString();
     const requestUserId = msg.author.id.toString();
 
-    const responses = await getResponses({ requestMessage, requestUserId });
-    responses.forEach(e => msg.reply(e.toString()));
-    
+    const responses = await getResponses({
+        requestMessage: requestMessage,
+        requestUserId: `web-${requestUserId}`,
+    });
+    responses.forEach((e) => msg.reply(e.toString()));
 });
 
-async function getResponses({ requestMessage, requestUserId, }, isDiscord = true) {
+async function getResponses(
+    { requestMessage, requestUserId },
+    isDiscord = true
+) {
     let responses = [];
     const requestTime = new Date();
 
@@ -87,7 +88,7 @@ async function getResponses({ requestMessage, requestUserId, }, isDiscord = true
 
     if (action == actions.getEvents) {
         if (!isDiscord) {
-            responses.push('Not supported')
+            responses.push("Not supported");
             return responses;
         }
         let events = await EtsAPI.getEvents();
@@ -100,10 +101,10 @@ async function getResponses({ requestMessage, requestUserId, }, isDiscord = true
     }
 
     if (action == actions.getEventsRandom) {
-         if (!isDiscord) {
-             responses.push("Not supported");
-             return responses;
-         }
+        if (!isDiscord) {
+            responses.push("Not supported");
+            return responses;
+        }
         let events = await EtsAPI.getEvents();
         if (events) {
             if (events.length > 0) {
@@ -151,25 +152,29 @@ async function getResponses({ requestMessage, requestUserId, }, isDiscord = true
         }
         return responses;
     }
-    return responses
+    return responses;
 }
 
-app.get('/api/chatBot',async (req, res) => {
+app.get("/api/chatBot", async (req, res) => {
     let message = req.query.message;
-    if (!message || message.trim() == '') {
+    let id = req.query.id || Math.random().toString();
+    if (!message || message.trim() == "") {
         res.send({
-            "error": "No body"
-        })
+            error: "No body",
+        });
         return;
     } else {
-        let responses = await getResponses({ requestMessage: message, requestUserId: Math.random().toString() }, false);
+        let responses = await getResponses(
+            { requestMessage: message, requestUserId: `web-${id}` },
+            false
+        );
         res.send({
-            request: { message },
-            response: responses
-        })
+            request: { message, id },
+            response: responses,
+        });
     }
-})
+});
 
-app.listen(port, _ => console.log(`Bot Listening on port ${port}`))
+app.listen(port, (_) => console.log(`Bot Listening on port ${port}`));
 
 client.login(token);
