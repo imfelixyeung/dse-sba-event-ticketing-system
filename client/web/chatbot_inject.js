@@ -1,4 +1,11 @@
-(async ({ headerMessage, inputPlaceholder, sendButtonLabel, errorMessage }) => {
+(async ({
+    headerMessage,
+    inputPlaceholder,
+    sendButtonLabel,
+    errorMessage,
+    hideBoxMessage,
+    showBoxMessage,
+}) => {
     headerMessage = headerMessage || "How can we help?";
     inputPlaceholder = inputPlaceholder || "Message...";
     sendButtonLabel = sendButtonLabel || "Send";
@@ -120,11 +127,11 @@
 
     function handleToggle() {
         if (chatbot.open) {
-            toggle.textContent = "Hide";
+            toggle.textContent = hideBoxMessage;
             toggle.classList.remove("hide");
             box.classList.remove("hide");
         } else {
-            toggle.textContent = "Help";
+            toggle.textContent = showBoxMessage;
             toggle.classList.add("hide");
             box.classList.add("hide");
         }
@@ -140,4 +147,6 @@
     inputPlaceholder: "Message...",
     sendButtonLabel: "Send",
     errorMessage: "Unable to connect to server",
+    hideBoxMessage: "Hide",
+    showBoxMessage: "Help",
 });
