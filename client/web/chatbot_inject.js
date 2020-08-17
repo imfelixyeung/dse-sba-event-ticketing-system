@@ -1,19 +1,19 @@
 (async () => {
-    const endpoint = '/api/chatBot';
+    const endpoint = "/api/chatBot";
     // const endpoint = 'http://dynamic.felixyeung2002.com/api/chatBot';
     var chatbot = {};
     let box = document.createElement("div");
-    box.classList.add('chatbot-box')
+    box.classList.add("chatbot-box");
 
-    var header = document.createElement('header')
-    header.classList.add('chatbot-header')
-    header.textContent = 'How can we help?'
+    var header = document.createElement("header");
+    header.classList.add("chatbot-header");
+    header.textContent = "How can we help?";
 
     var history = document.createElement("div");
-    history.classList.add('chatbot-history')
+    history.classList.add("chatbot-history");
 
     var input = document.createElement("input");
-    input.placeholder = 'Message...'
+    input.placeholder = "Message...";
     input.classList.add("chatbot-box-input");
     input.type = "text";
     var submit = document.createElement("button");
@@ -21,7 +21,7 @@
     submit.textContent = "Send";
 
     var inputGrid = document.createElement("div");
-    inputGrid.classList.add('chatbot-box-controls')
+    inputGrid.classList.add("chatbot-box-controls");
     inputGrid.append(input, submit);
 
     box.append(header);
@@ -37,45 +37,44 @@
 
     submit.addEventListener("click", async () => {
         var message = input.value;
-        if (message.trim() == '') return
-        input.disabled = true
-        submit.disabled = true
+        if (message.trim() == "") return;
+        input.disabled = true;
+        submit.disabled = true;
         input.value = "";
         history.append(createUserMessage(message));
         history.scrollTop = history.scrollHeight;
 
-        var responses = await getResponses(message)
+        var responses = await getResponses(message);
         if (responses.length <= 0) {
-            history.append(createMessage('An Error Occurred'));
-
+            history.append(createMessage("An Error Occurred"));
         } else {
             responses.forEach((response) => {
                 history.append(createBotMessage(response));
             });
         }
 
-        input.disabled = false
-        submit.disabled = false
+        input.disabled = false;
+        submit.disabled = false;
         input.focus();
         history.scrollTop = history.scrollHeight;
     });
 
     function createMessage(message) {
-        let messageDiv = document.createElement('div');
-        messageDiv.classList.add('chatbot-message')
+        let messageDiv = document.createElement("div");
+        messageDiv.classList.add("chatbot-message");
         messageDiv.textContent = message;
         return messageDiv;
     }
 
     function createUserMessage(message) {
         let messageDiv = createMessage(message);
-        messageDiv.classList.add('chatbot-message-user')
+        messageDiv.classList.add("chatbot-message-user");
         return messageDiv;
     }
-    
+
     function createBotMessage(message) {
         let messageDiv = createMessage(message);
-        messageDiv.classList.add('chatbot-message-bot')
+        messageDiv.classList.add("chatbot-message-bot");
         return messageDiv;
     }
 
@@ -90,20 +89,20 @@
     }
 
     document.body.append(box);
-    
-    chatbot.open = window.localStorage.getItem('chatbot-box-open') || 'false';
+
+    chatbot.open = window.localStorage.getItem("chatbot-box-open") || "false";
     chatbot.open = JSON.parse(chatbot.open);
-    console.log(chatbot.open)
+    console.log(chatbot.open);
     chatbot.box = box;
-    
-    var toggle = document.createElement('div');
+
+    var toggle = document.createElement("div");
     toggle.classList.add("chatbot-toggle");
-    
-    toggle.addEventListener('click', () => {
-        chatbot.open = !chatbot.open
+
+    toggle.addEventListener("click", () => {
+        chatbot.open = !chatbot.open;
         window.localStorage.setItem("chatbot-box-open", chatbot.open);
-        handleToggle()
-    })
+        handleToggle();
+    });
 
     function handleToggle() {
         if (chatbot.open) {
@@ -116,20 +115,10 @@
             box.classList.add("hide");
         }
     }
-    
+
     handleToggle();
 
     document.body.append(toggle);
-    
-    chatbot.toggle = toggle
 
-
-    history.append(createMessage("Message"));
-    history.append(createUserMessage("User"));
-    history.append(createBotMessage("Bot"));
-    history.append(createMessage("Message"));
-    history.append(createUserMessage("User"));
-    history.append(createBotMessage("Bot"));
-
-
+    chatbot.toggle = toggle;
 })();
