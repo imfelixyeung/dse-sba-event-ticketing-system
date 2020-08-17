@@ -1,6 +1,6 @@
 (async () => {
-    // const endpoint = '/api/chatBot';
-    const endpoint = 'http://dynamic.felixyeung2002.com/api/chatBot';
+    const endpoint = '/api/chatBot';
+    // const endpoint = 'http://dynamic.felixyeung2002.com/api/chatBot';
     var chatbot = {};
     let box = document.createElement("div");
     box.classList.add('chatbot-box')
