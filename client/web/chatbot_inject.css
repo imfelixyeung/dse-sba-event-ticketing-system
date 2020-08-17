@@ -16,6 +16,12 @@
   display: -ms-grid;
   display: grid;
   place-items: center;
+  width: 64px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding-left: 4px;
+  right: calc(16px + 300px - 32px);
   -webkit-transition: right 250ms ease-in-out, -webkit-box-shadow 250ms ease-in-out;
   transition: right 250ms ease-in-out, -webkit-box-shadow 250ms ease-in-out;
   transition: box-shadow 250ms ease-in-out, right 250ms ease-in-out;
@@ -137,6 +143,7 @@
 
 .chatbot-toggle.hide {
   right: 0;
+  right: -32px;
 }
 
 .chatbot-box.hide {
