@@ -44,7 +44,7 @@ client.on("message", async (msg) => {
     
 });
 
-async function getResponses({ requestMessage, requestUserId }) {
+async function getResponses({ requestMessage, requestUserId, }, isDiscord = true) {
     let responses = [];
     const requestTime = new Date();
 
@@ -86,6 +86,10 @@ async function getResponses({ requestMessage, requestUserId }) {
     }
 
     if (action == actions.getEvents) {
+        if (!isDiscord) {
+            responses.push('Not supported')
+            return responses;
+        }
         let events = await EtsAPI.getEvents();
         if (events) {
             responses.push("\n" + EtsAPI.buildEventListInfo(events));
@@ -96,6 +100,10 @@ async function getResponses({ requestMessage, requestUserId }) {
     }
 
     if (action == actions.getEventsRandom) {
+         if (!isDiscord) {
+             responses.push("Not supported");
+             return responses;
+         }
         let events = await EtsAPI.getEvents();
         if (events) {
             if (events.length > 0) {
@@ -154,7 +162,7 @@ app.get('/api/chatBot',async (req, res) => {
         })
         return;
     } else {
-        let responses = await getResponses({ requestMessage: message, requestUserId: Math.random().toString() });
+        let responses = await getResponses({ requestMessage: message, requestUserId: Math.random().toString() }, false);
         res.send({
             request: { message },
             response: responses
