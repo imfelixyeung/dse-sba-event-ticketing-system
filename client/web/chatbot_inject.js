@@ -72,10 +72,10 @@
         } else {
             responses.forEach((response) => {
                 historyContainer.append(createBotMessage(response));
-            });
-            saveChatHistory({
-                type: "bot",
-                message: response,
+                saveChatHistory({
+                    type: "bot",
+                    message: response,
+                });
             });
         }
 
