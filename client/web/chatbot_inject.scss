@@ -3,7 +3,8 @@ $box-color: #eaeaea;
 $box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
     0 1px 10px 0 rgba(0, 0, 0, 0.12);
 $box-border-radius: 16px;
-$message-border-radius: 8px;
+$message-border-radius: 14px;
+$message-border-radius-small: 6px;
 
 .chatbot-toggle {
     z-index: 255;
@@ -61,22 +62,34 @@ $message-border-radius: 8px;
     }
 
     .chatbot-history {
+        scroll-behavior: smooth;
         overflow: scroll;
 
         .chatbot-message {
             background-color: lighten($box-color, 5%);
-            padding: 8px;
-            // margin-top: 4px;
-            // margin-bottom: 4px;
+            padding: 8px 12px;
             margin: 8px;
             border-radius: $message-border-radius;
+            color: black;
+        }
+        .chatbot-message-system {
+            background-color: lighten($box-color, 10%);
+            margin-left: 32px;
+            margin-right: 32px;
         }
         .chatbot-message-user {
             background-color: #555555;
+            border-radius: $message-border-radius $message-border-radius
+                $message-border-radius-small $message-border-radius;
+            margin-left: 48px;
             color: white;
         }
         .chatbot-message-bot {
             background-color: #f9a825;
+            border-radius: $message-border-radius $message-border-radius
+                $message-border-radius $message-border-radius-small;
+            margin-right: 48px;
+            color: black;
         }
     }
 
@@ -89,6 +102,10 @@ $message-border-radius: 8px;
             border: none;
             padding: 0 16px;
             outline: none;
+            background-color: white;
+        }
+        .chatbot-box-input:disabled {
+            background-color: lighten($color: $box-color, $amount: 5%);
         }
         .chatbot-box-button {
             border-radius: 0 0 $box-border-radius 0;
@@ -99,11 +116,9 @@ $message-border-radius: 8px;
         }
         .chatbot-box-button:hover {
             background-color: darken($box-color, 5%);
-            
         }
         .chatbot-box-button:active {
             background-color: darken($box-color, 15%);
-
         }
     }
 }

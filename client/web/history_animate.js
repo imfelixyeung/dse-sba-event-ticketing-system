@@ -28,6 +28,7 @@
     }
 })([
     "Event Ticketing System",
+    "Tickets Made Easy",
     "Beautiful UI",
     "Excellent UX",
     "Site Under Construction",

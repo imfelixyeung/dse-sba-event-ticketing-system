@@ -7,35 +7,51 @@
   font-family: "Roboto", sans-serif;
 }
 
-header {
+.header {
   height: 64px;
   background-color: black;
   width: 100%;
-  display: -ms-grid;
-  display: grid;
-  place-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-header .brand-logo {
+.header .brand-logo {
   margin-left: 32px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: calc(100% - 32px);
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-header .brand-logo .logo {
+.header .brand-logo .logo {
   width: 48px;
 }
 
-header .brand-logo .brand {
+.header .brand-logo .brand {
   color: white;
   height: 100%;
   margin-left: 16px;
   font-size: 22px;
+}
+
+.header .actions a {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  margin-left: 16px;
+  margin-right: 16px;
+  height: 48px;
 }
 
 main {
