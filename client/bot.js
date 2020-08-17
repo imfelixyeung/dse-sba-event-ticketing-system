@@ -2,13 +2,15 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const { DialogFlowAPI } = require("./src/dialogflow");
 const { EtsAPI } = require("./src/ets");
-
+const fs = require("fs");
 const token = require("./.discord.json");
 
 const express = require("express");
 const app = express();
 
 const port = 8082;
+
+const botResponses = JSON.parse(fs.readFileSync("bot_responses.json"));
 
 client.once("ready", () => {
     console.log("ETS Discord Bot Ready");
@@ -20,11 +22,7 @@ const etsBotClientId = "741594110980259841";
 
 const actions = {
     getEventLength: "ets.events.length.get",
-    getEvents: "ets.events.get",
-    getEventsRandom: "ets.events.random",
     getUserLength: "ets.users.length.get",
-    ping: "ets.ping",
-    clearchat: "ets.chat.clear",
 };
 
 client.on("message", async (msg) => {
@@ -40,6 +38,26 @@ client.on("message", async (msg) => {
         requestUserId: `discord-${requestUserId}`,
     });
     responses.forEach((e) => msg.reply(e.toString()));
+});
+
+app.get("/api/chatBot", async (req, res) => {
+    let message = req.query.message;
+    let id = req.query.id || Math.random().toString();
+    if (!message || message.trim() == "") {
+        res.send({
+            error: "empty_message",
+        });
+        return;
+    } else {
+        let responses = await getResponses(
+            { requestMessage: message, requestUserId: `web-${id}` },
+            false
+        );
+        res.send({
+            request: { message, id },
+            response: responses,
+        });
+    }
 });
 
 async function getResponses(
@@ -68,15 +86,25 @@ async function getResponses(
 
     if (reply && reply != "") responses.push(reply);
 
-    // if (action == actions.clearchat) {
-    //     msg.delete();
-    //     const fetched = await msg.channel.messages.fetch({
-    //         limit: 99,
-    //     });
-    //     msg.channel.bulkDelete(fetched);
-    // }
 
+    if (
+        botResponses &&
+        botResponses.hasOwnProperty(action) &&
+        botResponses[action].length > 0
+    ) {
+        responses = responses.concat(botResponses[action]);
+        // responses.push(botResponses[action]);
+        return responses;
+    }
     if (action == actions.getEventLength) {
+        // if (action == actions.clearchat) {
+        //     msg.delete();
+        //     const fetched = await msg.channel.messages.fetch({
+        //         limit: 99,
+        //     });
+        //     msg.channel.bulkDelete(fetched);
+        // }
+
         let events = await EtsAPI.getEvents();
         if (events) {
             responses.push(`There is a total of ${events.length} events`);
@@ -154,26 +182,6 @@ async function getResponses(
     }
     return responses;
 }
-
-app.get("/api/chatBot", async (req, res) => {
-    let message = req.query.message;
-    let id = req.query.id || Math.random().toString();
-    if (!message || message.trim() == "") {
-        res.send({
-            error: "No body",
-        });
-        return;
-    } else {
-        let responses = await getResponses(
-            { requestMessage: message, requestUserId: `web-${id}` },
-            false
-        );
-        res.send({
-            request: { message, id },
-            response: responses,
-        });
-    }
-});
 
 app.listen(port, (_) => console.log(`Bot Listening on port ${port}`));
 

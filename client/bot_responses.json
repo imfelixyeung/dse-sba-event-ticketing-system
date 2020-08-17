@@ -1,0 +1,60 @@
+{
+    "ets.events.create.how": [
+        "To create an event:",
+        "1. Login with an organiser account",
+        "2. Go to the 'Created Events' Page",
+        "3. Click the 'Create Event' button on the bottom right"
+    ],
+    "ets.events.edit.how": [
+        "To edit an event:",
+        "1. Login with an organiser account",
+        "2. Navigate to 'Created Events'",
+        "3. Click on edit icon on the right to the event you want to edit"
+    ],
+    "ets.events.length.get": [],
+    "ets.events.view.how": [
+        "To create view events:",
+        "1. Navigate to 'Home'",
+        "2. Click on the event to expand",
+        "3. Click on 'View Details' for more information"
+    ],
+    "ets.user.login.how": [
+        "To login:",
+        "1. Navigate to 'My Account'",
+        "2. Click 'Login'"
+    ],
+    "ets.user.register.how": [
+        "To login:",
+        "1. Navigate to 'My Account'",
+        "2. Click 'Register'"
+    ],
+    "ets.users.length.get": [],
+    "ets.events.join.how": [
+        "To join an event:",
+        "1. Login with a participator account",
+        "2. Navigate to 'Home'",
+        "3. Click on the event you want to join",
+        "4. Click on 'View Details'",
+        "5. Select ticket",
+        "6. Click 'Join Now'"
+    ],
+    "ets.events.leave.how": [
+        "To leave an event:",
+        "1. Login with a participator account",
+        "2. Navigate to 'Joined Events'",
+        "3. Click on the remove icon on the right to the event you want to leave"
+    ],
+    "ets.events.remove.how": [
+        "To remove an event:",
+        "1. Login with an organiser account",
+        "2. Navigate to 'Created Events'",
+        "3. Click on remove icon on the right to the event you want to leave",
+        "4. Confirm removal"
+    ],
+    "ets.language.change.how": [
+        "To change the language:",
+        "1. Navigate to 'Settings'",
+        "2. Click on dropdown on the right to 'Language'",
+        "3. Select desired language"
+    ]
+}
