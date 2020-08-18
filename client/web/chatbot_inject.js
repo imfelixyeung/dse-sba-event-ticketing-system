@@ -202,6 +202,8 @@
     var toggle = document.createElement("div");
     toggle.classList.add("chatbot-toggle");
 
+    header.addEventListener("click", () => toggle.click());
+
     toggle.addEventListener("click", () => {
         chatbot.open = !chatbot.open;
         window.localStorage.setItem("chatbot-box-open", chatbot.open);
@@ -218,7 +220,7 @@
 
     function handleToggle() {
         if (chatbot.open) {
-            focusInput()
+            focusInput();
             toggle.textContent = hideBoxMessage;
             toggle.classList.remove("hide");
             box.classList.remove("hide");
