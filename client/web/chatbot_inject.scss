@@ -44,10 +44,13 @@ $message-border-radius-small: 6px;
     // place-items: ;
 
     transition: box-shadow $transition-time ease-in-out,
-        right $transition-time ease-in-out ,
-        bottom $transition-time ease-in-out $transition-time;
+        right $transition-time ease-in-out,
+        bottom $transition-time ease-in-out $transition-time,
+        top $transition-time ease-in-out $transition-time;
     box-shadow: $box-shadow;
 }
+
+
 
 .chatbot-toggle:hover {
     box-shadow: $box-shadow, $box-shadow;
@@ -55,9 +58,10 @@ $message-border-radius-small: 6px;
 
 .chatbot-box {
     z-index: 256;
-    transition: right $transition-time ease-in-out ,
+    transition: right $transition-time ease-in-out,
         height $transition-time ease-in-out $transition-time;
     height: 500px;
+    max-height: calc(100vh - 32px);
     width: 300px;
     background-color: $box-color;
     position: fixed;
@@ -216,3 +220,18 @@ $message-border-radius-small: 6px;
 // inputGrid.style.backgroundColor = "#aaaaaa";
 // inputGrid.style.height = "32px";
 // inputGrid.style.gridTemplateColumns = "5fr 1fr";
+@media only screen and (max-height: 532px) {
+    .chatbot-toggle {
+        top: calc(16px);
+        bottom: initial;
+        transition: box-shadow $transition-time ease-in-out,
+            right $transition-time ease-in-out,
+            top $transition-time ease-in-out $transition-time;
+    }
+    .chatbot-toggle.hide {
+        top: calc(100vh - 128px);
+        transition: box-shadow $transition-time ease-in-out,
+            right $transition-time ease-in-out $transition-time,
+            top $transition-time ease-in-out;
+    }
+}
