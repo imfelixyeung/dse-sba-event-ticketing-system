@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 $transition-time: 250ms;
 $box-color: #eaeaea;
 $box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
@@ -22,7 +22,7 @@ $message-border-radius-small: 6px;
     width: 32px;
     bottom: calc(16px + 500px - 64px);
     right: calc(16px + 300px);
-    background-color: black;
+    background-color: #111111;
     border-radius: $box-border-radius 0 0 $box-border-radius;
     cursor: pointer;
     writing-mode: vertical-rl;
@@ -30,7 +30,7 @@ $message-border-radius-small: 6px;
     display: grid;
     place-items: center;
     font-size: 16px;
-    
+
     width: 64px;
     align-items: flex-end;
     padding-left: 4px;
@@ -67,7 +67,7 @@ $message-border-radius-small: 6px;
 
     .chatbot-header {
         height: 64px;
-        background-color: black;
+        background-color: #111111;
         width: 100%;
 
         display: grid;
@@ -86,10 +86,12 @@ $message-border-radius-small: 6px;
             background-color: lighten($box-color, 5%);
             padding: 8px 12px;
             margin: 8px;
+            margin-top: 12px;
+            margin-bottom: 12px;
             border-radius: $message-border-radius;
             color: black;
-                font-size: 16px;
-
+            font-size: 16px;
+            margin-bottom: 4px;
         }
         .chatbot-message-system {
             background-color: lighten($box-color, 10%);
@@ -97,7 +99,7 @@ $message-border-radius-small: 6px;
             margin-right: 32px;
         }
         .chatbot-message-user {
-            background-color: #555555;
+            background-color: #333333;
             border-radius: $message-border-radius $message-border-radius
                 $message-border-radius-small $message-border-radius;
             margin-left: 48px;
@@ -109,6 +111,40 @@ $message-border-radius-small: 6px;
                 $message-border-radius $message-border-radius-small;
             margin-right: 48px;
             color: black;
+        }
+        .chatbot-message-user + .chatbot-message-user {
+            margin-top: 4px;
+            margin-bottom: 4px;
+            border-top-right-radius: $message-border-radius-small;
+
+        }
+        .chatbot-message-bot + .chatbot-message-bot {
+            margin-top: 4px;
+            margin-bottom: 4px;
+                        border-top-left-radius: $message-border-radius-small;
+
+        }
+
+        .chatbot-message-user.last {
+            border-top-right-radius: $message-border-radius-small;
+            border-bottom-right-radius: $message-border-radius;
+        }
+        
+        .chatbot-message-bot.last {
+            border-top-left-radius: $message-border-radius-small;
+            border-bottom-left-radius: $message-border-radius;
+        }
+
+        // .chatbot-message-user:not(.last) {
+        //     background-color: black;
+        // }
+
+        // .chatbot-message-bot:not(.last) {
+        //     background-color: black;
+        // }
+
+        .chatbot-message:last-child {
+            margin-bottom: 12px;
         }
     }
 
