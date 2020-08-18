@@ -54,7 +54,7 @@
         input.disabled = true;
         submit.disabled = true;
         input.value = "";
-        historyContainer.append(createUserMessage(message));
+        appendMessage(createUserMessage(message));
         saveChatHistory({
             type: "user",
             message,
@@ -64,14 +64,14 @@
 
         var responses = await getResponses(message);
         if (responses.length <= 0) {
-            historyContainer.append(createSystemMessage(errorMessage));
+            appendMessage(createSystemMessage(errorMessage));
             saveChatHistory({
                 type: "system",
                 message: errorMessage,
             });
         } else {
             responses.forEach((response) => {
-                historyContainer.append(createBotMessage(response));
+                appendMessage(createBotMessage(response));
                 saveChatHistory({
                     type: "bot",
                     message: response,
@@ -86,6 +86,25 @@
         scrollToBottom(historyContainer);
     });
 
+    function appendMessage(current) {
+        let last = historyContainer.lastElementChild;
+        // let lastLast = last
+        //     ? historyContainer.lastElementChild.previousElementSibling
+        //     : null;
+        let lastType = last ? last.getAttribute("data-type") : null;
+        // let lastLastType = lastLast ? lastLast.getAttribute("data-type") : null;
+        let currentType = current.getAttribute("data-type");
+
+        if (!last) current.classList.add('last')
+        
+        if (lastType && lastType == currentType) {
+            last.classList.remove('last')
+            current.classList.add('last')
+        }
+
+        historyContainer.append(current);
+    }
+
     function createMessage(message) {
         let messageDiv = document.createElement("div");
         messageDiv.classList.add("chatbot-message");
@@ -96,18 +115,23 @@
     function createSystemMessage(message) {
         let messageDiv = createMessage(message);
         messageDiv.classList.add("chatbot-message-system");
+        messageDiv.setAttribute("data-type", "system");
         return messageDiv;
     }
 
     function createUserMessage(message) {
         let messageDiv = createMessage(message);
         messageDiv.classList.add("chatbot-message-user");
+        messageDiv.setAttribute("data-type", "user");
+
         return messageDiv;
     }
 
     function createBotMessage(message) {
         let messageDiv = createMessage(message);
         messageDiv.classList.add("chatbot-message-bot");
+        messageDiv.setAttribute("data-type", "bot");
+
         return messageDiv;
     }
 
@@ -144,28 +168,27 @@
             const { type, message } = historyMessage;
             switch (type) {
                 case "bot":
-                    historyContainer.append(createBotMessage(message));
+                    appendMessage(createBotMessage(message));
                     break;
                 case "user":
-                    historyContainer.append(createUserMessage(message));
+                    appendMessage(createUserMessage(message));
                     break;
                 case "system":
-                    historyContainer.append(createSystemMessage(message));
+                    appendMessage(createSystemMessage(message));
                     break;
 
                 default:
                     break;
             }
         }
-        setTimeout(e => scrollToBottom(historyContainer, false));
-        
+        setTimeout((e) => scrollToBottom(historyContainer, false));
     }
 
     function scrollToBottom(element, smooth = true) {
         element.scrollTo({
-                 top: element.scrollHeight,
-                 behavior: smooth ? "smooth" : undefined,
-             });
+            top: element.scrollHeight,
+            behavior: smooth ? "smooth" : undefined,
+        });
     }
 
     loadChatHistory();
@@ -202,6 +225,7 @@
     document.body.append(toggle);
 
     chatbot.toggle = toggle;
+
 })({
     headerMessage: "How can we help?",
     inputPlaceholder: "Message...",

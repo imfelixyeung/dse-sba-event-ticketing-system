@@ -15,7 +15,7 @@
   width: 32px;
   bottom: calc(16px + 500px - 64px);
   right: calc(16px + 300px);
-  background-color: black;
+  background-color: #111111;
   border-radius: 16px 0 0 16px;
   cursor: pointer;
   -webkit-writing-mode: vertical-rl;
@@ -70,7 +70,7 @@
 
 .chatbot-box .chatbot-header {
   height: 64px;
-  background-color: black;
+  background-color: #111111;
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -89,9 +89,12 @@
   background-color: #f7f7f7;
   padding: 8px 12px;
   margin: 8px;
+  margin-top: 12px;
+  margin-bottom: 12px;
   border-radius: 14px;
   color: black;
   font-size: 16px;
+  margin-bottom: 4px;
 }
 
 .chatbot-box .chatbot-history .chatbot-message-system {
@@ -101,7 +104,7 @@
 }
 
 .chatbot-box .chatbot-history .chatbot-message-user {
-  background-color: #555555;
+  background-color: #333333;
   border-radius: 14px 14px 6px 14px;
   margin-left: 48px;
   color: white;
@@ -112,6 +115,32 @@
   border-radius: 14px 14px 14px 6px;
   margin-right: 48px;
   color: black;
+}
+
+.chatbot-box .chatbot-history .chatbot-message-user + .chatbot-message-user {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border-top-right-radius: 6px;
+}
+
+.chatbot-box .chatbot-history .chatbot-message-bot + .chatbot-message-bot {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border-top-left-radius: 6px;
+}
+
+.chatbot-box .chatbot-history .chatbot-message-user.last {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 14px;
+}
+
+.chatbot-box .chatbot-history .chatbot-message-bot.last {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 14px;
+}
+
+.chatbot-box .chatbot-history .chatbot-message:last-child {
+  margin-bottom: 12px;
 }
 
 .chatbot-box .chatbot-box-controls {
