@@ -31,10 +31,10 @@
       -ms-flex-align: end;
           align-items: flex-end;
   padding-left: 4px;
-  -webkit-transition: right 350ms ease-in-out, bottom 350ms ease-in-out 350ms, -webkit-box-shadow 350ms ease-in-out;
-  transition: right 350ms ease-in-out, bottom 350ms ease-in-out 350ms, -webkit-box-shadow 350ms ease-in-out;
-  transition: box-shadow 350ms ease-in-out, right 350ms ease-in-out, bottom 350ms ease-in-out 350ms;
-  transition: box-shadow 350ms ease-in-out, right 350ms ease-in-out, bottom 350ms ease-in-out 350ms, -webkit-box-shadow 350ms ease-in-out;
+  -webkit-transition: right 350ms ease-in-out, bottom 350ms ease-in-out 350ms, top 350ms ease-in-out 350ms, -webkit-box-shadow 350ms ease-in-out;
+  transition: right 350ms ease-in-out, bottom 350ms ease-in-out 350ms, top 350ms ease-in-out 350ms, -webkit-box-shadow 350ms ease-in-out;
+  transition: box-shadow 350ms ease-in-out, right 350ms ease-in-out, bottom 350ms ease-in-out 350ms, top 350ms ease-in-out 350ms;
+  transition: box-shadow 350ms ease-in-out, right 350ms ease-in-out, bottom 350ms ease-in-out 350ms, top 350ms ease-in-out 350ms, -webkit-box-shadow 350ms ease-in-out;
   -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
           box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
 }
@@ -49,6 +49,7 @@
   -webkit-transition: right 350ms ease-in-out, height 350ms ease-in-out 350ms;
   transition: right 350ms ease-in-out, height 350ms ease-in-out 350ms;
   height: 500px;
+  max-height: calc(100vh - 32px);
   width: 300px;
   background-color: #eaeaea;
   position: fixed;
@@ -204,5 +205,23 @@
   right: calc(-16px - 300px);
   -webkit-transition: right 350ms ease-in-out 350ms, height 350ms ease-in-out;
   transition: right 350ms ease-in-out 350ms, height 350ms ease-in-out;
+}
+
+@media only screen and (max-height: 532px) {
+  .chatbot-toggle {
+    top: calc(16px);
+    bottom: initial;
+    -webkit-transition: right 350ms ease-in-out, top 350ms ease-in-out 350ms, -webkit-box-shadow 350ms ease-in-out;
+    transition: right 350ms ease-in-out, top 350ms ease-in-out 350ms, -webkit-box-shadow 350ms ease-in-out;
+    transition: box-shadow 350ms ease-in-out, right 350ms ease-in-out, top 350ms ease-in-out 350ms;
+    transition: box-shadow 350ms ease-in-out, right 350ms ease-in-out, top 350ms ease-in-out 350ms, -webkit-box-shadow 350ms ease-in-out;
+  }
+  .chatbot-toggle.hide {
+    top: calc(100vh - 128px);
+    -webkit-transition: right 350ms ease-in-out 350ms, top 350ms ease-in-out, -webkit-box-shadow 350ms ease-in-out;
+    transition: right 350ms ease-in-out 350ms, top 350ms ease-in-out, -webkit-box-shadow 350ms ease-in-out;
+    transition: box-shadow 350ms ease-in-out, right 350ms ease-in-out 350ms, top 350ms ease-in-out;
+    transition: box-shadow 350ms ease-in-out, right 350ms ease-in-out 350ms, top 350ms ease-in-out, -webkit-box-shadow 350ms ease-in-out;
+  }
 }
 /*# sourceMappingURL=chatbot_inject.css.map */
