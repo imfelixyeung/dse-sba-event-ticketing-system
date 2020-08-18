@@ -81,7 +81,7 @@
 
         input.disabled = false;
         submit.disabled = false;
-        input.focus();
+        focusInput();
         // historyContainer.scrollTop = historyContainer.scrollHeight;
         scrollToBottom(historyContainer);
     });
@@ -96,10 +96,10 @@
         let currentType = current.getAttribute("data-type");
 
         // if (!last) current.classList.add('last')
-        
+
         if (lastType && lastType == currentType) {
-            last.classList.remove('last')
-            current.classList.add('last')
+            last.classList.remove("last");
+            current.classList.add("last");
         }
 
         historyContainer.append(current);
@@ -208,9 +208,17 @@
         handleToggle();
     });
 
+    function focusInput() {
+        // https://www.includehelp.com/code-snippets/javascript-to-detect-whether-page-is-load-on-mobile-or-desktop.aspx
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (!isMobile) {
+            input.focus();
+        }
+    }
+
     function handleToggle() {
         if (chatbot.open) {
-            input.focus()
+            focusInput()
             toggle.textContent = hideBoxMessage;
             toggle.classList.remove("hide");
             box.classList.remove("hide");
@@ -226,7 +234,6 @@
     document.body.append(toggle);
 
     chatbot.toggle = toggle;
-
 })({
     headerMessage: "How can we help?",
     inputPlaceholder: "Message...",
