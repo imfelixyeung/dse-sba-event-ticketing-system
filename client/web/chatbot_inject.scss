@@ -1,8 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
-$transition-time: 250ms;
+$transition-time: 350ms;
 $box-color: #eaeaea;
 $box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
     0 1px 10px 0 rgba(0, 0, 0, 0.12);
+$box-shadow-light: 0 0px 12px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+$box-shadow-light-bottom: 0 3px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+$box-shadow-light-top: 0 -3px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+
 $box-border-radius: 16px;
 $message-border-radius: 14px;
 $message-border-radius-small: 6px;
@@ -21,7 +27,7 @@ $message-border-radius-small: 6px;
     height: 64px;
     width: 32px;
     bottom: calc(16px + 500px - 64px);
-    right: calc(16px + 300px);
+    right: calc(16px + 300px - 32px);
     background-color: #111111;
     border-radius: $box-border-radius 0 0 $box-border-radius;
     cursor: pointer;
@@ -34,12 +40,12 @@ $message-border-radius-small: 6px;
     width: 64px;
     align-items: flex-end;
     padding-left: 4px;
-    right: calc(16px + 300px - 32px);
 
     // place-items: ;
 
     transition: box-shadow $transition-time ease-in-out,
-        right $transition-time ease-in-out;
+        right $transition-time ease-in-out ,
+        bottom $transition-time ease-in-out $transition-time;
     box-shadow: $box-shadow;
 }
 
@@ -49,7 +55,8 @@ $message-border-radius-small: 6px;
 
 .chatbot-box {
     z-index: 256;
-    transition: right $transition-time ease-in-out;
+    transition: right $transition-time ease-in-out ,
+        height $transition-time ease-in-out $transition-time;
     height: 500px;
     width: 300px;
     background-color: $box-color;
@@ -66,6 +73,7 @@ $message-border-radius-small: 6px;
     }
 
     .chatbot-header {
+        z-index: 258;
         height: 64px;
         background-color: #111111;
         width: 100%;
@@ -76,6 +84,7 @@ $message-border-radius-small: 6px;
         border-radius: 0 $box-border-radius 0 0;
         font-size: 20px;
         font-weight: 500;
+        box-shadow: $box-shadow-light-bottom;
     }
 
     .chatbot-history {
@@ -92,11 +101,13 @@ $message-border-radius-small: 6px;
             color: black;
             font-size: 16px;
             margin-bottom: 4px;
+            box-shadow: $box-shadow-light;
         }
         .chatbot-message-system {
             background-color: lighten($box-color, 10%);
             margin-left: 32px;
             margin-right: 32px;
+            text-align: center;
         }
         .chatbot-message-user {
             background-color: #333333;
@@ -116,20 +127,18 @@ $message-border-radius-small: 6px;
             margin-top: 4px;
             margin-bottom: 4px;
             border-top-right-radius: $message-border-radius-small;
-
         }
         .chatbot-message-bot + .chatbot-message-bot {
             margin-top: 4px;
             margin-bottom: 4px;
-                        border-top-left-radius: $message-border-radius-small;
-
+            border-top-left-radius: $message-border-radius-small;
         }
 
         .chatbot-message-user.last {
             border-top-right-radius: $message-border-radius-small;
             border-bottom-right-radius: $message-border-radius;
         }
-        
+
         .chatbot-message-bot.last {
             border-top-left-radius: $message-border-radius-small;
             border-bottom-left-radius: $message-border-radius;
@@ -149,9 +158,13 @@ $message-border-radius-small: 6px;
     }
 
     .chatbot-box-controls {
+        z-index: 258;
+
         display: grid;
         height: 48px;
         grid-template-columns: 5fr 1fr;
+        box-shadow: $box-shadow-light-top;
+        border-radius: 0 0 $box-border-radius $box-border-radius;
         .chatbot-box-input {
             border-radius: 0 0 0 $box-border-radius;
             border: none;
@@ -181,10 +194,21 @@ $message-border-radius-small: 6px;
 .chatbot-toggle.hide {
     right: 0;
     right: -32px;
+    // right: 0px;
+    bottom: calc(16px + 112px - 64px);
+    transition: box-shadow $transition-time ease-in-out,
+        right $transition-time ease-in-out $transition-time,
+        bottom $transition-time ease-in-out;
+
     // display: none;
 }
 .chatbot-box.hide {
+    height: 112px;
     right: calc(-16px - 300px);
+    transition: right $transition-time ease-in-out $transition-time,
+        height $transition-time ease-in-out;
+
+    // right: calc(-16px - 300px + 32px + 16px);
     // display: none;
 }
 

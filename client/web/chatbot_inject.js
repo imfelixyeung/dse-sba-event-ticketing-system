@@ -95,7 +95,7 @@
         // let lastLastType = lastLast ? lastLast.getAttribute("data-type") : null;
         let currentType = current.getAttribute("data-type");
 
-        if (!last) current.classList.add('last')
+        // if (!last) current.classList.add('last')
         
         if (lastType && lastType == currentType) {
             last.classList.remove('last')
@@ -210,6 +210,7 @@
 
     function handleToggle() {
         if (chatbot.open) {
+            input.focus()
             toggle.textContent = hideBoxMessage;
             toggle.classList.remove("hide");
             box.classList.remove("hide");
