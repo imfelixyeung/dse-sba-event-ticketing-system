@@ -1,4 +1,10 @@
 (async (typewriterStrings = []) => {
+    // https://www.includehelp.com/code-snippets/javascript-to-detect-whether-page-is-load-on-mobile-or-desktop.aspx
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+        return;
+    }
+
     const path = window.location.origin + window.location.pathname;
 
     function sleep(ms) {
