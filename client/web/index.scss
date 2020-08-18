@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 
 $feli-orange: #f9a825;
 
@@ -16,7 +16,7 @@ $feli-orange: #f9a825;
 
     // display: grid;
     // place-items: center;
-    
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -39,7 +39,7 @@ $feli-orange: #f9a825;
         }
     }
 
-    .actions{
+    .actions {
         a {
             border: none;
             outline: none;
@@ -49,6 +49,8 @@ $feli-orange: #f9a825;
             margin-left: 16px;
             margin-right: 16px;
             height: 48px;
+            user-select: none;
+
             // display: block;
         }
     }
@@ -90,6 +92,7 @@ main {
                 0 1px 10px 0 rgba(0, 0, 0, 0.12);
             transition: box-shadow 100ms ease-in-out,
                 background-color 100ms ease-in-out;
+            user-select: none;
         }
 
         button:hover {
