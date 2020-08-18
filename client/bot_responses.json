@@ -1,4 +1,8 @@
 {
+    "ets.app.open.how": [
+        "To open the ETS App:",
+        "1. Click the button labelled 'Open ETS in your browser'"
+    ],
     "ets.events.create.how": [
         "To create an event:",
         "1. Login with an organiser account",
@@ -40,11 +44,33 @@
         "3. Click on remove icon on the right to the event you want to leave",
         "4. Confirm removal"
     ],
+    "ets.getting_started.how": [
+        "To get started:",
+        "1. Open the ETS App"
+    ],
     "ets.language.change.how": [
         "To change the language:",
         "1. Navigate to 'Settings'",
         "2. Click on dropdown on the right to 'Language'",
         "3. Select desired language"
+    ],
+    "ets.platform.android.ask": [
+        "ETS Supports Android"
+    ],
+    "ets.platform.desktop.ask": [
+        "ETS doesn't support desktop, but you can use ETS in the browser"
+    ],
+    "ets.platform.ios.ask": [
+        "ETS doesn't support iOS, but you can use ETS in the browser"
+    ],
+    "ets.platform.web.ask": [
+        "ETS supports the Web"
+    ],
+    "ets.pricing.info": [
+        "ETS",
+        "1. Is free to use",
+        "2. Does not charge services fee",
+        "3. Does not collect profit cuts"
     ],
     "ets.user.login.how": [
         "To login:",
