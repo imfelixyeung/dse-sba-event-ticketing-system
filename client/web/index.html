@@ -27,15 +27,15 @@
                 <span class="brand">ETS</span>
             </div>
             <div class="actions right">
+                <a href="/app/">Launch App</a>
                 <!-- <a href="">Login</a> -->
                 <!-- <a href="">Register now</a> -->
             </div>
         </header>
-        <main>
-            <h2 id="typewriter-container">
-            </h2>
+        <main class="main">
+            <h2 id="typewriter-container"></h2>
             <script src="typewriter.js"></script>
-            <script>
+            <script defer>
                 typewriter({
                     element: document.querySelector("#typewriter-container"),
                     prefix: "ETS",
@@ -57,7 +57,7 @@
                 <button id="launch-web">Open ETS in your browser</button>
             </div>
         </main>
-        <footer></footer>
+        <footer class="footer"></footer>
         <script>
             var links = {
                 "#download-android": "/app/ets.apk",
