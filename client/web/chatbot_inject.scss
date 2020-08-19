@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 $transition-time: 350ms;
+$toggle-prompt-delay: 2000ms;
 $box-color: #eaeaea;
 $box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
     0 1px 10px 0 rgba(0, 0, 0, 0.12);
@@ -204,9 +205,13 @@ $message-border-radius-small: 6px;
     transition: box-shadow $transition-time ease-in-out,
         right $transition-time ease-in-out $transition-time,
         bottom $transition-time ease-in-out;
-
-    // display: none;
 }
+
+.chatbot-toggle.hide.prompt {
+    animation: 5000ms heartbeat ease-in-out infinite;
+    animation-delay: $toggle-prompt-delay;
+}
+
 .chatbot-box.hide {
     height: 112px;
     right: calc(-16px - 300px);
@@ -234,5 +239,21 @@ $message-border-radius-small: 6px;
         transition: box-shadow $transition-time ease-in-out,
             right $transition-time ease-in-out $transition-time,
             top $transition-time ease-in-out;
+    }
+}
+
+@keyframes heartbeat {
+    from {
+        transform: translateX(0);
+    }
+
+    10% {
+        transform: translateX(-16px);
+    }
+    20% {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(0);
     }
 }

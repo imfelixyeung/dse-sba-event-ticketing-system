@@ -210,6 +210,13 @@
   transition: box-shadow 350ms ease-in-out, right 350ms ease-in-out 350ms, bottom 350ms ease-in-out, -webkit-box-shadow 350ms ease-in-out;
 }
 
+.chatbot-toggle.hide.prompt {
+  -webkit-animation: 5000ms heartbeat ease-in-out infinite;
+          animation: 5000ms heartbeat ease-in-out infinite;
+  -webkit-animation-delay: 2000ms;
+          animation-delay: 2000ms;
+}
+
 .chatbot-box.hide {
   height: 112px;
   right: calc(-16px - 300px);
@@ -232,6 +239,44 @@
     transition: right 350ms ease-in-out 350ms, top 350ms ease-in-out, -webkit-box-shadow 350ms ease-in-out;
     transition: box-shadow 350ms ease-in-out, right 350ms ease-in-out 350ms, top 350ms ease-in-out;
     transition: box-shadow 350ms ease-in-out, right 350ms ease-in-out 350ms, top 350ms ease-in-out, -webkit-box-shadow 350ms ease-in-out;
+  }
+}
+
+@-webkit-keyframes heartbeat {
+  from {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  10% {
+    -webkit-transform: translateX(-16px);
+            transform: translateX(-16px);
+  }
+  20% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes heartbeat {
+  from {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  10% {
+    -webkit-transform: translateX(-16px);
+            transform: translateX(-16px);
+  }
+  20% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
 }
 /*# sourceMappingURL=chatbot_inject.css.map */

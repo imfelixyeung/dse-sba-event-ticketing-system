@@ -9,16 +9,21 @@
             type="text/css"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script src="history_animate.js" defer></script>
+        <!-- <script src="history_animate.js" defer></script> -->
         <script src="/chatbot_inject.js" defer></script>
-        <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="/chatbot_inject.css">
-        <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="/chatbot_inject.css" />
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     </head>
     <body>
         <header class="header">
             <div class="brand-logo left">
-                <img class="logo" src="http://dynamic.felixyeung2002.com/app/assets/icons/icon.svg" alt="" srcset="">
+                <img
+                    class="logo"
+                    src="http://dynamic.felixyeung2002.com/app/assets/icons/icon.svg"
+                    alt=""
+                    srcset=""
+                />
                 <span class="brand">ETS</span>
             </div>
             <div class="actions right">
@@ -27,35 +32,48 @@
             </div>
         </header>
         <main>
-            <h1>Tickets made easy</h2>
-                <p>
-                    No matter what event you want to participate or organise,
-                    ETS lets you do that easily
-                </p>
-                <div class="buttons">
-                    <button id="download-android">Download for Android</button>
-                    <button id="launch-web">Open ETS in your browser</button>
-                </div>
+            <h2 id="typewriter-container">
+            </h2>
+            <script src="typewriter.js"></script>
+            <script>
+                typewriter({
+                    element: document.querySelector("#typewriter-container"),
+                    prefix: "ETS",
+                    strings: [
+                        "is Event Ticketing System",
+                        "has Beautiful UI",
+                        "has Excellent UX",
+                        "is Under Construction",
+                    ],
+                });
+            </script>
+            <h1>Tickets made easy</h1>
+            <p>
+                No matter what event you want to participate or organise, ETS
+                lets you do that easily
+            </p>
+            <div class="buttons">
+                <button id="download-android">Download for Android</button>
+                <button id="launch-web">Open ETS in your browser</button>
+            </div>
         </main>
         <footer></footer>
         <script>
-
             var links = {
                 "#download-android": "/app/ets.apk",
-                "#launch-web": "/app/"
-            }
+                "#launch-web": "/app/",
+            };
 
             for (const key in links) {
                 if (links.hasOwnProperty(key)) {
                     const href = links[key];
-                    document.querySelector(key).addEventListener('click', () => {
-                        window.location.href = href;
-                    })
-
+                    document
+                        .querySelector(key)
+                        .addEventListener("click", () => {
+                            window.location.href = href;
+                        });
                 }
             }
-
-
         </script>
     </body>
 </html>

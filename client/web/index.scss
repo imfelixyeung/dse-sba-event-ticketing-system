@@ -61,10 +61,29 @@ main {
     place-items: center;
     height: 100%;
 
+    #typewriter-container {
+        margin-top: 16px;
+
+        .message {
+            span {
+                color: $feli-orange;
+            }
+            // span:before {
+            //     content: " ";
+            // }
+        }
+        .cursor {
+            color: black;
+            content: "|";
+            animation: 500ms blink ease-in-out infinite;
+            animation-direction: alternate;
+            user-select: none;
+        }
+    }
+
     h1 {
         font-size: 56px;
         margin: 0 16px;
-        margin-top: 16px;
         font-weight: 900;
     }
 
@@ -113,5 +132,14 @@ main {
                 0 4px 5px 0 rgba(0, 0, 0, 0.14),
                 0 1px 10px 0 rgba(0, 0, 0, 0.12);
         }
+    }
+}
+
+@keyframes blink {
+    from {
+        color: transparent;
+    }
+    to {
+        color: black;
     }
 }
