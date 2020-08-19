@@ -48,15 +48,16 @@ $feli-orange: #f9a825;
             text-decoration: none;
             margin-left: 16px;
             margin-right: 16px;
-            height: 48px;
             user-select: none;
-
-            // display: block;
+            display: inline-block;
+        }
+        :last-child {
+            margin-right: 32px;
         }
     }
 }
 
-main {
+.main {
     display: grid;
     place-items: center;
     height: 100%;
@@ -75,9 +76,11 @@ main {
         .cursor {
             color: black;
             content: "|";
+            user-select: none;
+        }
+        .cursor.blinking {
             animation: 500ms blink ease-in-out infinite;
             animation-direction: alternate;
-            user-select: none;
         }
     }
 
@@ -95,7 +98,7 @@ main {
     .buttons {
         margin: 0 8px;
         button {
-            height: 64px;
+            min-height: 64px;
             border: none;
             border-radius: 500px;
             background-color: $feli-orange;
@@ -137,9 +140,9 @@ main {
 
 @keyframes blink {
     from {
-        color: transparent;
+        color: black;
     }
     to {
-        color: black;
+        color: transparent;
     }
 }

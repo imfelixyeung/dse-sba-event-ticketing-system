@@ -51,58 +51,65 @@
   text-decoration: none;
   margin-left: 16px;
   margin-right: 16px;
-  height: 48px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  display: inline-block;
 }
 
-main {
+.header .actions :last-child {
+  margin-right: 32px;
+}
+
+.main {
   display: -ms-grid;
   display: grid;
   place-items: center;
   height: 100%;
 }
 
-main #typewriter-container {
+.main #typewriter-container {
   margin-top: 16px;
 }
 
-main #typewriter-container .message span {
+.main #typewriter-container .message span {
   color: #f9a825;
 }
 
-main #typewriter-container .cursor {
+.main #typewriter-container .cursor {
   color: black;
   content: "|";
-  -webkit-animation: 500ms blink ease-in-out infinite;
-          animation: 500ms blink ease-in-out infinite;
-  -webkit-animation-direction: alternate;
-          animation-direction: alternate;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }
 
-main h1 {
+.main #typewriter-container .cursor.blinking {
+  -webkit-animation: 500ms blink ease-in-out infinite;
+          animation: 500ms blink ease-in-out infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.main h1 {
   font-size: 56px;
   margin: 0 16px;
   font-weight: 900;
 }
 
-main p {
+.main p {
   font-size: 22px;
   margin: 16px 16px;
 }
 
-main .buttons {
+.main .buttons {
   margin: 0 8px;
 }
 
-main .buttons button {
-  height: 64px;
+.main .buttons button {
+  min-height: 64px;
   border: none;
   border-radius: 500px;
   background-color: #f9a825;
@@ -125,13 +132,13 @@ main .buttons button {
           user-select: none;
 }
 
-main .buttons button:hover {
+.main .buttons button:hover {
   background-color: #fabc57;
   -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
           box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-main .buttons button:active {
+.main .buttons button:active {
   background-color: #f89e0c;
   -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
           box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
@@ -139,19 +146,19 @@ main .buttons button:active {
 
 @-webkit-keyframes blink {
   from {
-    color: transparent;
+    color: black;
   }
   to {
-    color: black;
+    color: transparent;
   }
 }
 
 @keyframes blink {
   from {
-    color: transparent;
+    color: black;
   }
   to {
-    color: black;
+    color: transparent;
   }
 }
 /*# sourceMappingURL=index.css.map */

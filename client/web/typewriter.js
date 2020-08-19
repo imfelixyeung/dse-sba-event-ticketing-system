@@ -40,18 +40,22 @@ const typewriter = async ({
     while (true) {
         for (var str of strings) {
             str = between + str;
+            cursorElement.classList.remove('blinking')
             for (const char of [...str]) {
-                await sleep(100 + Math.random() * 200);
+                await sleep(50 + Math.random() * 100);
                 message += char;
                 setMessage(message);
             }
-            await sleep(1500);
+            cursorElement.classList.add('blinking')
+            await sleep(3000);
+            cursorElement.classList.remove('blinking')
             for (const char of [...message]) {
                 await sleep(25);
                 message = message.slice(0, -1);
                 setMessage(message);
             }
-            await sleep(500);
+            cursorElement.classList.add('blinking')
+            await sleep(1000);
         }
     }
 };
