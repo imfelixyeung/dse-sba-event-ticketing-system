@@ -10,6 +10,8 @@
     inputPlaceholder = inputPlaceholder || "Message...";
     sendButtonLabel = sendButtonLabel || "Send";
     errorMessage = errorMessage || "Unable to connect to server";
+    
+    var openedBefore;
 
     const endpoint = "/api/chatBot";
     var id = Math.random().toString();
@@ -197,6 +199,9 @@
 
     chatbot.open = window.localStorage.getItem("chatbot-box-open") || "false";
     chatbot.open = JSON.parse(chatbot.open);
+    openedBefore = window.localStorage.getItem("chatbot-box-opened-before") || "false";
+    openedBefore = JSON.parse(openedBefore);
+    openedBefore = openedBefore || chatbot.open;
     chatbot.box = box;
 
     var toggle = document.createElement("div");
@@ -219,6 +224,12 @@
     }
 
     function handleToggle() {
+        openedBefore = openedBefore || chatbot.open;
+        window.localStorage.setItem("chatbot-box-opened-before", openedBefore);
+        openedBefore
+            ? toggle.classList.remove("prompt")
+            : toggle.classList.add("prompt");
+
         if (chatbot.open) {
             focusInput();
             toggle.textContent = hideBoxMessage;
