@@ -56,6 +56,7 @@
   height: 500px;
   max-height: calc(100vh - 32px);
   width: 300px;
+  max-width: calc(100vw - 64px);
   background-color: #eaeaea;
   position: fixed;
   right: 16px;
@@ -246,6 +247,12 @@
     transition: right 350ms ease-in-out 350ms, top 350ms ease-in-out, -webkit-box-shadow 350ms ease-in-out;
     transition: box-shadow 350ms ease-in-out, right 350ms ease-in-out 350ms, top 350ms ease-in-out;
     transition: box-shadow 350ms ease-in-out, right 350ms ease-in-out 350ms, top 350ms ease-in-out, -webkit-box-shadow 350ms ease-in-out;
+  }
+}
+
+@media only screen and (max-width: 364px) {
+  .chatbot-toggle {
+    right: calc(100vw - 64px - 16px);
   }
 }
 
