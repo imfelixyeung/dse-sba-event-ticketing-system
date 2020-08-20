@@ -136,7 +136,14 @@ $feli-orange: #f9a825;
                 0 1px 10px 0 rgba(0, 0, 0, 0.12);
         }
     }
+
+    .undraw {
+        margin-top: 64px;
+        width: 90vw;
+        max-width: 500px;
+    }
 }
+
 
 @keyframes blink {
     from {
