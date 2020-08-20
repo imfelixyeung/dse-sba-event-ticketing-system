@@ -97,6 +97,8 @@ $message-border-radius-small: 6px;
         // scroll-behavior: smooth;
         overflow: scroll;
 
+        
+
         .chatbot-message {
             background-color: lighten($box-color, 5%);
             padding: 8px 12px;
@@ -108,6 +110,9 @@ $message-border-radius-small: 6px;
             font-size: 16px;
             margin-bottom: 4px;
             box-shadow: $box-shadow-light;
+            opacity: 1;
+            transition: opacity $transition-time ease-in-out;
+
         }
         .chatbot-message-system {
             background-color: lighten($box-color, 10%);
@@ -160,6 +165,10 @@ $message-border-radius-small: 6px;
 
         .chatbot-message:last-child {
             margin-bottom: 12px;
+        }
+
+        .chatbot-message.hidden {
+            opacity: 0;
         }
     }
 

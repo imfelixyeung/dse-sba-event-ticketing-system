@@ -56,7 +56,7 @@
         input.disabled = true;
         submit.disabled = true;
         input.value = "";
-        appendMessage(createUserMessage(message));
+        appendMessage(createUserMessage(message, true));
         saveChatHistory({
             type: "user",
             message,
@@ -66,14 +66,14 @@
 
         var responses = await getResponses(message);
         if (responses.length <= 0) {
-            appendMessage(createSystemMessage(errorMessage));
+            appendMessage(createSystemMessage(errorMessage, true));
             saveChatHistory({
                 type: "system",
                 message: errorMessage,
             });
         } else {
             responses.forEach((response) => {
-                appendMessage(createBotMessage(response));
+                appendMessage(createBotMessage(response, true));
                 saveChatHistory({
                     type: "bot",
                     message: response,
@@ -107,30 +107,34 @@
         historyContainer.append(current);
     }
 
-    function createMessage(message) {
+    function createMessage(message, isNew = false) {
         let messageDiv = document.createElement("div");
         messageDiv.classList.add("chatbot-message");
         messageDiv.textContent = message;
+        if (isNew) {
+            messageDiv.classList.add('hidden');
+            setTimeout(() => {messageDiv.classList.remove("hidden");})
+        }
         return messageDiv;
     }
 
-    function createSystemMessage(message) {
-        let messageDiv = createMessage(message);
+    function createSystemMessage(message, isNew = false) {
+        let messageDiv = createMessage(message, isNew);
         messageDiv.classList.add("chatbot-message-system");
         messageDiv.setAttribute("data-type", "system");
         return messageDiv;
     }
 
-    function createUserMessage(message) {
-        let messageDiv = createMessage(message);
+    function createUserMessage(message, isNew = false) {
+        let messageDiv = createMessage(message, isNew);
         messageDiv.classList.add("chatbot-message-user");
         messageDiv.setAttribute("data-type", "user");
 
         return messageDiv;
     }
 
-    function createBotMessage(message) {
-        let messageDiv = createMessage(message);
+    function createBotMessage(message, isNew = false) {
+        let messageDiv = createMessage(message, isNew);
         messageDiv.classList.add("chatbot-message-bot");
         messageDiv.setAttribute("data-type", "bot");
 
