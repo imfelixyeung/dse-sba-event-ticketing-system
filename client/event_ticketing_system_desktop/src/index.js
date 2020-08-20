@@ -1,0 +1,121 @@
+const { app, BrowserWindow, Menu } = require("electron");
+const path = require("path");
+
+const isMac = process.platform === "darwin";
+
+if (require("electron-squirrel-startup")) {
+    app.quit();
+}
+
+const createWindow = () => {
+    const mainWindow = new BrowserWindow({
+        width: 800,
+        height: 600,
+        title: "ETS",
+        icon: path.join(__dirname, "ets.png"),
+    });
+
+    const template = [
+        // { role: 'appMenu' }
+        ...(isMac
+            ? [
+                  {
+                      label: app.name,
+                      submenu: [
+                          { role: "about" },
+                          { type: "separator" },
+                          { role: "services" },
+                          { type: "separator" },
+                          { role: "hide" },
+                          { role: "hideothers" },
+                          { role: "unhide" },
+                          { type: "separator" },
+                          { role: "quit" },
+                      ],
+                  },
+              ]
+            : []),
+        // { role: 'fileMenu' }
+        {
+            label: "File",
+            submenu: [isMac ? { role: "close" } : { role: "quit" }],
+        },
+        // { role: 'editMenu' }
+        {
+            label: "Edit",
+            submenu: [
+                { role: "undo" },
+                { role: "redo" },
+                { type: "separator" },
+                { role: "cut" },
+                { role: "copy" },
+                { role: "paste" },
+                ,
+            ],
+        },
+        // { role: 'viewMenu' }
+        {
+            label: "View",
+            submenu: [
+                { role: "reload" },
+                { role: "forcereload" },
+                // { role: "toggledevtools" },
+                { type: "separator" },
+                { role: "resetzoom" },
+                { role: "zoomin" },
+                { role: "zoomout" },
+                { type: "separator" },
+                { role: "togglefullscreen" },
+            ],
+        },
+        // { role: 'windowMenu' }
+        {
+            label: "Window",
+            submenu: [
+                { role: "minimize" },
+                { role: "zoom" },
+                ...(isMac
+                    ? [
+                          { type: "separator" },
+                          { role: "front" },
+                          { type: "separator" },
+                          { role: "window" },
+                      ]
+                    : [{ role: "close" }]),
+            ],
+        },
+        {
+            role: "help",
+            submenu: [
+                {
+                    label: "Website",
+                    click: async () => {
+                        const { shell } = require("electron");
+                        await shell.openExternal(
+                            "http://dynamic.felixyeung2002.com/"
+                        );
+                    },
+                },
+            ],
+        },
+    ];
+    const menu = Menu.buildFromTemplate(template);
+    Menu.setApplicationMenu(menu);
+
+    mainWindow.loadURL("http://dynamic.felixyeung2002.com/app/");
+    // mainWindow.webContents.openDevTools();
+};
+
+app.on("ready", createWindow);
+
+app.on("window-all-closed", () => {
+    if (process.platform !== "darwin") {
+        app.quit();
+    }
+});
+
+app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+        createWindow();
+    }
+});
