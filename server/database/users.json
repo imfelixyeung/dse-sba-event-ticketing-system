@@ -78,12 +78,12 @@
     "access_level" : "admin",
     "joined_events" : [
       {
-        "event_id" : "EB3444FB3A9F183C0",
-        "created_at" : 1596940924000
-      },
-      {
         "event_id" : "6SnOXXPQoJYtnvdR76z_x83-T5oLV_c6",
         "created_at" : 1597104366000
+      },
+      {
+        "event_id" : "R6sQiJ5SRNmqztSC0VlehVAoBZac8Eb2",
+        "created_at" : 1597375036000
       }
     ],
     "created_events" : [

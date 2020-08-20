@@ -1,43 +1,5 @@
 [
   {
-    "id" : "EB3444FB3A9F183C0",
-    "organiser" : "FelixNPL",
-    "name" : "Very Fun Event",
-    "description" : "This is a super cool event!",
-    "start_time" : 1596113358066,
-    "end_time" : 1596113376639,
-    "created_at" : 1596094047097,
-    "venue" : "Hong Kong",
-    "theme" : "Very Fun Games",
-    "participant_limit" : 1,
-    "tickets" : [
-      {
-        "id" : "0",
-        "type" : "Regular",
-        "fee" : 100
-      },
-      {
-        "id" : "1",
-        "type" : "VIP",
-        "fee" : 350
-      },
-      {
-        "id" : "2",
-        "type" : "MVP",
-        "fee" : 500
-      }
-    ],
-    "participants" : [
-      {
-        "username" : "admin",
-        "ticket_id" : "2",
-        "created_at" : 1596940924000
-      }
-    ],
-    "waiting_list" : [
-    ]
-  },
-  {
     "id" : "A7H345DFbA9FB3Y9",
     "organiser" : "FelixNPL",
     "name" : "Another Very Fun Event",
@@ -76,29 +38,6 @@
     ]
   },
   {
-    "id" : "R6sQiJ5SRNmqztSC0VlehVAoBZac8Eb2",
-    "organiser" : "admin",
-    "name" : "Programming Day",
-    "description" : "Everyone program",
-    "start_time" : 1596988800000,
-    "end_time" : 1597032000000,
-    "created_at" : 1596988930000,
-    "venue" : "PO LEUNG KUK NGAN PO LING COLLEGE",
-    "theme" : "August 10, 2020 12:00:00 PM",
-    "participant_limit" : 5,
-    "tickets" : [
-      {
-        "id" : "71VF-Z7vr9-2i-c_QZf0gk3ItPpXFpfQ",
-        "type" : "Normal",
-        "fee" : 0.0000000000000000E+000
-      }
-    ],
-    "participants" : [
-    ],
-    "waiting_list" : [
-    ]
-  },
-  {
     "id" : "6SnOXXPQoJYtnvdR76z_x83-T5oLV_c6",
     "organiser" : "eddie",
     "name" : "Cat Party",
@@ -122,6 +61,67 @@
         "ticket_id" : "Mq6emCvhbFKzdEQ6AsqgC1thcQe4fCMY",
         "created_at" : 1597104366000
       }
+    ],
+    "waiting_list" : [
+    ]
+  },
+  {
+    "id" : "R6sQiJ5SRNmqztSC0VlehVAoBZac8Eb2",
+    "organiser" : "admin",
+    "name" : "Programming Day",
+    "description" : "Everyone program",
+    "start_time" : 1596988800000,
+    "end_time" : 1597032000000,
+    "created_at" : 1596988930000,
+    "venue" : "HONG KONG SCIENCE MUSEUM",
+    "theme" : "Fun With </>",
+    "participant_limit" : 11,
+    "tickets" : [
+      {
+        "id" : "71VF-Z7vr9-2i-c_QZf0gk3ItPpXFpfQ",
+        "type" : "Normal",
+        "fee" : 0.0000000000000000E+000
+      }
+    ],
+    "participants" : [
+      {
+        "username" : "admin",
+        "ticket_id" : "71VF-Z7vr9-2i-c_QZf0gk3ItPpXFpfQ",
+        "created_at" : 1597375036000
+      }
+    ],
+    "waiting_list" : [
+    ]
+  },
+  {
+    "id" : "EB3444FB3A9F183C0",
+    "organiser" : "FelixNPL",
+    "name" : "Very Fun Event",
+    "description" : "This is a super cool event!",
+    "start_time" : 1597927740000,
+    "end_time" : 1598014140000,
+    "created_at" : 1596094047097,
+    "venue" : "Hong Kong",
+    "theme" : "Very Fun Games",
+    "participant_limit" : 1,
+    "tickets" : [
+      {
+        "id" : "0",
+        "type" : "Regular",
+        "fee" : 100
+      },
+      {
+        "id" : "1",
+        "type" : "VIP",
+        "fee" : 350
+      },
+      {
+        "id" : "2",
+        "type" : "MVP",
+        "fee" : 500
+      }
+    ],
+    "participants" : [
     ],
     "waiting_list" : [
     ]
