@@ -6,3 +6,7 @@ node_modules
 */node_modules
 *.discord.json
 *ets-bxok-fc31bc4e01b8.json
+client/event_ticketing_system_android/build/*
+client/event_ticketing_system_android/gradle/*
+client/event_ticketing_system_android/.gradle/*
+client/event_ticketing_system_android/app/*

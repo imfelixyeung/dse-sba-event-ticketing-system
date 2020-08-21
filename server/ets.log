@@ -1661,3 +1661,795 @@
 2020-08-09 14:13:58 [ETS] [Debug]    Press <Enter> to continue
 2020-08-09 14:14:14 [ETS] [Debug]    Press <Enter> to continue
 2020-08-09 14:16:00 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-10 16:27:30 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-10 16:30:18 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 16:32:16 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 16:33:41 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 16:33:51 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 16:34:00 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 16:37:14 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 16:39:06 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 16:39:58 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 16:42:03 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 16:43:39 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 16:43:46 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 16:44:00 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 16:44:28 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 16:44:46 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:17:33 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:17:50 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:18:02 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:19:48 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:19:51 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:20:00 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:20:09 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:20:10 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:20:12 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:20:18 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:20:25 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:20:28 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:21:05 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:25:02 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:25:04 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:25:05 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:25:07 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:25:13 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:29:24 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:29:42 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:30:23 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:32:47 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:33:06 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:33:18 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:33:20 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:33:21 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:33:22 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:34:02 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:41:55 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:42:10 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:42:12 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:42:13 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:42:21 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:43:09 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:43:10 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:43:11 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:43:24 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:43:26 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:43:27 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:43:29 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:43:30 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:43:40 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:43:41 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:43:42 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 17:43:56 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 18:25:38 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 18:25:39 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 18:25:40 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 18:25:48 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 18:25:49 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 18:25:51 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 18:25:57 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 18:25:59 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 18:26:00 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 18:26:07 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 18:26:09 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 18:26:31 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:12:16 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:13:32 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:13:33 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:13:35 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:13:36 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:15:02 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:15:03 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:15:39 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:23 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:24 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:26 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:27 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:29 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:30 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:32 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:33 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:35 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:36 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:38 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:39 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:41 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:42 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:44 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:45 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:47 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:48 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:50 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:51 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:53 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:54 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:56 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:57 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:16:59 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:00 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:02 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:03 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:05 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:06 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:08 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:09 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:11 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:12 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:14 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:15 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:17 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:18 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:20 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:21 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:23 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:24 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:26 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:27 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:29 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:30 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:32 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:33 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:35 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:36 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:38 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:39 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:41 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:42 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:44 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:45 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:47 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:48 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:50 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:51 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:53 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:55 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:57 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:17:58 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:00 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:02 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:03 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:05 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:07 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:08 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:10 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:11 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:13 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:14 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:16 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:17 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:19 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:20 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:21 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:22 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:23 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:25 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:26 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:27 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:29 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:30 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:32 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:34 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:35 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:37 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:39 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:40 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:42 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:43 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:45 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:46 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:48 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:50 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:51 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:53 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:54 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:56 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:57 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:18:59 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:01 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:02 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:04 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:05 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:07 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:08 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:10 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:11 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:13 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:15 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:16 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:18 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:20 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:21 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:23 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:24 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:26 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:28 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:29 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:31 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:32 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:34 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:36 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:37 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:39 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:40 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:42 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:44 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:45 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:47 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:48 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:50 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:52 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:55 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:56 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:19:58 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:20:00 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:20:02 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:20:03 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:20:05 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:20:06 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:20:08 [ETS] [Error]    Cannot convert data from object value
+2020-08-10 19:20:59 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:23:14 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:23:45 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:24:19 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:27:14 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:30:40 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:31:54 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:32:36 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:34:28 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:34:43 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:36:39 [ETS] [Error]    List index (4) out of bounds
+2020-08-10 19:36:41 [ETS] [Error]    List index (4) out of bounds
+2020-08-10 19:36:42 [ETS] [Error]    List index (4) out of bounds
+2020-08-10 19:36:43 [ETS] [Error]    List index (4) out of bounds
+2020-08-10 19:36:45 [ETS] [Error]    List index (4) out of bounds
+2020-08-10 19:36:46 [ETS] [Error]    List index (4) out of bounds
+2020-08-10 19:40:17 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:40:19 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 19:43:19 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:15:28 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:15:33 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:16:56 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:17:29 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:17:41 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:19:03 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:21:59 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:22:14 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:16 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:17 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:19 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:20 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:22 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:23 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:25 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:26 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:28 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:29 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:31 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:33 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:34 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:35 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:37 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:38 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:40 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:41 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:43 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:44 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:46 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:47 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:49 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:50 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:52 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:22:53 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:16 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:23:18 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:23:31 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:33 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:34 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:36 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:37 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:39 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:40 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:42 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:43 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:45 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:46 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:47 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:49 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:50 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:52 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:23:53 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:23:58 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:25:01 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:25:05 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:25:11 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:25:27 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:25:28 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:25:30 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:25:31 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:25:33 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:25:34 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:26:52 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:27:05 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:28:23 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:28:49 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:30:12 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:30:31 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:30:50 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:30:51 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:30:53 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:33 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:35 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:36 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:38 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:39 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:41 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:42 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:44 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:45 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:46 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:48 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:49 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:51 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:52 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:54 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:56 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:57 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:33:59 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:00 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:02 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:03 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:05 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:06 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:08 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:09 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:11 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:12 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:14 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:15 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:17 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:18 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:20 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:21 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:23 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:24 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:26 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:27 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:29 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:30 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:32 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:33 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:35 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:36 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:38 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:39 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:41 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:42 [ETS] [Error]    List index (-1) out of bounds
+2020-08-10 20:34:44 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:36:00 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:39:59 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:40:14 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:40:41 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:40:53 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:41:03 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:55:49 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:56:27 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:56:41 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:56:45 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:59:36 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 20:59:46 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:03:45 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:03:58 [ETS] [Error]    Access violation
+2020-08-10 21:04:00 [ETS] [Error]    Access violation
+2020-08-10 21:04:01 [ETS] [Error]    Access violation
+2020-08-10 21:04:03 [ETS] [Error]    Access violation
+2020-08-10 21:04:04 [ETS] [Error]    Access violation
+2020-08-10 21:04:06 [ETS] [Error]    Access violation
+2020-08-10 21:04:07 [ETS] [Error]    Access violation
+2020-08-10 21:04:09 [ETS] [Error]    Access violation
+2020-08-10 21:04:10 [ETS] [Error]    Access violation
+2020-08-10 21:04:11 [ETS] [Error]    Access violation
+2020-08-10 21:04:13 [ETS] [Error]    Access violation
+2020-08-10 21:04:14 [ETS] [Error]    Access violation
+2020-08-10 21:04:16 [ETS] [Error]    Access violation
+2020-08-10 21:04:17 [ETS] [Error]    Access violation
+2020-08-10 21:04:19 [ETS] [Error]    Access violation
+2020-08-10 21:04:20 [ETS] [Error]    Access violation
+2020-08-10 21:04:22 [ETS] [Error]    Access violation
+2020-08-10 21:04:23 [ETS] [Error]    Access violation
+2020-08-10 21:04:25 [ETS] [Error]    Access violation
+2020-08-10 21:04:26 [ETS] [Error]    Access violation
+2020-08-10 21:04:28 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:05:09 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:05:49 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:05:52 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:06:05 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:06:22 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:06:27 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:06:34 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:07:45 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-10 21:13:26 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:13:50 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:14:13 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:14:29 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:14:42 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:14:50 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 21:15:00 [ETS] [Debug]    Press <Enter> to continue
+2020-08-10 23:12:46 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 11:18:52 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 11:19:05 [ETS] [Info]     Shutting down server
+2020-08-11 11:19:07 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 11:21:36 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 11:22:27 [ETS] [Info]     Shutting down server
+2020-08-11 11:22:28 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 11:22:31 [ETS] [Error]    Error 404 "/favicon.ico" not found
+2020-08-11 11:23:54 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 11:24:02 [ETS] [Error]    Access violation
+2020-08-11 11:24:03 [ETS] [Error]    Access violation
+2020-08-11 11:24:05 [ETS] [Error]    Access violation
+2020-08-11 11:25:32 [ETS] [Info]     Shutting down server
+2020-08-11 11:25:33 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 18:37:32 [ETS] [Info]     Shutting down server
+2020-08-11 18:37:33 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 18:38:40 [ETS] [Info]     Shutting down server
+2020-08-11 18:38:41 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 18:40:34 [ETS] [Info]     Shutting down server
+2020-08-11 18:40:36 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 18:40:49 [ETS] [Info]     Shutting down server
+2020-08-11 18:40:50 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 18:41:24 [ETS] [Info]     Shutting down server
+2020-08-11 18:41:26 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 18:46:40 [ETS] [Info]     Shutting down server
+2020-08-11 18:46:42 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 18:51:20 [ETS] [Info]     Shutting down server
+2020-08-11 18:51:22 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 18:52:14 [ETS] [Info]     Shutting down server
+2020-08-11 18:52:16 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 18:52:31 [ETS] [Info]     Shutting down server
+2020-08-11 18:52:33 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 18:54:15 [ETS] [Info]     Shutting down server
+2020-08-11 18:54:18 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 18:54:27 [ETS] [Info]     Event EB3444FB3A9F183C0 removed successfully
+2020-08-11 18:54:43 [ETS] [Info]     Event EB3444FB3A9F183C0 removed successfully
+2020-08-11 18:55:04 [ETS] [Info]     Event EB3444FB3A9F183C0 removed successfully
+2020-08-11 18:55:06 [ETS] [Info]     Event EB3444FB3A9F183C0 removed successfully
+2020-08-11 19:02:21 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-11 19:02:29 [ETS] [Error]    Error 404 "/" not found
+2020-08-11 19:02:29 [ETS] [Error]    Error 404 "/favicon.ico" not found
+2020-08-11 19:02:54 [ETS] [Error]    Access violation
+2020-08-21 13:47:15 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-21 13:47:56 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 13:49:17 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 13:52:51 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 13:53:00 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 13:55:16 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 13:55:56 [ETS] [Error]    Access violation
+2020-08-21 13:55:57 [ETS] [Error]    Access violation
+2020-08-21 13:55:58 [ETS] [Error]    Access violation
+2020-08-21 13:56:00 [ETS] [Error]    Access violation
+2020-08-21 13:56:01 [ETS] [Error]    Access violation
+2020-08-21 13:56:03 [ETS] [Error]    Access violation
+2020-08-21 13:56:04 [ETS] [Error]    Access violation
+2020-08-21 13:56:06 [ETS] [Error]    Access violation
+2020-08-21 13:56:08 [ETS] [Error]    Access violation
+2020-08-21 13:56:09 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 13:57:30 [ETS] [Error]    Access violation
+2020-08-21 13:57:32 [ETS] [Error]    Access violation
+2020-08-21 13:57:33 [ETS] [Error]    Access violation
+2020-08-21 13:57:35 [ETS] [Error]    Access violation
+2020-08-21 13:57:36 [ETS] [Error]    Access violation
+2020-08-21 13:57:38 [ETS] [Error]    Access violation
+2020-08-21 13:57:39 [ETS] [Error]    Access violation
+2020-08-21 13:57:41 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 13:58:01 [ETS] [Error]    Access violation
+2020-08-21 13:58:03 [ETS] [Error]    Access violation
+2020-08-21 13:58:04 [ETS] [Error]    Access violation
+2020-08-21 13:58:06 [ETS] [Error]    Access violation
+2020-08-21 13:58:07 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 13:58:27 [ETS] [Error]    Access violation
+2020-08-21 13:58:28 [ETS] [Error]    Access violation
+2020-08-21 13:58:30 [ETS] [Error]    Access violation
+2020-08-21 13:58:31 [ETS] [Error]    Access violation
+2020-08-21 13:58:33 [ETS] [Error]    Access violation
+2020-08-21 13:58:34 [ETS] [Error]    Access violation
+2020-08-21 13:58:36 [ETS] [Error]    Access violation
+2020-08-21 13:58:37 [ETS] [Error]    Access violation
+2020-08-21 13:58:39 [ETS] [Error]    Access violation
+2020-08-21 13:58:40 [ETS] [Error]    Access violation
+2020-08-21 13:58:42 [ETS] [Error]    Access violation
+2020-08-21 13:58:43 [ETS] [Error]    Access violation
+2020-08-21 13:58:45 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 13:59:39 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:00:26 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:00:28 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:00:49 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:04:34 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:05:18 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:08:27 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:08:53 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:09:04 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:19:46 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:19:47 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:19:49 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:19:50 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:20:20 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:20:22 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:20:23 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:20:24 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:20:45 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:20:46 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:21:09 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:21:10 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:21:48 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:22:35 [ETS] [Error]    Access violation
+2020-08-21 14:22:37 [ETS] [Error]    Access violation
+2020-08-21 14:22:38 [ETS] [Error]    Access violation
+2020-08-21 14:22:40 [ETS] [Error]    Access violation
+2020-08-21 14:22:41 [ETS] [Error]    Access violation
+2020-08-21 14:22:43 [ETS] [Error]    Access violation
+2020-08-21 14:22:44 [ETS] [Error]    Access violation
+2020-08-21 14:22:46 [ETS] [Error]    Access violation
+2020-08-21 14:22:47 [ETS] [Error]    Access violation
+2020-08-21 14:22:49 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:23:04 [ETS] [Error]    Access violation
+2020-08-21 14:23:05 [ETS] [Error]    Access violation
+2020-08-21 14:23:07 [ETS] [Error]    Access violation
+2020-08-21 14:23:08 [ETS] [Error]    Access violation
+2020-08-21 14:23:10 [ETS] [Error]    Access violation
+2020-08-21 14:23:11 [ETS] [Error]    Access violation
+2020-08-21 14:23:13 [ETS] [Error]    Access violation
+2020-08-21 14:23:14 [ETS] [Error]    Access violation
+2020-08-21 14:23:16 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:24:07 [ETS] [Error]    Access violation
+2020-08-21 14:24:09 [ETS] [Error]    Access violation
+2020-08-21 14:24:10 [ETS] [Error]    Access violation
+2020-08-21 14:24:12 [ETS] [Error]    Access violation
+2020-08-21 14:24:13 [ETS] [Error]    Access violation
+2020-08-21 14:24:15 [ETS] [Error]    Access violation
+2020-08-21 14:24:16 [ETS] [Error]    Access violation
+2020-08-21 14:24:18 [ETS] [Error]    Access violation
+2020-08-21 14:24:19 [ETS] [Error]    Access violation
+2020-08-21 14:24:21 [ETS] [Error]    Access violation
+2020-08-21 14:24:22 [ETS] [Error]    Access violation
+2020-08-21 14:24:24 [ETS] [Error]    Access violation
+2020-08-21 14:24:25 [ETS] [Error]    Access violation
+2020-08-21 14:24:27 [ETS] [Error]    Access violation
+2020-08-21 14:24:28 [ETS] [Error]    Access violation
+2020-08-21 14:24:30 [ETS] [Error]    Access violation
+2020-08-21 14:24:31 [ETS] [Error]    Access violation
+2020-08-21 14:24:33 [ETS] [Error]    Access violation
+2020-08-21 14:24:34 [ETS] [Error]    Access violation
+2020-08-21 14:24:36 [ETS] [Error]    Access violation
+2020-08-21 14:24:37 [ETS] [Error]    Access violation
+2020-08-21 14:24:39 [ETS] [Error]    Access violation
+2020-08-21 14:24:40 [ETS] [Error]    Access violation
+2020-08-21 14:24:41 [ETS] [Error]    Access violation
+2020-08-21 14:24:43 [ETS] [Error]    Access violation
+2020-08-21 14:24:45 [ETS] [Error]    Access violation
+2020-08-21 14:24:46 [ETS] [Error]    Access violation
+2020-08-21 14:24:48 [ETS] [Error]    Access violation
+2020-08-21 14:24:49 [ETS] [Error]    Access violation
+2020-08-21 14:24:51 [ETS] [Error]    Access violation
+2020-08-21 14:24:52 [ETS] [Error]    Access violation
+2020-08-21 14:24:53 [ETS] [Error]    Access violation
+2020-08-21 14:24:55 [ETS] [Error]    Access violation
+2020-08-21 14:24:56 [ETS] [Error]    Access violation
+2020-08-21 14:24:58 [ETS] [Error]    Access violation
+2020-08-21 14:24:59 [ETS] [Error]    Access violation
+2020-08-21 14:25:01 [ETS] [Error]    Access violation
+2020-08-21 14:25:02 [ETS] [Error]    Access violation
+2020-08-21 14:25:04 [ETS] [Error]    Access violation
+2020-08-21 14:25:05 [ETS] [Error]    Access violation
+2020-08-21 14:25:07 [ETS] [Error]    Access violation
+2020-08-21 14:25:08 [ETS] [Error]    Access violation
+2020-08-21 14:25:10 [ETS] [Error]    Access violation
+2020-08-21 14:25:11 [ETS] [Error]    Access violation
+2020-08-21 14:25:13 [ETS] [Error]    Access violation
+2020-08-21 14:25:14 [ETS] [Error]    Access violation
+2020-08-21 14:25:16 [ETS] [Error]    Access violation
+2020-08-21 14:25:17 [ETS] [Error]    Access violation
+2020-08-21 14:25:20 [ETS] [Error]    Access violation
+2020-08-21 14:25:22 [ETS] [Error]    Access violation
+2020-08-21 14:25:23 [ETS] [Error]    Access violation
+2020-08-21 14:25:25 [ETS] [Error]    Access violation
+2020-08-21 14:25:27 [ETS] [Error]    Access violation
+2020-08-21 14:25:29 [ETS] [Error]    Access violation
+2020-08-21 14:25:31 [ETS] [Error]    Access violation
+2020-08-21 14:25:32 [ETS] [Error]    Access violation
+2020-08-21 14:25:34 [ETS] [Error]    Access violation
+2020-08-21 14:25:35 [ETS] [Error]    Access violation
+2020-08-21 14:25:37 [ETS] [Error]    Access violation
+2020-08-21 14:25:38 [ETS] [Error]    Access violation
+2020-08-21 14:25:40 [ETS] [Error]    Access violation
+2020-08-21 14:25:41 [ETS] [Error]    Access violation
+2020-08-21 14:25:43 [ETS] [Error]    Access violation
+2020-08-21 14:25:44 [ETS] [Error]    Access violation
+2020-08-21 14:25:46 [ETS] [Error]    Access violation
+2020-08-21 14:25:47 [ETS] [Error]    Access violation
+2020-08-21 14:25:49 [ETS] [Error]    Access violation
+2020-08-21 14:25:50 [ETS] [Error]    Access violation
+2020-08-21 14:25:52 [ETS] [Error]    Access violation
+2020-08-21 14:25:53 [ETS] [Error]    Access violation
+2020-08-21 14:25:55 [ETS] [Error]    Access violation
+2020-08-21 14:25:56 [ETS] [Error]    Access violation
+2020-08-21 14:25:58 [ETS] [Error]    Access violation
+2020-08-21 14:25:59 [ETS] [Error]    Access violation
+2020-08-21 14:26:01 [ETS] [Error]    Access violation
+2020-08-21 14:26:02 [ETS] [Error]    Access violation
+2020-08-21 14:26:04 [ETS] [Error]    Access violation
+2020-08-21 14:26:05 [ETS] [Error]    Access violation
+2020-08-21 14:26:07 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:26:30 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:27:02 [ETS] [Error]    Access violation
+2020-08-21 14:27:03 [ETS] [Error]    Access violation
+2020-08-21 14:27:05 [ETS] [Error]    Access violation
+2020-08-21 14:27:06 [ETS] [Error]    Access violation
+2020-08-21 14:27:08 [ETS] [Error]    Access violation
+2020-08-21 14:27:09 [ETS] [Error]    Access violation
+2020-08-21 14:27:11 [ETS] [Error]    Access violation
+2020-08-21 14:27:12 [ETS] [Error]    Access violation
+2020-08-21 14:27:14 [ETS] [Error]    Access violation
+2020-08-21 14:27:15 [ETS] [Error]    Access violation
+2020-08-21 14:27:17 [ETS] [Error]    Access violation
+2020-08-21 14:27:18 [ETS] [Error]    Access violation
+2020-08-21 14:27:19 [ETS] [Error]    Access violation
+2020-08-21 14:27:21 [ETS] [Error]    Access violation
+2020-08-21 14:27:22 [ETS] [Error]    Access violation
+2020-08-21 14:27:24 [ETS] [Error]    Access violation
+2020-08-21 14:27:25 [ETS] [Error]    Access violation
+2020-08-21 14:27:27 [ETS] [Error]    Access violation
+2020-08-21 14:27:28 [ETS] [Error]    Access violation
+2020-08-21 14:27:30 [ETS] [Error]    Access violation
+2020-08-21 14:27:31 [ETS] [Error]    Access violation
+2020-08-21 14:27:33 [ETS] [Error]    Access violation
+2020-08-21 14:27:34 [ETS] [Error]    Access violation
+2020-08-21 14:27:36 [ETS] [Error]    Access violation
+2020-08-21 14:27:37 [ETS] [Error]    Access violation
+2020-08-21 14:27:39 [ETS] [Error]    Access violation
+2020-08-21 14:27:40 [ETS] [Error]    Access violation
+2020-08-21 14:27:41 [ETS] [Error]    Access violation
+2020-08-21 14:27:42 [ETS] [Error]    Access violation
+2020-08-21 14:27:44 [ETS] [Error]    Access violation
+2020-08-21 14:27:45 [ETS] [Error]    Access violation
+2020-08-21 14:27:46 [ETS] [Error]    Access violation
+2020-08-21 14:27:47 [ETS] [Error]    Access violation
+2020-08-21 14:27:48 [ETS] [Error]    Access violation
+2020-08-21 14:27:50 [ETS] [Error]    Access violation
+2020-08-21 14:27:51 [ETS] [Error]    Access violation
+2020-08-21 14:27:52 [ETS] [Error]    Access violation
+2020-08-21 14:27:53 [ETS] [Error]    Access violation
+2020-08-21 14:27:54 [ETS] [Error]    Access violation
+2020-08-21 14:27:56 [ETS] [Error]    Access violation
+2020-08-21 14:27:57 [ETS] [Error]    Access violation
+2020-08-21 14:27:58 [ETS] [Error]    Access violation
+2020-08-21 14:27:59 [ETS] [Error]    Access violation
+2020-08-21 14:28:00 [ETS] [Error]    Access violation
+2020-08-21 14:28:01 [ETS] [Error]    Access violation
+2020-08-21 14:28:02 [ETS] [Error]    Access violation
+2020-08-21 14:28:04 [ETS] [Error]    Access violation
+2020-08-21 14:28:05 [ETS] [Error]    Access violation
+2020-08-21 14:28:06 [ETS] [Error]    Access violation
+2020-08-21 14:28:07 [ETS] [Error]    Access violation
+2020-08-21 14:28:09 [ETS] [Error]    Access violation
+2020-08-21 14:28:11 [ETS] [Error]    Access violation
+2020-08-21 14:28:12 [ETS] [Error]    Access violation
+2020-08-21 14:28:14 [ETS] [Error]    Access violation
+2020-08-21 14:28:15 [ETS] [Error]    Access violation
+2020-08-21 14:28:17 [ETS] [Error]    Access violation
+2020-08-21 14:28:18 [ETS] [Error]    Access violation
+2020-08-21 14:28:20 [ETS] [Error]    Access violation
+2020-08-21 14:28:21 [ETS] [Error]    Access violation
+2020-08-21 14:29:36 [ETS] [Error]    Access violation
+2020-08-21 14:29:42 [ETS] [Error]    Access violation
+2020-08-21 14:30:00 [ETS] [Error]    Access violation
+2020-08-21 14:30:02 [ETS] [Error]    Access violation
+2020-08-21 14:30:16 [ETS] [Error]    Access violation
+2020-08-21 14:30:18 [ETS] [Error]    Access violation
+2020-08-21 14:30:21 [ETS] [Error]    Access violation
+2020-08-21 14:30:31 [ETS] [Error]    Access violation
+2020-08-21 14:30:34 [ETS] [Error]    Access violation
+2020-08-21 14:32:11 [ETS] [Error]    Access violation
+2020-08-21 14:32:26 [ETS] [Error]    Access violation
+2020-08-21 14:32:29 [ETS] [Error]    Access violation
+2020-08-21 14:32:42 [ETS] [Error]    Access violation
+2020-08-21 14:32:45 [ETS] [Error]    Access violation
+2020-08-21 14:32:48 [ETS] [Error]    Access violation
+2020-08-21 14:33:50 [ETS] [Error]    Access violation
+2020-08-21 14:33:53 [ETS] [Error]    Access violation
+2020-08-21 14:36:47 [ETS] [Error]    Access violation
+2020-08-21 14:36:49 [ETS] [Error]    Access violation
+2020-08-21 14:37:01 [ETS] [Error]    Access violation
+2020-08-21 14:37:18 [ETS] [Error]    Access violation
+2020-08-21 14:37:24 [ETS] [Error]    Access violation
+2020-08-21 14:37:45 [ETS] [Error]    Access violation
+2020-08-21 14:37:47 [ETS] [Error]    Access violation
+2020-08-21 14:37:54 [ETS] [Error]    Access violation
+2020-08-21 14:37:56 [ETS] [Error]    Access violation
+2020-08-21 14:37:57 [ETS] [Error]    Access violation
+2020-08-21 14:37:59 [ETS] [Error]    Access violation
+2020-08-21 14:38:00 [ETS] [Error]    Access violation
+2020-08-21 14:38:02 [ETS] [Error]    Access violation
+2020-08-21 14:38:03 [ETS] [Error]    Access violation
+2020-08-21 14:38:05 [ETS] [Error]    Access violation
+2020-08-21 14:38:06 [ETS] [Error]    Access violation
+2020-08-21 14:38:08 [ETS] [Error]    Access violation
+2020-08-21 14:38:09 [ETS] [Error]    Access violation
+2020-08-21 14:38:11 [ETS] [Error]    Access violation
+2020-08-21 14:38:12 [ETS] [Error]    Access violation
+2020-08-21 14:38:14 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:38:55 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:38:56 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:38:58 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:39:00 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:39:08 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:41:50 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:42:42 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:44:05 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:46:51 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:46:52 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:47:30 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:47:59 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:48:01 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:48:02 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:48:03 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:48:05 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:48:23 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:48:24 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:48:26 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:48:27 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:48:29 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:48:31 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:48:33 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:49:00 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:49:01 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:49:22 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:49:23 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:49:24 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:49:27 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:50:06 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:50:09 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:50:21 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:52:59 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 14:57:14 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:01:13 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:03:47 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:05:00 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:10:20 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:10:33 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:10:35 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:10:46 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:11:24 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:11:26 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:11:27 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:11:28 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:11:30 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:11:37 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:12:07 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:14:03 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:18:11 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:18:36 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:22:35 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:23:46 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:24:23 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:24:58 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:25:40 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:26:02 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:26:12 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:27:42 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:37:35 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:40:35 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:42:43 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:43:19 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:44:33 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:44:53 [ETS] [Error]    Access violation
+2020-08-21 15:44:55 [ETS] [Error]    Access violation
+2020-08-21 15:44:56 [ETS] [Error]    Access violation
+2020-08-21 15:44:58 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:45:10 [ETS] [Debug]    Press <Enter> to continue
+2020-08-21 15:47:51 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-21 15:48:00 [ETS] [Error]    Error 404 "/" not found
+2020-08-21 15:48:01 [ETS] [Error]    Error 404 "/favicon.ico" not found
+2020-08-21 15:48:07 [ETS] [Error]    Access violation
+2020-08-21 15:48:10 [ETS] [Error]    Access violation
+2020-08-21 15:48:10 [ETS] [Error]    Access violation
+2020-08-21 15:48:11 [ETS] [Error]    Access violation
+2020-08-21 15:58:01 [ETS] [Info]     HTTP Server listening on port 8081
