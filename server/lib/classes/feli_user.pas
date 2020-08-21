@@ -47,6 +47,7 @@ type
             procedure createEvent(event: FeliEvent);
             procedure leaveEvent(eventId: ansiString);
             procedure removeCreatedEvent(eventId: ansiString);
+            function generateReport(): TJsonObject;
             // Factory Methods
             class function fromTJsonObject(userObject: TJsonObject): FeliUser; static;
         end;
@@ -372,6 +373,164 @@ begin
                 end;
         end;
 end;
+
+function FeliUser.generateReport(): TJsonObject;
+// const
+//     createdEventsTableKeys: array[0..1] of ansiString = (FeliEventKeys.id, FeliEventKeys.name);
+var
+    header, body, footer, report, headerUser: TJsonObject;
+    totalFee: real;
+    createdEventsTable, joinedEventsTable: TJsonArray;
+    userEvent: FeliUserEvent;
+    eventParticipant: FeliEventParticipant;
+    tempArray, tempArray2: TJsonArray;
+    i, j: integer;
+    event: FeliEvent;
+    eventFee, createdEventsTotalFee, joinedEventsTotalFee: real;
+    key: ansiString;
+    dataRow: TJsonArray;
+    ticket: FeliEventTicket;
+    tempCollection, tempCollection2: FeliCollection;
+
+begin
+    FeliStackTrace.trace('begin', 'function FeliUser.generateReport(): TJsonObject;');
+    totalFee := 0;
+    createdEventsTotalFee := 0;
+    joinedEventsTotalFee := 0;
+    
+    header := TJsonObject.create();
+    headerUser := TJsonObject.create();
+
+    body := TJsonObject.create();
+    
+    footer := TJsonObject.create();
+    
+    report := TJsonObject.create();
+    
+    report['header'] := header;
+    report['body'] := body;
+    report['footer'] := footer;
+
+    headerUser.add('name', format('%s %s', [firstName, lastName]));
+    headerUser.add('email', format('%s', [email]));
+
+
+    header.add('title', 'report');
+    header['user'] := headerUser;
+    header.add('image', 'http://dynamic.felixyeung2002.com/favicon.png');
+
+    footer.add('barcode', username);
+    
+    // Created Events
+    if (FeliValidation.fixedValueCheck(accessLevel, [FeliAccessLevel.admin, FeliAccessLevel.organiser])) then
+        begin
+            createdEventsTable := TJsonArray.create();
+            createdEventsTotalFee := 0;
+            dataRow := TJsonArray.create();
+
+            dataRow.add('event_id');
+            dataRow.add('event_name');
+            dataRow.add('participant_count');
+            dataRow.add('$');
+
+            createdEventsTable.add(dataRow);
+
+            tempArray := createdEvents.toTJsonArray();
+            for i := 0 to (tempArray.count - 1) do
+                begin
+                    dataRow := TJsonArray.create();
+                    userEvent := FeliUserEvent.fromTJsonObject(tempArray[i] as TJsonObject);
+                    event := FeliStorageAPI.getEvent(userEvent.eventId);
+                    
+                    dataRow.add(event.id);
+                    dataRow.add(event.name);
+                    dataRow.add(event.participants.length);
+
+                    eventFee := 0;
+
+                    tempArray2 := event.participants.toTJsonArray();
+                    for j := 0 to tempArray2.count - 1 do
+                    begin
+                        eventParticipant := FeliEventParticipant.fromTJsonObject(tempArray2[j] as TJsonObject);
+                        tempCollection := event.tickets.where(FeliEventTicketKeys.id, FeliOperators.equalsTo, eventParticipant.ticketId);
+                        ticket := FeliEventTicket.fromTJsonObject(tempCollection.toTJsonArray()[0] as TJsonObject);
+                        eventFee := eventFee + ticket.fee;
+                    end;
+
+                    createdEventsTotalFee := createdEventsTotalFee + eventFee;
+
+                    dataRow.add(eventFee);
+                    
+                    createdEventsTable.add(dataRow);
+                end;
+
+            body['created_events_table'] := createdEventsTable;
+            body.add('created_events_fee', createdEventsTotalFee);
+        end;
+
+    // Joined Events
+    if (FeliValidation.fixedValueCheck(accessLevel, [FeliAccessLevel.admin, FeliAccessLevel.participator])) then
+        begin
+            joinedEventsTable := TJsonArray.create();
+            joinedEventsTotalFee := 0;
+
+            dataRow := TJsonArray.create();
+
+            dataRow.add('event_id');
+            dataRow.add('event_name');
+            dataRow.add('ticket_id');
+            dataRow.add('ticket_name');
+            dataRow.add('$');
+
+            joinedEventsTable.add(dataRow);
+
+            tempArray := createdEvents.toTJsonArray();
+            for i := 0 to (tempArray.count - 1) do
+                begin
+                    dataRow := TJsonArray.create();
+                    userEvent := FeliUserEvent.fromTJsonObject(tempArray[i] as TJsonObject);
+                    event := FeliStorageAPI.getEvent(userEvent.eventId);
+
+                    dataRow.add(event.id);
+                    dataRow.add(event.name);
+
+                    eventFee := 0;
+
+                    // tempArray2 := event.participants.toTJsonArray();
+                    // for j := 0 to tempArray2.count - 1 do
+                    // begin
+                        
+                        tempCollection := event.participants.where(FeliEventParticipantKey.username, FeliOperators.equalsTo, username);
+                        eventParticipant := FeliEventParticipant.fromTJsonObject(tempCollection.toTJsonArray()[0] as TJsonObject);
+                        tempCollection2 := event.tickets.where(FeliEventTicketKeys.id, FeliOperators.equalsTo, eventParticipant.ticketId);
+                        ticket := FeliEventTicket.fromTJsonObject(tempCollection2.toTJsonArray()[0] as TJsonObject);
+                        eventFee := eventFee + ticket.fee;
+                    // end;
+
+                    joinedEventsTotalFee := joinedEventsTotalFee + eventFee;
+
+                    dataRow.add(ticket.id);
+                    dataRow.add(ticket.tType);
+                    dataRow.add(eventFee);
+
+                    joinedEventsTable.add(dataRow);
+                end;
+
+            body['joined_events_table'] := joinedEventsTable;
+            body.add('joined_events_fee', joinedEventsTotalFee);
+
+        end;
+
+    totalFee := createdEventsTotalFee - joinedEventsTotalFee;
+
+    body.add('fee', totalFee);
+
+    result := report;
+
+    
+    FeliStackTrace.trace('end', 'function FeliUser.generateReport(): TJsonObject;');
+end;
+
 
 
 

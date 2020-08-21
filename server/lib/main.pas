@@ -34,7 +34,9 @@ uses
 
 const
     port = 8081;
-    testMode = false;
+
+var
+    testMode: boolean;
 
 
 procedure debug();
@@ -674,6 +676,37 @@ begin
     FeliStackTrace.trace('end', 'procedure registerEndPoint(req: TRequest; res: TResponse);');
 end;
 
+procedure generateReportEndPoint(req: TRequest; res: TResponse);
+var
+    responseTemplate: FeliResponseDataObject;
+    middlewareContent: FeliMiddleware;
+
+begin
+    FeliStackTrace.trace('begin', 'procedure loginEndPoint(req: TRequest; res: TResponse);');
+    responseTemplate := FeliResponseDataObject.create();
+    middlewareContent := FeliMiddleware.create();
+    try
+        begin
+            userAuthMiddleware(middlewareContent, req);
+
+            responseTemplate.authenticated := middlewareContent.authenticated;
+            if middlewareContent.authenticated then
+                begin
+                    responseTemplate.data := middlewareContent.user.generateReport();
+                    responseTemplate.resCode := 200;
+                end
+            else
+                begin
+                    responseTemplate.resCode := 401;
+                end;
+            responseWithJson(res, responseTemplate);
+        end;
+    finally
+        responseTemplate.free();  
+    end;
+    FeliStackTrace.trace('end', 'procedure loginEndPoint(req: TRequest; res: TResponse);');
+end;
+
 
 procedure asciiEndpoint(req: TRequest; res: TResponse);
 var
@@ -775,6 +808,7 @@ begin
     HTTPRouter.RegisterRoute('/api/event/post', @createEventEndPoint);
     HTTPRouter.RegisterRoute('/api/login', @loginEndPoint);
     HTTPRouter.RegisterRoute('/api/register', @registerEndPoint);
+    HTTPRouter.RegisterRoute('/api/generateReport', @generateReportEndPoint);
     httpRouter.registerRoute('/api/shutdown', @serverShutdownEndpoint);
     httpRouter.registerRoute('/api/ascii', @asciiEndpoint);
     httpRouter.registerRoute('/api/ping', @pingEndpoint);
@@ -818,22 +852,15 @@ var
     // testUser2: FeliUser;
     // testUserObject: TJsonObject;
     tempVar: boolean;
+    generatedReport: TJsonObject;
 
 
 begin
     FeliStackTrace.trace('begin', 'procedure test();');
     
-    users := FeliStorageAPI.getUsers();
-    users.orderBy(FeliUserKeys.username, FeliDirections.descending);
-    usersTJsonArray := users.toTJsonArray();
-    debugString := '';
-    for i := 0 to (usersTJsonArray.count - 1) do
-        begin
-            user := FeliUser.fromTJsonObject(usersTJsonArray[i] as TJsonObject);
-            debugString := debugString + user.username + lineSeparator;
-        end;
-
-    writeln(debugString);
+    user := FeliStorageAPI.getUser('FelixNPL');
+    generatedReport := user.generateReport();
+    writeln(generatedReport.formatJson);
     
     // events := FeliStorageAPI.getEvents();
     // events.orderBy(FeliEventKeys.startTime, FeliDirections.ascending);
@@ -1100,6 +1127,8 @@ end;
 
 
 begin
+    testMode := FeliConfig.getIsDebug();
+
     FeliStackTrace.reset();
     FeliStackTrace.trace('begin', 'main');
     randomize();

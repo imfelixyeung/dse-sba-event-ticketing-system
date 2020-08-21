@@ -11,6 +11,7 @@ type
             class procedure trace(kind, name: ansiString); static;
             class procedure reset(); static;
             class procedure out(load: String); static;
+            class procedure breakPoint(); static;
         end;
 
 function simpleSpaceReplaceText(str: ansiString): ansiString;
@@ -84,5 +85,12 @@ class procedure FeliStackTrace.reset(); static;
 begin
     FeliFileAPI.put(stackTraceDepthPath, '1');
 end;
+
+class procedure FeliStackTrace.breakPoint(); static;
+begin
+    write('Press Enter to continue');
+    readln();
+end;
+
 
 end.

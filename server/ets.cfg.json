@@ -1,5 +1,6 @@
 {
     "application-terminal-log": true,
     "username-length-min": 4,
-    "username-length-max": 16
+    "username-length-max": 16,
+    "debug": false
 }

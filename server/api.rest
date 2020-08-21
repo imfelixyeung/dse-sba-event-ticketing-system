@@ -1,44 +1,19 @@
-GET http://localhost:8081/api/event/EB3444FB3A9F183C0/get/
-
 ###
-GET http://localhost:8081/api/events/get/
 
-###
-POST http://localhost:8081/api/login/
+POST http://localhost:8081/api/shutdown/
 content-type: application/json
 
 {
     "auth": {
-        "username": "FelixNPL",
+        "username": "admin",
         "password": "20151529"
     }
 }
 
 ###
 
-GET http://localhost:8081/api/shutdown/
-
-###
-
-POST http://localhost:8081/api/register/
+POST http://localhost:8081/api/event/EB3444FB3A9F183C0/update/
 content-type: application/json
-
-{
-    "register": {
-        "username": "admin",
-        "display_name": "Admin",
-        "email": "admin@feli.page",
-        "password": "20151529",
-        "first_name": "Admin",
-        "last_name": "Account",
-        "access_level": "participator"
-    }
-}
-
-###
-
-POST http://localhost:8000/api/event/post/
-Content-Type: application/json
 
 {
     "auth": {
@@ -46,21 +21,18 @@ Content-Type: application/json
         "password": "20151529"
     },
     "event": {
-        "name": "Test From API",
-        "description": "",
-        "venue": "Hong Kong",
-        "theme": "Pascal",
-        "tickets": [
-            {
-                "type": "VIP",
-                "fee": 256
-            }
-        ],
-        "startTime": 123,
-        "endTime": 321,
-        "participantLimit": 5
+        "name": "Very Fun Event (Cancelled)"
     }
 }
 
+###
 
+POST http://localhost:8081/api/generateReport
+Content-Type: application/json
 
+{
+    "auth": {
+        "username": "admin",
+        "password": "20151529"
+    }
+}

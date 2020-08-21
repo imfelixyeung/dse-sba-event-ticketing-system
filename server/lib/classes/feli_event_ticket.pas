@@ -23,6 +23,7 @@ type
             fee: real;
             function toTJsonObject(secure: boolean = false): TJsonObject; override;
             procedure generateId();
+            class function fromTJsonObject(ticketObject: TJsonObject): FeliEventTicket; static;
             function validate(var error: ansiString): boolean;
         end;
 
@@ -44,7 +45,8 @@ type
 implementation
 uses
     feli_crypto,
-    feli_stack_tracer;
+    feli_stack_tracer,
+    sysutils;
 
 
 
@@ -64,6 +66,28 @@ end;
 procedure FeliEventTicket.generateId();
 begin
     id := FeliCrypto.generateSalt(32);
+end;
+
+class function FeliEventTicket.fromTJsonObject(ticketObject: TJsonObject): FeliEventTicket; static;
+var
+    feliEventTicketInstance: FeliEventTicket;
+    tempString: ansiString;
+begin
+    feliEventTicketInstance := FeliEventTicket.create();
+
+    with feliEventTicketInstance do
+    begin
+        try tType := ticketObject.getPath(FeliEventTicketKeys.tType).asString; except on e: exception do begin end; end;
+        try 
+        begin
+            tempString := ticketObject.getPath(FeliEventTicketKeys.fee).asString;
+            fee := StrToFloat(tempString);
+        end;
+        except on e: exception do begin end; end;
+        try id := ticketObject.getPath(FeliEventTicketKeys.id).asString; except on e: exception do begin end; end;
+ 
+    end;
+    result := feliEventTicketInstance;
 end;
 
 function FeliEventTicket.validate(var error: ansiString): boolean;
