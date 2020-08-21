@@ -5,7 +5,7 @@ const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "index.html": "770f6852af61ee483543c9fb5a8a0880",
 "/": "770f6852af61ee483543c9fb5a8a0880",
-"main.dart.js": "7dd777831522019b2316ade031946e9e",
+"main.dart.js": "1485ce3dad0d0b0834dd7af63ddc7aca",
 "manifest.json": "2d3b1a4f33a1ba179f5ee4063343fb83",
 "assets/images/bmc-new-btn-logo.svg": "54d226be88f149bb8cc3a929651a7152",
 "assets/AssetManifest.json": "9a7e35508bd4bfbed7b9d56936f4c715",
@@ -19,7 +19,20 @@ const RESOURCES = {
 "assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf": "2bca5ec802e40d3f4b60343e346cedde",
 "assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "5a37ae808cf9f652198acde612b5328d",
 "assets/packages/flutter_markdown/assets/logo.png": "67642a0b80f3d50277c44cde8f450e50",
-"assets/fonts/MaterialIcons-Regular.ttf": "56d3ffdef7a25659eab6a68a3fbfaf16"
+"assets/fonts/MaterialIcons-Regular.ttf": "56d3ffdef7a25659eab6a68a3fbfaf16",
+"assets/fonts/Roboto/Roboto-Medium.ttf": "58aef543c97bbaf6a9896e8484456d98",
+"assets/fonts/Roboto/Roboto-Light.ttf": "88823c2015ffd5fa89d567e17297a137",
+"assets/fonts/Roboto/Roboto-Regular.ttf": "11eabca2251325cfc5589c9c6fb57b46",
+"assets/fonts/Roboto/Roboto-MediumItalic.ttf": "cf23e1bb619029496260760b72aebd30",
+"assets/fonts/Roboto/Roboto-ThinItalic.ttf": "35a9c89aff1396595ad345e378a32aca",
+"assets/fonts/Roboto/Roboto-BoldItalic.ttf": "5b44818d2b9eda3e23cd5edd7b49b7d5",
+"assets/fonts/Roboto/Roboto-LightItalic.ttf": "a3ce4440f2abf76f4a1b14b83920138c",
+"assets/fonts/Roboto/Roboto-Italic.ttf": "a720f17aa773e493a7ebf8b08459e66c",
+"assets/fonts/Roboto/LICENSE.txt": "d273d63619c9aeaf15cdaf76422c4f87",
+"assets/fonts/Roboto/Roboto-BlackItalic.ttf": "99682a78fa4fe61e1177b94757336bbf",
+"assets/fonts/Roboto/Roboto-Bold.ttf": "e07df86cef2e721115583d61d1fb68a6",
+"assets/fonts/Roboto/Roboto-Thin.ttf": "321de678e592d0b8f44f1a82d7ca4b62",
+"assets/fonts/Roboto/Roboto-Black.ttf": "5ebb24ee1112dd9562629375c387879a"
 };
 
 // The application shell files that are downloaded before a service worker can
