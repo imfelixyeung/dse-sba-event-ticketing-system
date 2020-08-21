@@ -1,43 +1,5 @@
 [
   {
-    "id" : "A7H345DFbA9FB3Y9",
-    "organiser" : "FelixNPL",
-    "name" : "Another Very Fun Event",
-    "description" : "This is yet another super cool event!",
-    "start_time" : 1596114554902,
-    "end_time" : 1596114654902,
-    "created_at" : 1596114454902,
-    "venue" : "Null Island",
-    "theme" : "Games",
-    "participant_limit" : 100,
-    "tickets" : [
-      {
-        "id" : "0",
-        "type" : "Regular",
-        "fee" : 100
-      },
-      {
-        "id" : "1",
-        "type" : "VIP",
-        "fee" : 350
-      },
-      {
-        "id" : "2",
-        "type" : "MVP",
-        "fee" : 500
-      }
-    ],
-    "participants" : [
-      {
-        "username" : "eddie911",
-        "ticket_id" : "0",
-        "created_at" : 1596895555000
-      }
-    ],
-    "waiting_list" : [
-    ]
-  },
-  {
     "id" : "6SnOXXPQoJYtnvdR76z_x83-T5oLV_c6",
     "organiser" : "eddie",
     "name" : "Cat Party",
@@ -149,6 +111,49 @@
         "username" : "admin",
         "ticket_id" : "5-jmaYxknymFoMKSJggc4SgQD9qLoSfQ",
         "created_at" : 1597994493000
+      }
+    ],
+    "waiting_list" : [
+    ]
+  },
+  {
+    "id" : "A7H345DFbA9FB3Y9",
+    "organiser" : "FelixNPL",
+    "name" : "Another Very Fun Event",
+    "description" : "This is yet another super cool event!",
+    "start_time" : 1596114554902,
+    "end_time" : 1596114654902,
+    "created_at" : 1596114454902,
+    "venue" : "Null Island",
+    "theme" : "Games",
+    "participant_limit" : 100,
+    "tickets" : [
+      {
+        "id" : "0",
+        "type" : "Regular",
+        "fee" : 100
+      },
+      {
+        "id" : "1",
+        "type" : "VIP",
+        "fee" : 350
+      },
+      {
+        "id" : "2",
+        "type" : "MVP",
+        "fee" : 500
+      }
+    ],
+    "participants" : [
+      {
+        "username" : "eddie911",
+        "ticket_id" : "0",
+        "created_at" : 1596895555000
+      },
+      {
+        "username" : "admin",
+        "ticket_id" : "1",
+        "created_at" : 1598007565000
       }
     ],
     "waiting_list" : [
