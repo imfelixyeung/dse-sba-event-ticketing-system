@@ -484,7 +484,7 @@ begin
 
             joinedEventsTable.add(dataRow);
 
-            tempArray := createdEvents.toTJsonArray();
+            tempArray := joinedEvents.toTJsonArray();
             for i := 0 to (tempArray.count - 1) do
                 begin
                     dataRow := TJsonArray.create();
