@@ -1,5 +1,0 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target" : { "namespace": "android_app", "package_name": "com.felixyeung2002.dynamic.twa",
-                   "sha256_cert_fingerprints": ["FC:F4:44:7C:94:D4:01:20:13:B6:06:76:02:44:74:89:CC:04:06:63:67:89:E3:A3:8E:9C:87:95:FE:F7:F9:40"] }
-    }]
