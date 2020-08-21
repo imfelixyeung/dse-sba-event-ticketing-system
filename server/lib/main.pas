@@ -676,7 +676,7 @@ begin
     FeliStackTrace.trace('end', 'procedure registerEndPoint(req: TRequest; res: TResponse);');
 end;
 
-procedure generateReportEndPoint(req: TRequest; res: TResponse);
+procedure generateAnalysisEndPoint(req: TRequest; res: TResponse);
 var
     responseTemplate: FeliResponseDataObject;
     middlewareContent: FeliMiddleware;
@@ -692,7 +692,7 @@ begin
             responseTemplate.authenticated := middlewareContent.authenticated;
             if middlewareContent.authenticated then
                 begin
-                    responseTemplate.data := middlewareContent.user.generateReport();
+                    responseTemplate.data := middlewareContent.user.generateAnalysis();
                     responseTemplate.resCode := 200;
                 end
             else
@@ -808,7 +808,7 @@ begin
     HTTPRouter.RegisterRoute('/api/event/post', @createEventEndPoint);
     HTTPRouter.RegisterRoute('/api/login', @loginEndPoint);
     HTTPRouter.RegisterRoute('/api/register', @registerEndPoint);
-    HTTPRouter.RegisterRoute('/api/generateReport', @generateReportEndPoint);
+    HTTPRouter.RegisterRoute('/api/generateAnalysis', @generateAnalysisEndPoint);
     httpRouter.registerRoute('/api/shutdown', @serverShutdownEndpoint);
     httpRouter.registerRoute('/api/ascii', @asciiEndpoint);
     httpRouter.registerRoute('/api/ping', @pingEndpoint);
@@ -852,15 +852,15 @@ var
     // testUser2: FeliUser;
     // testUserObject: TJsonObject;
     tempVar: boolean;
-    generatedReport: TJsonObject;
+    generatedAnalysis: TJsonObject;
 
 
 begin
     FeliStackTrace.trace('begin', 'procedure test();');
     
     user := FeliStorageAPI.getUser('FelixNPL');
-    generatedReport := user.generateReport();
-    writeln(generatedReport.formatJson);
+    generatedAnalysis := user.generateAnalysis();
+    writeln(generatedAnalysis.formatJson);
     
     // events := FeliStorageAPI.getEvents();
     // events.orderBy(FeliEventKeys.startTime, FeliDirections.ascending);

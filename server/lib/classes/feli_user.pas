@@ -47,7 +47,7 @@ type
             procedure createEvent(event: FeliEvent);
             procedure leaveEvent(eventId: ansiString);
             procedure removeCreatedEvent(eventId: ansiString);
-            function generateReport(): TJsonObject;
+            function generateAnalysis(): TJsonObject;
             // Factory Methods
             class function fromTJsonObject(userObject: TJsonObject): FeliUser; static;
         end;
@@ -374,11 +374,11 @@ begin
         end;
 end;
 
-function FeliUser.generateReport(): TJsonObject;
+function FeliUser.generateAnalysis(): TJsonObject;
 // const
 //     createdEventsTableKeys: array[0..1] of ansiString = (FeliEventKeys.id, FeliEventKeys.name);
 var
-    header, body, footer, report, headerUser: TJsonObject;
+    header, body, footer, analysis, headerUser: TJsonObject;
     totalFee: real;
     createdEventsTable, joinedEventsTable: TJsonArray;
     userEvent: FeliUserEvent;
@@ -393,7 +393,7 @@ var
     tempCollection, tempCollection2: FeliCollection;
 
 begin
-    FeliStackTrace.trace('begin', 'function FeliUser.generateReport(): TJsonObject;');
+    FeliStackTrace.trace('begin', 'function FeliUser.generateAnalysis(): TJsonObject;');
     totalFee := 0;
     createdEventsTotalFee := 0;
     joinedEventsTotalFee := 0;
@@ -405,17 +405,17 @@ begin
     
     footer := TJsonObject.create();
     
-    report := TJsonObject.create();
+    analysis := TJsonObject.create();
     
-    report['header'] := header;
-    report['body'] := body;
-    report['footer'] := footer;
+    analysis['header'] := header;
+    analysis['body'] := body;
+    analysis['footer'] := footer;
 
     headerUser.add('name', format('%s %s', [firstName, lastName]));
     headerUser.add('email', format('%s', [email]));
 
 
-    header.add('title', 'report');
+    header.add('title', 'analysis');
     header['user'] := headerUser;
     header.add('image', 'http://dynamic.felixyeung2002.com/favicon.png');
 
@@ -525,10 +525,10 @@ begin
 
     body.add('fee', totalFee);
 
-    result := report;
+    result := analysis;
 
     
-    FeliStackTrace.trace('end', 'function FeliUser.generateReport(): TJsonObject;');
+    FeliStackTrace.trace('end', 'function FeliUser.generateAnalysis(): TJsonObject;');
 end;
 
 
