@@ -2,13 +2,33 @@ import 'database.dart';
 
 class Translate {
   static Map<String, Map<String, String>> translate = {
-    '': {
-      'en-gb': '',
-      'zh-hk': '',
+    'event_id': {
+      'en-gb': 'Event ID',
+      'zh-hk': '活動編號',
     },
-    'report': {
-      'en-gb': 'Report',
-      'zh-hk': '報告',
+    'event_name': {
+      'en-gb': 'Event Name',
+      'zh-hk': '活動名稱',
+    },
+    'ticket_id': {
+      'en-gb': 'Ticket ID',
+      'zh-hk': '票證編號',
+    },
+    'ticket_name': {
+      'en-gb': 'Ticket Name',
+      'zh-hk': '機票名稱',
+    },
+    'participant_count': {
+      'en-gb': 'Participant Count',
+      'zh-hk': '參加人數',
+    },
+    '\$': {
+      'en-gb': 'HK\$',
+      'zh-hk': 'HK\$',
+    },
+    'analysis': {
+      'en-gb': 'Analysis',
+      'zh-hk': '分析',
     },
     'analysis': {
       'en-gb': 'Analysis',
@@ -711,8 +731,8 @@ class Translate {
     }
   };
 
-  static String get(String name) {
-    String appLanguage = FeliStorageAPI().getLanguage();
+  static String get(String name, {String appLanguage}) {
+    if (appLanguage == null) appLanguage = FeliStorageAPI().getLanguage();
     try {
       // return '...';
       return translate[name][appLanguage];

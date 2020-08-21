@@ -84,6 +84,24 @@ class EtsAPI {
     var jsonResponse = json.decode(response.body);
     return jsonResponse['message'];
   }
+
+  static Future getAnalysis() async {
+    var test = false;
+    var response;
+
+    // if (!test)
+    response = await http.post('$endpoint/api/generateAnalysis',
+        body: json.encode({"auth": appUser.toMap()}));
+    // var template =
+    //     '''{"status":200,"authenticated":true,"data":{"header":{"title":"analysis","user":{"name":"Admin Account","email":"admin@feli.page"},"image":"http://dynamic.felixyeung2002.com/favicon.png"},"body":{"created_events_table":[["event_id","event_name","participant_count","\$"],["R6sQiJ5SRNmqztSC0VlehVAoBZac8Eb2","Programming Day",1,0],["BoumYEUQ33Mtmq6pGQdpqFrdntYGsugH","Test",1,256]],"created_events_fee":256,"joined_events_table":[["event_id","event_name","ticket_id","ticket_name","\$"],["R6sQiJ5SRNmqztSC0VlehVAoBZac8Eb2","Programming Day","71VF-Z7vr9-2i-c_QZf0gk3ItPpXFpfQ","Normal",0],["BoumYEUQ33Mtmq6pGQdpqFrdntYGsugH","Test","5-jmaYxknymFoMKSJggc4SgQD9qLoSfQ","Test Ticket",256]],"joined_events_fee":256,"fee":0},"footer":{"barcode":"admin"}}}''';
+
+    var jsonResponse;
+    // if (!test)
+    jsonResponse = json.decode(response.body);
+    // else
+    //   jsonResponse = json.decode(template);
+    return jsonResponse['data'];
+  }
 }
 
 class FeliEvent {
