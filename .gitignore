@@ -10,3 +10,6 @@ client/event_ticketing_system_android/build/*
 client/event_ticketing_system_android/gradle/*
 client/event_ticketing_system_android/.gradle/*
 client/event_ticketing_system_android/app/*
+client/event_ticketing_system_android/android.keystore
+client/event_ticketing_system_android/app-release-signed.apk
+client/event_ticketing_system_android/app-release-unsigned-aligned.apk
