@@ -12,7 +12,11 @@ const createWindow = () => {
         width: 800,
         height: 600,
         title: "ETS",
+        // frame: false,
         icon: path.join(__dirname, "ets.png"),
+        // webPreferences: {
+        //     preload: path.join(__dirname, "preload.js"),
+        // },
     });
 
     const template = [
@@ -103,7 +107,7 @@ const createWindow = () => {
     Menu.setApplicationMenu(menu);
 
     mainWindow.loadURL("http://dynamic.felixyeung2002.com/app/");
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 };
 
 app.on("ready", createWindow);

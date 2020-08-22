@@ -858,9 +858,9 @@ var
 begin
     FeliStackTrace.trace('begin', 'procedure test();');
     
-    user := FeliStorageAPI.getUser('FelixNPL');
-    generatedAnalysis := user.generateAnalysis();
-    writeln(generatedAnalysis.formatJson);
+    // user := FeliStorageAPI.getUser('FelixNPL');
+    // generatedAnalysis := user.generateAnalysis();
+    // writeln(generatedAnalysis.formatJson);
     
     // events := FeliStorageAPI.getEvents();
     // events.orderBy(FeliEventKeys.startTime, FeliDirections.ascending);
