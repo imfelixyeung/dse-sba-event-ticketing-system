@@ -20,11 +20,14 @@ import 'constants/route_names.dart';
 import 'pages/home_page.dart';
 import 'pages/settings_page.dart';
 import 'widgets/app_route_observer.dart';
+import './apis/ets.dart' show endpoint;
 
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox(configBoxName);
   await Hive.openBox(userBoxName);
+
+  print('App starting using endpoint\n$endpoint');
 
   Map<String, String> userCredentials = FeliStorageAPI.getUserCredentials();
   if (userCredentials != null) {

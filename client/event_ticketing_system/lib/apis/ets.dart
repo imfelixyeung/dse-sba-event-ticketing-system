@@ -2,9 +2,16 @@ import 'dart:convert';
 import 'package:event_ticketing_system/apis/database.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter/foundation.dart' show kIsWeb, kReleaseMode;
 
-var endpoint = 'http://dynamic.felixyeung2002.com';
-// var endpoint = 'http://localhost:8081';
+const webEndpoint = '';
+const mobileUnsecureEndpoint = 'http://dynamic.felixyeung2002.com';
+const mobileSecureEndpoint = 'https://dynamic.felixyeung2002.com';
+
+var endpoint = (!kReleaseMode && kIsWeb)
+    ? mobileUnsecureEndpoint
+    : (kIsWeb ? webEndpoint : mobileUnsecureEndpoint);
+// Change last mobileUnsecureEndpoint to mobileSecureEndpoint when https is not self-signed
 
 class EtsAPI {
   static Future<bool> ping() async {
