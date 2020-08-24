@@ -1,33 +1,5 @@
 [
   {
-    "id" : "6SnOXXPQoJYtnvdR76z_x83-T5oLV_c6",
-    "organiser" : "eddie",
-    "name" : "Cat Party",
-    "description" : "To play with kittens",
-    "start_time" : 1596987600000,
-    "end_time" : 1596988680000,
-    "created_at" : 1596987727000,
-    "venue" : "CHING WAI HOUSE",
-    "theme" : "August 9, 2020 11:58:00 PM",
-    "participant_limit" : 4,
-    "tickets" : [
-      {
-        "id" : "Mq6emCvhbFKzdEQ6AsqgC1thcQe4fCMY",
-        "type" : "entrance ticket",
-        "fee" : 0.0000000000000000E+000
-      }
-    ],
-    "participants" : [
-      {
-        "username" : "admin",
-        "ticket_id" : "Mq6emCvhbFKzdEQ6AsqgC1thcQe4fCMY",
-        "created_at" : 1597104366000
-      }
-    ],
-    "waiting_list" : [
-    ]
-  },
-  {
     "id" : "EB3444FB3A9F183C0",
     "organiser" : "FelixNPL",
     "name" : "Very Fun Event",
@@ -56,34 +28,6 @@
       }
     ],
     "participants" : [
-    ],
-    "waiting_list" : [
-    ]
-  },
-  {
-    "id" : "R6sQiJ5SRNmqztSC0VlehVAoBZac8Eb2",
-    "organiser" : "admin",
-    "name" : "Programming Day",
-    "description" : "Everyone program",
-    "start_time" : 1596988800000,
-    "end_time" : 1597032000000,
-    "created_at" : 1596988930000,
-    "venue" : "HONG KONG SCIENCE MUSEUM",
-    "theme" : "Fun With </>",
-    "participant_limit" : 11,
-    "tickets" : [
-      {
-        "id" : "71VF-Z7vr9-2i-c_QZf0gk3ItPpXFpfQ",
-        "type" : "Normal",
-        "fee" : 0.0000000000000000E+000
-      }
-    ],
-    "participants" : [
-      {
-        "username" : "admin",
-        "ticket_id" : "71VF-Z7vr9-2i-c_QZf0gk3ItPpXFpfQ",
-        "created_at" : 1597375036000
-      }
     ],
     "waiting_list" : [
     ]
@@ -153,7 +97,96 @@
       {
         "username" : "admin",
         "ticket_id" : "1",
-        "created_at" : 1598007565000
+        "created_at" : 1598161280000
+      }
+    ],
+    "waiting_list" : [
+    ]
+  },
+  {
+    "id" : "R6sQiJ5SRNmqztSC0VlehVAoBZac8Eb2",
+    "organiser" : "admin",
+    "name" : "Programming Day",
+    "description" : "Everyone program",
+    "start_time" : 1596988800000,
+    "end_time" : 1597032000000,
+    "created_at" : 1596988930000,
+    "venue" : "HONG KONG SCIENCE MUSEUM",
+    "theme" : "Fun With </>",
+    "participant_limit" : 11,
+    "tickets" : [
+      {
+        "id" : "71VF-Z7vr9-2i-c_QZf0gk3ItPpXFpfQ",
+        "type" : "Normal",
+        "fee" : 0.0000000000000000E+000
+      }
+    ],
+    "participants" : [
+      {
+        "username" : "test",
+        "ticket_id" : "71VF-Z7vr9-2i-c_QZf0gk3ItPpXFpfQ",
+        "created_at" : 1598079472000
+      }
+    ],
+    "waiting_list" : [
+    ]
+  },
+  {
+    "id" : "3qMFGlVqRz87VoIe6aq1OkGFCx4-FfGV",
+    "organiser" : "kmwong",
+    "name" : "ICT",
+    "description" : "Summer Tutorial",
+    "start_time" : 1598405700000,
+    "end_time" : 1598414100000,
+    "created_at" : 1598246901000,
+    "venue" : "Zoom",
+    "theme" : "Core CH.18-19",
+    "participant_limit" : 14,
+    "tickets" : [
+      {
+        "id" : "VVzSc0q6qkRrNfmgn-0CT83Uilolj5Y2",
+        "type" : "VIP",
+        "fee" : 0.0000000000000000E+000
+      }
+    ],
+    "participants" : [
+      {
+        "username" : "uat2408",
+        "ticket_id" : "VVzSc0q6qkRrNfmgn-0CT83Uilolj5Y2",
+        "created_at" : 1598247042000
+      }
+    ],
+    "waiting_list" : [
+    ]
+  },
+  {
+    "id" : "6SnOXXPQoJYtnvdR76z_x83-T5oLV_c6",
+    "organiser" : "eddie",
+    "name" : "Cat Party",
+    "description" : "To play with kittens",
+    "start_time" : 1596987600000,
+    "end_time" : 1596988680000,
+    "created_at" : 1596987727000,
+    "venue" : "CHING WAI HOUSE",
+    "theme" : "August 9, 2020 11:58:00 PM",
+    "participant_limit" : 4,
+    "tickets" : [
+      {
+        "id" : "Mq6emCvhbFKzdEQ6AsqgC1thcQe4fCMY",
+        "type" : "entrance ticket",
+        "fee" : 0.0000000000000000E+000
+      }
+    ],
+    "participants" : [
+      {
+        "username" : "admin",
+        "ticket_id" : "Mq6emCvhbFKzdEQ6AsqgC1thcQe4fCMY",
+        "created_at" : 1597104366000
+      },
+      {
+        "username" : "uat2408",
+        "ticket_id" : "Mq6emCvhbFKzdEQ6AsqgC1thcQe4fCMY",
+        "created_at" : 1598247661000
       }
     ],
     "waiting_list" : [
