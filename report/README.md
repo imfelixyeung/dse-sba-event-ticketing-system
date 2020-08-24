@@ -91,7 +91,7 @@ Event Ticketing System consist of two parts
 1. Server (Backend)
    - ETS Rest API (Written in `objectpascal`)
    - ChatBot Rest API (Written in `javascript`)
-   - HTTP Web/Proxy Server (Written in `javascript`)
+   - HTTP & HTTPS Web/Proxy Server (Written in `javascript`)
 2. Client (Frontend)
    - Web (Written in `dart`, `html`, `scss`, `javascript`)
    - Android (Written in `dart`)
@@ -99,7 +99,7 @@ Event Ticketing System consist of two parts
    - MacOS (Written in `javascript`)
 
 ### Dataflow
-1. User request responses from HTTP Web/Proxy Server
+1. User request responses from HTTP & HTTPS Web/Proxy Server
 2. Server responses with resources
 
 ### Advantages
@@ -107,15 +107,44 @@ Event Ticketing System consist of two parts
 - Our Event Ticketing System uses client and server concepts so multiple clients can connect to the same server, allowing multi-user support
 - Since our server is based on Rest APIs with `cross origin` enabled, any other developers can use the API to create their own frontend with our backend server
 
+### Pascal HTTP Server
+#### Intentional Disabled Features
+To prevent double booking, the ETS Rest API HTTP Server has multi-thread disabled, i.e. one request at a time.
 
-### Intentional Disabled Features
-To prevent double booking, the ETS Rest API HTTP Server has multi-thread disabled
+#### Use of classes
+On the server, all everything queried from the custom database are collections of documents or just documents.
+Users, Events, Tickets, etc are classes extending from collections, while
+User, Event, Ticket, etc are classes extending from documents.
 
+This prevents double written codes, all Users, Events, Tickets, etc inherits functions from the collection bases class,
+same applies for User, Event, Ticket, etc
+
+#### Use of Custom APIs
+1. FeliStorageAPI
+   - All queries from database, the code looks nicer and easier to maintain
+
+2. FeliFileAPI
+   - All reading and writing of files is simplified to just using this API
 
 # Testing and Evaluation
+## Data Validation
+### Server
+All new users and events are validated before inserting into database to prevent invalid requests
+### Client
+TextFields will automatically validate when submit buttons are pressed. Respective errors are displayed directly below the TextField for easy reading
+
 ## Custom Pascal Stack Tracer
+This custom build stack tracer allows developers to trace procedures and functions easily during development
+
+### On
+![alt text][stack_tracer-on]
+### Off
+![alt text][stack_tracer-off]
+
 
 # Learning Process Reflection
+
+<!-- TODO: Complete Learning Process Reflection -->
 
 ------
 > Notes to self: 
@@ -135,3 +164,6 @@ To prevent double booking, the ETS Rest API HTTP Server has multi-thread disable
 [ets-pages-register-desktop-dark]: images/ets-pages-register-desktop-dark.png "ETS Register"
 [ets-pages-account_logged_in-desktop-dark]: images/ets-pages-account_logged_in-desktop-dark.png "ETS Accounts Logged in"
 [ets-chatbot-mobile-dark]: images/ets-chatbot-mobile-dark.png "ETS AI ChatBot"
+
+[stack_tracer-on]: images/stack_tracer-on.png "Stack Tracer turned on"
+[stack_tracer-off]: images/stack_tracer-off.png "Stack Tracer turned off"
