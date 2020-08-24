@@ -9,8 +9,8 @@ if (require("electron-squirrel-startup")) {
 
 const createWindow = () => {
     const mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1024,
+        height: 576,
         title: "ETS",
         // frame: false,
         icon: path.join(__dirname, "ets.png"),
@@ -76,6 +76,19 @@ const createWindow = () => {
         {
             label: "Window",
             submenu: [
+                {
+                    label: "Desktop",
+                    click: () => {
+                        mainWindow.setSize(800, 800, true);
+                    },
+                },
+                {
+                    label: "Mobile",
+                    click: () => {
+                        mainWindow.setSize(400, 800, true);
+                    },
+                },
+                { type: "separator" },
                 { role: "minimize" },
                 { role: "zoom" },
                 ...(isMac
@@ -107,7 +120,7 @@ const createWindow = () => {
     Menu.setApplicationMenu(menu);
 
     mainWindow.loadURL("http://dynamic.felixyeung2002.com/app/");
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
 };
 
 app.on("ready", createWindow);
