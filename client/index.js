@@ -4,6 +4,7 @@ const app = express();
 var morgan = require('morgan');
 const http = require('http')
 const https = require('https')
+const cors = require('cors')
 
 const httpPort = 8000;
 const httpsPort = 8443;
@@ -15,6 +16,7 @@ var options = {
     cert: fs.readFileSync("ssl/ets-cert.pem"),
 };
 
+app.use(cors());
 app.use(morgan('dev'));
 
 app.use(
