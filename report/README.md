@@ -44,57 +44,94 @@ The Purpose of ETS is to
 
 ## Program Functions Detailed
 ### Graphical User Interface (GUI)
-- Home Page
+#### Home Page
+
+<!-- ![alt text][ets-pages-home-mobile-dark] -->
+![alt text][ets-pages-home-desktop-dark]
+
+#### Navigation System (App Drawer)
+- App drawer 
+  - is present on the left side of the screen for non-mobile users
+  - is accessible via the menu icon on the top left of the screen for mobile users
 
 ![alt text][ets-app_drawer-mobile-dark]
 ![alt text][ets-app_drawer-desktop-dark]
 
-- Navigation System (App Drawer)
-  - App drawer 
-    - is present on the left side of the screen for non-mobile users
-    - is accessible via the menu icon on the top left of the screen for mobile users
+#### Event Details Page
+This page shows event details and allow participants to select tickets and join
 
-![alt text][ets-pages-home-mobile-dark]
-![alt text][ets-pages-home-desktop-dark]
+![alt text][ets-pages-event_details-desktop-1-dark]
+![alt text][ets-pages-event_details-desktop-2-dark]
 
-- Event Details Page
+#### Accounts Page, Login Page and Registration Page
+Accounts page lets users view their account details if logged in, else, login and register button is shown
+##### Accounts Page (Not Logged In)
 
-![alt text][ets-pages-event_details-desktop-dark]
+![alt text][ets-pages-account-desktop-dark]
 
-- Accounts Page, Login Page and Registration Page
-  - Accounts Page (Not Logged In)
+##### Login Page
 
-  ![alt text][ets-pages-account-desktop-dark]
+![alt text][ets-pages-login-desktop-dark]
 
-  - Login Page
+##### Register Page
 
-  ![alt text][ets-pages-login-desktop-dark]
+![alt text][ets-pages-register-desktop-dark]
 
-  - Register Page
+##### Accounts Page (Logged In)
 
-  ![alt text][ets-pages-register-desktop-dark]
+![alt text][ets-pages-account_logged_in-desktop-dark]
 
-  - Accounts Page (Logged In)
+#### AI ChatBot Help Desk
+This chat screen allows users to ask help from an AI ChatBot, This ChatBot uses machine learning to map user's dynamic questions to fixed answers
+![alt text][ets-chatbot-mobile-dark]
 
-  ![alt text][ets-pages-account_logged_in-desktop-dark]
+## Implementation
+### Overview
+Event Ticketing System consist of two parts
+1. Server (Backend)
+   - ETS Rest API (Written in `objectpascal`)
+   - ChatBot Rest API (Written in `javascript`)
+   - HTTP Web/Proxy Server (Written in `javascript`)
+2. Client (Frontend)
+   - Web (Written in `dart`, `html`, `scss`, `javascript`)
+   - Android (Written in `dart`)
+   - Windows (Written in `javascript`)
+   - MacOS (Written in `javascript`)
+
+### Dataflow
+1. User request responses from HTTP Web/Proxy Server
+2. Server responses with resources
+
+### Advantages
+- Most ICT SBA Projects doesn't support multi-user since the program is only available to one user, if copied to another machine, they won't share the same resources
+- Our Event Ticketing System uses client and server concepts so multiple clients can connect to the same server, allowing multi-user support
+- Since our server is based on Rest APIs with `cross origin` enabled, any other developers can use the API to create their own frontend with our backend server
+
+
+### Intentional Disabled Features
+To prevent double booking, the ETS Rest API HTTP Server has multi-thread disabled
+
 
 # Testing and Evaluation
+## Custom Pascal Stack Tracer
 
 # Learning Process Reflection
 
 ------
 > Notes to self: 
-> Screenshots are captured at 800x800 pixels with device pixel ratio of 1.0
+> Screenshots are captured at 800x800/400x800 pixels with device pixel ratio of 1.0
 
 
 
 
 [ets-app_drawer-mobile-dark]: images/ets-app_drawer-mobile-dark.png "ETS App Drawer Mobile"
 [ets-app_drawer-desktop-dark]: images/ets-app_drawer-desktop-dark.png "ETS App Drawer Desktop"
-[ets-pages-home-mobile-dark]: images/ets-pages-home-mobile-dark.png "ETS App Drawer Mobile"
-[ets-pages-home-desktop-dark]: images/ets-pages-home-desktop-dark.png "ETS App Drawer Mobile"
-[ets-pages-event_details-desktop-dark]: images/ets-pages-event_details-desktop-dark.png "ETS App Drawer Mobile"
-[ets-pages-account-desktop-dark]: images/ets-pages-account-desktop-dark.png "ETS App Drawer Mobile"
-[ets-pages-login-desktop-dark]: images/ets-pages-login-desktop-dark.png "ETS App Drawer Mobile"
-[ets-pages-register-desktop-dark]: images/ets-pages-register-desktop-dark.png "ETS App Drawer Mobile"
-[ets-pages-account_logged_in-desktop-dark]: images/ets-pages-account_logged_in-desktop-dark.png "ETS App Drawer Mobile"
+[ets-pages-home-mobile-dark]: images/ets-pages-home-mobile-dark.png "ETS Home Mobile"
+[ets-pages-home-desktop-dark]: images/ets-pages-home-desktop-dark.png "ETS Home Desktop"
+[ets-pages-event_details-desktop-1-dark]: images/ets-pages-event_details-desktop-1-dark.png "ETS Event Details"
+[ets-pages-event_details-desktop-2-dark]: images/ets-pages-event_details-desktop-2-dark.png "ETS Event Details"
+[ets-pages-account-desktop-dark]: images/ets-pages-account-desktop-dark.png "ETS Account"
+[ets-pages-login-desktop-dark]: images/ets-pages-login-desktop-dark.png "ETS Login"
+[ets-pages-register-desktop-dark]: images/ets-pages-register-desktop-dark.png "ETS Register"
+[ets-pages-account_logged_in-desktop-dark]: images/ets-pages-account_logged_in-desktop-dark.png "ETS Accounts Logged in"
+[ets-chatbot-mobile-dark]: images/ets-chatbot-mobile-dark.png "ETS AI ChatBot"
