@@ -1,5 +1,38 @@
 # HKDSE ICT SBA Report
 
+- [HKDSE ICT SBA Report](#hkdse-ict-sba-report)
+- [Objective](#objective)
+- [Design and Implementation](#design-and-implementation)
+  - [Program Functions Overview](#program-functions-overview)
+  - [Crucial Features](#crucial-features)
+  - [Program Functions Detailed](#program-functions-detailed)
+    - [Graphical User Interface (GUI)](#graphical-user-interface-gui)
+      - [Home Page](#home-page)
+      - [Navigation System (App Drawer)](#navigation-system-app-drawer)
+      - [Event Details Page](#event-details-page)
+      - [Accounts Page, Login Page and Registration Page](#accounts-page-login-page-and-registration-page)
+        - [Accounts Page (Not Logged In)](#accounts-page-not-logged-in)
+        - [Login Page](#login-page)
+        - [Register Page](#register-page)
+        - [Accounts Page (Logged In)](#accounts-page-logged-in)
+      - [AI ChatBot Help Desk](#ai-chatbot-help-desk)
+  - [Implementation](#implementation)
+    - [Overview](#overview)
+    - [Dataflow](#dataflow)
+    - [Advantages](#advantages)
+    - [Pascal HTTP Server](#pascal-http-server)
+      - [Intentional Disabled Features](#intentional-disabled-features)
+      - [Use of classes](#use-of-classes)
+      - [Use of Custom APIs](#use-of-custom-apis)
+- [Testing and Evaluation](#testing-and-evaluation)
+  - [Data Validation](#data-validation)
+    - [Server](#server)
+    - [Client](#client)
+  - [Custom Pascal Stack Tracer](#custom-pascal-stack-tracer)
+    - [On](#on)
+    - [Off](#off)
+- [Learning Process Reflection](#learning-process-reflection)
+
 # Objective
 **Event Ticketing System** (ETS) aims to
 - provide users with ease when booking and reserving tickets for their favourite events
