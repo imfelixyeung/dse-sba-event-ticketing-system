@@ -38,20 +38,6 @@
     ]
   },
   {
-    "username" : "test",
-    "display_name" : "test",
-    "salt" : "dqYYuR6RLuN8QPfgy4tjMjIXZ7g2KoQ6",
-    "salted_password" : "71f8021bc2b067a4dd17d0d401251bb7",
-    "email" : "test@test.com",
-    "first_name" : "test",
-    "last_name" : "test",
-    "access_level" : "participator",
-    "joined_events" : [
-    ],
-    "pending_events" : [
-    ]
-  },
-  {
     "username" : "eddie",
     "display_name" : "Eddie",
     "salt" : "dzXF7JO1rh42X1MfEPQi4HGM1-E7KH80",
@@ -65,6 +51,24 @@
         "event_id" : "6SnOXXPQoJYtnvdR76z_x83-T5oLV_c6",
         "created_at" : 1596987727000
       }
+    ]
+  },
+  {
+    "username" : "test",
+    "display_name" : "test",
+    "salt" : "dqYYuR6RLuN8QPfgy4tjMjIXZ7g2KoQ6",
+    "salted_password" : "71f8021bc2b067a4dd17d0d401251bb7",
+    "email" : "test@test.com",
+    "first_name" : "test",
+    "last_name" : "test",
+    "access_level" : "participator",
+    "joined_events" : [
+      {
+        "event_id" : "R6sQiJ5SRNmqztSC0VlehVAoBZac8Eb2",
+        "created_at" : 1598079472000
+      }
+    ],
+    "pending_events" : [
     ]
   },
   {
@@ -82,16 +86,12 @@
         "created_at" : 1597104366000
       },
       {
-        "event_id" : "R6sQiJ5SRNmqztSC0VlehVAoBZac8Eb2",
-        "created_at" : 1597375036000
-      },
-      {
         "event_id" : "BoumYEUQ33Mtmq6pGQdpqFrdntYGsugH",
         "created_at" : 1597994493000
       },
       {
         "event_id" : "A7H345DFbA9FB3Y9",
-        "created_at" : 1598007565000
+        "created_at" : 1598161280000
       }
     ],
     "created_events" : [
@@ -102,6 +102,44 @@
       {
         "event_id" : "BoumYEUQ33Mtmq6pGQdpqFrdntYGsugH",
         "created_at" : 1597994464000
+      }
+    ],
+    "pending_events" : [
+    ]
+  },
+  {
+    "username" : "kmwong",
+    "display_name" : "ICT Teacher",
+    "salt" : "lO09q96rEDpnArqPlzIa3eTHQAPQcmok",
+    "salted_password" : "f7586370502d09ee79555cb9fabd9e2d",
+    "email" : "kmwong@home.npl.edu.hk",
+    "first_name" : "wong",
+    "last_name" : "KM",
+    "access_level" : "organiser",
+    "created_events" : [
+      {
+        "event_id" : "3qMFGlVqRz87VoIe6aq1OkGFCx4-FfGV",
+        "created_at" : 1598246901000
+      }
+    ]
+  },
+  {
+    "username" : "uat2408",
+    "display_name" : "Ms Wong",
+    "salt" : "4AKD8rhiN2NfyEqOHQ2zsu7a3LBlSzo2",
+    "salted_password" : "d3059f9b011bd16e0d29499f2486fdf8",
+    "email" : "kamanwong1015@gmail.com",
+    "first_name" : "UAT",
+    "last_name" : "Wong",
+    "access_level" : "participator",
+    "joined_events" : [
+      {
+        "event_id" : "3qMFGlVqRz87VoIe6aq1OkGFCx4-FfGV",
+        "created_at" : 1598247042000
+      },
+      {
+        "event_id" : "6SnOXXPQoJYtnvdR76z_x83-T5oLV_c6",
+        "created_at" : 1598247661000
       }
     ],
     "pending_events" : [
