@@ -46,8 +46,8 @@ class AddressSuggestion {
   }
 }
 
-void main() async {
-  String query = 'Tsing Yi';
-  List suggestions = await AddressSuggestion.getSuggestions(query);
-  print(suggestions.join('\n'));
-}
+// void main() async {
+//   String query = 'Tsing Yi';
+//   List suggestions = await AddressSuggestion.getSuggestions(query);
+//   print(suggestions.join('\n'));
+// }

@@ -30,9 +30,9 @@ class Translate {
       'en-gb': 'Analysis',
       'zh-hk': '分析',
     },
-    'analysis': {
-      'en-gb': 'Analysis',
-      'zh-hk': '分析',
+    'analysis_report': {
+      'en-gb': 'Analysis Report',
+      'zh-hk': '分析報告',
     },
     'search': {
       'en-gb': 'Search',
@@ -417,7 +417,12 @@ class Translate {
       'zh-cn': "用户名称或密码错误"
     },
     "login_success_msg_format": {
-      'en-gb': "Signed in successfully as %s",
+      'en-gb': "Logged in successfully as %s",
+      'zh-hk': "以 %s 成功登錄",
+      'zh-cn': "以 %s 成功登录"
+    },
+    "logout_success_msg": {
+      'en-gb': "Logged out successfully",
       'zh-hk': "以 %s 成功登錄",
       'zh-cn': "以 %s 成功登录"
     },

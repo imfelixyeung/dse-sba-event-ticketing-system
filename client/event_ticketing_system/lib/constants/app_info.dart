@@ -15,6 +15,7 @@ const Map<String, String> applicationChangeLog = {
   '0.0.9': 'Added search function in home page',
   '0.1.0': 'Initial Release',
   '0.1.1': 'Analysis Page test',
+  '0.1.2': 'Bug fixes',
 };
 
 String applicationAboutText() {

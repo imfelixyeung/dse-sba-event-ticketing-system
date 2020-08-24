@@ -47,7 +47,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        Translate.get('analysis'),
+                        Translate.get('analysis_report'),
                         style: Theme.of(context).textTheme.headline5,
                       ),
                       Divider(),
@@ -174,10 +174,10 @@ Future<Uint8List> generateReport(PdfPageFormat pageFormat) async {
   pw.Widget _generateTable(pw.Context context, List tableData) {
     final headers = tableData.removeAt(0);
 
-    print({
-      "TableHeaders": headers,
-      "TableData": tableData,
-    });
+    // print({
+    //   "TableHeaders": headers,
+    //   "TableData": tableData,
+    // });
 
     return pw.Table.fromTextArray(
       border: null,

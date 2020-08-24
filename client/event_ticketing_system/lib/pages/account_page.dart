@@ -1,5 +1,6 @@
 import 'package:event_ticketing_system/apis/ets.dart';
 import 'package:event_ticketing_system/constants/route_names.dart';
+import 'package:event_ticketing_system/misc/simple_dialog.dart';
 import 'package:event_ticketing_system/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import '../apis/database.dart';
@@ -75,6 +76,8 @@ class _AccountPageState extends State<AccountPage> {
                                   child: Text(Translate.get('logout')),
                                   onPressed: () {
                                     appUser.logout();
+                                    showSimpleDialog(context,
+                                        Translate.get('logout_success_msg'));
                                     setState(() {
                                       appUser = appUser;
                                     });

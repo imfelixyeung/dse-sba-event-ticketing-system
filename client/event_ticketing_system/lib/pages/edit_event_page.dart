@@ -71,8 +71,8 @@ class _EditEventPageState extends State<EditEventPage> {
       updateLoading = true;
     });
 
-    print(DateTime.now());
-    print(JsonEncoder.withIndent(' ').convert(event.toMap()));
+    // print(DateTime.now());
+    // print(JsonEncoder.withIndent(' ').convert(event.toMap()));
 
     var response = await EtsAPI.updateEvent(event);
 
