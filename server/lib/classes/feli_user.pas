@@ -415,9 +415,8 @@ begin
     headerUser.add('email', format('%s', [email]));
 
 
-    header.add('title', 'analysis');
+    header.add('title', 'analysis_report');
     header['user'] := headerUser;
-    header.add('image', 'http://dynamic.felixyeung2002.com/favicon.png');
 
     footer.add('barcode', username);
     
