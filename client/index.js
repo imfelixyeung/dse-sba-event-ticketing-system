@@ -1,15 +1,16 @@
 const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 const app = express();
-var morgan = require('morgan');
-const http = require('http')
-const https = require('https')
-const cors = require('cors')
+var morgan = require("morgan");
+const http = require("http");
+const https = require("https");
+const cors = require("cors");
 
 const httpPort = 8000;
 const httpsPort = 8443;
-const publicWebFolder = __dirname + "/web";
-const fs = require('fs')
+const publicWebFolder = "./web";
+const reportFolder = "../report";
+const fs = require("fs");
 
 var options = {
     key: fs.readFileSync("ssl/ets-key.pem"),
@@ -17,7 +18,7 @@ var options = {
 };
 
 app.use(cors());
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 
 app.use(
     "/api/chatBot",
@@ -40,6 +41,7 @@ app.use(
 );
 
 app.use("/", express.static(publicWebFolder));
+app.use("/report", express.static(reportFolder));
 
 app.get("/*", (request, response) => {
     response.status(404).sendFile(`${publicWebFolder}/404.html`);
@@ -49,8 +51,10 @@ http.createServer(app).listen(httpPort, () =>
     console.log(`HTTP ETS listening with port ${httpPort}`)
 );
 
-https.createServer(options, app).listen(httpsPort, () =>
-    console.log(`HTTPS ETS listening with port ${httpsPort}`)
-);
+https
+    .createServer(options, app)
+    .listen(httpsPort, () =>
+        console.log(`HTTPS ETS listening with port ${httpsPort}`)
+    );
 
 // app.listen(httpPort, () => console.log(`ETS listening with port ${httpPort}`));
