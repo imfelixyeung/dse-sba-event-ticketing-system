@@ -8,8 +8,8 @@ const cors = require("cors");
 
 const httpPort = 8000;
 const httpsPort = 8443;
-const publicWebFolder = "./web";
-const reportFolder = "../report";
+const publicWebFolder = __dirname + "/web";
+const reportFolder = __dirname + "/../report";
 const fs = require("fs");
 
 var options = {
