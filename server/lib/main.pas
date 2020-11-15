@@ -814,7 +814,7 @@ begin
     httpRouter.registerRoute('/api/ping', @pingEndpoint);
     httpRouter.registerRoute('/*', @error404, true);
 
-    // application.threaded := true;
+    application.threaded := false;
     if (not testMode) then begin
         application.initialize();
         FeliLogger.info(format('HTTP Server listening on port %d', [port]));

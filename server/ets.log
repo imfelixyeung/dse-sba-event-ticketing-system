@@ -2453,3 +2453,7 @@
 2020-08-21 15:48:10 [ETS] [Error]    Access violation
 2020-08-21 15:48:11 [ETS] [Error]    Access violation
 2020-08-21 15:58:01 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-21 18:55:17 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-21 19:02:22 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-21 19:02:34 [ETS] [Info]     HTTP Server listening on port 8081
+2020-08-21 19:02:40 [ETS] [Error]    Error 404 "/api/generateReport" not found

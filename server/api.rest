@@ -27,7 +27,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost:8081/api/generateReport
+POST http://localhost:8081/api/generateAnalysis
 Content-Type: application/json
 
 {

@@ -6,7 +6,7 @@ const http = require("http");
 const https = require("https");
 const cors = require("cors");
 
-const httpPort = 8000;
+const httpPort = 8005;
 const httpsPort = 8443;
 const publicWebFolder = __dirname + "/web";
 const reportFolder = __dirname + "/../report";
