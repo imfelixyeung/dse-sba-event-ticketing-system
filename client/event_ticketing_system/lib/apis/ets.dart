@@ -5,8 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart' show kIsWeb, kReleaseMode;
 
 const webEndpoint = '';
-const mobileUnsecureEndpoint = 'http://dynamic.felixyeung2002.com';
-const mobileSecureEndpoint = 'https://dynamic.felixyeung2002.com';
+const mobileUnsecureEndpoint = 'https://ets.feli.page';
+const mobileSecureEndpoint = 'https://ets.feli.page';
 
 var endpoint = (!kReleaseMode && kIsWeb)
     ? mobileUnsecureEndpoint

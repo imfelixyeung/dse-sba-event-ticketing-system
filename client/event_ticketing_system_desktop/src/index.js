@@ -108,9 +108,7 @@ const createWindow = () => {
                     label: "Website",
                     click: async () => {
                         const { shell } = require("electron");
-                        await shell.openExternal(
-                            "http://dynamic.felixyeung2002.com/"
-                        );
+                        await shell.openExternal("https://ets.feli.page/");
                     },
                 },
             ],
@@ -119,7 +117,7 @@ const createWindow = () => {
     const menu = Menu.buildFromTemplate(template);
     Menu.setApplicationMenu(menu);
 
-    mainWindow.loadURL("http://dynamic.felixyeung2002.com/app/");
+    mainWindow.loadURL("https://ets.feli.page/app/");
     // mainWindow.webContents.openDevTools();
 };
 
