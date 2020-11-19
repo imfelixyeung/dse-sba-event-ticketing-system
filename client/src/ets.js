@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-const endpoint = "http://dynamic.felixyeung2002.com";
+const endpoint = "https://ets.feli.page";
 var dateFormat = require("dateformat");
 
 class EtsAPI {
@@ -43,7 +43,7 @@ Organised by __${event["organiser"]}__
 ${dateFormat(new Date(event["start_time"]))} to ${dateFormat(
             new Date(event["end_time"])
         )}
-${`http://dynamic.felixyeung2002.com/app/#/eventDetails/${event['id']}`}
+${`${endpoint}/app/#/eventDetails/${event["id"]}`}
 `;
     }
     static buildEventListInfo(events) {
