@@ -10,6 +10,7 @@
   - [User Authentication](#user-authentication)
 - [Documentation](#documentation)
   - [Server](#server-1)
+  - [License](#license)
 
 # Overview
 Event Ticketing System is denoted as `ETS`
@@ -47,3 +48,6 @@ Details and features of ETS
 # Documentation
 ## Server
 A full documentation is available [here](server/documentation)
+
+## License
+Licensed under the [MIT License](LICENSE)
